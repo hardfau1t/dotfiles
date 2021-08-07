@@ -1,0 +1,11 @@
+[Unit]
+Description=watches for playcounts and skips
+After=mpd.service
+
+[Service]
+Type=exec
+ExecStart=/home/gireesh/.local/bin/mp_rater
+Restart=always
+
+[Install]
+WantedBy=default.target

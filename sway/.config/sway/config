@@ -1,0 +1,286 @@
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod3
+set $sup Mod1
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+set $term alacritty
+set $menu wofi
+
+set $main_mon eDP-1
+set $second_mon HDMI-A-1
+output $second_mon mode 1366x768 pos 1600,0
+output $main_mon mode 1600x900 pos 0,0 
+output * bg "/home/gireesh/Pictures/wallpapers/minimal,digital art,blue.jpg" fill
+
+
+# sway better initialization
+#
+xwayland disable
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec element-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland --no-update --hidden
+exec gpgconf --launch gpg-agent
+
+#============================clipman=====================================================
+exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman/clipman-primary.json"
+exec clipman restore
+exec wl-paste -t text --watch clipman store
+
+
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+input 1:1:AT_Translated_Set_2_keyboard xkb_layout cust
+focus_follows_mouse no
+bar swaybar_command waybar
+
+exec swayidle -w                                    \
+    timeout 180 'swaylock -f -c 000000'             \
+    timeout 240 'swaymsg "output * dpms off"'       \
+              resume 'swaymsg "output * dpms on"'   \
+    before-sleep 'swaylock -f -c 000000'            \
+    timeout 900 'systemctl suspend'
+
+#
+input "1739:0:Synaptics_TM2722-001" {
+       dwt enabled
+       tap enabled
+       natural_scroll enabled
+       middle_emulation enabled
+   }
+input "2:7:SynPS/2_Synaptics_TouchPad" {
+       dwt enabled
+       tap enabled
+       natural_scroll enabled
+       middle_emulation enabled
+   }
+input "1267:12423:ELAN1300:00_04F3:3087_Touchpad" {
+       dwt enabled
+       tap enabled
+       natural_scroll enabled
+       middle_emulation enabled
+   }
+#
+#
+### Key bindings
+#
+# Basics:
+#
+    # Start a terminal
+    bindsym $sup+Return exec $term
+
+    # Kill focused window
+    bindsym $sup+q kill
+
+    # Start your launcher
+    bindsym $mod+space exec $menu
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+Shift+r reload
+
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+x exec swaylock
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+#
+# Workspaces:
+#
+    bindsym $mod+t  worspace back_and_forth
+    # Switch to workspace
+    bindsym $mod+1 workspace 1
+    bindsym $mod+2 workspace 2
+    bindsym $mod+3 workspace 3
+    bindsym $mod+4 workspace 4
+    bindsym $mod+5 workspace 5
+    bindsym $mod+6 workspace 6
+    bindsym $mod+7 workspace 7
+    bindsym $mod+8 workspace 8
+    bindsym $mod+9 workspace 9
+    bindsym $mod+0 workspace 10
+    # Move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace 1
+    bindsym $mod+Shift+2 move container to workspace 2
+    bindsym $mod+Shift+3 move container to workspace 3
+    bindsym $mod+Shift+4 move container to workspace 4
+    bindsym $mod+Shift+5 move container to workspace 5
+    bindsym $mod+Shift+6 move container to workspace 6
+    bindsym $mod+Shift+7 move container to workspace 7
+    bindsym $mod+Shift+8 move container to workspace 8
+    bindsym $mod+Shift+9 move container to workspace 9
+    bindsym $mod+Shift+0 move container to workspace 10
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+workspace 1 output  $main_mon
+workspace 3 output  $main_mon
+workspace 5 output  $main_mon
+workspace 7 output  $main_mon
+workspace 9 output  $main_mon
+workspace 0 output  $second_mon
+workspace 2 output  $second_mon
+workspace 4 output  $second_mon
+workspace 6 output  $second_mon
+workspace 8 output  $second_mon
+#
+# Layout stuff:
+#
+# You can "split" the current object of your focus with
+# $mod+b or $mod+v, for horizontal and vertical splits
+# respectively.
+bindsym $mod+backslash splith
+bindsym $mod+minus splitv
+
+# Switch the current container between different layout styles
+bindsym $mod+w layout toggle tabbed split
+bindsym $mod+e layout toggle split
+
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+space floating toggle
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+m focus mode_toggle
+
+
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+plus scratchpad show
+#
+# Resizing containers:
+#
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Ditto, with arrow keys
+    #bindsym Left resize shrink width 10px
+    #bindsym Down resize grow height 10px
+    #bindsym Up resize shrink height 10px
+    #bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+
+# custom shortcuts
+    bindsym $sup+Period exec 'firefox'
+    bindsym $sup+comma exec 'emoji.sh'
+    bindsym $mod+$sup+q exec 'nwgbar  -o 0.5 -wm sway'
+    bindsym $sup+c exec 'gnome-calculator'
+
+#volume down
+    bindcode --locked 122 exec 'pactl set-sink-volume 0 -2%'
+#volume up
+    bindcode --locked 123 exec 'pactl set-sink-volume 0 +2%'
+#mute/unmute sound
+    bindcode --locked 121 exec 'pactl set-sink-mute 0 toggle'
+
+#mute microphone sound
+    bindcode 198 exec 'pactl set-source-mute 0 toggle'
+
+
+#brightness up
+    bindcode 232 exec 'light -U 2'
+#brighntess down
+    bindcode 233 exec 'light -A 2'
+
+
+#mp music control keys
+# mod + f1
+    bindcode --locked $mod+67 exec 'mpc toggle'
+# mod + f 2
+    bindcode --locked $mod+68 exec 'mpc prev'
+# mod + f 3
+    bindcode --locked $mod+69 exec 'mpc next'
+
+    bindcode --locked $mod+70 exec 'notify-send -t 5000 mpd "moved to trash $(mpc current)"; mv ~/"storage/music/$(mpc current -f '%file%')" ~/Trash; mpc next; mpc update'
+# mod + e sc
+    bindcode --locked $mod+9 exec $(notify-send -t 5000 mpd "$(mpc sticker "`mpc current -f "%file%"`" list)")
+
+# screenshot
+    bindsym $mod+Shift+c exec 'grim -g "$(slurp -d)" - | wl-copy ; notify-send -t 5000 "Grim" "screenshot copied to clipboard"'
+    bindsym $mod+Shift+s exec 'grim -c; notify-send grim -t 5000 "Grim" "Screenshot is saved."'
+    bindsym $mod+s exec 'grim -c -| wl-copy ; notify-send -t 5000 "Grim" "screenshot copied to clipboard"'
+    bindsym $mod+c exec 'color_pick.sh'
+#clipman
+    bindsym $mod+v exec clipman pick -t wofi
+# element
+    bindsym $mod+n exec 'element-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland'
+
+# window management===========================================================================
+for_window [app_id="firefox"] inhibit_idle fullscreen
+for_window [app_id="mpv"] inhibit_idle focus
+for_window [app_id="gnome-calculator"] floating enable
+for_window [app_id="zenity"] floating enable, border normal
+for_window [app_id="pinentry-qt"] floating enable, border normal
+# for_window [app_id="Element"] floating enable, resize set  width 700px,resize set height 800px
+for_window [title="Firefox — Sharing Indicator"] floating enable, move to scratchpad
+no_focus [title="Firefox — Sharing Indicator"] 
+
+
+
+################################## Style ################################
+
+    default_border  pixel 2
+    gaps    outer       2px
+    gaps    inner       4px
+    # # class                   border      bground     text        indicator   child_border
+    client.focused             #49c2e3      #5bb4cf     #c4faff     #108cad     #49c2e3
+    client.unfocused           #00000000    #426480     #c4faff     #000000     #00000000
+    client.focused_inactive    #00000000    #609bcc     #c4faff     #000000     #00000000
+
+
+
+
+    set $gnome-schema org.gnome.desktop.interface
+    exec_always {
+        gsettings set $gnome-schema cursor-theme 'amber'
+        gsettings set $gnome-schema cursor-size 16
+
+    }
+
+

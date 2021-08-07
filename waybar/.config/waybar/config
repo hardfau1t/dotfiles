@@ -1,0 +1,213 @@
+// vim:syntax=json
+{
+    "margin" : "0 5 0 5",
+    "layer" : "top",
+    "modules-left": ["sway/workspaces", "mpd"],
+    "modules-center": ["clock"],
+    "modules-right": ["custom/left_pad", "pulseaudio", "custom/bluetooth", "network", "disk", "memory", "cpu", "backlight", "battery", "custom/right_pad", "custom/left_pad", "tray","custom/power", "custom/right_pad"],
+
+    "custom/right_pad":{
+        "format": " "
+        },
+    "custom/left_pad":{
+        "format": " "
+        },
+    "sway/workspaces": {
+      "disable-scroll": false,
+      "all-outputs": true,
+      "format": "{icon}",
+      "persistent_workspaces": {},
+      "disable-markup": true,
+      "format-icons": {
+        "1": "",
+        /* "1": "❶", */
+        "2": "",
+        /* "2": "❷", */
+        "3": "",
+        /* "3": "❸", */
+        /* "4": "❹", */
+        "4": "",
+        "5": "❺",
+        "6": "❻",
+        "7": "❼",
+        "8": "",
+        /* "8": "❽", */
+        "9": "❾",
+        "10": "",
+        "focused": "",
+        "urgent": "",
+        "default": ""
+      }
+    },
+    "custom/media": {
+       "format":"{icon}   {}",
+       "return-type": "json",
+       "format-icons": {
+          "Playing": "",
+          "Paused": "",
+          "Music": ""
+       },
+       "max-length":45,
+       "interval":3,
+       "exec": "fish -c playerstatus | tail -1",
+       "exec-on-event":"fish -c playerstatus | tail -1",
+       "on-click": "playerctl play-pause",
+       "on-click-right": "cmus-remote -u"
+    },
+    "tray": {
+    },
+    "idle_inhibitor": {
+         "format": "{icon}",
+         "format-icons": {
+         "activated": "",
+         "deactivated": ""
+      }
+    },
+    "clock": {
+        "format": "{:%I:%M %p}",
+        "format-alt": "{:%A, %B %d}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "on-click": "alacritty -e ytop",
+        "tooltip": false,
+        "on-click": "alacritty -e htop"
+    },
+    "memory": {
+        "format": "{}% ",
+        "on-click": "alacritty -e htop"
+    },
+    "temperature": {
+        "thermal-zone": 2,
+        "hwmon-path": "/sys/class/hwmon/hwmon0/temp1_input",
+        "critical-threshold": 70,
+        "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "interval": 60,
+        "format-icons": ["", "", ""]
+    },
+    "backlight": {
+        "interval": 5,
+        "device": "intel_backlight",
+        "format-alt": "{icon}",
+        "format": "{percent}% {icon}",
+        "format-alt-click": "click-right",
+        "format-icons": [" "," ", " ", " "],
+        "on-scroll-down": "light -A 2",
+        "on-scroll-up": "light -U 2"
+    },
+    "battery": {
+        "states": {
+          "good": 95,
+          "warning": 30,
+          "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-discharging": "{capacity}% {icon}",
+        "tooltip": "{time}",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-alt-click": "click-right",
+        "format-good": "", // An empty format will hide the module
+        "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "network": {
+        "format": "{ifname}",
+        "format-wifi": "{essid}  ",
+        "format-ethernet": "{ifname} ",
+        "format-disconnected": "⚠",
+        "tooltip-format": "{ifname}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname} ",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 20
+    },
+    "pulseaudio": {
+        "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon}{format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "",
+        "format-alt-source": "{volume}% ",
+        "format-alt-click": "click-right",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            /* "hands-free": "", */
+            /* "headset": "", */
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "on-scroll-up": "pamixer -ud 2 && pamixer --get-volume > $SWAYSOCK.wob",
+        "on-scroll-down": "pamixer -ui 2 && pamixer --get-volume > $SWAYSOCK.wob",
+    },
+    "disk": {
+        "interval": 30,
+        "format": "{percentage_used}% ",
+        "format-alt": "{percentage_free}% ",
+        "format-alt-click": "click-right",
+        "path": "/",
+    },
+    "custom/power": {
+      	"format": "⏻",
+      	"on-click": "nwgbar -o 0.4",
+    	  "tooltip": false 
+    },
+    "custom/github": {
+    	  "format": "",
+    	  "on-click": "xdg-open https://github.com",
+    	  "tooltip": false 
+    },
+    "custom/youtube": {
+      	"format": "",
+    	  "on-click": "xdg-open https://www.youtube.com/",
+    	  "tooltip": false 
+    },
+    "wlr/taskbar": {
+        "format": "{icon}",
+        // "format": "{title:.16}",
+        "icon-theme": "Papirus",
+        "icon-size": 15,
+        "on-click": "activate",
+        "markup": true,
+        "max-length": 7,
+        "on-click-right": "minimize",
+        "on-click-middle": "close"
+    },
+    "mpd": {
+        "format": "♪ {artist} - {title}  {elapsedTime:%M:%S}/{totalTime:%M:%S}",
+        /* "unknown-tag": "{file}", */
+        "format-paused": "{title} 懶",
+        "interval": 1,
+        //"max-length": 15,
+        "exec": "echo \"$(mpc current | sed 's/&//') – $(mpc status | awk '{print $3}' | sed -n 2p | sed 's/&//')\"",
+        "exec-if": "pgrep mpd",
+        "on-click": "mpc toggle",
+    },
+    "custom/network":{
+        "format": "{}",
+        "interval": 2,
+        "format-alt-click": "click-right",
+        "exec": "~/.config/waybar/scripts/network.sh",
+        "return-type": "json",
+        "escape": true,
+    },
+    "custom/bluetooth": {
+        "format": "{}",
+        "interval": 1,
+        "exec": "~/.config/waybar/scripts/bluetooth.sh -s",
+        "on-click" : "~/.config/waybar/scripts/bluetooth.sh -t",
+    }
+}

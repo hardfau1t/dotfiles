@@ -1,0 +1,84 @@
+@define-color bg1   #a5cdd9;
+@define-color ws_foc #e6f4f1;
+@define-color ws-clr #0a353f;
+@define-color font #0a353f;
+@define-color mpd @ws-foc;
+
+window#waybar {
+    border-radius: 8px;
+    background-color: transparent;
+}
+* {
+    min-height: 0px;
+    font-size: 11px;
+    font-family: Sans;
+    min-height: 13px;
+    font-weight: 500;
+}
+/* center module */
+#clock{
+    margin: 2px 0px 2px 0px ;
+    color: @font;
+    padding: 0px 8px 0px 8px;
+    background-color: @bg1;
+    border-radius: 8px;
+}
+
+/* right module */
+#pulseaudio, #custom-bluetooth, #network, #disk, #memory, #cpu, #backlight, #battery {
+    color: @font;
+    margin: 2px 0px 2px 0px ;
+    padding: 0px 8px 0px 8px;
+    background-color: @bg1;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+#tray, #custom-power{
+    color: @font;
+    margin: 2px 0px 2px 0px ;
+    padding: 0px 2px 0px 2px;
+    background-color: @bg1;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+#workspaces{
+    margin: 2px 2px 2px 2px;
+    padding: 0px 2px 0px 2px;
+    border-radius: 8px;
+    background-color: @bg1;
+}
+
+#workspaces button{
+    background: @bg1;
+    color: @font;
+    margin: 2px 3px 2px 3px;
+    padding: 0px;
+}
+
+#workspaces button.focused{
+    color: @ws-clr;
+    background: @ws_foc;
+}
+
+#workspaces button.urgent{
+}
+
+#custom-left_pad{
+    border-radius: 8px 0px 0px 8px;
+    padding:0px 2px 0px 2px;
+    margin: 2px 0px 2px 2px ;
+    background-color: @bg1;
+}
+
+#custom-right_pad{
+    border-radius: 0px 8px 8px 0px;
+    padding:0px 2px 0px 2px;
+    margin: 2px 2px 2px 0px ;
+    background-color: @bg1;
+}
+
+#mpd{
+    font-weight: 600;
+    color: @mpd;
+}

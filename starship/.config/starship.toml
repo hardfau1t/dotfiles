@@ -1,0 +1,25 @@
+scan_timeout=10
+command_timeout=500
+add_newline=false
+
+format= "$status[\\[](bold green) $battery$directory$git_branch$git_status$git_state[\\]](bold green)$jobs"
+
+[battery]
+full_symbol = "🔋 "
+charging_symbol = "⚡️ "
+discharging_symbol = "💀 "
+
+[[battery.display]]
+threshold = 30
+style = "bold yellow"
+
+[python]
+format = '[${symbol}${pyenv_prefix}(\($virtualenv\) )]($style)'
+
+[status]
+disabled=false
+format="[$symbol]($style) "
+map_symbol=true
+
+[jobs]
+symbol="✦ "

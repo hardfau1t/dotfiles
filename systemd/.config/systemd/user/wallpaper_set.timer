@@ -1,0 +1,11 @@
+[Unit]
+Description=sets the respective wallpaper depending on time
+
+[Timer]
+OnCalendar=6:00
+OnCalendar=11:00
+OnCalendar=17:00
+OnCalendar=20:00
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=syncs the mails every 15 minutes and after 3 minutes of boot
+
+[Timer]
+Persistent=true
+OnBootSec=60
+OnUnitActiveSec=600
+
+[Install]
+WantedBy=timers.target

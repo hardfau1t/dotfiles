@@ -1,0 +1,88 @@
+// vim:syntax=xkb
+default partial alphanumeric_keys
+xkb_symbols "basic" {
+    include "us(dvorak-alt-intl)"
+    include "cust(ctrl_alt_win)"
+    include "cust(swapcaps_hyper)"
+    include "cust(mod)"
+};
+
+// Ctrl is mapped to the Alt, Alt to the Super, and Win to the Ctrl keys.
+partial modifier_keys
+xkb_symbols "ctrl_alt_win" {
+    key <LALT> { [ Control_L, Control_L ]  };
+    key <LWIN> {  
+        type[Group1]="ONE_LEVEL",
+        symbols[Group1]=[ ISO_Level3_Shift ]
+    };
+    key <RCTL> { [ Super_R        ]  };
+    key <RALT> { [ Alt_L, Alt_L   ] };
+    modifier_map Control { <LALT>  };
+    modifier_map Mod1 { <RALT> };
+    modifier_map Mod4 {  <RCTL>  };
+};
+
+// Caps lock as modifier 3 key
+partial modifier_keys
+xkb_symbols "swapcaps_hyper" {
+    replace key <CAPS> { [ Hyper_L ] };
+    modifier_map Mod3 { <CAPS> };
+};
+
+// modified custom keys
+
+xkb_symbols "mod"{
+    key <HOME> { [ Escape, Home ] }; 
+    key <SPCE> { [ space, 	Escape ] };
+    key <AD10> { [	    l,	L, Right, rightarrow		]	}; 
+    key <AC07> { [	    h,	H, Left, leftarrow 		]	};
+    key <AB04> { [	    k,	K, Up, uparrow 		]	};
+    key <AB03> { [	    j,	J, Down, downarrow		]	};
+    key <END>  { [ 	Delete, End 				]	};
+//    key <AE01> { [	    1,	exclam 		]	};
+//    key <AE02> { [	    2,	at		]	};
+//    key <AE03> { [	    3,	numbersign	]	};
+//    key <AE04> { [	    4,	dollar		]	};
+//    key <AE05> { [	    5,	percent		]	};
+//    key <AE06> { [	    6,	asciicircum, dead_circumflex, dead_circumflex ]	};
+//    key <AE07> { [	    7,	ampersand	]	};
+//    key <AE08> { [	    8,	asterisk	]	};
+//    key <AE09> { [	    9,	parenleft,  dead_grave]	};
+//    key <AE10> { [	    0,	parenright	]	};
+//    key <AE11> { [ bracketleft,	braceleft	]	};
+//    key <AE12> { [ bracketright, braceright,  dead_tilde] };
+//
+//    key <AD01> { [  apostrophe,	quotedbl, dead_acute, dead_diaeresis	] };
+//    key <AD02> { [	comma,	less,   dead_cedilla, dead_caron	] };
+//    key <AD03> { [      period,	greater, dead_abovedot, periodcentered	] };
+//    key <AD04> { [	    p,	P		]	};
+//    key <AD05> { [	    y,	Y		]	};
+//    key <AD06> { [	    f,	F		]	};
+//    key <AD07> { [	    g,	G		]	};
+//    key <AD08> { [	    c,	C		]	};
+//    key <AD09> { [	    r,	R		]	};
+//    key <AD11> { [	slash,	question,	notequal,	U2261		]	};
+    key <AD12> { [	equal,	plus,	notequal,	U2261			]	}; // =, +, ≠, ≡
+//
+//    key <AC01> { [	    a,	A 		]	};
+//    key <AC02> { [	    o,	O		]	};
+    key <AC03> { [	    e,	E,	elementof,	notelementof	]	};
+//    key <AC04> { [	    u,	U		]	};
+//    key <AC05> { [	    i,	I,	U21D2,	U21CF		]	}; 	// i,I, ⇒, ⇏
+//    key <AC06> { [	    d,	D		]	};
+    key <AC08> { [	    t,	T,	therefore,	U2335		]	}; //  t, T, ∴ ∵
+//    key <AC09> { [	    n,	N		]	};
+//    key <AC10> { [	    s,	S,	U21D4, U2200		]	}; // s, S, ⇔, ∀
+    key <AC11> { [	minus,	underscore,	plusminus, U2295]	}; 		// -, _, ⊕ ,
+//
+//    key <AB01> { [   semicolon,	colon, dead_ogonek, dead_doubleacute ] };
+//    key <AB02> { [	    q,	Q		]	};
+//    key <AB05> { [	    x,	X,	U2303,	U2204 		]	}; 			// x, X, ∃, ∄
+//    key <AB06> { [	    b,	B		]	};
+//    key <AB07> { [	    m,	M		]	};
+//    key <AB08> { [	    w,	W		]	};
+//    key <AB09> { [	    v,	V		]	};
+//    key <AB10> { [	    z,	Z		]	};
+//
+//    key <BKSL> { [  backslash,  bar             ]       };
+};

@@ -1,0 +1,58 @@
+
+#entry {
+border-radius: 5px;
+padding: 5px;
+margin-bottom: 5px;
+text-align: center;
+}
+
+#entry:selected {
+background-color: #5e81ac;
+}
+ 
+#text:selected {
+color: #d8dee9;
+}
+ 
+#window {
+padding: 2px;
+background-color: rgba(53,59,73,1.0);
+/* border: 3px solid #3b4252; */
+/* border-radius: 3px; */
+font-family: Source Code Pro;
+}
+
+#input {
+border: 2px solid #5e81ac;
+background-color: #4c566a;
+padding: 5px;
+font-size: 13px;
+border-radius: 5px;
+color: #d8dee9;
+}
+
+#inner-box {
+color: #d8dee9;
+padding: 2px;
+background-color: transparent;
+}
+
+#outer-box {
+margin: 15px;
+background-color: transparent;
+}
+
+#scroll {
+margin-top: 10px;
+}
+
+#text {
+padding: 5px;
+font-size: 13px;
+background-color: transparent;
+} 
+
+#img {
+  background-color: transparent;
+  padding: 5px;
+}

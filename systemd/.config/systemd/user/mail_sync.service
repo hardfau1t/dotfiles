@@ -1,0 +1,9 @@
+[Unit]
+Description=syncs the mails 
+
+[Service]
+Type=exec
+ExecStart=/home/gireesh/.local/bin/mailsync
+
+[Install]
+WantedBy=default.target

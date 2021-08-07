@@ -1,0 +1,49 @@
+bars=prim,sec
+
+stylesheet=style.css
+watch_css=true
+colors=colors.css
+
+
+prim-interval=100
+prim-location=bottom
+prim-left=workspace
+prim-center=win,clock
+prim-right=cpu,mem,playing
+prim-height=60
+
+sec-interval=100
+sec-location=bottom
+sec-left=workspace,notif
+sec-center=win,clock
+sec-right=cpu,mem
+sec-height=60
+
+
+cpu-dso=cpu
+cpu-format=CPU %u%%
+cpu-allow_markup=true
+cpu-length=100
+cpu-interval=100
+
+mem-dso=memory
+mem-format=MEM %.0f%s
+mem-allow_markup=true
+mem-length=100
+mem-percent=true
+
+clock-dso=clock
+clock-length=50
+clock-format=%a %b %e | %I:%M %p
+
+win-dso=window
+win-length=20
+
+workspace-dso=workspace
+workspace-show_all=false
+
+width=800
+show=run
+
+allow-images = true
+image_size = 25

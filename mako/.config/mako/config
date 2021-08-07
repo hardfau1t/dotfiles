@@ -1,0 +1,14 @@
+#vim: syntax=config
+font="Source Code Pro" 9
+
+background-color=#353b49
+progress-color=source #81a1c1
+text-color=#e5e9f0
+padding=10
+margin=5
+
+border-size=3
+border-radius=5
+border-color=#35FCE2
+
+layer=overlay

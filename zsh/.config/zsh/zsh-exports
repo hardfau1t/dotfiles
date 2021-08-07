@@ -1,0 +1,12 @@
+export LANG=en_IN.UTF-8
+export STARSHIP_CACHE=~/.starship/cache
+export LC_CTYPE=en_IN.UTF-8
+export CHEAT_CONFIG_PATH="~/.config/cheat/conf.yml"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
+export TERM="tmux-256color"
+export EDITOR=/usr/local/bin/nvim
+export SYSTEMD_EDITOR=/usr/local/bin/nvim
+HISTFILE=~/.cache/zsh/zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
