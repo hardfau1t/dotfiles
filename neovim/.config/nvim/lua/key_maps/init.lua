@@ -1,4 +1,3 @@
-require('key_maps.lsp_kmap')
 require('key_maps.telescope_keymap')
 local opts = { noremap=true, silent=true }
 

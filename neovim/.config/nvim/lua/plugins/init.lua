@@ -9,10 +9,6 @@ return require("packer").startup(function()
 	use("folke/tokyonight.nvim")
 	use("L3MON4D3/LuaSnip")
 	use("mhartington/formatter.nvim") -- formatter
-    use {                               -- firenvim neovim inside browser
-        'glacambre/firenvim',
-        run = function() vim.fn['firenvim#install'](0) end 
-    }
     use {                                   -- diagnostics looks cool
       "folke/trouble.nvim",
       requires = "kyazdani42/nvim-web-devicons",
@@ -26,6 +22,14 @@ return require("packer").startup(function()
     }
 
 
+    use({
+        "jose-elias-alvarez/null-ls.nvim",
+        requires = {"neovim/nvim-lspconfig", "nvim-lua/plenary.nvim" },
+    })
+    use({
+        "neovim/nvim-lspconfig",
+        requires = {{"jose-elias-alvarez/null-ls.nvim", opt=true}},
+    })
 	use({
 		"hrsh7th/nvim-compe",
 		requires = { "neovim/nvim-lspconfig", { "nvim-lua/lsp_extensions.nvim", opt = true } },

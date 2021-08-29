@@ -11,4 +11,4 @@ require('colorscheme')
 require('nvim-tree_conf')
 require('fugitive_conf')
 require('utils')
-
+require('lsp')

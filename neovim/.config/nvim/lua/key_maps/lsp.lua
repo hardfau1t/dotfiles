@@ -1,6 +1,6 @@
 local opts = { noremap=true, silent=true }
 
-vim.cmd "nnoremap <silent> <leader>lp <cmd>lua require'lsp'.PeekDefinition()<CR>"
+vim.api.nvim_set_keymap( "n",  '<leader>lp', "<cmd>lua require'lsp.utils'.PeekDefinition()<CR>",opts)
 
 vim.api.nvim_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
 vim.api.nvim_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
