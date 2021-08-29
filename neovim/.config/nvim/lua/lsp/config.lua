@@ -176,12 +176,10 @@ local cfg = {
               -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
               version = "LuaJIT",
             path = vim.split(package.path, ';'),
-              -- Setup your lua path
-            globals = {'vim', 'package', 'require', 'use'},
             },
             diagnostics = {
               -- Get the language server to recognize the `vim` global
-              globals = { "vim", "lvim" },
+                globals = {'vim', 'package', 'require', 'use'},
             },
             workspace = {
               -- Make the server aware of Neovim runtime files
