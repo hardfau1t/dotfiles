@@ -24,9 +24,10 @@ waybar=waybar
 wofi=wofi
 xkb=xkb
 zathura=zathura
+swaylock=swaylock
 
 
-for app in $zsh $alacritty $gdb $mako $mpd $neovim $nwg_launchers $starship $sway $systemd $tmux $vifm $waybar $wofi $xkb $zathura
+for app in $zsh $alacritty $gdb $mako $mpd $neovim $nwg_launchers $starship $sway $systemd $tmux $vifm $waybar $wofi $xkb $zathura $swaylock
 do
     if  ! stow $app
     then
