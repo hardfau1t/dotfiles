@@ -1,4 +1,5 @@
 local mod = {}
+local config = require('lsp.config')
 require("lsp.visuals")
 
 -- cursor highlighting enable
@@ -40,7 +41,7 @@ end
 
 local function common_on_init(client, _)
 
-  local formatters = lvim.lang[vim.bo.filetype].formatters
+  local formatters = config[vim.bo.filetype].formatters
   if not vim.tbl_isempty(formatters) then
     client.resolved_capabilities.document_formatting = false
     -- u.lvim_log(string.format("Overriding [%s] formatter with [%s]", client.name, formatters[1].exe))
@@ -74,7 +75,6 @@ local function setup(_, cfg)
 
 end
 
-local config = require('lsp.config')
 
 for server, cfg in pairs(config) do
     setup(server,cfg)
