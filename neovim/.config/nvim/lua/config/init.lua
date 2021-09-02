@@ -25,6 +25,7 @@ vim.o.foldenable = false
 vim.o.swapfile = false
 vim.o.backup = false
 vim.o.expandtab = true
+vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.relativenumber = true
 vim.o.number = true
