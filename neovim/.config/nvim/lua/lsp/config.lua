@@ -209,11 +209,10 @@ local cfg = {
     },
     linters = {},
     lsp = {
-      provider = "pyright",
+      provider = "jedi_language_server",
       setup = {
         cmd = {
-          "pyright-langserver",
-          "--stdio",
+          "jedi-language-server",
         },
       },
     },
