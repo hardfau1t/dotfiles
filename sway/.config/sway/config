@@ -1,8 +1,7 @@
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
-set $mod Mod3
-set $sup Mod1
+set $mod Mod4
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -21,7 +20,7 @@ output * bg "/home/gireesh/Pictures/wallpapers/minimal,digital art,blue.jpg" fil
 
 # sway better initialization
 #
-xwayland disable
+xwayland enable
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
@@ -69,14 +68,18 @@ input "1267:12423:ELAN1300:00_04F3:3087_Touchpad" {
 #
 #
 ### Key bindings
+#            -----    -----       -----       -----       -----       -----          /------/      -----       -----       -----       -----       -----       -----
+#            -----     --------    --------    --------    KC_U,       KC_I,         /------/      --------    --------    -----       KC_N,       --------    --------
+#            --------    --------    --------    --------    --------    --------    /------/      --------    --------    -----       --------    KC_Z,       --------),
+#                                --------    --------   --------                     /------/              KC_TRNS, KC_TRNS, KC_RALT)
 #
 # Basics:
 #
     # Start a terminal
-    bindsym $sup+Return exec $term
+    bindsym $mod+t exec $term
 
     # Kill focused window
-    bindsym $sup+q kill
+    bindsym $mod+q kill
 
     # Start your launcher
     bindsym $mod+space exec $menu
@@ -110,8 +113,7 @@ input "1267:12423:ELAN1300:00_04F3:3087_Touchpad" {
 #
 # Workspaces:
 #
-    bindsym $mod+t  worspace back_and_forth
-    # Switch to workspace
+# Switch to workspace
     bindsym $mod+1 workspace 1
     bindsym $mod+2 workspace 2
     bindsym $mod+3 workspace 3
@@ -151,12 +153,11 @@ workspace 8 output  $second_mon
 # You can "split" the current object of your focus with
 # $mod+b or $mod+v, for horizontal and vertical splits
 # respectively.
-bindsym $mod+backslash splith
+bindsym $mod+slash splith
 bindsym $mod+minus splitv
 
 # Switch the current container between different layout styles
 bindsym $mod+w layout toggle tabbed split
-bindsym $mod+e layout toggle split
 
 # Make the current focus fullscreen
 bindsym $mod+f fullscreen
@@ -175,11 +176,11 @@ bindsym $mod+m focus mode_toggle
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+    bindsym $mod+s move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+plus scratchpad show
+    bindsym $mod+shift+s scratchpad show
 #
 # Resizing containers:
 #
@@ -207,10 +208,9 @@ bindsym $mod+r mode "resize"
 
 
 # custom shortcuts
-    bindsym $sup+Period exec 'firefox'
-    bindsym $sup+comma exec 'emoji.sh'
-    bindsym $mod+$sup+q exec 'nwgbar  -o 0.5 -wm sway'
-    bindsym $sup+c exec 'gnome-calculator'
+    bindsym $mod+b exec 'firefox'
+    bindsym $mod+e exec 'emoji.sh'
+    bindsym $mod+control+q exec 'nwgbar  -o 0.5 -wm sway'
 
 #volume down
     bindcode --locked 122 exec 'pactl set-sink-volume 0 -2%'
@@ -242,14 +242,15 @@ bindsym $mod+r mode "resize"
     bindcode --locked $mod+9 exec $(notify-send -t 5000 mpd "$(mpc sticker "`mpc current -f "%file%"`" list)")
 
 # screenshot
-    bindsym $mod+Shift+c exec 'grim -g "$(slurp -d)" - | wl-copy ; notify-send -t 5000 "Grim" "screenshot copied to clipboard"'
-    bindsym $mod+Shift+s exec 'grim -c; notify-send grim -t 5000 "Grim" "Screenshot is saved."'
-    bindsym $mod+s exec 'grim -c -| wl-copy ; notify-send -t 5000 "Grim" "screenshot copied to clipboard"'
-    bindsym $mod+c exec 'color_pick.sh'
+    bindsym $mod+o exec   'grim -g "$(slurp -d)" -    | wl-copy ; notify-send -t 5000 "Grim" "screenshot copied to clipboard"'
+    bindsym $mod+a exec         'grim -c -                  | wl-copy ; notify-send -t 5000 "Grim" "screenshot copied to clipboard"'
+    bindsym $mod+Shift+o exec   'grim -g "$(slurp -d)" ; notify-send -t 5000 "Grim" "screenshot is saved"'
+    bindsym $mod+Shift+a exec   'grim -c; notify-send grim -t 5000 "Grim" "Screenshot is saved."'
+    bindsym $mod+semicolon exec 'color_pick.sh'
 #clipman
     bindsym $mod+v exec clipman pick -t wofi
 # element
-    bindsym $mod+n exec 'element-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland'
+    bindsym $mod+d exec 'element-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland'
 
 # window management===========================================================================
 for_window [app_id="firefox"] inhibit_idle fullscreen

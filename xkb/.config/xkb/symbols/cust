@@ -3,7 +3,8 @@ default partial alphanumeric_keys
 xkb_symbols "basic" {
     include "us(dvorak-alt-intl)"
     include "cust(ctrl_alt_win)"
-    include "cust(swapcaps_hyper)"
+//    include "cust(swapcaps_hyper)"
+    include "cust(swapcaps_esc)"
     include "cust(mod)"
 };
 
@@ -23,10 +24,15 @@ xkb_symbols "ctrl_alt_win" {
 };
 
 // Caps lock as modifier 3 key
+// partial modifier_keys
+// xkb_symbols "swapcaps_hyper" {
+//     replace key <CAPS> { [ Hyper_L ] };
+//     modifier_map Mod3 { <CAPS> };
+// };
+// Caps lock as escape
 partial modifier_keys
-xkb_symbols "swapcaps_hyper" {
-    replace key <CAPS> { [ Hyper_L ] };
-    modifier_map Mod3 { <CAPS> };
+xkb_symbols "swapcaps_esc" {
+    replace key <CAPS> { [ Escape,  Escape ] };
 };
 
 // modified custom keys
