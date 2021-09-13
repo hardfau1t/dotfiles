@@ -232,10 +232,13 @@ bindsym $mod+r mode "resize"
 #mp music control keys
 # mod + f1
     bindcode --locked $mod+67 exec 'mpc toggle'
+    bindcode --locked 172 exec 'mpc toggle'
 # mod + f 2
     bindcode --locked $mod+68 exec 'mpc prev'
+    bindcode --locked 173 exec 'mpc prev'
 # mod + f 3
     bindcode --locked $mod+69 exec 'mpc next'
+    bindcode --locked 171 exec 'mpc next'
 
     bindcode --locked $mod+70 exec 'notify-send -t 5000 mpd "moved to trash $(mpc current)"; mv ~/"storage/music/$(mpc current -f '%file%')" ~/Trash; mpc next; mpc update'
 # mod + e sc
