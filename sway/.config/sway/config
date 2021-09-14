@@ -92,7 +92,7 @@ input "1267:12423:ELAN1300:00_04F3:3087_Touchpad" {
     floating_modifier $mod normal
 
     # Reload the configuration file
-    bindsym $mod+Shift+r reload
+    bindsym $mod+Shift+grave reload
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
@@ -114,27 +114,27 @@ input "1267:12423:ELAN1300:00_04F3:3087_Touchpad" {
 # Workspaces:
 #
 # Switch to workspace
-    bindsym $mod+1 workspace 1
-    bindsym $mod+2 workspace 2
-    bindsym $mod+3 workspace 3
-    bindsym $mod+4 workspace 4
-    bindsym $mod+5 workspace 5
-    bindsym $mod+6 workspace 6
-    bindsym $mod+7 workspace 7
-    bindsym $mod+8 workspace 8
-    bindsym $mod+9 workspace 9
-    bindsym $mod+0 workspace 10
-    # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace 1
-    bindsym $mod+Shift+2 move container to workspace 2
-    bindsym $mod+Shift+3 move container to workspace 3
-    bindsym $mod+Shift+4 move container to workspace 4
-    bindsym $mod+Shift+5 move container to workspace 5
-    bindsym $mod+Shift+6 move container to workspace 6
-    bindsym $mod+Shift+7 move container to workspace 7
-    bindsym $mod+Shift+8 move container to workspace 8
-    bindsym $mod+Shift+9 move container to workspace 9
-    bindsym $mod+Shift+0 move container to workspace 10
+    bindsym $mod+apostrophe workspace 1
+    bindsym $mod+comma workspace 2
+    bindsym $mod+period workspace 3
+    bindsym $mod+p workspace 4
+    bindsym $mod+y workspace 5
+    bindsym $mod+f workspace 6
+    bindsym $mod+g workspace 7
+    bindsym $mod+c workspace 8
+    bindsym $mod+r workspace 9
+    bindsym $mod+backspace workspace 10
+# move to workspace
+    bindsym $mod+Shift+apostrophe   workspace 1
+    bindsym $mod+Shift+comma        workspace 2
+    bindsym $mod+Shift+period       workspace 3
+    bindsym $mod+Shift+p            workspace 4
+    bindsym $mod+Shift+y            workspace 5
+    bindsym $mod+Shift+f            workspace 6
+    bindsym $mod+Shift+g            workspace 7
+    bindsym $mod+Shift+c            workspace 8
+    bindsym $mod+Shift+r            workspace 9
+    bindsym $mod+Shift+backspace    workspace 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 workspace 1 output  $main_mon
@@ -160,7 +160,7 @@ bindsym $mod+minus splitv
 bindsym $mod+w layout toggle tabbed split
 
 # Make the current focus fullscreen
-bindsym $mod+f fullscreen
+bindsym $mod+tab fullscreen
 
 # Toggle the current focus between tiling and floating mode
 bindsym $mod+Shift+space floating toggle
@@ -204,7 +204,7 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym $mod+grave mode "resize"
 
 
 # custom shortcuts
