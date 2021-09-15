@@ -125,16 +125,16 @@ input "1267:12423:ELAN1300:00_04F3:3087_Touchpad" {
     bindsym $mod+r workspace 9
     bindsym $mod+backspace workspace 10
 # move to workspace
-    bindsym $mod+Shift+apostrophe   workspace 1
-    bindsym $mod+Shift+comma        workspace 2
-    bindsym $mod+Shift+period       workspace 3
-    bindsym $mod+Shift+p            workspace 4
-    bindsym $mod+Shift+y            workspace 5
-    bindsym $mod+Shift+f            workspace 6
-    bindsym $mod+Shift+g            workspace 7
-    bindsym $mod+Shift+c            workspace 8
-    bindsym $mod+Shift+r            workspace 9
-    bindsym $mod+Shift+backspace    workspace 10
+    bindsym $mod+Shift+apostrophe  move container to workspace 1
+    bindsym $mod+Shift+comma       move container to workspace 2
+    bindsym $mod+Shift+period      move container to workspace 3
+    bindsym $mod+Shift+p           move container to workspace 4
+    bindsym $mod+Shift+y           move container to workspace 5
+    bindsym $mod+Shift+f           move container to workspace 6
+    bindsym $mod+Shift+g           move container to workspace 7
+    bindsym $mod+Shift+c           move container to workspace 8
+    bindsym $mod+Shift+r           move container to workspace 9
+    bindsym $mod+Shift+backspace   move container to workspace 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 workspace 1 output  $main_mon
