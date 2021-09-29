@@ -17,10 +17,10 @@ output $second_mon mode 1366x768 pos 1600,0
 output $main_mon mode 1600x900 pos 0,0 
 output * bg "/home/gireesh/Pictures/wallpapers/minimal,digital art,blue.jpg" fill
 
+xwayland disable
 
 # sway better initialization
 #
-xwayland enable
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
@@ -114,27 +114,49 @@ input "1267:12423:ELAN1300:00_04F3:3087_Touchpad" {
 # Workspaces:
 #
 # Switch to workspace
-    bindsym $mod+apostrophe workspace 1
-    bindsym $mod+comma workspace 2
-    bindsym $mod+period workspace 3
-    bindsym $mod+p workspace 4
-    bindsym $mod+y workspace 5
-    bindsym $mod+f workspace 6
-    bindsym $mod+g workspace 7
-    bindsym $mod+c workspace 8
-    bindsym $mod+r workspace 9
-    bindsym $mod+backspace workspace 10
+    bindsym $mod+apostrophe         workspace 1
+    bindsym $mod+comma              workspace 2
+    bindsym $mod+period             workspace 3
+    bindsym $mod+p                  workspace 4
+    bindsym $mod+y                  workspace 5
+    bindsym $mod+f                  workspace 6
+    bindsym $mod+g                  workspace 7
+    bindsym $mod+c                  workspace 8
+    bindsym $mod+r                  workspace 9
+    bindsym $mod+backspace          workspace 10
+
+    bindsym $mod+1                  workspace 1
+    bindsym $mod+2                  workspace 2
+    bindsym $mod+3                  workspace 3
+    bindsym $mod+4                  workspace 4
+    bindsym $mod+5                  workspace 5
+    bindsym $mod+6                  workspace 6
+    bindsym $mod+7                  workspace 7
+    bindsym $mod+8                  workspace 8
+    bindsym $mod+9                  workspace 9
+    bindsym $mod+0                  workspace 10
 # move to workspace
-    bindsym $mod+Shift+apostrophe  move container to workspace 1
-    bindsym $mod+Shift+comma       move container to workspace 2
-    bindsym $mod+Shift+period      move container to workspace 3
-    bindsym $mod+Shift+p           move container to workspace 4
-    bindsym $mod+Shift+y           move container to workspace 5
-    bindsym $mod+Shift+f           move container to workspace 6
-    bindsym $mod+Shift+g           move container to workspace 7
-    bindsym $mod+Shift+c           move container to workspace 8
-    bindsym $mod+Shift+r           move container to workspace 9
-    bindsym $mod+Shift+backspace   move container to workspace 10
+    bindsym $mod+Shift+apostrophe   move container to workspace 1
+    bindsym $mod+Shift+comma        move container to workspace 2
+    bindsym $mod+Shift+period       move container to workspace 3
+    bindsym $mod+Shift+p            move container to workspace 4
+    bindsym $mod+Shift+y            move container to workspace 5
+    bindsym $mod+Shift+f            move container to workspace 6
+    bindsym $mod+Shift+g            move container to workspace 7
+    bindsym $mod+Shift+c            move container to workspace 8
+    bindsym $mod+Shift+r            move container to workspace 9
+    bindsym $mod+Shift+backspace    move container to workspace 10
+
+    bindsym $mod+Shift+1            move container to workspace 1
+    bindsym $mod+Shift+2            move container to workspace 2
+    bindsym $mod+Shift+3            move container to workspace 3
+    bindsym $mod+Shift+4            move container to workspace 4
+    bindsym $mod+Shift+5            move container to workspace 5
+    bindsym $mod+Shift+6            move container to workspace 6
+    bindsym $mod+Shift+7            move container to workspace 7
+    bindsym $mod+Shift+8            move container to workspace 8
+    bindsym $mod+Shift+9            move container to workspace 9
+    bindsym $mod+Shift+0            move container to workspace 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 workspace 1 output  $main_mon

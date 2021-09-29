@@ -12,6 +12,7 @@ alias mea='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/
 alias mem='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/music only"'
 alias met='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/top"'
 alias mka='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/kannada/average/"'
+alias mkc='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/kannada/classical/"'
 alias mkb='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/kannada/bhakti_geethe/"'
 alias mkt='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/kannada/top/"'
 alias mko='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/kannada/og/"'
