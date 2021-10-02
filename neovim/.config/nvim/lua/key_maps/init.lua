@@ -1,4 +1,5 @@
 require('key_maps.telescope_keymap')
+require('key_maps.nvim_tree_keymap')
 local opts = { noremap=true, silent=true }
 
 
