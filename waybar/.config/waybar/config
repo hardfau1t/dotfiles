@@ -4,13 +4,16 @@
     "layer" : "top",
     "modules-left": ["sway/workspaces", "mpd"],
     "modules-center": ["clock"],
-    "modules-right": ["custom/left_pad", "pulseaudio", "custom/bluetooth", "network", "disk", "memory", "cpu", "backlight", "battery", "custom/right_pad", "custom/left_pad", "tray","custom/power", "custom/right_pad"],
+    "modules-right": ["custom/left_pad", "pulseaudio", "custom/pipe", "custom/bluetooth", "custom/pipe", "network", "custom/pipe", "disk", "custom/pipe", "memory", "custom/pipe", "cpu", "custom/pipe", "backlight", "custom/pipe", "battery", "custom/right_pad", "custom/left_pad", "tray","custom/power", "custom/right_pad"],
 
     "custom/right_pad":{
         "format": " "
         },
     "custom/left_pad":{
         "format": " "
+        },
+    "custom/pipe":{
+        "format": "|"
         },
     "sway/workspaces": {
       "disable-scroll": false,
@@ -161,7 +164,7 @@
         "path": "/",
     },
     "custom/power": {
-      	"format": "⏻",
+      	"format": "",
       	"on-click": "nwgbar -o 0.4",
     	  "tooltip": false 
     },

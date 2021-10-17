@@ -6,7 +6,7 @@ format= "$status[\\[](bold green) $battery$directory$git_branch$git_status$git_s
 
 [battery]
 full_symbol = "🔋 "
-charging_symbol = "⚡️ "
+charging_symbol = "⚡️"
 discharging_symbol = "💀 "
 
 [[battery.display]]
