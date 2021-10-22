@@ -21,19 +21,13 @@ return require("packer").startup(function()
       end
     }
 
-
-    use({
-        "jose-elias-alvarez/null-ls.nvim",
-        requires = {"neovim/nvim-lspconfig", "nvim-lua/plenary.nvim" },
+    use({"simrat39/rust-tools.nvim",
+        requires = {"neovim/nvim-lspconfig"}
     })
     use({
         "neovim/nvim-lspconfig",
-        requires = {{"jose-elias-alvarez/null-ls.nvim", opt=true}},
+        requires = {{"jose-elias-alvarez/null-ls.nvim", opt=true}, },
     })
-	use({
-		"hrsh7th/nvim-compe",
-		requires = { "neovim/nvim-lspconfig", { "nvim-lua/lsp_extensions.nvim", opt = true } },
-	})
 
     use {
         'kyazdani42/nvim-tree.lua',
@@ -49,4 +43,16 @@ return require("packer").startup(function()
 		branch = "main",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
+
+    -- nvim cmp plugin and sources
+	use({
+		"hrsh7th/nvim-cmp",
+		requires = { "neovim/nvim-lspconfig", { "nvim-lua/lsp_extensions.nvim", opt = true } },
+	})
+    use({ "hrsh7th/cmp-nvim-lsp", requires = { "hrsh7th/nvim-cmp" }})   -- basic lsp cmp
+    use({ "hrsh7th/cmp-buffer", requires = { "hrsh7th/nvim-cmp" }})     -- buffer words completion
+    use({ "hrsh7th/cmp-path", requires = { "hrsh7th/nvim-cmp" }})       -- path completion
+    use({ "hrsh7th/cmp-nvim-lua", requires = { "hrsh7th/nvim-cmp" }})   -- lua completion source
+    use({ "saadparwaiz1/cmp_luasnip", requires = { "hrsh7th/nvim-cmp", "L3MON4D3/LuaSnip"}})   -- luasnip completion support
+    use({ "onsails/lspkind-nvim", requires = { "hrsh7th/nvim-cmp" }})   -- lsp completion formatting
 end)

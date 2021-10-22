@@ -238,6 +238,9 @@ local cfg = {
                     importMergeBehavior = "last",
                     importPrefix = "by_self",
                 },
+                inlayHints = {
+                    parameterHints= true,
+                },
                 cargo = {
                     loadOutDirsFromCheck = true,
                     -- features = {"stm32f767", "device-selected"},
