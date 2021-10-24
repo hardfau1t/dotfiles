@@ -44,6 +44,9 @@ vim.o.hlsearch = true
 vim.o.signcolumn = "number"
 vim.o.numberwidth = 3
 
+vim.opt.spell = true
+vim.opt.spelllang = { 'en_us' }
+
 vim.cmd("syntax on")
 vim.cmd("filetype plugin indent on")
 

@@ -16,5 +16,6 @@ alias mkc='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/
 alias mkb='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/kannada/bhakti_geethe/"'
 alias mkt='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/kannada/top/"'
 alias mko='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/kannada/og/"'
+alias mr='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/Trash"'
 alias zsh-update-plugins="find "$ZLOCALDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 alias element='element-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland'

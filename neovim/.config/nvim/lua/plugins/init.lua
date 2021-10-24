@@ -55,4 +55,5 @@ return require("packer").startup(function()
     use({ "hrsh7th/cmp-nvim-lua", requires = { "hrsh7th/nvim-cmp" }})   -- lua completion source
     use({ "saadparwaiz1/cmp_luasnip", requires = { "hrsh7th/nvim-cmp", "L3MON4D3/LuaSnip"}})   -- luasnip completion support
     use({ "onsails/lspkind-nvim", requires = { "hrsh7th/nvim-cmp" }})   -- lsp completion formatting
+    use({ "f3fora/cmp-spell", requires = { "hrsh7th/nvim-cmp" }})       -- vim spell check
 end)

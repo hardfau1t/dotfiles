@@ -27,6 +27,7 @@ cmp.setup {
         {name = "nvim_lua"},
         {name = "luasnip", max_item_count = 2},
         {name = "path"},
+        {name = "spell"},
         {name = "buffer", keyword_length = 4, },
     },
     formatting = {
