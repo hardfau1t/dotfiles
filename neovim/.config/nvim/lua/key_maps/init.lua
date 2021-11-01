@@ -47,6 +47,9 @@ vim.api.nvim_set_keymap('n', '<leader>pS', ':PackerStatus<CR>', {silent = true})
 vim.api.nvim_set_keymap('v', '>', '>gv', opts)
 vim.api.nvim_set_keymap('v', '<', '<gv', opts)
 
+-- copy content to system buffer in visual mode
+vim.api.nvim_set_keymap('v', 'y', '"+y', opts)
+
 ----------------------terminal--------------------------
 -- exit right away
 vim.api.nvim_set_keymap('t', '<C-d>', '<C-\\><C-n>:wincmd q<CR>', opts)

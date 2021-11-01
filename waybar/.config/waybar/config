@@ -198,6 +198,7 @@
         "exec": "echo \"$(mpc current | sed 's/&//') – $(mpc status | awk '{print $3}' | sed -n 2p | sed 's/&//')\"",
         "exec-if": "pgrep mpd",
         "on-click": "mpc toggle",
+        "on-click-right": "~/.config/waybar/scripts/mp_toggle.sh",
     },
     "custom/network":{
         "format": "{}",

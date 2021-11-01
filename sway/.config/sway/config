@@ -31,7 +31,6 @@ exec gpgconf --launch gpg-agent
 exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman/clipman-primary.json"
 exec clipman restore
 exec wl-paste -t text --watch clipman store
-exec filebrowser -d ~/.local/share/filebrowser/filebrowser.db
 
 
 #
