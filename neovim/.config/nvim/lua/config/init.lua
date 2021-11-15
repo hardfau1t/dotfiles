@@ -1,5 +1,8 @@
 vim.g.mapleader = ' '
 vim.g.netrw_winsize = 10
+-- show tabs and spaces
+vim.o.list = true
+vim.o.listchars='eol:↓,tab:>·,trail:●,extends:…,precedes:…,lead:·'
 
 vim.bo.tabstop=4
 vim.bo.softtabstop=4
@@ -54,4 +57,5 @@ vim.cmd("filetype plugin indent on")
 vim.g.gruvbox_contrast_dark="hard"
 vim.g.gruvbox_transparent_bg=0
 vim.cmd("colorscheme gruvbox")
+
 

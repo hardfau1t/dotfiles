@@ -9,6 +9,7 @@ return require("packer").startup(function()
 	use("folke/tokyonight.nvim")
 	use("L3MON4D3/LuaSnip")
 	use("mhartington/formatter.nvim") -- formatter
+    use("itchyny/calendar.vim")
     use {                                   -- diagnostics looks cool
       "folke/trouble.nvim",
       requires = "kyazdani42/nvim-web-devicons",
