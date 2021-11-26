@@ -15,7 +15,7 @@ set $main_mon eDP-1
 set $second_mon HDMI-A-1
 output $second_mon mode 1366x768 pos 1600,0
 output $main_mon mode 1600x900 pos 0,0 
-output * bg "/home/gireesh/Pictures/wallpapers/minimalism-1625626607939-8704.jpg" fill
+output * bg "/home/gireesh/Pictures/wallpapers/wp4326823-girl-anime-wallpapers.jpg" fill
 
 xwayland enable
 
@@ -198,11 +198,11 @@ bindsym $mod+m focus mode_toggle
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    bindsym $mod+s move scratchpad
+    bindsym $mod+shift+s move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+shift+s scratchpad show
+    bindsym $mod+s scratchpad show
 #
 # Resizing containers:
 #

@@ -6,7 +6,8 @@ alias fm=vifm
 alias gdb='gdb -q'
 alias arm-none-eabi-gdb='arm-none-eabi-gdb -q'
 alias se=sudoedit
-alias cfg='/usr/bin/git --git-dir=/home/gireesh/playground/gits/dotfiles --work-tree=/home/gireesh'
+alias com=picocom
+#alias cfg='/usr/bin/git --git-dir=/home/gireesh/playground/gits/dotfiles --work-tree=/home/gireesh'
 
 alias mea='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/average"'
 alias mem='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/music only"'
