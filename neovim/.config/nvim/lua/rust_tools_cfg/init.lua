@@ -1,6 +1,6 @@
 local opts = {
     crate_graph = {
-        backend = "wayland"
+        backend = "gtk"
     }
 
 }

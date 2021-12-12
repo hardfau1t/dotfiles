@@ -1,7 +1,7 @@
 require('key_maps.telescope_keymap')
 require('key_maps.nvim_tree_keymap')
+require('key_maps.lsp')
 local opts = { noremap=true, silent=true }
-
 
 -- setting for leader key
 vim.api.nvim_set_keymap('n', '<Space>', '<NOP>', opts)
@@ -47,8 +47,8 @@ vim.api.nvim_set_keymap('n', '<leader>pS', ':PackerStatus<CR>', {silent = true})
 vim.api.nvim_set_keymap('v', '>', '>gv', opts)
 vim.api.nvim_set_keymap('v', '<', '<gv', opts)
 
--- copy content to system buffer in visual mode
-vim.api.nvim_set_keymap('v', 'y', '"+y', opts)
+-- copy content to system buffer in visual mode as well as 
+vim.api.nvim_set_keymap('v', 'y', '"+ygvy', opts)
 
 ----------------------terminal--------------------------
 -- exit right away

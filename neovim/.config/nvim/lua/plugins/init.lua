@@ -39,12 +39,10 @@ return require("packer").startup(function()
 
 	use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } } })
 
-	use({
-		"glepnir/galaxyline.nvim",
-		branch = "main",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-	})
-
+    use {
+      'nvim-lualine/lualine.nvim',
+      requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    }
     -- nvim cmp plugin and sources
 	use({
 		"hrsh7th/nvim-cmp",

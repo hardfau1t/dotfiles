@@ -23,7 +23,6 @@ end
 
 local function custom_attach (client, bufnr)
 	documentHighlight(client,bufnr)
-    require("key_maps.lsp")
 end
 
 local function common_capabilities()
