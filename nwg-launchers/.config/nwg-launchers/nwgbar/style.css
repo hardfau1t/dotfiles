@@ -8,7 +8,7 @@ button, image {
     background: none;
     border-style: none;
     box-shadow: none;
-    color:#eceff4;
+    color: #FBF1C7;
 }
 
 button {
@@ -17,18 +17,17 @@ button {
 }
 
 button:hover {
-    background-color: #5e81ac;
+    background-color: #7C6F64;
 }
 
 button:focus {
-    background-color: #5e81ac;
+    background-color: #7C6F64;
 }
 
 grid {
-    background-color: rgba(46,52,64, 1);
+    background-color: #3C3836;
     border-radius: 5px;
     padding: 5px;
     box-shadow: 0 0 5px black;
-    /* e.g. for common background to all buttons */
 }
 

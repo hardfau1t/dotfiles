@@ -1,27 +1,28 @@
-@define-color bg1   #4c566a;
+@define-color bg1   #282828;
 @define-color ws_foc #e5e9f0;
 @define-color ws-clr #2e3440;
-@define-color font #eceff4;
-@define-color mpd @ws-foc;
+@define-color font #ffc94a;
+@define-color mpd #fbf1c7;
 @define-color pipe #7d818a;
 
 window#waybar {
-    border-radius: 8px;
-    background-color: transparent;
+    /* background-color: rgba(0x11,0x11, 0x12, 0.6); */
+    /* background-color: #4c566a; */
+    background-color: #0b0c0d;
 }
 * {
     min-height: 0px;
-    font-size: 10px;
+    font-size: 11px;
     font-family: Sans;
     min-height: 0px;
-    font-weight: 500;
+    font-weight: 600;
     padding-bottom: 1px;
     padding-top: 1px;
 }
 /* center module */
 #clock{
     margin: 2px 0px 2px 0px ;
-    color: @font;
+    color: #a2bab1;
     padding-left: 8px;
     padding-right: 8px;
     background-color: @bg1;
@@ -49,8 +50,8 @@ window#waybar {
 
 #workspaces{
     margin: 2px 2px 2px 2px;
-    padding: 0px 2px 0px 2px;
-    border-radius: 8px;
+    padding: 0px 2px 0px 6px;
+    border-radius: 6px;
     background-color: @bg1;
 }
 
@@ -62,8 +63,14 @@ window#waybar {
 }
 
 #workspaces button.focused{
-    color: @ws-clr;
-    background: @ws_foc;
+    /* color: @ws-clr; */
+    /* background: @ws_foc; */
+    border-width: 2px;
+    border-color: #CC241D;
+    color: #ffd77a;
+    background-color: #504945;
+    border-radius: 3;
+    border-style: none none outset none;
 }
 
 #workspaces button.urgent{
@@ -91,6 +98,32 @@ window#waybar {
 }
 
 #mpd{
-    font-weight: 600;
     color: @mpd;
+}
+#pulseaudio{
+    color: #FB4934 ;
+}
+#custom-bluetooth{
+    color: #FE8019;
+}
+#network{
+    color: #FABD2F ;
+}
+#disk{
+    color: #EBDBB2;
+}
+#memory{
+    color: #B8BB26 ;
+}
+#cpu{
+    color: #8EC07C;
+}
+#backlight{
+    color: #83A598;
+}
+#battery{
+    color: #D3869B;
+}
+#custom-power{
+    color: #FB4934 ;
 }

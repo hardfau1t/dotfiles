@@ -1,6 +1,5 @@
 // vim:syntax=json
 {
-    "margin" : "0 5 0 5",
     "layer" : "top",
     "modules-left": ["sway/workspaces", "mpd"],
     "modules-center": ["clock"],
@@ -96,7 +95,7 @@
         "format-alt": "{icon}",
         "format": "{percent}% {icon}",
         "format-alt-click": "click-right",
-        "format-icons": [" "," ", " ", " "],
+        "format-icons": [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
         "on-scroll-down": "light -A 2",
         "on-scroll-up": "light -U 2"
     },
@@ -113,8 +112,8 @@
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         "format-alt-click": "click-right",
-        "format-good": "", // An empty format will hide the module
-        "format-full": "",
+        "format-good": "{icon}", 
+        "format-full": "{icon}",
         "format-icons": ["", "", "", "", ""]
     },
     "battery#bat2": {

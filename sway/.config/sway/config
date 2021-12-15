@@ -15,7 +15,7 @@ set $main_mon eDP-1
 set $second_mon HDMI-A-1
 output $second_mon mode 1366x768 pos 1600,0
 output $main_mon mode 1600x900 pos 0,0 
-output * bg "/home/gireesh/Pictures/wallpapers/wp4326823-girl-anime-wallpapers.jpg" fill
+output * bg "/home/gireesh/Pictures/wallpapers/minimal_planes.jpg" fill
 
 xwayland enable
 
@@ -273,6 +273,7 @@ bindsym $mod+grave mode "resize"
     bindsym $mod+Shift+o exec   'grim -g "$(slurp -d)" ; notify-send -t 5000 "Grim" "screenshot is saved"'
     bindsym $mod+Shift+a exec   'grim -c; notify-send grim -t 5000 "Grim" "Screenshot is saved."'
     bindsym $mod+semicolon exec 'color_pick.sh'
+    #bindsym $mod+semicolon exec 'color_pick.sh'
 #clipman
     bindsym $mod+v exec clipman pick -t wofi
 # element
@@ -294,11 +295,11 @@ no_focus [title="Firefox — Sharing Indicator"]
 
     default_border  pixel 2
     gaps    outer       2px
-    gaps    inner       4px
+    gaps    inner       6px
     # # class                   border      bground     text        indicator   child_border
-    client.focused             #5e81ac      #d8dee9     #434c5e     #d2c8db     #5e81ac
-    client.unfocused           #00000000    #434c5e     #e5e9f0     #000000     #00000000
-    client.focused_inactive    #00000000    #609bcc     #c4faff     #000000     #00000000
+    client.focused             #F3722C      #EBDBB2     #3C3836     #D65D0E     #FE8019
+    client.unfocused           #3C3836      #3C3836     #EBDBB2     #CC241D     #504945
+    client.focused_inactive    #3C3836      #EBDBB2     #3C3836     #000000     #00000000
 
 
 

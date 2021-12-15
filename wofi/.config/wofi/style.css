@@ -1,40 +1,52 @@
+#window {
+    padding: 2px;
+    background-color: transparent;
+    font-family: Source Code Pro;
+}
 
 #entry {
 border-radius: 5px;
 padding: 5px;
 margin-bottom: 5px;
-text-align: center;
 }
 
 #entry:selected {
-background-color: #5e81ac;
+background-color: #665C54;
 }
  
-#text:selected {
-color: #d8dee9;
-}
- 
-#window {
-padding: 2px;
-background-color: rgba(53,59,73,1.0);
-/* border: 3px solid #3b4252; */
-/* border-radius: 3px; */
-font-family: Source Code Pro;
-}
-
-#input {
-border: 2px solid #5e81ac;
-background-color: #4c566a;
+#text {
 padding: 5px;
 font-size: 13px;
-border-radius: 5px;
-color: #d8dee9;
+color:#FBF1C7;
+background-color: transparent;
+} 
+
+#text:selected {
+    font-size:14px;
+    font-weight:400;
+color: #ffffff;
+}
+ 
+
+#input {
+border: 2px solid #3C3836;
+background-color: #EBDBB2;
+padding: 5px;
+font-size: 13px;
+border-radius: 8px;
+color: #1D2021;
+    box-shadow: 0 0 5px black;
 }
 
 #inner-box {
-color: #d8dee9;
-padding: 2px;
-background-color: transparent;
+    margin-top: 10px;
+    color: #d8dee9;
+    padding: 8px;
+    border-radius:8px;
+    border-width: 2px;
+    border:2px solid #BDAE93;
+    background-color: #282828;
+    box-shadow: 0 0 5px black;
 }
 
 #outer-box {
@@ -46,11 +58,6 @@ background-color: transparent;
 margin-top: 10px;
 }
 
-#text {
-padding: 5px;
-font-size: 13px;
-background-color: transparent;
-} 
 
 #img {
   background-color: transparent;
