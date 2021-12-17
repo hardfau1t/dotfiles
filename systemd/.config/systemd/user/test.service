@@ -1,9 +1,0 @@
-[Unit]
-Description=syncs the mails 
-
-[Service]
-Type=simple
-ExecStart=/home/gireesh/Trash/test.sh
-
-[Install]
-WantedBy=default.target

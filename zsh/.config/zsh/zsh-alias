@@ -9,14 +9,14 @@ alias se=sudoedit
 alias com=picocom
 #alias cfg='/usr/bin/git --git-dir=/home/gireesh/playground/gits/dotfiles --work-tree=/home/gireesh'
 
-alias mea='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/average"'
-alias mem='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/music only"'
-alias met='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/top"'
-alias mka='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/kannada/average/"'
-alias mkc='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/kannada/classical/"'
-alias mkb='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/kannada/bhakti_geethe/"'
-alias mkt='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/kannada/top/"'
-alias mko='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/kannada/og/"'
-alias mr='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/Trash"'
+alias mea='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/average" && mpc update && mpc next'
+alias mem='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/music only" && mpc update && mpc next'
+alias met='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/top" && mpc update && mpc next'
+alias mka='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/kannada/average/" && mpc update && mpc next'
+alias mkc='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/kannada/classical/" && mpc update && mpc next'
+alias mkb='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/kannada/bhakti_geethe/" && mpc update && mpc next'
+alias mkt='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/kannada/top/" && mpc update && mpc next'
+alias mko='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/kannada/og/" && mpc update && mpc next'
+alias mr='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/Trash" && mpc update && mpc next'
 alias zsh-update-plugins="find "$ZLOCALDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 alias element='element-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland'
