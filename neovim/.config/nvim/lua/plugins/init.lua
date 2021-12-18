@@ -38,7 +38,6 @@ return require("packer").startup(function()
 
 
 	use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } } })
-	use({ "jose-elias-alvarez/null-ls.nvim", requires = {  { "nvim-lua/plenary.nvim" } } })
 
     use {
       'nvim-lualine/lualine.nvim',
