@@ -276,6 +276,8 @@ bindsym $mod+grave mode "resize"
     #bindsym $mod+semicolon exec 'color_pick.sh'
 #clipman
     bindsym $mod+v exec clipman pick -t wofi
+# passmenu
+    bindsym $mod+u exec passmenu
 # element
     bindsym $mod+b exec 'element-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland'
 

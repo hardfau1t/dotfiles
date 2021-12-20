@@ -217,43 +217,43 @@ local cfg = {
       },
     },
   },
-  rust = {
-    formatters = {
-      -- {
-      --   exe = "rustfmt",
-      --   args = {},
-      -- },
-    },
-    linters = {},
-    lsp = {
-      provider = "rust_analyzer",
-      setup = {
-        filetypes = { "rust" },
-        cmd = {
-          vim.fn.expand("~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyzer"),
-        },
-        settings = {
-            ["rust-analyzer"] = {
-                assist = {
-                    importMergeBehavior = "last",
-                    importPrefix = "by_self",
-                },
-                inlayHints = {
-                    parameterHints= true,
-                },
-                cargo = {
-                    loadOutDirsFromCheck = true,
-                    -- features = {"stm32f767", "device-selected"},
-                    -- target = {"thumbv7em-none-eabihf"}
-                },
-                procMacro = {
-                    enable = true
-                },
-            }
-        }
-      },
-    },
-  },
+  -- rust = {
+  --   formatters = {
+  --     -- {
+  --     --   exe = "rustfmt",
+  --     --   args = {},
+  --     -- },
+  --   },
+  --   linters = {},
+  --   lsp = {
+  --     provider = "rust_analyzer",
+  --     setup = {
+  --       filetypes = { "rust" },
+  --       cmd = {
+  --         vim.fn.expand("~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyzer"),
+  --       },
+  --       settings = {
+  --           ["rust-analyzer"] = {
+  --               assist = {
+  --                   importMergeBehavior = "last",
+  --                   importPrefix = "by_self",
+  --               },
+  --               inlayHints = {
+  --                   parameterHints= true,
+  --               },
+  --               cargo = {
+  --                   loadOutDirsFromCheck = true,
+  --                   -- features = {"stm32f767", "device-selected"},
+  --                   -- target = {"thumbv7em-none-eabihf"}
+  --               },
+  --               procMacro = {
+  --                   enable = true
+  --               },
+  --           }
+  --       }
+  --     },
+  --   },
+  -- },
   sh = {
     formatters = {
       -- {

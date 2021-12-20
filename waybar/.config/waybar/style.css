@@ -69,7 +69,7 @@ window#waybar {
     border-color: #CC241D;
     color: #ffd77a;
     background-color: #504945;
-    border-radius: 3;
+    border-radius: 3px;
     border-style: none none outset none;
 }
 
