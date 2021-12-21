@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]
+then
+    exit 1
+fi
+if pas=`pass show "$1" < /dev/null 2>/dev/null ` 
+then
+    echo -n "$pas" | tr -d '\n'
+else
+    passphrase="`zenity --title='gpg password' --password `"
+    if pas=`gpg -d --pinentry-mode=loopback --passphrase "$passphrase" "$PASSWORD_STORE_DIR/$1.gpg" 2>/dev/null ` 
+    then
+        echo -n "$pas" | tr -d '\n'
+    else
+        exit 1
+    fi
+fi
+

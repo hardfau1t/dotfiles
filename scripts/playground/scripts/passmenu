@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+typeit=0
+if [[ $1 == "--type" ]]; then
+	typeit=1
+	shift
+fi
+
+if [[ -n $WAYLAND_DISPLAY ]]; then
+	dmenu="wofi --show dmenu"
+	xdotool="wtype"
+fi
+
+
+prefix=${PASSWORD_STORE_DIR-~/.password-store}
+cd $prefix
+password=$(find . -name "*.gpg" | sed 's/\.\///' | $dmenu "$@" |sed 's/\.gpg//')
+cd -
+[[ -n $password ]] || exit
+
+echo "password $password"
+if [[ $typeit -eq 0 ]]; then
+	pass show -c "$password" 2>/dev/null
+else
+    exit #unimplemented
+	pass show "$password" | { IFS= read -r pass; printf %s "$pass"; } 
+fi

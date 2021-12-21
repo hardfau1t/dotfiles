@@ -68,15 +68,17 @@ input "1267:12423:ELAN1300:00_04F3:3087_Touchpad" {
 #
 #
 ### Key bindings
-#            -----    -----       -----       -----       -----       -----          /------/      -----       -----       -----       -----       -----       -----
-#            -----     --------    --------    --------    KC_U,       KC_I,         /------/      --------    --------    -----       KC_N,       --------    --------
-#            --------    --------    --------    --------    --------    --------    /------/      --------    --------    -----       --------    KC_Z,       --------),
-#                                --------    --------   --------                     /------/              KC_TRNS, KC_TRNS, KC_RALT)
+#            -----      -----       -----       -----       -----       -----           /------/      -----       -----       -----       -----       -----       -----
+#            -----      -----       --------    --------    -----       -----           /------/      --------    --------    -----       KC_N,       --------    --------
+#            --------   -----       --------    --------    --------    --------        /------/      --------    --------    -----       --------    KC_Z,       --------),
+#                                   --------    --------    -------                     /------/              KC_TRNS, KC_TRNS, KC_RALT)
 #
 # Basics:
 #
     # Start a terminal
     bindsym $mod+t exec $term
+    # list all shortcuts through wofi
+    bindsym $mod+i exec shortcuts.sh
 
     # Kill focused window
     bindsym $mod+q kill
@@ -95,7 +97,7 @@ input "1267:12423:ELAN1300:00_04F3:3087_Touchpad" {
     bindsym $mod+Shift+grave reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
     bindsym $mod+x exec swaylock
 #
 # Moving around:
