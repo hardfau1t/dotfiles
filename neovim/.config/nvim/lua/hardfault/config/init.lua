@@ -3,6 +3,7 @@ vim.g.netrw_winsize = 10
 -- show tabs and spaces
 vim.o.list = true
 vim.o.listchars='eol:↓,tab:>·,trail:●,extends:…,precedes:…,lead:·'
+vim.o.sidescrolloff=20
 
 vim.bo.tabstop=4
 vim.bo.softtabstop=4

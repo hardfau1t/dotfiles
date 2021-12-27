@@ -20,6 +20,7 @@ cmp.setup({
 		{ name = "nvim_lsp", max_item_count = 16 },
 		{ name = "nvim_lua" },
 		{ name = "luasnip", max_item_count = 4 },
+		{ name = "neorg" },
 		{ name = "git" },
 		{ name = "path" },
 		{ name = "spell" },
