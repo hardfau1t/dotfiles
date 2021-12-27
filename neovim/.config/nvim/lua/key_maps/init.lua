@@ -43,6 +43,7 @@ vim.api.nvim_set_keymap('n', '<leader>pi', ':PackerInstall<CR>', {silent = true}
 vim.api.nvim_set_keymap('n', '<leader>pu', ':PackerUpdate<CR>', {silent = true})
 vim.api.nvim_set_keymap('n', '<leader>ps', ':PackerSync<CR>', {silent = true})
 vim.api.nvim_set_keymap('n', '<leader>pS', ':PackerStatus<CR>', {silent = true})
+vim.api.nvim_set_keymap('n', '<leader>pc', ':PackerCompile<CR>', {silent = true})
 
 -- shifting in visual mode
 vim.api.nvim_set_keymap('v', '>', '>gv', opts)

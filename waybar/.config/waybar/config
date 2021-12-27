@@ -95,7 +95,7 @@
         "format-alt": "{icon}",
         "format": "{percent}% {icon}",
         "format-alt-click": "click-right",
-        "format-icons": [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+        "format-icons": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
         "on-scroll-down": "light -A 2",
         "on-scroll-up": "light -U 2"
     },
@@ -121,7 +121,7 @@
     },
     "network": {
         "format": "{ifname}",
-        "format-wifi": "{essid}  ",
+        "format-wifi": "{essid} ",
         "format-ethernet": "{ifname} ",
         "format-disconnected": "⚠",
         "tooltip-format": "{ifname}",
