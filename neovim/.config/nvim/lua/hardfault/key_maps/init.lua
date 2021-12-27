@@ -1,7 +1,3 @@
-require('key_maps.telescope_keymap')
-require('key_maps.nvim_tree_keymap')
-require('key_maps.lsp')
-require('key_maps.fugitive')
 local opts = { noremap=true, silent=true }
 
 -- setting for leader key

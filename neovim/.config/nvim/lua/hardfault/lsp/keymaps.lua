@@ -24,3 +24,4 @@ vim.api.nvim_set_keymap('n', '<leader>lq', '<cmd>lua vim.lsp.diagnostic.set_locl
 vim.api.nvim_set_keymap("n", "<leader>lf", [[<cmd>lua vim.lsp.buf.formatting({tabSize=4, IndentWidth=4})<CR>]], opts)
 vim.api.nvim_set_keymap("n", "<leader>lt", "<cmd>LspStop<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>li", "<cmd>LspInfo<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>lR", "<cmd>LspRestart<CR>", opts)

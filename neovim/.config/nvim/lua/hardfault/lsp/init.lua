@@ -1,6 +1,7 @@
 local mod = {}
-local config = require('lsp.config')
-require("lsp.visuals")
+local config = require('hardfault.lsp.config')
+require("hardfault.lsp.visuals")
+require("hardfault.lsp.keymaps")
 
 -- cursor highlighting enable
 local function documentHighlight(client, _)

@@ -1,9 +1,10 @@
 local fn = vim.fn
+
 -- other configs
-require("config")
-require("colorscheme")
-require("utils")
-require("key_maps")
+require("hardfault.config")
+require("hardfault.colorscheme")
+require("hardfault.utils")
+require("hardfault.key_maps")
 -- install packer if its not installed
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
@@ -17,7 +18,7 @@ end
 vim.cmd([[
 	augroup packer_user_config
 		autocmd!
-		autocmd BufWritePost ]] .. vim.fn.stdpath("config") .. [[/lua/plugins/init.lua source <afile> | PackerSync
+		autocmd BufWritePost */nvim/init.lua source <afile> | PackerSync
 	augroup end
 ]])
 
@@ -40,36 +41,47 @@ packer.init({
 packer.startup(function()
 	-- manage itself
 	use("wbthomason/packer.nvim")
-	use({
-        "yuttie/comfortable-motion.vim",
-        config = function()
-            require("easy_motion_conf")
-        end
-    })
-	use({
-        "nvim-treesitter/nvim-treesitter",
-        config = function()
-            require("treesitter_conf")
-        end
-})
-	use("vimwiki/vimwiki")
-	use("morhetz/gruvbox")
+	-- colorschemes
 	use("rebelot/kanagawa.nvim")
-	use({
-        "tpope/vim-fugitive",
-        config = function ()
-            require("fugitive_conf")
-        end
-    })
-	use({
-        "preservim/nerdcommenter",
-        config = function ()
-            require("nerdcommenter_conf")
-        end
-    })
 	use("folke/tokyonight.nvim")
-	use("mhartington/formatter.nvim") -- formatter
-	use("itchyny/calendar.vim")
+	use("morhetz/gruvbox")
+	use({
+		"yuttie/comfortable-motion.vim",
+		config = function()
+			require("hardfault.comfortable-motion")
+		end,
+	})
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		config = function()
+			require("hardfault.treesitter")
+		end,
+	})
+	use({
+		"tpope/vim-fugitive",
+		config = function()
+			require("hardfault.fugitive")
+		end,
+	})
+	use({
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup({
+				toggler = {
+					line = "<leader>cc",
+					block = "<leader>cb",
+				},
+				extra = {
+					above = "<leader>cO",
+					below = "<leader>co",
+					eol = "<leader>cA",
+				},
+                mappings = {
+                    basic = "toggler"
+                }
+			})
+		end,
+	})
 	use({ -- diagnostics looks cool
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
@@ -84,24 +96,24 @@ packer.startup(function()
 	use({
 		"neovim/nvim-lspconfig",
 		requires = { { "jose-elias-alvarez/null-ls.nvim", opt = true } },
-        config = function ()
-            require("lsp")
-        end
+		config = function()
+			require("hardfault.lsp")
+		end,
 	})
 
-    use({
-        "simrat39/rust-tools.nvim",
-        requires = { "neovim/nvim-lspconfig" },
-        config = function()
-            require("rust_tools_cfg").setup()
-        end,
-    })
+	use({
+		"simrat39/rust-tools.nvim",
+		requires = { "neovim/nvim-lspconfig" },
+		config = function()
+			require("hardfault.rust_tools").setup()
+		end,
+	})
 
 	use({
 		"kyazdani42/nvim-tree.lua",
 		requires = "kyazdani42/nvim-web-devicons",
 		config = function()
-			require("nvim-tree_conf")
+			require("hardfault.nvim-tree")
 		end,
 	})
 
@@ -109,11 +121,11 @@ packer.startup(function()
 		"nvim-telescope/telescope.nvim",
 		requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
 		config = function()
-			require("telescope_conf")
+			require("hardfault.telescope")
 		end,
 	})
 	use({
-		"nvim-neorg/neorg",
+		"nvim-neorg/neorg", -- 
 		config = function()
 			require("neorg").setup({
 				-- Tell Neorg what modules to load
@@ -136,19 +148,19 @@ packer.startup(function()
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-        config = function ()
-            require("lua_line_conf")
-        end
+		config = function()
+			require("hardfault.lua_line")
+		end,
 	})
 	use("L3MON4D3/LuaSnip")
 	use("rafamadriz/friendly-snippets")
 	-- nvim cmp plugin and sources
 	use({
 		"hrsh7th/nvim-cmp",
-		requires = { "neovim/nvim-lspconfig", { "nvim-lua/lsp_extensions.nvim", opt = true } },
-        config = function ()
-            require("cmp_conf")
-        end
+		requires = { "neovim/nvim-lspconfig", },
+		config = function()
+			require("hardfault.nvim-cmp")
+		end,
 	})
 	use({ "saadparwaiz1/cmp_luasnip", requires = { "hrsh7th/nvim-cmp", "L3MON4D3/LuaSnip" } }) -- luasnip completion support
 	use({ "hrsh7th/cmp-nvim-lsp", requires = { "hrsh7th/nvim-cmp" } }) -- basic lsp cmp
@@ -159,4 +171,3 @@ packer.startup(function()
 	use({ "f3fora/cmp-spell", requires = { "hrsh7th/nvim-cmp" } }) -- vim spell check
 	use({ "petertriho/cmp-git", requires = { "hrsh7th/nvim-cmp", "nvim-lua/plenary.nvim" } }) -- vim spell check
 end)
-
