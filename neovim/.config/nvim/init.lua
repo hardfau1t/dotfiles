@@ -1,10 +1,10 @@
 local fn = vim.fn
 
 -- other configs
-require("hardfault.config")
-require("hardfault.colorscheme")
-require("hardfault.utils")
-require("hardfault.key_maps")
+require("cfg.config")
+require("cfg.colorscheme")
+require("cfg.utils")
+require("cfg.key_maps")
 -- install packer if its not installed
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
@@ -48,19 +48,19 @@ packer.startup(function()
 	use({
 		"yuttie/comfortable-motion.vim",
 		config = function()
-			require("hardfault.comfortable-motion")
+			require("cfg.comfortable-motion")
 		end,
 	})
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		config = function()
-			require("hardfault.treesitter")
+			require("cfg.treesitter")
 		end,
 	})
 	use({
 		"tpope/vim-fugitive",
 		config = function()
-			require("hardfault.fugitive")
+			require("cfg.fugitive")
 		end,
 	})
 	use({
@@ -97,7 +97,7 @@ packer.startup(function()
 		"neovim/nvim-lspconfig",
 		requires = { { "jose-elias-alvarez/null-ls.nvim", opt = true } },
 		config = function()
-			require("hardfault.lsp")
+			require("cfg.lsp")
 		end,
 	})
 
@@ -105,7 +105,7 @@ packer.startup(function()
 		"simrat39/rust-tools.nvim",
 		requires = { "neovim/nvim-lspconfig" },
 		config = function()
-			require("hardfault.rust_tools").setup()
+			require("cfg.rust_tools").setup()
 		end,
 	})
 
@@ -113,7 +113,7 @@ packer.startup(function()
 		"kyazdani42/nvim-tree.lua",
 		requires = "kyazdani42/nvim-web-devicons",
 		config = function()
-			require("hardfault.nvim-tree")
+			require("cfg.nvim-tree")
 		end,
 	})
 
@@ -121,13 +121,13 @@ packer.startup(function()
 		"nvim-telescope/telescope.nvim",
 		requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
 		config = function()
-			require("hardfault.telescope")
+			require("cfg.telescope")
 		end,
 	})
 	use({
 		"nvim-neorg/neorg", -- 
 		config = function()
-            require("hardfault.neorg").init()
+            require("cfg.neorg").init()
 		end,
 		requires = "nvim-lua/plenary.nvim",
 	})
@@ -136,7 +136,7 @@ packer.startup(function()
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		config = function()
-			require("hardfault.lua_line")
+			require("cfg.lua_line")
 		end,
 	})
 	use("L3MON4D3/LuaSnip")
@@ -146,7 +146,7 @@ packer.startup(function()
 		"hrsh7th/nvim-cmp",
 		requires = { "neovim/nvim-lspconfig", },
 		config = function()
-			require("hardfault.nvim-cmp")
+			require("cfg.nvim-cmp")
 		end,
 	})
 	use({ "saadparwaiz1/cmp_luasnip", requires = { "hrsh7th/nvim-cmp", "L3MON4D3/LuaSnip" } }) -- luasnip completion support

@@ -27,10 +27,10 @@ function mod.init()
 			branch = "main",
 		},
 	}
+
 	--------------------------------------------------------
 
 	local opts = {
-		-- Tell Neorg what modules to load
 		load = {
 			["core.defaults"] = {}, -- Load all the default modules
 			["core.norg.concealer"] = {}, -- Allows for use of icons
@@ -52,7 +52,7 @@ function mod.init()
 	}
 
 	require("neorg").setup(opts)
-	require("hardfault.neorg.keymaps")
+	require("cfg.neorg.keymaps")
 end
 
 return mod

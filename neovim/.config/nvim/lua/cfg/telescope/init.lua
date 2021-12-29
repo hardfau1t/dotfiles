@@ -43,4 +43,4 @@ require('telescope').setup{
   }
 }
 
-require("hardfault.telescope.keymaps")
+require("cfg.telescope.keymaps")

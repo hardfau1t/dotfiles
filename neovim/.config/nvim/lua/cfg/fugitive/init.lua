@@ -1,2 +1,2 @@
 ------------------------------------key-bindings---------------------------------
-require('hardfault.fugitive.keymaps')
+require('cfg.fugitive.keymaps')
