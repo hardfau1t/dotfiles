@@ -36,6 +36,7 @@ function mod.init()
 			["core.norg.concealer"] = {}, -- Allows for use of icons
 			["core.norg.journal"] = {},
 			["core.gtd.base"] = {},
+			["core.integrations.telescope"] = {},
 			["core.norg.dirman"] = { -- Manage your directories with Neorg
 				config = {
 					workspaces = {

@@ -41,6 +41,11 @@ neorg_callbacks.on_event("core.keybinds.events.enable_keybinds", function(_, key
 			{ neorg_leader .. "mt", "core.norg.concealer.toggle-markup" },
 
 			{ "<C-s>", "core.integrations.telescope.find_linkable" },
+
+			-- journal shortcuts
+			{ neorg_leader .. "jt", ":Neorg journal today<CR>"},
+			{ neorg_leader .. "jy", ":Neorg journal yesterday<CR>"},
+			{ neorg_leader .. "jm", ":Neorg journal tomorrow<CR>"},
 		},
 
 		o = {
