@@ -22,7 +22,6 @@ vim.o.inccommand="nosplit"
 vim.o.timeoutlen=4000
 vim.o.updatetime=1500
 vim.o.clipboard="unnamed"
-vim.o.statusline="%{FugitiveStatusline()}"
 vim.o.linebreak  = false
 vim.o.wrap = false
 vim.o.foldenable = false
@@ -53,10 +52,4 @@ vim.opt.spelllang = { 'en_us' }
 
 vim.cmd("syntax on")
 vim.cmd("filetype plugin indent on")
-
--- colorscheme
-vim.g.gruvbox_contrast_dark="hard"
-vim.g.gruvbox_transparent_bg=0
-vim.cmd("colorscheme gruvbox")
-
 
