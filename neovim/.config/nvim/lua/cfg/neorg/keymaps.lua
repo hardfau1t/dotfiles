@@ -31,7 +31,7 @@ neorg_callbacks.on_event("core.keybinds.events.enable_keybinds", function(_, key
 			-- Keys for managing notes
 			{ neorg_leader .. "nn", "core.norg.dirman.new.note" },
 
-			{ "<C-CR>", "core.norg.esupports.hop.hop-link" },
+			{ neorg_leader .."<CR>", "core.norg.esupports.hop.hop-link" },
 			{ "<M-CR>", "core.norg.esupports.hop.hop-link", "vsplit" },
 
 			{ "<M-k>", "core.norg.manoeuvre.item_up" },

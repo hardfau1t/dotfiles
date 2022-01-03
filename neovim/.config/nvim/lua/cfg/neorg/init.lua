@@ -35,12 +35,19 @@ function mod.init()
 			["core.defaults"] = {}, -- Load all the default modules
 			["core.norg.concealer"] = {}, -- Allows for use of icons
 			["core.norg.journal"] = {},
-			["core.gtd.base"] = {},
+			["core.gtd.base"] = {
+				config = {
+					exclude = {
+						"notes",
+						"references"
+					},
+				},
+			},
 			["core.integrations.telescope"] = {},
 			["core.norg.dirman"] = { -- Manage your directories with Neorg
 				config = {
 					workspaces = {
-						my_workspace = "~/.local/share/neorg",
+						my_workspace = "~/.local/share/personal_space",
 					},
 				},
 			},

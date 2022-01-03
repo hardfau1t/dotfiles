@@ -1,4 +1,6 @@
-require'nvim-treesitter.configs'.setup {
+local mod = {}
+function mod.setup()
+    require'nvim-treesitter.configs'.setup {
     ensure_installed ={ "rust", "c", "python",  "norg", "norg_meta", "norg_table", "lua", "bash", "html", "css", "yaml", "toml", "json"},
     highlight = {
         enable = true              -- false will disable the whole extension
@@ -10,3 +12,6 @@ require'nvim-treesitter.configs'.setup {
         enable = true
     }
 }
+end
+
+return mod

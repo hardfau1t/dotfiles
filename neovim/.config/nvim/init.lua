@@ -18,7 +18,7 @@ end
 vim.cmd([[
 	augroup packer_user_config
 		autocmd!
-		autocmd BufWritePost */nvim/init.lua source <afile> | PackerSync
+		autocmd BufWritePost */nvim/init.lua source <afile> | PackerCompile
 	augroup end
 ]])
 
@@ -45,90 +45,57 @@ packer.startup(function()
 	use("rebelot/kanagawa.nvim")
 	use("folke/tokyonight.nvim")
 	use("morhetz/gruvbox")
+    --------------
+
 	use({
 		"yuttie/comfortable-motion.vim",
-		config = function()
-			require("cfg.comfortable-motion")
-		end,
+		config = require("cfg.comfortable-motion").setup
 	})
 	use({
 		"nvim-treesitter/nvim-treesitter",
-		config = function()
-			require("cfg.treesitter")
-		end,
+		config = require("cfg.treesitter").setup
 	})
 	use({
 		"tpope/vim-fugitive",
-		config = function()
-			require("cfg.fugitive")
-		end,
+		config = require("cfg.fugitive").setup
 	})
 	use({
 		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup({
-				toggler = {
-					line = "<leader>cc",
-					block = "<leader>cb",
-				},
-				extra = {
-					above = "<leader>cO",
-					below = "<leader>co",
-					eol = "<leader>cA",
-				},
-                mappings = {
-                    basic = "toggler"
-                }
-			})
-		end,
+		config = require("cfg.comment_nvim.init").setup
 	})
 	use({ -- diagnostics looks cool
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("trouble").setup({
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
-		end,
+		config = require("cfg.trouble").setup
 	})
 	use({
 		"neovim/nvim-lspconfig",
 		requires = { { "jose-elias-alvarez/null-ls.nvim", opt = true } },
 		config = function()
-			require("cfg.lsp")
-		end,
+            require("cfg.lsp")
+        end
 	})
 
 	use({
 		"simrat39/rust-tools.nvim",
 		requires = { "neovim/nvim-lspconfig" },
-		config = function()
-			require("cfg.rust_tools").setup()
-		end,
+		config = require("cfg.rust_tools").setup,
 	})
 
 	use({
 		"kyazdani42/nvim-tree.lua",
 		requires = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("cfg.nvim-tree")
-		end,
+		config = require("cfg.nvim-tree").setup
 	})
 
 	use({
 		"nvim-telescope/telescope.nvim",
 		requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
-		config = function()
-			require("cfg.telescope")
-		end,
+		config = require("cfg.telescope").setup
 	})
 	use({
 		"nvim-neorg/neorg", -- 
-		config = function()
-            require("cfg.neorg").init()
-		end,
+		config = require("cfg.neorg").init,
 		requires = {"nvim-lua/plenary.nvim",
 		"nvim-neorg/neorg-telescope" }
 	})
@@ -136,9 +103,9 @@ packer.startup(function()
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-		config = function()
-			require("cfg.lua_line")
-		end,
+		config = function ()
+            require("cfg.lua_line")
+        end,
 	})
 	use("L3MON4D3/LuaSnip")
 	use("rafamadriz/friendly-snippets")
@@ -146,9 +113,7 @@ packer.startup(function()
 	use({
 		"hrsh7th/nvim-cmp",
 		requires = { "neovim/nvim-lspconfig", },
-		config = function()
-			require("cfg.nvim-cmp")
-		end,
+		config = require("cfg.nvim-cmp").setup
 	})
 	use({ "saadparwaiz1/cmp_luasnip", requires = { "hrsh7th/nvim-cmp", "L3MON4D3/LuaSnip" } }) -- luasnip completion support
 	use({ "hrsh7th/cmp-nvim-lsp", requires = { "hrsh7th/nvim-cmp" } }) -- basic lsp cmp

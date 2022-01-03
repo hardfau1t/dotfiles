@@ -2,7 +2,7 @@ scan_timeout=10
 command_timeout=500
 add_newline=false
 
-format= "$status[\\[](bold green) $battery$directory$git_branch$git_status$git_state[\\]](bold green)$jobs"
+format= "$status[\\[](bold green) $battery$directory$git_branch$git_status$git_state[\\]](bold green)$hostname$jobs"
 
 [battery]
 full_symbol = "🔋 "
