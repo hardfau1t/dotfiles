@@ -1,9 +1,31 @@
 local mod = {}
 
 function mod.setup()
-    require'nvim-tree'.setup()
-    -- keymaps
-    require("cfg.nvim-tree.keymaps")
+	local status, ntree = pcall(require, "nvim-tree")
+	if not status then
+		return
+	end
+	local cfg_status, config = pcall(require, "nvim-tree.config")
+	if not cfg_status then
+		return
+	end
+	local tree_cb = config.nvim_tree_callback
+	-- default mappings
+	local options = {
+		update_cwd = true,
+		view = {
+			mappings = {
+				list = {
+		{ key =  "<CR>", cb = tree_cb("edit") },
+		{ key = "o", cb = tree_cb("cd") },
+		{ key = "<C-h>", cb = tree_cb("split") },
+	},
+			},
+		},
+	}
+	ntree.setup(options)
+	-- keymaps
+	require("cfg.nvim-tree.keymaps")
 end
 
 return mod
