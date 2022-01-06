@@ -1,6 +1,5 @@
-local config = require("cfg.lsp.config")
+local mod = {}
 require("cfg.lsp.visuals")
-require("cfg.lsp.keymaps")
 
 -- cursor highlighting enable
 local function documentHighlight(client, _)
@@ -21,56 +20,36 @@ local function documentHighlight(client, _)
 	end
 end
 
-local function custom_attach(client, bufnr)
+local custom_attach = function (client, bufnr)
+    print("lsp attached")
 	documentHighlight(client, bufnr)
+    require("cfg.lsp.keymaps").setup(bufnr)
 end
 
-local function common_capabilities()
-	local capabilities = vim.lsp.protocol.make_client_capabilities()
-	capabilities.textDocument.completion.completionItem.snippetSupport = true
-	capabilities.textDocument.completion.completionItem.resolveSupport = {
-		properties = {
-			"documentation",
-			"detail",
-			"additionalTextEdits",
-		},
-	}
-	return capabilities
-end
+mod.setup = function()
+    local config = require("cfg.lsp.config")
+    if config == nil then
+        print("lsp cfg table not found")
+        return
+    end
+    local status, lspconfig = pcall(require,"lspconfig")
+    if not status then
+        print("lspconfig module not found")
+        return
+    end
 
-local function common_on_init(client, _)
-	local formatters = config[vim.bo.filetype].formatters
-	if not vim.tbl_isempty(formatters) then
-		client.resolved_capabilities.document_formatting = false
-		-- u.lvim_log(string.format("Overriding [%s] formatter with [%s]", client.name, formatters[1].exe))
-	end
-end
-
-local function init_lsp(_, cfg)
-	if not cfg then
-		return
-	end
-	if type(cfg) ~= "table" then
-		cfg = {}
-	end
-	local lsp = cfg.lsp
-	if lsp.provider ~= nil and lsp.provider ~= "" then
-		local lspconfig = require("lspconfig")
-
-		if not lsp.setup.on_attach then
-			lsp.setup.on_attach = custom_attach
+	for _, cfg in pairs(config) do
+		local lsp = cfg.lsp
+		if lsp.provider ~= nil and lsp.provider ~= "" then
+            lsp.setup.on_attach = custom_attach
+            lsp.setup.capabilities =  vim.lsp.protocol.make_client_capabilities()
+            local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+            if status_ok then
+                lsp.setup.capabilities = cmp_nvim_lsp.update_capabilities(lsp.setup.capabilities)
+            end
+			lspconfig[lsp.provider].setup(lsp.setup)
 		end
-		if not lsp.setup.on_init then
-			lsp.setup.on_init = common_on_init
-		end
-		if not lsp.setup.capabilities then
-			lsp.setup.capabilities = common_capabilities()
-		end
-
-		lspconfig[lsp.provider].setup(lsp.setup)
 	end
 end
 
-for server, cfg in pairs(config) do
-	init_lsp(server, cfg)
-end
+return mod

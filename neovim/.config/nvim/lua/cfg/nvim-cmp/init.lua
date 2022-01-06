@@ -20,7 +20,7 @@ function mod.setup()
 		},
 
 		sources = {
-			{ name = "nvim_lsp", max_item_count = 16 },
+			{ name = "nvim_lsp", max_item_count = 8 },
 			{ name = "nvim_lua" },
 			{ name = "luasnip", max_item_count = 4 },
 			{ name = "neorg" },

@@ -39,7 +39,7 @@ function mod.init()
 				config = {
 					exclude = {
 						"notes",
-						"references"
+						"references",
 					},
 				},
 			},

@@ -5,19 +5,6 @@ if status_ok then
 end
 
 local cfg = {
-  asm = {
-    formatters = {
-      -- {
-      --   exe = "asmfmt",
-      --   args = {},
-      -- },
-    },
-    linters = {},
-    lsp = {
-      provider = "",
-      setup = {},
-    },
-  },
   c = {
     formatters = {
       -- {
@@ -84,29 +71,6 @@ local cfg = {
       },
     },
   },
-  html = {
-    formatters = {
-      -- {
-      --   exe = "prettier",
-      --   args = {},
-      -- },
-      -- {
-      --   exe = "prettierd",
-      --   args = {},
-      -- },
-    },
-    linters = {},
-    lsp = {
-      provider = "html",
-      setup = {
-        cmd = {
-          "node",
-          "/usr/lib/node_modules/vscode-langservers-extracted/bin/vscode-html-language-server",
-          "--stdio",
-        },
-      },
-    },
-  },
   json = {
     formatters = {
       -- {
@@ -154,14 +118,10 @@ local cfg = {
   },
   lua = {
     formatters = {
-      -- {
-      --   exe = "stylua",
-      --   args = {},
-      -- },
-      -- {
-      --   exe = "lua_format",
-      --   args = {},
-      -- },
+      {
+        exe = "stylua",
+        args = {},
+      },
     },
     linters = {},
     lsp = {

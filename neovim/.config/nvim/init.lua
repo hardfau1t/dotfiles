@@ -72,7 +72,7 @@ packer.startup(function()
 		"neovim/nvim-lspconfig",
 		requires = { { "jose-elias-alvarez/null-ls.nvim", opt = true } },
 		config = function()
-            require("cfg.lsp")
+            require("cfg.lsp").setup()
         end
 	})
 
@@ -94,7 +94,7 @@ packer.startup(function()
 		config = require("cfg.telescope").setup
 	})
 	use({
-		"nvim-neorg/neorg", -- 
+		"nvim-neorg/neorg",
 		config = require("cfg.neorg").init,
 		requires = {"nvim-lua/plenary.nvim",
 		"nvim-neorg/neorg-telescope" }
