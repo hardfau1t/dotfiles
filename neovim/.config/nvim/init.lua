@@ -49,24 +49,24 @@ packer.startup(function()
 
 	use({
 		"yuttie/comfortable-motion.vim",
-		config = require("cfg.comfortable-motion").setup
+		config =function() require("cfg.comfortable-motion").setup() end
 	})
 	use({
 		"nvim-treesitter/nvim-treesitter",
-		config = require("cfg.treesitter").setup
+		config = function() require("cfg.treesitter").setup() end
 	})
 	use({
 		"tpope/vim-fugitive",
-		config = require("cfg.fugitive").setup
+		config = function() require("cfg.fugitive").setup() end
 	})
 	use({
 		"numToStr/Comment.nvim",
-		config = require("cfg.comment_nvim.init").setup
+		config = function() require("cfg.comment_nvim.init").setup() end
 	})
 	use({ -- diagnostics looks cool
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
-		config = require("cfg.trouble").setup
+		config = function() require("cfg.trouble").setup() end
 	})
 	use({
 		"neovim/nvim-lspconfig",
@@ -79,23 +79,23 @@ packer.startup(function()
 	use({
 		"simrat39/rust-tools.nvim",
 		requires = { "neovim/nvim-lspconfig" },
-		config = require("cfg.rust_tools").setup,
+		config = function() require("cfg.rust_tools").setup() end
 	})
 
 	use({
 		"kyazdani42/nvim-tree.lua",
 		requires = "kyazdani42/nvim-web-devicons",
-		config = require("cfg.nvim-tree").setup
+		config = function() require("cfg.nvim-tree").setup() end
 	})
 
 	use({
 		"nvim-telescope/telescope.nvim",
 		requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
-		config = require("cfg.telescope").setup
+		config = function() require("cfg.telescope").setup() end
 	})
 	use({
 		"nvim-neorg/neorg",
-		config = require("cfg.neorg").init,
+		config = function() require("cfg.neorg").init() end,
 		requires = {"nvim-lua/plenary.nvim",
 		"nvim-neorg/neorg-telescope" }
 	})
@@ -113,7 +113,7 @@ packer.startup(function()
 	use({
 		"hrsh7th/nvim-cmp",
 		requires = { "neovim/nvim-lspconfig", },
-		config = require("cfg.nvim-cmp").setup
+		config = function() require("cfg.nvim-cmp").setup() end
 	})
 	use({ "saadparwaiz1/cmp_luasnip", requires = { "hrsh7th/nvim-cmp", "L3MON4D3/LuaSnip" } }) -- luasnip completion support
 	use({ "hrsh7th/cmp-nvim-lsp", requires = { "hrsh7th/nvim-cmp" } }) -- basic lsp cmp
