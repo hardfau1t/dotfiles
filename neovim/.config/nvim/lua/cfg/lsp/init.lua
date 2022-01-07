@@ -21,7 +21,6 @@ local function documentHighlight(client, _)
 end
 
 local custom_attach = function (client, bufnr)
-    print("lsp attached")
 	documentHighlight(client, bufnr)
     require("cfg.lsp.keymaps").setup(bufnr)
 end
