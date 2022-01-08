@@ -39,7 +39,7 @@ mod.setup = function()
 
 	for _, cfg in pairs(config) do
 		local lsp = cfg.lsp
-		if lsp.provider ~= nil and lsp.provider ~= "" then
+		if lsp ~= nil and lsp.provider ~= nil and lsp.provider ~= "" then
             lsp.setup.on_attach = custom_attach
             lsp.setup.capabilities =  vim.lsp.protocol.make_client_capabilities()
             local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")

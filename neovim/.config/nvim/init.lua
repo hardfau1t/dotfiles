@@ -77,12 +77,6 @@ packer.startup(function()
 	})
 
 	use({
-		"simrat39/rust-tools.nvim",
-		requires = { "neovim/nvim-lspconfig" },
-		config = function() require("cfg.rust_tools").setup() end
-	})
-
-	use({
 		"kyazdani42/nvim-tree.lua",
 		requires = "kyazdani42/nvim-web-devicons",
 		config = function() require("cfg.nvim-tree").setup() end

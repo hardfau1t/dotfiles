@@ -3,7 +3,7 @@ local mod = {}
 function mod.setup()
 	require("Comment").setup({
 		toggler = {
-			line = "<leader>cc",
+			line = "<leader>c<leader>",
 			block = "<leader>cb",
 		},
 		extra = {
@@ -14,6 +14,10 @@ function mod.setup()
 		mappings = {
 			basic = "toggler",
 		},
+		opleader = {
+			line = "<leader>c",
+			block = "<leader>b",
+		}
 	})
 end
 
