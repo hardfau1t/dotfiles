@@ -3,12 +3,10 @@ local mod = {}
 function mod.setup()
 	local status, ntree = pcall(require, "nvim-tree")
 	if not status then
+        print("nvim-tree is not installed")
 		return
 	end
-	local cfg_status, config = pcall(require, "nvim-tree.config")
-	if not cfg_status then
-		return
-	end
+	local config = require("nvim-tree.config")
 	local tree_cb = config.nvim_tree_callback
 	-- default mappings
 	local options = {

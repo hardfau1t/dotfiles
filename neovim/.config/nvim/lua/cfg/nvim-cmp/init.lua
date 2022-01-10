@@ -1,13 +1,22 @@
 local mod = {}
 
 mod.setup = function()
-	local status, ls = pcall(require, "luasnip")
+	local status, ls, cmp, lspkind
+    status, ls= pcall(require, "luasnip")
 	if not status then
 		print("luasnip is not installed")
 		return
 	end
-	local cmp = require("cmp")
-	local lspkind = require("lspkind")
+    status, cmp= pcall(require, "cmp")
+	if not status then
+		print("nvim-cmp is not installed")
+		return
+	end
+    status, lspkind= pcall(require, "lspkind")
+	if not status then
+		print("lspkind is not installed")
+		return
+	end
 	cmp.setup({
 		snippet = {
 			expand = function(args)

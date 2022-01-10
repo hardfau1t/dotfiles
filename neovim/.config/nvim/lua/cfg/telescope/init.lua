@@ -1,7 +1,12 @@
 local mod = {}
 
 function mod.setup()
-	require("telescope").setup({
+	local present, telescope = pcall(require, "telescope")
+	if not present then
+		print("telescope is not installed")
+		return
+	end
+	telescope.setup({
 		defaults = {
 			vimgrep_arguments = {
 				"rg",

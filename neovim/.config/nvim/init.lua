@@ -2,9 +2,9 @@ local fn = vim.fn
 
 -- other configs
 require("cfg.config")
-require("cfg.colorscheme")
 require("cfg.utils")
 require("cfg.key_maps")
+
 -- install packer if its not installed
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
@@ -145,3 +145,6 @@ packer.startup(function()
 	use({ "f3fora/cmp-spell", requires = { "hrsh7th/nvim-cmp" } }) -- vim spell check
 	use({ "petertriho/cmp-git", requires = { "hrsh7th/nvim-cmp", "nvim-lua/plenary.nvim" } }) -- vim spell check
 end)
+
+-- it should be at the bottom
+vim.cmd[[colorscheme kanagawa]]
