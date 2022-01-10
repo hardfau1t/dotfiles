@@ -1,21 +1,44 @@
 local mod = {}
 
-function mod.setup()
+mod.setup = function()
+	local status, ls = pcall(require, "luasnip")
+	if not status then
+		print("luasnip is not installed")
+		return
+	end
 	local cmp = require("cmp")
 	local lspkind = require("lspkind")
 	cmp.setup({
 		snippet = {
 			expand = function(args)
-				require("luasnip").lsp_expand(args.body)
+				ls.lsp_expand(args.body)
 			end,
 		},
 		preselect = cmp.PreselectMode.None,
 		mapping = {
-			["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-			["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
 			["<C-j>"] = cmp.mapping.scroll_docs(-4),
 			["<C-k>"] = cmp.mapping.scroll_docs(4),
-			["<C-s>"] = cmp.mapping.complete({ config = { sources = { name = "luasnip" } } }),
+			["<C-s>"] = cmp.mapping.confirm({ select = true }),
+			["<C-n>"] = cmp.mapping(
+				function(fallback) -- if completion available go to next,else if snippets available next item
+					if cmp.visible() then
+						cmp.select_next_item()
+					elseif ls.jumpable(1) then
+						ls.jump(1)
+					else
+						fallback()
+					end
+				end
+			),
+			["<C-p>"] = cmp.mapping(function(fallback)
+				if cmp.visible() then
+					cmp.select_prev_item()
+				elseif ls.jumpable(-1) then
+					ls.jump(-1)
+				else
+					fallback()
+				end
+			end),
 			["<C-e>"] = cmp.mapping.close(),
 		},
 
@@ -30,36 +53,7 @@ function mod.setup()
 			{ name = "buffer", keyword_length = 4 },
 		},
 		formatting = {
-			format = lspkind.cmp_format({
-				with_text = true,
-				symbol_map = {
-					Text = "",
-					Method = "",
-					Function = "",
-					Constructor = "",
-					Field = "ﰠ",
-					Variable = "",
-					Class = "ﴯ",
-					Interface = "",
-					Module = "",
-					Property = "ﰠ",
-					Unit = "塞",
-					Value = "",
-					Enum = "",
-					Keyword = "",
-					Snippet = "",
-					Color = "",
-					File = "",
-					Reference = "",
-					Folder = "",
-					EnumMember = "",
-					Constant = "",
-					Struct = "פּ",
-					Event = "",
-					Operator = "",
-					TypeParameter = "",
-				},
-			}),
+			format = lspkind.cmp_format(),
 		},
 		experimental = {
 			native_menu = false,
