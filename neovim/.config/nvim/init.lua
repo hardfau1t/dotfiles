@@ -101,8 +101,10 @@ packer.startup(function()
             require("cfg.lua_line")
         end,
 	})
+
 	use("L3MON4D3/LuaSnip")
 	use("rafamadriz/friendly-snippets")
+
 	-- nvim cmp plugin and sources
 	use({
 		"hrsh7th/nvim-cmp",
