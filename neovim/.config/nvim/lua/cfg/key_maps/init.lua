@@ -1,3 +1,9 @@
+local avail, wk = pcall(require, "which-key")
+
+if not avail then
+	print("which key is required")
+	return
+end
 local opts = { noremap=true, silent=true }
 
 -- setting for leader key
@@ -9,10 +15,6 @@ vim.api.nvim_set_keymap('n', '<F3>', ':set hlsearch!<CR>', opts)
 -- redo remap
 vim.api.nvim_set_keymap('n', 'U', '<C-r>', opts)
 vim.api.nvim_set_keymap('n', '<C-r>', '<NOP>', opts)
-
--- replace content in visual mode
-vim.api.nvim_set_keymap('v', '<leader>P', '_dP', opts)
-
 
 -----------------window management------------------------
 -- window movement
@@ -34,13 +36,6 @@ vim.api.nvim_set_keymap('n', '<C-w>-', '<C-w>-<C-w>', {silent = true})
 vim.api.nvim_set_keymap('n', '<C-w><CR>', '<NOP>', {silent = true})
 
 
----------------------Packer------------------------------
-vim.api.nvim_set_keymap('n', '<leader>pi', ':PackerInstall<CR>', {silent = true})
-vim.api.nvim_set_keymap('n', '<leader>pu', ':PackerUpdate<CR>', {silent = true})
-vim.api.nvim_set_keymap('n', '<leader>ps', ':PackerSync<CR>', {silent = true})
-vim.api.nvim_set_keymap('n', '<leader>pS', ':PackerStatus<CR>', {silent = true})
-vim.api.nvim_set_keymap('n', '<leader>pc', ':PackerCompile<CR>', {silent = true})
-
 -- shifting in visual mode
 vim.api.nvim_set_keymap('v', '>', '>gv', opts)
 vim.api.nvim_set_keymap('v', '<', '<gv', opts)
@@ -48,25 +43,29 @@ vim.api.nvim_set_keymap('v', '<', '<gv', opts)
 -- copy content to system buffer in visual mode as well as 
 vim.api.nvim_set_keymap('v', 'y', '"+ygvy', opts)
 
-----------------------terminal--------------------------
--- exit right away
-vim.api.nvim_set_keymap('t', '<C-d>', '<C-\\><C-n>:wincmd q<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>xt', ':terminal<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>xv', '<C-w>v:terminal<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>xs', '<C-w>s:terminal<CR>', opts)
-vim.api.nvim_set_keymap('t', '<C-Space>', '<C-\\><C-n>', opts)
 
-
+wk.register({
+---------------------Packer------------------------------
+    p ={
+        name = "packer",
+        i = {  ':PackerInstall<CR>', "Install"},
+        u = {  ':PackerUpdate<CR>', "Update"},
+        s = {  ':PackerSync<CR>', "Sync all"},
+        S = {  ':PackerStatus<CR>', "status"},
+        c = {  ':PackerCompile<CR>', "compile"},
+    },
 ----------------------------------------cscope--------------------------------------------------
--- assignments to this symbol
-vim.api.nvim_set_keymap('n', '<leader>sh', ':cscope help<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>sa', ':cscope find a <cword><CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>sc', ':cscope find c <cword><CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>sd', ':cscope find d <cword><CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>se', ':cscope find e <cword><CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>sf', ':cscope find f <cword><CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>sg', ':cscope find g <cword><CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>si', ':cscope find i <cword><CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>ss', ':cscope find s <cword><CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>st', ':cscope find t <cword><CR>', opts)
+    s = {
+        h = { ':cscope help<CR>'},
+        a = { ':cscope find a <cword><CR>', "assignments to this symbol"},
+        c = { ':cscope find c <cword><CR>', "functions calling this function"},
+        d = { ':cscope find d <cword><CR>', "functions called by this function"},
+        e = { ':cscope find e <cword><CR>', "egrep pattern"},
+        f = { ':cscope find f <cword><CR>', "Find this file"},
+        g = { ':cscope find g <cword><CR>', "definition"},
+        i = { ':cscope find i <cword><CR>', "files #including this file"},
+        s = { ':cscope find s <cword><CR>', "Find C symbol"},
+        t = { ':cscope find t <cword><CR>', "Find text string"},
+    }
+}, {prefix = "<leader>"})
 

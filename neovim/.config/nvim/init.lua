@@ -46,6 +46,12 @@ packer.startup(function()
 	use("folke/tokyonight.nvim")
 	use("morhetz/gruvbox")
 	--------------
+	use({
+		"folke/which-key.nvim",
+        config = function ()
+            require("cfg.which-key").setup()
+        end
+	})
 
 	use({
 		"yuttie/comfortable-motion.vim",
@@ -119,13 +125,13 @@ packer.startup(function()
 
 	use({
 		"L3MON4D3/LuaSnip",
-		config = function ()
-			require ("luasnip/loaders/from_vscode").lazy_load()
-		end
+		config = function()
+			require("luasnip/loaders/from_vscode").lazy_load()
+		end,
 	})
 	use({
 		"rafamadriz/friendly-snippets",
-		requires = { "L3MON4D3/LuaSnip", required =true},
+		requires = { "L3MON4D3/LuaSnip", required = true },
 	})
 
 	-- nvim cmp plugin and sources
@@ -147,4 +153,4 @@ packer.startup(function()
 end)
 
 -- it should be at the bottom
-vim.cmd[[colorscheme kanagawa]]
+vim.cmd([[colorscheme kanagawa]])
