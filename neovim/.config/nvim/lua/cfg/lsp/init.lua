@@ -32,6 +32,7 @@ mod.setup = function()
         return
     end
     local status, lspconfig = pcall(require,"lspconfig")
+    vim.lsp.set_log_level('debug')
     if not status then
         print("lspconfig module not found")
         return

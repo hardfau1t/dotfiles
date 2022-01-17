@@ -52,13 +52,12 @@ mod.setup = function()
 		},
 
 		sources = {
+			{ name = "luasnip", max_item_count = 4 },
 			{ name = "nvim_lsp", max_item_count = 8 },
 			{ name = "nvim_lua" },
-			{ name = "luasnip", max_item_count = 4 },
 			{ name = "neorg" },
 			{ name = "git" },
 			{ name = "path" },
-			{ name = "spell" },
 			{ name = "buffer", keyword_length = 4 },
 		},
 		formatting = {
@@ -66,7 +65,7 @@ mod.setup = function()
 		},
 		experimental = {
 			native_menu = false,
-			ghost_text = true,
+			ghost_text = false,
 		},
 	})
 end

@@ -10,7 +10,7 @@ wk.register({
         t = {':NvimTreeToggle<CR>', "Toggle"},
         o = {':NvimTreeOpen<CR>', "Open"},
         f = {':NvimTreeFocus<CR>', "focus"},
-        d = {':NvimTreeClose<CR>', "Close"},
+        c = {':NvimTreeClose<CR>', "Close"},
         r = {':NvimTreeRefresh<CR>', "Refresh"},
     }
     },{ prefix = "<leader>"})

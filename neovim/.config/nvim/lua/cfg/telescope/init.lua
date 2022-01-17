@@ -51,6 +51,6 @@ function mod.setup()
 		},
 	})
 
-	require("cfg.telescope.keymaps")
+	require("cfg.telescope.keymaps").setup()
 end
 return mod

@@ -1,32 +1,40 @@
-local avail, wk = pcall(require, "which-key")
-
-if not avail then
-	print("which key is required")
-	return
+local M = {}
+M.setup = function()
+	local avail, wk = pcall(require, "which-key")
+	if not avail then
+		print("which key is required")
+		return
+	end
+	wk.register({
+		t = {
+			name = "Treesitter",
+			["'"] = { ":Telescope registers<CR>", "registers" },
+			["."] = { ":Telescope colorscheme<CR>", "Colorschems" },
+			a = { ":Telescope autocommands<CR>", "autocommands" },
+			b = { ":Telescope branches<CR>", "git branches" },
+			c = { ":Telescope commands<CR>", "telescope commands" },
+			d = { ":Telescope diagnostics<CR>", "diagnostics" },
+			e = {
+				'<cmd>lua require("telescope.builtin").find_files({cwd=vim.fn.stdpath("config"), follow=true})<CR>',
+				"diagnostics",
+			},
+			f = { ":Telescope oldfiles<CR>", "recent files" },
+			g = { ":Telescope git_commits<CR>", "commits" },
+			i = { ":Telescope lsp_implementations<CR>", "implementations" },
+			h = { ":Telescope help_tags<CR>", "vim help_tags" },
+			j = { ":Telescope jumplist<CR>", "jump list" },
+			k = { ":Telescope keymaps<CR>", "keymaps" },
+			l = { ":Telescope live_grep<CR>", "live_grep" },
+			m = { ":Telescope man_pages<CR>", "man_pages" },
+			n = { ":Telescope marks<CR>", "marks" },
+			q = { ":Telescope quickfix<CR>", "quickfix list" },
+			r = { ":Telescope lsp_references<CR>", "references" },
+			s = { ":Telescope git_status<CR>", "Git status" },
+			t = { ":Telescope git_files<CR>", "Git files" },
+			[";"] = { ":Telescope filetypes<CR>", "set filetype" },
+			["<space>"] = { '<cmd>lua require("telescope.builtin").find_files({follow=true})<CR>', "find files" },
+		},
+	}, { prefix = "<leader>" })
 end
-wk.register({
-    t = {
-        name = "Treesitter",
-        ["'"] =  {':Telescope registers<CR>', "registers"},
-        ["."] =  {':Telescope colorscheme<CR>', "Colorschems"},
-        a =  {':Telescope autocommands<CR>', "autocommands"},
-        b = {':Telescope branches<CR>', "git branches"},
-        c =  {':Telescope commands<CR>', "telescope commands"},
-        d =  {':Telescope diagnostics<CR>', "diagnostics"},
-        f =  {':Telescope oldfiles<CR>', "recent files"},
-        g =  {':Telescope git_commits<CR>', "commits"},
-        i =  {':Telescope lsp_implementations<CR>', "implementations"},
-        h =  {':Telescope help_tags<CR>', "vim help_tags"},
-        j = {':Telescope jumplist<CR>', "jump list"},
-        k = {':Telescope keymaps<CR>', "keymaps"},
-        l =  {':Telescope live_grep<CR>', "live_grep"},
-        m =  {':Telescope man_pages<CR>', "man_pages"},
-        n =  {':Telescope marks<CR>', "marks"},
-        q =  {':Telescope quickfix<CR>', "quickfix list"},
-        r = {':Telescope lsp_references<CR>', "references"},
-        s = {':Telescope git_status<CR>', "Git status"},
-        t = {':Telescope git_files<CR>', "Git files"},
-        [";"] =  {':Telescope filetypes', "set filetype"},
-        ['<space>'] = { ':lua require("telescope.builtin").find_files({follow=true})<CR>', "find files"},
-    }
-},{prefix = "<leader>"})
+
+return M
