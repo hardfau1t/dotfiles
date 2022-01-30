@@ -1,5 +1,6 @@
 local fn = vim.fn
 
+
 -- other configs
 require("cfg.config")
 require("cfg.utils")
@@ -48,9 +49,9 @@ packer.startup(function()
 	--------------
 	use({
 		"folke/which-key.nvim",
-        config = function ()
-            require("cfg.which-key").setup()
-        end
+		config = function()
+			require("cfg.which-key").setup()
+		end,
 	})
 
 	use({
@@ -89,6 +90,13 @@ packer.startup(function()
 		requires = { { "jose-elias-alvarez/null-ls.nvim", opt = true } },
 		config = function()
 			require("cfg.lsp").setup()
+		end,
+	})
+	use({
+		"simrat39/rust-tools.nvim",
+		requires = { { "neovim/nvim-lspconfig", required = true } },
+		config = function()
+			require("cfg.rust-tools").setup({})
 		end,
 	})
 

@@ -37,6 +37,8 @@ function mod.init()
 			["core.norg.journal"] = {},
 			["core.gtd.base"] = {
 				config = {
+                                        workspace = "my_workspace",
+                                        inbox = "inbox.norg",
 					exclude = {
 						"notes",
 						"references",

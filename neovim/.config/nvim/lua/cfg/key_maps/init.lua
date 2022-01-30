@@ -53,6 +53,7 @@ wk.register({
         s = {  ':PackerSync<CR>', "Sync all"},
         S = {  ':PackerStatus<CR>', "status"},
         c = {  ':PackerCompile<CR>', "compile"},
+        r = {  ':PackerClean<CR>', "clean/remove"},
     },
 ----------------------------------------cscope--------------------------------------------------
     s = {

@@ -271,7 +271,8 @@ bell:
   duration: 0
   color: '0xffffff'
 
-background_opacity: 0.60
+window:
+  opacity: 0.60
 
 #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
