@@ -34,11 +34,12 @@ function mod.init()
 		load = {
 			["core.defaults"] = {}, -- Load all the default modules
 			["core.norg.concealer"] = {}, -- Allows for use of icons
+			["core.norg.qol.toc"] = {},
 			["core.norg.journal"] = {},
 			["core.gtd.base"] = {
 				config = {
-                                        workspace = "my_workspace",
-                                        inbox = "inbox.norg",
+					workspace = "my_workspace",
+					inbox = "inbox.norg",
 					exclude = {
 						"notes",
 						"references",
@@ -56,6 +57,13 @@ function mod.init()
 			["core.norg.completion"] = {
 				config = {
 					engine = "nvim-cmp", -- We current support nvim-compe and nvim-cmp only
+				},
+			},
+			["core.keybinds"] = {
+				config = { -- Note that this table is optional and doesn't need to be provided
+				default_keybinds = true,
+				neorg_leader = "<CR>",
+				hook = require("cfg.neorg.keymaps").set_keymaps
 				},
 			},
 		},
