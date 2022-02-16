@@ -1,6 +1,7 @@
 local mod = {}
 
 mod.set_keymaps = function(kb)
+	p(kb)
 	-- Keys for managing TODO items and setting their states
 	kb.unmap("norg", "n", "gtu")
 	kb.unmap("norg", "n", "gtp")
@@ -37,13 +38,13 @@ mod.set_keymaps = function(kb)
 	kb.remap_event("norg", "n", "<C-s>", "core.integrations.telescope.find_linkable")
 
 	-- journal shortcuts
-	kb.map("norg", "n", "jt", ":Neorg journal today<CR>")
-	kb.map("norg", "n", "jy", ":Neorg journal yesterday<CR>")
-	kb.map("norg", "n", "jm", ":Neorg journal tomorrow<CR>")
+	kb.map("norg", "n", kb.leader.."jt", ":Neorg journal today<CR>")
+	kb.map("norg", "n", kb.leader.."jy", ":Neorg journal yesterday<CR>")
+	kb.map("norg", "n", kb.leader.."jm", ":Neorg journal tomorrow<CR>")
 	-- Table of content
-	kb.map("norg", "n", "cs", ":Neorg toc split<CR>")
-	kb.map("norg", "n", "cc", ":Neorg toc close<CR>")
-	kb.map("norg", "n", "cq", ":Neorg toc toqflist<CR>")
+	kb.map("norg", "n", kb.leader.."cs", ":Neorg toc split<CR>")
+	kb.map("norg", "n", kb.leader.."cc", ":Neorg toc close<CR>")
+	kb.map("norg", "n", kb.leader.."cq", ":Neorg toc toqflist<CR>")
 end
 
 local opts = { noremap = true, silent = false }
