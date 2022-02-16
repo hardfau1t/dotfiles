@@ -24,7 +24,7 @@ mod.set_keymaps = function(kb)
 	kb.remap_event("norg", "n", "te", "core.gtd.base.edit")
 
 	-- keys for managing notes
-	kb.remap_event("norg", "n", "nn", "core.norg.dirman.new.note")
+	kb.map("norg", "n", kb.leader.."nn", "core.norg.dirman.new.note")
 
 	kb.remap_event("norg", "n", "<CR>", "core.norg.esupports.hop.hop-link")
 	kb.remap_event("norg", "n", "<M-CR>", "core.norg.esupports.hop.hop-link", "vsplit")
@@ -36,6 +36,7 @@ mod.set_keymaps = function(kb)
 	kb.remap_event("norg", "n", "mt", "core.norg.concealer.toggle-markup")
 
 	kb.remap_event("norg", "n", "<C-s>", "core.integrations.telescope.find_linkable")
+	kb.remap_event("norg", "i", "<C-l>", "core.integrations.telescope.insert_link")
 
 	-- journal shortcuts
 	kb.map("norg", "n", kb.leader.."jt", ":Neorg journal today<CR>")

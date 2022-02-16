@@ -70,7 +70,6 @@ function mod.init()
 	}
 
 	require("neorg").setup(opts)
-	require("cfg.neorg.keymaps")
 end
 
 return mod

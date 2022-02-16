@@ -1,6 +1,5 @@
 local fn = vim.fn
 
-
 -- other configs
 require("cfg.config")
 require("cfg.utils")
@@ -47,6 +46,8 @@ packer.startup(function()
 	use("folke/tokyonight.nvim")
 	use("morhetz/gruvbox")
 	--------------
+	-- for syncing files with remote repo
+	use("kenn7/vim-arsync")
 	use({
 		"folke/which-key.nvim",
 		config = function()
