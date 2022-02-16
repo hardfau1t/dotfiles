@@ -1,7 +1,6 @@
 local mod = {}
 
 mod.set_keymaps = function(kb)
-	p(kb)
 	-- Keys for managing TODO items and setting their states
 	kb.unmap("norg", "n", "gtu")
 	kb.unmap("norg", "n", "gtp")
@@ -10,6 +9,7 @@ mod.set_keymaps = function(kb)
 	kb.unmap("norg", "n", "gtc")
 	kb.unmap("norg", "n", "gtr")
 	kb.unmap("norg", "n", "gti")
+	kb.unmap("norg", "n", "nn")
 	kb.remap_event("norg", "n", "td", "core.norg.qol.todo_items.todo.task_done")
 	kb.remap_event("norg", "n", "tu", "core.norg.qol.todo_items.todo.task_undone")
 	kb.remap_event("norg", "n", "tp", "core.norg.qol.todo_items.todo.task_pending")
