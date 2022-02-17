@@ -87,8 +87,55 @@ packer.startup(function()
 		end,
 	})
 	use({
+		"nvim-telescope/telescope.nvim",
+		requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
+		config = function()
+			require("cfg.telescope").setup()
+		end,
+	})
+
+	use({
+		"nvim-neorg/neorg",
+		config = function()
+			require("cfg.neorg").init()
+		end,
+		requires = { "nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope" },
+	})
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+		config = function()
+			require("cfg.lua_line")
+		end,
+	})
+  use({
+           'iamcco/markdown-preview.nvim',
+            run = ":call mkdp#util#install()",
+            setup = function()
+              require("cfg.markdown-prev").setup()
+            end,
+            ft = { "markdown" },
+  })
+	use({
+		"L3MON4D3/LuaSnip",
+		config = function()
+			require("luasnip/loaders/from_vscode").lazy_load()
+		end,
+	})
+	use({
+		"rafamadriz/friendly-snippets",
+		requires = { "L3MON4D3/LuaSnip", required = true },
+	})
+	use({
+		"kyazdani42/nvim-tree.lua",
+		requires = "kyazdani42/nvim-web-devicons",
+		config = function()
+			require("cfg.nvim-tree").setup()
+		end,
+	})
+
+	use({
 		"neovim/nvim-lspconfig",
-		requires = { { "jose-elias-alvarez/null-ls.nvim", opt = true } },
 		config = function()
 			require("cfg.lsp").setup()
 		end,
@@ -100,49 +147,6 @@ packer.startup(function()
 			require("cfg.rust-tools").setup({})
 		end,
 	})
-
-	use({
-		"kyazdani42/nvim-tree.lua",
-		requires = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("cfg.nvim-tree").setup()
-		end,
-	})
-
-	use({
-		"nvim-telescope/telescope.nvim",
-		requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
-		config = function()
-			require("cfg.telescope").setup()
-		end,
-	})
-	use({
-		"nvim-neorg/neorg",
-		config = function()
-			require("cfg.neorg").init()
-		end,
-		requires = { "nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope" },
-	})
-
-	use({
-		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-		config = function()
-			require("cfg.lua_line")
-		end,
-	})
-
-	use({
-		"L3MON4D3/LuaSnip",
-		config = function()
-			require("luasnip/loaders/from_vscode").lazy_load()
-		end,
-	})
-	use({
-		"rafamadriz/friendly-snippets",
-		requires = { "L3MON4D3/LuaSnip", required = true },
-	})
-
 	-- nvim cmp plugin and sources
 	use({
 		"hrsh7th/nvim-cmp",

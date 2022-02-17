@@ -1,3 +1,4 @@
+#vim: syntax=config
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -256,7 +257,7 @@ bindsym $mod+grave mode "resize"
 
 #mp music control keys
 # mod + f1
-    bindcode --locked $mod+67 exec 'mpc toggle'
+    bindcode --locked $mod+67 exec 'mpc toggle' 
     bindcode --locked 172 exec 'mpc toggle'
 # mod + f 2
     bindcode --locked $mod+68 exec 'mpc prev'
@@ -282,6 +283,7 @@ bindsym $mod+grave mode "resize"
     bindsym $mod+u exec passmenu
 # element
     bindsym $mod+b exec 'element-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland'
+   bindsym $mod+n  output $main_mon dpms toggle
 
 # window management===========================================================================
 for_window [app_id="firefox"] inhibit_idle fullscreen

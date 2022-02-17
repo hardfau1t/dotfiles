@@ -3,8 +3,29 @@ local status_ok, jsonls_settings = pcall(require, "nlspsettings.jsonls")
 if status_ok then
 	schemas = jsonls_settings.get_default_schemas()
 end
-
 local cfg = {
+	arduino = {
+		formatters = {},
+		linters = {},
+		lsp = {
+			provider = "arduino_language_server",
+			setup = {
+				cmd = {
+					"arduino-language-server",
+					"-cli-config",
+					vim.fn.expand("~/.arduino15/arduino-cli.yaml"),
+					"-fqbn",
+					"arduino:avr:nano:cpu=atmega328old",
+                                        "-cli-daemon-addr",
+                                        "localhost",
+                                        "-cli-daemon-instance",
+                                        "1",
+                                        "-clangd",
+                                        "/usr/bin/clangd"
+				},
+			},
+		},
+	},
 	c = {
 		formatters = {
 			-- {
@@ -179,58 +200,58 @@ local cfg = {
 			},
 		},
 	},
--- 	rust = {
--- 		formatters = {},
--- 		linters = {},
--- 		lsp = {
--- 			provider = "rust_analyzer",
--- 			setup = {
--- 				filetypes = { "rust" },
--- 				cmd = {
--- 					vim.fn.expand("~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyzer"),
--- 				},
--- 				settings = {
--- 					["rust-analyzer"] = {
--- 						assist = {
--- 							importMergeBehavior = "last",
--- 							importPrefix = "by_self",
--- 						},
--- 						cargo = {
--- 							loadOutDirsFromCheck = true,
--- 							-- features = {"stm32f767", "device-selected"},
--- 							-- target = {"thumbv7em-none-eabihf"}
--- 						},
--- 						checkOnSave = {
--- 							command = "clippy",
--- 						},
--- 						completion = {
--- 							autoimport = {
--- 								enable = true,
--- 							},
--- 						},
---                         rustfmt = {
---                             extraArgs = {"--config", "tab_spaces=2"}
---                         },
--- 						inlay_hints = {
--- 							only_current_line = false,
--- 							only_current_line_autocmd = "CursorHold",
--- 							show_parameter_hints = true,
--- 							parameter_hints_prefix = "<- ",
--- 							other_hints_prefix = "=> ",
--- 							max_len_align = false,
--- 							max_len_align_padding = 1,
--- 							right_align = false,
--- 							right_align_padding = 7,
--- 							highlight = "Comment",
--- 						},
--- 						procMacro = {
--- 							enable = true,
--- 						},
--- 					},
--- 				},
--- 			},
--- 		},
--- 	},
+	-- 	rust = {
+	-- 		formatters = {},
+	-- 		linters = {},
+	-- 		lsp = {
+	-- 			provider = "rust_analyzer",
+	-- 			setup = {
+	-- 				filetypes = { "rust" },
+	-- 				cmd = {
+	-- 					vim.fn.expand("~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyzer"),
+	-- 				},
+	-- 				settings = {
+	-- 					["rust-analyzer"] = {
+	-- 						assist = {
+	-- 							importMergeBehavior = "last",
+	-- 							importPrefix = "by_self",
+	-- 						},
+	-- 						cargo = {
+	-- 							loadOutDirsFromCheck = true,
+	-- 							-- features = {"stm32f767", "device-selected"},
+	-- 							-- target = {"thumbv7em-none-eabihf"}
+	-- 						},
+	-- 						checkOnSave = {
+	-- 							command = "clippy",
+	-- 						},
+	-- 						completion = {
+	-- 							autoimport = {
+	-- 								enable = true,
+	-- 							},
+	-- 						},
+	--                         rustfmt = {
+	--                             extraArgs = {"--config", "tab_spaces=2"}
+	--                         },
+	-- 						inlay_hints = {
+	-- 							only_current_line = false,
+	-- 							only_current_line_autocmd = "CursorHold",
+	-- 							show_parameter_hints = true,
+	-- 							parameter_hints_prefix = "<- ",
+	-- 							other_hints_prefix = "=> ",
+	-- 							max_len_align = false,
+	-- 							max_len_align_padding = 1,
+	-- 							right_align = false,
+	-- 							right_align_padding = 7,
+	-- 							highlight = "Comment",
+	-- 						},
+	-- 						procMacro = {
+	-- 							enable = true,
+	-- 						},
+	-- 					},
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 	},
 	sh = {
 		formatters = {
 			-- {

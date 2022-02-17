@@ -12,3 +12,4 @@ border-radius=5
 border-color=#A89984
 
 layer=overlay
+on-button-middle=exec makoctl menu -n "$id" wofi -d -p 'Select action: '

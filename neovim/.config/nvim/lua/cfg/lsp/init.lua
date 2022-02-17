@@ -20,33 +20,33 @@ local function documentHighlight(client, _)
 	end
 end
 
-local custom_attach = function (client, bufnr)
+local custom_attach = function(client, bufnr)
 	documentHighlight(client, bufnr)
-    require("cfg.lsp.keymaps").setup(bufnr)
+	require("cfg.lsp.keymaps").setup(bufnr)
 end
 
 mod.setup = function()
-    local config = require("cfg.lsp.config")
-    if config == nil then
-        print("lsp cfg table not found")
-        return
-    end
-    local status, lspconfig = pcall(require,"lspconfig")
-    vim.lsp.set_log_level('debug')
-    if not status then
-        print("lspconfig module not found")
-        return
-    end
+	local config = require("cfg.lsp.config")
+	if config == nil then
+		print("lsp cfg table not found")
+		return
+	end
+	local status, lspconfig = pcall(require, "lspconfig")
+	if not status then
+		print("lspconfig module not found")
+		return
+	end
+	require("vim.lsp.log").set_level(3)
 
 	for _, cfg in pairs(config) do
 		local lsp = cfg.lsp
 		if lsp ~= nil and lsp.provider ~= nil and lsp.provider ~= "" then
-            lsp.setup.on_attach = custom_attach
-            lsp.setup.capabilities =  vim.lsp.protocol.make_client_capabilities()
-            local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-            if status_ok then
-                lsp.setup.capabilities = cmp_nvim_lsp.update_capabilities(lsp.setup.capabilities)
-            end
+			lsp.setup.on_attach = custom_attach
+			lsp.setup.capabilities = vim.lsp.protocol.make_client_capabilities()
+			local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+			if status_ok then
+				lsp.setup.capabilities = cmp_nvim_lsp.update_capabilities(lsp.setup.capabilities)
+			end
 			lspconfig[lsp.provider].setup(lsp.setup)
 		end
 	end
