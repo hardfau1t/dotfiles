@@ -10,6 +10,7 @@ local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
 local fresh_inst = false
 if fn.empty(fn.glob(install_path)) > 0 then
+  print("installing packer")
   fn.system({
     "git",
     "clone",
@@ -18,7 +19,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
     "https://github.com/wbthomason/packer.nvim",
     install_path,
   })
-  print("installing packer")
   vim.cmd("packadd packer.nvim") -- add the packer to vim
   fresh_inst = true
 end
