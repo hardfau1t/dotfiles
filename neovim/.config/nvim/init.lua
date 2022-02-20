@@ -1,7 +1,7 @@
 local fn = vim.fn
 
 -- other configs
-require("cfg.config")
+require("cfg.opts")
 require("cfg.utils")
 require("cfg.key_maps")
 
@@ -77,6 +77,16 @@ packer.startup(function()
     "nvim-treesitter/nvim-treesitter",
     config = function()
       require("cfg.treesitter").setup()
+    end,
+  })
+  use({
+    'nvim-treesitter/playground',
+    requires = {"nvim-treesitter/nvim-treesitter"},
+  })
+  use({
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("cfg.indent_blankline").setup()
     end,
   })
   use({

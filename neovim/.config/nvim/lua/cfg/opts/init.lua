@@ -1,8 +1,9 @@
 vim.g.mapleader = ' '
+vim.g.rust_recommended_style = false
 vim.g.netrw_winsize = 10
 -- show tabs and spaces
 vim.o.list = true
-vim.o.listchars='eol:↓,tab:>·,trail:●,extends:…,precedes:…,lead:·'
+vim.o.listchars='eol:,tab:> ,trail:●,extends:…,precedes:…'
 vim.o.sidescrolloff=20
 
 vim.o.tabstop=2
@@ -37,13 +38,13 @@ vim.o.autoread = true
 vim.o.ttyfast = true
 vim.o.termguicolors = true
 vim.o.wildmenu = true
-vim.o.autoindent = true
+vim.o.autoindent = false                  -- use treesitter indentation
 vim.o.smartindent = true
 vim.o.hlsearch = true
 vim.o.signcolumn = "number"
 vim.o.numberwidth = 3
 
-vim.opt.spell = true
+vim.opt.spell = false
 vim.opt.spelllang = { 'en_us' }
 
 vim.cmd("syntax on")

@@ -69,31 +69,31 @@ local cfg = {
    },
   },
  },
- html = {
-  formatters = {
-   exe = "prettier",
-   args = { "-w", "--print-width 100" },
-  },
- },
- css = {
-  formatters = {
-   {
-    exe = "prettier",
-    args = { "-w", "--print-width 100" },
-   },
-  },
-  linters = {},
-  lsp = {
-   provider = "cssls",
-   setup = {
-    cmd = {
-     "node",
-     "/usr/lib/node_modules/vscode-langservers-extracted/bin/vscode-css-language-server",
-     "--stdio",
-    },
-   },
-  },
- },
+ -- html = {
+ --  formatters = {
+ --   exe = "prettier",
+ --   args = { "-w", "--print-width 100" },
+ --  },
+ -- },
+ -- css = {
+ --  formatters = {
+ --   {
+ --    exe = "prettier",
+ --    args = { "-w", "--print-width 100" },
+ --   },
+ --  },
+ --  linters = {},
+ --  lsp = {
+ --   provider = "cssls",
+ --   setup = {
+ --    cmd = {
+ --     "node",
+ --     "/usr/lib/node_modules/vscode-langservers-extracted/bin/vscode-css-language-server",
+ --     "--stdio",
+ --    },
+ --   },
+ --  },
+ -- },
  json = {
   formatters = {
    -- {

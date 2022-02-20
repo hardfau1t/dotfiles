@@ -25,7 +25,7 @@ function mod.setup()
 			enable = true,              -- false will disable the whole extension
 		},
 		indent = {
-			enable = false,
+			enable = true,
 		},
 		incremental_selection = {
 			enable = true,

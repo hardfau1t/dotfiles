@@ -6,124 +6,132 @@
 @define-color pipe #7d818a;
 
 window#waybar {
-    /* background-color: rgba(0x11,0x11, 0x12, 0.6); */
-    /* background-color: #4c566a; */
-    background-color: #0b0c0d;
+  /* background-color: rgba(0x11,0x11, 0x12, 0.6); */
+  /* background-color: #4c566a; */
+  background-color: #0b0c0d;
 }
 * {
-    min-height: 0px;
-    font-size: 11px;
-    font-family: Sans;
-    min-height: 0px;
-    font-weight: 600;
-    padding-bottom: 1px;
-    padding-top: 1px;
+  min-height: 0px;
+  font-size: 11px;
+  font-family: Sans;
+  min-height: 0px;
+  font-weight: 600;
+  padding-bottom: 1px;
+  padding-top: 1px;
 }
 /* center module */
-#clock{
-    margin: 2px 0px 2px 0px ;
-    color: #a2bab1;
-    padding-left: 8px;
-    padding-right: 8px;
-    background-color: @bg1;
-    border-radius: 8px;
+#clock {
+  margin: 2px 0px 2px 0px;
+  color: #a2bab1;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: @bg1;
+  border-radius: 8px;
 }
 
 /* right module */
-#pulseaudio, #custom-bluetooth, #network, #disk, #memory, #cpu, #backlight, #battery {
-    color: @font;
-    margin: 2px 0px 2px 0px ;
-    padding: 0px 8px 0px 8px;
-    background-color: @bg1;
-    padding-top: 2px;
-    padding-bottom: 2px;
+#pulseaudio,
+#custom-bluetooth,
+#network,
+#disk,
+#memory,
+#cpu,
+#backlight,
+#battery {
+  color: @font;
+  margin: 2px 0px 2px 0px;
+  padding: 0px 8px 0px 8px;
+  background-color: @bg1;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
-#tray, #custom-power{
-    color: @font;
-    margin: 2px 0px 2px 0px ;
-    padding: 0px 2px 0px 2px;
-    background-color: @bg1;
-    color: #bf616a;
-    padding-top: 2px;
-    padding-bottom: 2px;
-}
-
-#workspaces{
-    margin: 2px 2px 2px 2px;
-    padding: 0px 2px 0px 6px;
-    border-radius: 6px;
-    background-color: @bg1;
-}
-
-#workspaces button{
-    background: @bg1;
-    color: @font;
-    margin: 2px 3px 2px 3px;
-    padding: 0px;
+#tray,
+#custom-power {
+  color: @font;
+  margin: 2px 0px 2px 0px;
+  padding: 0px 2px 0px 2px;
+  background-color: @bg1;
+  color: #bf616a;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 
-#workspaces button.focused{
-    /* color: @ws-clr; */
-    /* background: @ws_foc; */
-    border-width: 2px;
-    border-color: #CC241D;
-    color: #ffd77a;
-    background-color: #504945;
-    border-radius: 3px;
-    border-style: none none outset none;
+#workspaces {
+  margin: 2px 2px 2px 2px;
+  padding: 0px 2px 0px 6px;
+  border-radius: 6px;
+  background-color: @bg1;
 }
 
-#workspaces button.urgent{
+#workspaces button {
+  background: @bg1;
+  color: @font;
+  margin: 2px 3px 2px 3px;
+  padding: 0px;
 }
 
-#custom-left_pad{
-    border-radius: 8px 0px 0px 8px;
-    padding:0px 2px 0px 2px;
-    margin: 2px 0px 2px 2px ;
-    background-color: @bg1;
+#workspaces button.focused {
+  /* color: @ws-clr; */
+  /* background: @ws_foc; */
+  border-width: 2px;
+  border-color: #cc241d;
+  color: #ffd77a;
+  background-color: #504945;
+  border-radius: 3px;
+  border-style: none none outset none;
 }
 
-#custom-right_pad{
-    border-radius: 0px 8px 8px 0px;
-    padding:0px 2px 0px 2px;
-    margin: 2px 2px 2px 0px ;
-    background-color: @bg1;
-}
-#custom-pipe{
-    margin-top:2px;
-    margin-bottom:2px;
-    font-size: 16px;
-    background-color: @bg1;
-    color: @pipe;
+#workspaces button.urgent {
 }
 
-#mpd{
-    color: @mpd;
+#custom-left_pad {
+  border-radius: 8px 0px 0px 8px;
+  padding: 0px 2px 0px 2px;
+  margin: 2px 0px 2px 2px;
+  background-color: @bg1;
 }
-#pulseaudio{
-    color: #FB4934 ;
+
+#custom-right_pad {
+  border-radius: 0px 8px 8px 0px;
+  padding: 0px 2px 0px 2px;
+  margin: 2px 2px 2px 0px;
+  background-color: @bg1;
 }
-#custom-bluetooth{
-    color: #FE8019;
+#custom-pipe {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  font-size: 16px;
+  background-color: @bg1;
+  color: @pipe;
 }
-#network{
-    color: #FABD2F ;
+
+#mpd {
+  color: @mpd;
 }
-#disk{
-    color: #EBDBB2;
+#pulseaudio {
+  color: #fb4934;
 }
-#memory{
-    color: #B8BB26 ;
+#custom-bluetooth {
+  color: #fe8019;
 }
-#cpu{
-    color: #8EC07C;
+#network {
+  color: #fabd2f;
 }
-#backlight{
-    color: #83A598;
+#disk {
+  color: #ebdbb2;
 }
-#battery{
-    color: #D3869B;
+#memory {
+  color: #b8bb26;
 }
-#custom-power{
-    color: #FB4934 ;
+#cpu {
+  color: #8ec07c;
+}
+#backlight {
+  color: #83a598;
+}
+#battery {
+  color: #d3869b;
+}
+#custom-power {
+  color: #fb4934;
 }
