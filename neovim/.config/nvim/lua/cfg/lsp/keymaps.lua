@@ -4,7 +4,6 @@ local buf_keymap = vim.api.nvim_buf_set_keymap
 mod.setup = function(bufn)
 	local opts = { noremap = true, silent = true }
     local avail, wk = pcall(require, "which-key")
-
     if not avail then
         print("which key is required")
         return
