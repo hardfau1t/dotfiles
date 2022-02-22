@@ -26,6 +26,7 @@ function mod.setup()
 		},
 		indent = {
 			enable = true,
+            disable = {"neorg"}
 		},
 		incremental_selection = {
 			enable = true,
