@@ -61,8 +61,8 @@ function mod.init()
 			},
 			["core.keybinds"] = {
 				config = { -- Note that this table is optional and doesn't need to be provided
-				default_keybinds = true,
-				neorg_leader = "<CR>",
+				default_keybinds = false,
+				neorg_leader = "\\",
 				hook = require("cfg.neorg.keymaps").set_keymaps
 				},
 			},
