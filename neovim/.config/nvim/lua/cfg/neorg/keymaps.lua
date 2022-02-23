@@ -21,5 +21,5 @@ end
 
 local opts = { noremap = true, silent = false }
 vim.api.nvim_set_keymap("n", "\\", "<nop>", opts)
-vim.api.nvim_set_keymap("n", "\\<space>", ":NeorgStart<CR>", opts)
+vim.api.nvim_set_keymap("n", "\\\\", ":NeorgStart<CR>", opts)
 return mod
