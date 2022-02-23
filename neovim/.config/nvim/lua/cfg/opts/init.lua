@@ -1,5 +1,5 @@
 vim.g.mapleader = ' '
-vim.g.rust_recommended_style = false
+vim.g.rust_recommended_style = 0
 vim.g.netrw_winsize = 10
 -- show tabs and spaces
 vim.o.list = true
@@ -38,8 +38,8 @@ vim.o.autoread = true
 vim.o.ttyfast = true
 vim.o.termguicolors = true
 vim.o.wildmenu = true
-vim.o.autoindent = false                  -- use treesitter indentation
-vim.o.smartindent = true
+vim.bo.autoindent = false                  -- use treesitter indentation
+vim.bo.smartindent = false
 vim.o.hlsearch = true
 vim.o.signcolumn = "number"
 vim.o.numberwidth = 3
