@@ -144,8 +144,6 @@
             "headphone": "",
             "hands-free": "",
             "headset": "",
-            /* "hands-free": "", */
-            /* "headset": "", */
             "phone": "",
             "portable": "",
             "car": "",
@@ -189,13 +187,13 @@
         "on-click-middle": "close"
     },
     "mpd": {
-        "format": "♪ {artist} - {title}  {elapsedTime:%M:%S}/{totalTime:%M:%S}",
-        /* "unknown-tag": "{file}", */
-        "format-paused": "{title} 懶",
+        "format": "{stateIcon} {title} - {elapsedTime:%M:%S}/{totalTime:%M:%S}",
+        "format-paused": "{title}  懶",
         "interval": 1,
-        //"max-length": 15,
-        "exec": "echo \"$(mpc current | sed 's/&//') – $(mpc status | awk '{print $3}' | sed -n 2p | sed 's/&//')\"",
-        "exec-if": "pgrep mpd",
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
         "on-click": "mpc toggle",
         "on-click-right": "~/.config/waybar/scripts/mp_toggle.sh",
     },

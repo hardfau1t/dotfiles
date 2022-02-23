@@ -4,7 +4,7 @@ After=mpd.service
 
 [Service]
 Type=exec
-ExecStart=/home/gireesh/.local/bin/mp_rater
+ExecStart=%h/.local/bin/mp_rater -vvvv -L
 Restart=always
 
 [Install]
