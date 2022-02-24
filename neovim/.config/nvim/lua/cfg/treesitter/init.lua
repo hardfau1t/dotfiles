@@ -25,8 +25,7 @@ function mod.setup()
 			enable = true,              -- false will disable the whole extension
 		},
 		indent = {
-			enable = true,
-            disable = {"neorg"}
+			enable = false,
 		},
 		incremental_selection = {
 			enable = true,

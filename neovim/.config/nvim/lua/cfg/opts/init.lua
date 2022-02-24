@@ -3,7 +3,7 @@ vim.g.rust_recommended_style = 0
 vim.g.netrw_winsize = 10
 -- show tabs and spaces
 vim.o.list = true
-vim.o.listchars='eol:,tab:> ,trail:●,extends:…,precedes:…'
+vim.o.listchars='tab:> ,trail:●,extends:…,precedes:…'
 vim.o.sidescrolloff=20
 
 vim.o.tabstop=4
@@ -38,8 +38,8 @@ vim.o.autoread = true
 vim.o.ttyfast = true
 vim.o.termguicolors = true
 vim.o.wildmenu = true
-vim.bo.autoindent = false                  -- use treesitter indentation
-vim.bo.smartindent = false
+vim.bo.autoindent = true                  -- use treesitter indentation
+vim.bo.smartindent = true
 vim.o.hlsearch = true
 vim.o.signcolumn = "number"
 vim.o.numberwidth = 3

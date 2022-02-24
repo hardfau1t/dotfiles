@@ -1,10 +1,10 @@
 [Unit]
 Description=watches for playcounts and skips
-After=mpd.service
+After=mpd.service mako.service
 
 [Service]
 Type=exec
-ExecStart=%h/.local/bin/mp_rater -vvvv -L
+ExecStart=%h/.local/bin/mp_rater --use-tags -vvvv -L
 Restart=always
 
 [Install]
