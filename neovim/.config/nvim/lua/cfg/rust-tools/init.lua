@@ -14,6 +14,7 @@ M.setup = function()
           },
           checkOnSave = {
             command = "clippy",
+            allTargets = false,
           },
           rustfmt = {
             extraArgs = { "--config", "tab_spaces=" .. vim.o.shiftwidth },

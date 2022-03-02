@@ -1,2 +1,3 @@
 source ~/.config/gdb/gef.py
+add-auto-load-safe-path ~/playground/rust/karyakarta/boot_loader/.gdbinit
 

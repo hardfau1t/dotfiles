@@ -6,6 +6,11 @@ vim.o.list = true
 vim.o.listchars='tab:> ,trail:●,extends:…,precedes:…'
 vim.o.sidescrolloff=20
 
+vim.bo.autoindent = true                  -- use treesitter indentation
+vim.bo.smartindent = true
+
+vim.wo.cursorline=true
+
 vim.o.tabstop=4
 vim.o.softtabstop=4
 vim.o.shiftwidth=4
@@ -38,8 +43,6 @@ vim.o.autoread = true
 vim.o.ttyfast = true
 vim.o.termguicolors = true
 vim.o.wildmenu = true
-vim.bo.autoindent = true                  -- use treesitter indentation
-vim.bo.smartindent = true
 vim.o.hlsearch = true
 vim.o.signcolumn = "number"
 vim.o.numberwidth = 3
