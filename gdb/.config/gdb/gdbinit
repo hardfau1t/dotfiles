@@ -1,4 +1,4 @@
 source ~/.config/gdb/gef.py
 set output-radix 16
-add-auto-load-safe-path ~/playground/rust/karyakarta/boot_loader/.gdbinit
+set auto-load safe-path ~/playground/rust/karyakarta/
 
