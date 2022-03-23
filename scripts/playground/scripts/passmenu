@@ -14,7 +14,7 @@ fi
 
 prefix=${PASSWORD_STORE_DIR-~/.password-store}
 cd $prefix
-password=$(find . -name "*.gpg" | sed 's/\.\///' | $dmenu "$@" |sed 's/\.gpg//')
+password=$(find . -name "*.gpg" | sed 's/\.\///' |sed 's/\.gpg//'| $dmenu "$@" )
 cd -
 [[ -n $password ]] || exit
 
