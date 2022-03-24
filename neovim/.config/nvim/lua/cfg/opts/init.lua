@@ -16,6 +16,7 @@ vim.o.softtabstop=4
 vim.o.shiftwidth=4
 vim.o.number = true
 vim.o.foldmethod="indent"
+vim.o.foldenable=false
 vim.o.scrolloff=10
 vim.o.textwidth=0
 vim.o.undodir= vim.fn.stdpath("cache") .. "/undodir"
