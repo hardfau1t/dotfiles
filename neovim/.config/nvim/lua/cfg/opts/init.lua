@@ -52,3 +52,17 @@ vim.opt.spelllang = { 'en_us' }
 vim.cmd("syntax on")
 vim.cmd("filetype plugin indent on")
 
+vim.api.nvim_create_autocmd("WinEnter",
+{
+    desc = "set cursorline on bufenter",
+    callback  = function ()
+        vim.wo.cursorline=true
+    end,
+})
+vim.api.nvim_create_autocmd("WinLeave",
+{
+    desc = "set cursorline on bufenter",
+    callback  = function ()
+        vim.wo.cursorline=false
+    end,
+})
