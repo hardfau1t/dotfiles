@@ -70,6 +70,12 @@ packer.startup(function()
     -- for syncing files with remote repo
     use("kenn7/vim-arsync")
     use({
+        "windwp/nvim-autopairs",
+        config = function()
+            require("nvim-autopairs").setup()
+        end
+    })
+    use({
         "folke/which-key.nvim",
         config = function()
             require("cfg.which-key").setup()
