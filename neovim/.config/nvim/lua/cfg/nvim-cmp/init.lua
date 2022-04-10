@@ -29,10 +29,8 @@ mod.setup = function()
             ["<C-k>"] = cmp.mapping.scroll_docs(4),
             ["<C-s>"] = cmp.mapping(function(fallback)
                 if ls.jumpable(1) then
-                    print("jumpable jumping")
                     ls.jump(1)
                 elseif cmp.visible() then
-                    print("printing")
                     cmp.confirm({ select = true })
                 else
                     fallback()
