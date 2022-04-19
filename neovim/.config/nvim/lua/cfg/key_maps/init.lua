@@ -67,6 +67,12 @@ wk.register({
         i = { ':cscope find i <cword><CR>', "files #including this file"},
         s = { ':cscope find s <cword><CR>', "Find C symbol"},
         t = { ':cscope find t <cword><CR>', "Find text string"},
+    },
+------------------------------------ Buffer management------------------------
+    b = {
+        name = "BufferManagement",
+        n = { ':bnext<CR>', "Next"},
+        p = { ':bprevious<CR>', "Prev"},
     }
 }, {prefix = "<leader>"})
 

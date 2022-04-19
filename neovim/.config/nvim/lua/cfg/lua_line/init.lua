@@ -45,12 +45,12 @@ local config = {
         globalstatus = true,
     },
     tabline = {
-        lualine_a = { "buffers" },
-        lualine_b = {},
+        lualine_a = { "tabs" },
+        lualine_b = { "filename" },
         lualine_c = {},
-        lualine_x = { "filename" },
+        lualine_x = {},
         lualine_y = {},
-        lualine_z = { "tabs" },
+        lualine_z = { "buffers" },
     },
     sections = {
         -- these are to remove the defaults
