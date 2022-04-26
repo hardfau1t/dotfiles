@@ -127,7 +127,7 @@ input "1267:12423:ELAN1300:00_04F3:3087_Touchpad" {
     bindsym $mod+g                  workspace 7
     bindsym $mod+c                  workspace 8
     bindsym $mod+r                  workspace 9
-    bindsym $mod+backspace          workspace 10
+    bindsym $mod+backspace          workspace 0
 
     bindsym $mod+1                  workspace 1
     bindsym $mod+2                  workspace 2
@@ -138,7 +138,7 @@ input "1267:12423:ELAN1300:00_04F3:3087_Touchpad" {
     bindsym $mod+7                  workspace 7
     bindsym $mod+8                  workspace 8
     bindsym $mod+9                  workspace 9
-    bindsym $mod+0                  workspace 10
+    bindsym $mod+0                  workspace 0
 # move to workspace
     bindsym $mod+Shift+apostrophe   move container to workspace 1
     bindsym $mod+Shift+comma        move container to workspace 2
@@ -149,7 +149,7 @@ input "1267:12423:ELAN1300:00_04F3:3087_Touchpad" {
     bindsym $mod+Shift+g            move container to workspace 7
     bindsym $mod+Shift+c            move container to workspace 8
     bindsym $mod+Shift+r            move container to workspace 9
-    bindsym $mod+Shift+backspace    move container to workspace 10
+    bindsym $mod+Shift+backspace    move container to workspace 0
 
     bindsym $mod+Shift+1            move container to workspace 1
     bindsym $mod+Shift+2            move container to workspace 2
@@ -160,7 +160,7 @@ input "1267:12423:ELAN1300:00_04F3:3087_Touchpad" {
     bindsym $mod+Shift+7            move container to workspace 7
     bindsym $mod+Shift+8            move container to workspace 8
     bindsym $mod+Shift+9            move container to workspace 9
-    bindsym $mod+Shift+0            move container to workspace 10
+    bindsym $mod+Shift+0            move container to workspace 0
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 workspace 0 output  $main_mon

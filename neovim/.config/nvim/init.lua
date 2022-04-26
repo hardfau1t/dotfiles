@@ -82,12 +82,12 @@ packer.startup(function()
         end,
     })
 
-    use({
-        "yuttie/comfortable-motion.vim",
-        config = function()
-            require("cfg.comfortable-motion").setup()
-        end,
-    })
+    -- use({
+    --     "yuttie/comfortable-motion.vim",
+    --     config = function()
+    --         require("cfg.comfortable-motion").setup()
+    --     end,
+    -- })
     use({
         "nvim-treesitter/nvim-treesitter",
         config = function()
