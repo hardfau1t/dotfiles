@@ -49,7 +49,7 @@ vim.o.numberwidth = 3
 vim.opt.spell = false
 vim.opt.spelllang = { 'en_us' }
 
-vim.cmd("syntax on")
+-- vim.cmd("syntax on")                     -- if enabled treesitter fails to start
 vim.cmd("filetype plugin indent on")
 
 vim.api.nvim_create_autocmd("WinEnter",

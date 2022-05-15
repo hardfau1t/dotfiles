@@ -182,12 +182,7 @@ packer.startup(function()
         end,
     })
 
-    use({
-        "neovim/nvim-lspconfig",
-        config = function()
-            require("cfg.lsp").setup()
-        end,
-    })
+    use( "neovim/nvim-lspconfig")
     use({
         "simrat39/rust-tools.nvim",
         requires = { { "neovim/nvim-lspconfig", required = true } },
@@ -211,3 +206,4 @@ packer.startup(function()
     use({ "onsails/lspkind-nvim", requires = { "hrsh7th/nvim-cmp" } }) -- lsp completion formatting
     use({ "petertriho/cmp-git", requires = { "hrsh7th/nvim-cmp", "nvim-lua/plenary.nvim" } }) -- vim spell check
 end)
+require("cfg.lsp").setup()

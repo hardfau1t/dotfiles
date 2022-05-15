@@ -15,7 +15,6 @@ function mod.setup()
             "python",
             "norg",
             "norg_meta",
-            "norg_table",
             "lua",
             "bash",
             "html",
