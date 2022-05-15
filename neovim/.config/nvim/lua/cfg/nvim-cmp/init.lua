@@ -28,15 +28,14 @@ mod.setup = function()
             ["<C-j>"] = cmp.mapping.scroll_docs(-4),
             ["<C-k>"] = cmp.mapping.scroll_docs(4),
             ["<C-s>"] = cmp.mapping(function(fallback)
-                if ls.jumpable(1) then
-                    ls.jump(1)
-                elseif cmp.visible() then
-                    cmp.confirm({ select = true })
+                if ls.expand_or_jumpable() then
+                    ls.expand_or_jump()
                 else
                     fallback()
                 end
             end),
-            ["<C-S>"] = cmp.mapping(function(fallback)
+            ["<C-o>"] = cmp.mapping(function(fallback)
+                print("blah")
                 if ls.jumpable(-1) then
                     ls.jump(-1)
                 else
