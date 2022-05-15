@@ -19,7 +19,6 @@ mod.set_keymaps = function(kb)
     kb.map("norg", "n", kb.leader .. "cq", ":Neorg toc toqflist<CR>")
 end
 
-local opts = { noremap = true, silent = false }
-vim.api.nvim_set_keymap("n", "\\", "<nop>", opts)
-vim.api.nvim_set_keymap("n", "\\\\", ":NeorgStart<CR>", opts)
+vim.keymap.set("n", "\\", "<nop>")
+vim.keymap.set("n", "\\\\", ":NeorgStart<CR>")
 return mod

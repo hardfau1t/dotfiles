@@ -7,6 +7,7 @@ function mod.setup()
 		return
 	end
 	comment.setup({
+        ignore = "^$",
 		toggler = {
 			line = "<leader>c<leader>",
 			block = "<leader>cb",

@@ -68,11 +68,14 @@ packer.startup(function()
     use("morhetz/gruvbox")
     --------------
     -- for syncing files with remote repo
-    use("kenn7/vim-arsync")
+    -- use("kenn7/vim-arsync")
     use({
         "windwp/nvim-autopairs",
         config = function()
-            require("nvim-autopairs").setup()
+            require("nvim-autopairs").setup({
+                disable_in_macro = true,
+                map_c_w = true,
+            })
         end
     })
     use({

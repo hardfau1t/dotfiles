@@ -4,44 +4,43 @@ if not avail then
 	print("which key is required")
 	return
 end
-local opts = { noremap=true, silent=true }
 
 -- setting for leader key
-vim.api.nvim_set_keymap('n', '<Space>', '<NOP>', opts)
+vim.keymap.set('n', '<Space>', '<NOP>')
 
 -- no highlight
-vim.api.nvim_set_keymap('n', '<F3>', ':set hlsearch!<CR>', opts)
+vim.keymap.set('n', '<F3>', ':set hlsearch!<CR>')
 
 -- redo remap
-vim.api.nvim_set_keymap('n', 'U', '<C-r>', opts)
-vim.api.nvim_set_keymap('n', '<C-r>', '<NOP>', opts)
+vim.keymap.set('n', 'U', '<C-r>')
+vim.keymap.set('n', '<C-r>', '<NOP>')
 
 -----------------window management------------------------
 -- window movement
-vim.api.nvim_set_keymap('n', '<C-h>', ':wincmd h<CR>', opts)
-vim.api.nvim_set_keymap('n', '<C-l>', ':wincmd l<CR>', opts)
-vim.api.nvim_set_keymap('n', '<C-j>', ':wincmd j<CR>', opts)
-vim.api.nvim_set_keymap('n', '<C-k>', ':wincmd k<CR>', opts)
+vim.keymap.set('n', '<C-h>', ':wincmd h<CR>')
+vim.keymap.set('n', '<C-l>', ':wincmd l<CR>')
+vim.keymap.set('n', '<C-j>', ':wincmd j<CR>')
+vim.keymap.set('n', '<C-k>', ':wincmd k<CR>')
 -- terminal mode movement
-vim.api.nvim_set_keymap('t', '<C-h>', '<C-\\><C-n>:wincmd h<CR>', opts)
-vim.api.nvim_set_keymap('t', '<C-l>', '<C-\\><C-n>:wincmd l<CR>', opts)
-vim.api.nvim_set_keymap('t', '<C-j>', '<C-\\><C-n>:wincmd j<CR>', opts)
-vim.api.nvim_set_keymap('t', '<C-k>', '<C-\\><C-n>:wincmd k<CR>', opts)
+vim.keymap.set('t', '<C-h>', '<C-\\><C-n>:wincmd h<CR>')
+vim.keymap.set('t', '<C-l>', '<C-\\><C-n>:wincmd l<CR>')
+vim.keymap.set('t', '<C-j>', '<C-\\><C-n>:wincmd j<CR>')
+vim.keymap.set('t', '<C-k>', '<C-\\><C-n>:wincmd k<CR>')
 -- window resize
-vim.api.nvim_set_keymap('n', '<C-w>>', '<C-w>><C-w>', {silent = true})
-vim.api.nvim_set_keymap('n', '<C-w><', '<C-w><<C-w>', {silent = true})
-vim.api.nvim_set_keymap('n', '<C-w>+', '<C-w>+<C-w>', {silent = true})
-vim.api.nvim_set_keymap('n', '<C-w>-', '<C-w>-<C-w>', {silent = true})
+vim.keymap.set('n', '<C-w>>', '<C-w>><C-w>', {silent = true})
+vim.keymap.set('n', '<C-w><', '<C-w><<C-w>', {silent = true})
+vim.keymap.set('n', '<C-w>+', '<C-w>+<C-w>', {silent = true})
+vim.keymap.set('n', '<C-w>-', '<C-w>-<C-w>', {silent = true})
 
-vim.api.nvim_set_keymap('n', '<C-w><CR>', '<NOP>', {silent = true})
+vim.keymap.set('n', '<C-w><CR>', '<NOP>', {silent = true})
 
 
 -- shifting in visual mode
-vim.api.nvim_set_keymap('v', '>', '>gv', opts)
-vim.api.nvim_set_keymap('v', '<', '<gv', opts)
+vim.keymap.set('v', '>', '>gv')
+vim.keymap.set('v', '<', '<gv')
 
 -- copy content to system buffer in visual mode as well as 
-vim.api.nvim_set_keymap('v', 'y', '"+ygvy', opts)
+vim.keymap.set('v', 'y', '"+ygvy')
 
 
 wk.register({
