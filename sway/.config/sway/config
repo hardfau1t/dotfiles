@@ -18,7 +18,7 @@ output $second_mon mode 1400x900 pos 1600,0 transform 270
 output $main_mon mode 1600x900 pos 0,0 
 output * bg "/home/gireesh/Pictures/wallpapers/minimal_planes.jpg" fill
 
-xwayland disable
+xwayland enable
 
 # sway better initialization
 #

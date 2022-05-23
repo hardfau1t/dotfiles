@@ -1,4 +1,5 @@
 source ~/.config/gdb/gef.py
 set output-radix 16
 set auto-load safe-path ~/playground/rust/karyakarta/
-
+gef config context.layout "source threads"
+gef config context.clear_screen False

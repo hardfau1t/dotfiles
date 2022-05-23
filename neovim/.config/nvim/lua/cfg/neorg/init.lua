@@ -40,10 +40,16 @@ function mod.init()
                 config = {
                     workspace = "my_workspace",
                     inbox = "inbox.norg",
-                    exclude = {
+                    displayers = {
+                        projects = {
+                            show_completed_projects = false,
+                            show_projects_without_tasks = false,
+                        },
+                    },
+                    --[[ exclude = {
                         "notes",
                         "references",
-                    },
+                    }, ]]
                 },
             },
             ["core.integrations.telescope"] = {},

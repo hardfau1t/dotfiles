@@ -9,7 +9,6 @@ M.setup = function()
       settings = {
         ["rust-analyzer"] = {
           assist = {
-            importMergeBehavior = "last",
             importPrefix = "by_self",
           },
           checkOnSave = {
