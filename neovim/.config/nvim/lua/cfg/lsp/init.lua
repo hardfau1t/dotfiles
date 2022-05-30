@@ -40,7 +40,7 @@ mod.setup = function()
     print("lspconfig module not found")
     return
   end
-  require("vim.lsp.log").set_level(2)
+  require("vim.lsp.log").set_level(vim.log.levels.ERROR)
 
   for _, cfg in pairs(config) do
     local lsp = cfg.lsp
