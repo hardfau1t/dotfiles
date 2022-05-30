@@ -14,8 +14,8 @@ set $menu wofi
 
 set $main_mon eDP-1
 set $second_mon VGA-1
-output $second_mon mode 1400x900 pos 1600,0 transform 270
-output $main_mon mode 1600x900 pos 0,0 
+output $second_mon mode 1920x1080 pos 0,0 transform 0
+output $main_mon mode 1600x900 pos 1920,0
 output * bg "/home/gireesh/Pictures/wallpapers/minimal_planes.jpg" fill
 
 xwayland enable
@@ -163,16 +163,16 @@ input "1267:12423:ELAN1300:00_04F3:3087_Touchpad" {
     bindsym $mod+Shift+0            move container to workspace 0
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
-workspace 0 output  $main_mon
-workspace 2 output  $main_mon
-workspace 4 output  $main_mon
-workspace 6 output  $main_mon
-workspace 8 output  $main_mon
-workspace 1 output  $second_mon
-workspace 3 output  $second_mon
-workspace 5 output  $second_mon
-workspace 7 output  $second_mon
-workspace 9 output  $second_mon
+workspace 1 output $second_mon
+workspace 2 output $second_mon
+workspace 3 output $second_mon
+workspace 4 output $second_mon
+workspace 5 output $second_mon
+workspace 6 output $main_mon
+workspace 7 output $main_mon
+workspace 8 output $main_mon
+workspace 9 output $main_mon
+workspace 0 output $main_mon
 #
 # Layout stuff:
 #
