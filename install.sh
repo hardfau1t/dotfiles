@@ -27,7 +27,7 @@ zathura=zathura
 swaylock=swaylock
 
 
-for app in $zsh $alacritty $gdb $mako $mpd $neovim $nwg_launchers $starship $sway $systemd $tmux $vifm $waybar $launcher $xkb $zathura $swaylock
+for app in $zsh $alacritty $gdb $mako $mpd $neovim $nwg_launchers $starship $sway $systemd $tmux $vifm $waybar $launcher $xkb $zathura $swaylock scripts
 do
     if  ! stow $app
     then
