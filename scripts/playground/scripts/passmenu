@@ -7,7 +7,7 @@ if [[ $1 == "--type" ]]; then
 fi
 
 if [[ -n $WAYLAND_DISPLAY ]]; then
-	dmenu="wofi --show dmenu"
+	dmenu="fuzzel -d"
 	xdotool="wtype"
 fi
 

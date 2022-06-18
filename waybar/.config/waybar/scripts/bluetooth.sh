@@ -32,7 +32,7 @@ function toggle(){
         bluetoothctl power on > /dev/null
         echo ""
         # list 
-         bluetoothctl devices | wofi --show dmenu 2> /dev/null  | cut -d " " -f2| xargs bluetoothctl connect 
+         bluetoothctl devices | fuzzel -d 2> /dev/null  | cut -d " " -f2| xargs bluetoothctl connect 
         # bluetoothctl --timeout 2 scan on | tail +3 | wofi --show dmenu | xargs bluetoothctl connect
         # connect
     else

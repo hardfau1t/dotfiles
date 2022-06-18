@@ -10,7 +10,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term alacritty
-set $menu wofi
+set $menu fuzzel
 
 set $main_mon eDP-1
 set $second_mon VGA-1

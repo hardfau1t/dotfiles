@@ -1,5 +1,5 @@
 export PATH=~/.local/bin:~/.cargo/bin:$PATH
-export CM_LAUNCHER=wofi
+export CM_LAUNCHER=fuzzel
 export BROWSER=firefox
 export TERMINAL=alacritty
 export READER=zathura

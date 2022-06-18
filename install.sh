@@ -21,13 +21,13 @@ systemd=systemd
 tmux=tmux
 vifm=vifm
 waybar=waybar
-wofi=wofi
+launcher=fuzzel
 xkb=xkb
 zathura=zathura
 swaylock=swaylock
 
 
-for app in $zsh $alacritty $gdb $mako $mpd $neovim $nwg_launchers $starship $sway $systemd $tmux $vifm $waybar $wofi $xkb $zathura $swaylock
+for app in $zsh $alacritty $gdb $mako $mpd $neovim $nwg_launchers $starship $sway $systemd $tmux $vifm $waybar $launcher $xkb $zathura $swaylock
 do
     if  ! stow $app
     then

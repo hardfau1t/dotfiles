@@ -10,7 +10,7 @@ My dot files for arch/sway desktop.
 - neovim
 - alacritty  
 - nwg-launchers   
-- wofi
+- fuzzel
 - bash
 - mako
 - starship

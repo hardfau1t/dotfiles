@@ -1,5 +1,5 @@
 export PATH=/home/gireesh/.local/bin:$PATH:/home/gireesh/playground/scripts:~/.cargo/bin:~/programs/stm33cubeide/
-export CM_LAUNCHER=wofi
+export CM_LAUNCHER=fuzzel
 export BROWSER=firefox
 export TERMINAL=alacritty
 export READER=zathura
