@@ -279,7 +279,7 @@ bindsym $mod+grave mode "resize"
     bindsym $mod+semicolon exec 'color_pick.sh'
     #bindsym $mod+semicolon exec 'color_pick.sh'
 #clipman
-    bindsym $mod+v exec clipman pick -t wofi
+    bindsym $mod+v exec clipman pick -t CUSTOM -T "fuzzel -d"
 # passmenu
     bindsym $mod+u exec passmenu
 # element
