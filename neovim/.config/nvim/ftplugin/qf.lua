@@ -1,4 +1,4 @@
-local opts = { buffer = true, silent = true }
+local opts = { buffer = false, silent = true }
 
 vim.keymap.set("n", "<C-n>", ":cnext<CR>", opts)
 vim.keymap.set("n", "<C-p>", ":cprev<CR>", opts)
