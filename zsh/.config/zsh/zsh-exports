@@ -1,3 +1,10 @@
+# xdg ninja recommendation
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_STATE_HOME=$HOME/.local/state
+export XDG_CACHE_HOME=$HOME/.cache
+export HISTFILE="${XDG_STATE_HOME}"/shell_history
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+
 export LANG=en_IN.UTF-8
 export STARSHIP_CACHE=~/.starship/cache
 export LC_CTYPE=en_IN.UTF-8
@@ -7,6 +14,5 @@ export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
 #export TERM="tmux-256color"
 export EDITOR=nvim
 export SYSTEMD_EDITOR=nvim
-HISTFILE=~/.cache/zsh/zsh_history
 HISTSIZE=10000
 SAVEHIST=10000

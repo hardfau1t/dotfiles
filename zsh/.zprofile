@@ -1,4 +1,5 @@
-export PATH=~/.local/bin:~/.cargo/bin:$PATH
+export PATH=~/.local/bin:$PATH
+
 export CM_LAUNCHER=fuzzel
 export BROWSER=firefox
 export TERMINAL=alacritty
@@ -20,10 +21,9 @@ export ZLOCALDIR=~/.local/share/zsh
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 export LIBSEAT_BACKEND=logind
 
-source "$HOME/.cargo/env"
+source $ZDOTDIR/zsh-exports
+source "$CARGO_HOME/env"
+
 XCURSOR_THEME=bibata
 XCURSOR_SIZE=32
 
-if [[ $(tty) = /dev/tty1 ]]; then
-	sway
-fi
