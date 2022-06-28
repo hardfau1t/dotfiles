@@ -76,7 +76,7 @@ packer.startup(function()
                 disable_in_macro = true,
                 map_c_w = true,
             })
-        end
+        end,
     })
     use({
         "folke/which-key.nvim",
@@ -135,6 +135,7 @@ packer.startup(function()
     })
     use({
         "jose-elias-alvarez/null-ls.nvim",
+        disable = true,
         requires = { { "nvim-lua/plenary.nvim" } },
         -- disable = true,
         config = function()
@@ -186,9 +187,10 @@ packer.startup(function()
     use({
         "simrat39/rust-tools.nvim",
         requires = { { "neovim/nvim-lspconfig", required = true } },
-        config = function()
-            require("cfg.rust-tools").setup({})
-        end,
+        afetr = "neovim/nvim-lspconfig",
+        -- config = function()
+        --     require("cfg.rust-tools").setup({})
+        -- end,
     })
     -- nvim cmp plugin and sources
     use({
@@ -207,3 +209,4 @@ packer.startup(function()
     use({ "petertriho/cmp-git", requires = { "hrsh7th/nvim-cmp", "nvim-lua/plenary.nvim" } }) -- vim spell check
 end)
 require("cfg.lsp").setup()
+require("cfg.rust-tools").setup({})

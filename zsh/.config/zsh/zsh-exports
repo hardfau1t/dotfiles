@@ -1,18 +1,66 @@
-# xdg ninja recommendation
+# xdg-exports
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_STATE_HOME=$HOME/.local/state
 export XDG_CACHE_HOME=$HOME/.cache
-export HISTFILE="${XDG_STATE_HOME}"/shell_history
-export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export XDG_CONFIG_HOME=~/.config
+export XDG_LIB_DIR=~/.local/share/lib
+export XDG_CURRENT_DESKTOP=sway
+export XDG_CACHE_DIR=~/.cache
+export XDG_SESSION_TYPE=wayland
 
-export LANG=en_IN.UTF-8
-export STARSHIP_CACHE=~/.starship/cache
-export LC_CTYPE=en_IN.UTF-8
-export CHEAT_CONFIG_PATH="~/.config/cheat/conf.yml"
+
+# applications
+export CM_LAUNCHER=fuzzel
+export BROWSER=firefox
+export TERMINAL=alacritty
+export READER=zathura
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
-#export TERM="tmux-256color"
 export EDITOR=nvim
 export SYSTEMD_EDITOR=nvim
-HISTSIZE=10000
-SAVEHIST=10000
+
+# application config export
+export GRIM_DEFAULT_DIR=~/Pictures/grim/
+export STARSHIP_CACHE=~/.starship/cache
+export CHEAT_CONFIG_PATH="~/.config/cheat/conf.yml"
+export MOZ_ENABLE_WAYLAND=1
+export MPC_FORMAT="%position% \t- %id% \t- %title% \t- %file%"
+export PASSWORD_STORE_DIR=~/.config/password-store
+export GNUPGHOME="~/.config/gnupg"
+#android studio
+export ANDROID_HOME="$XDG_DATA_HOME"/android
+#gdb
+export GDBHISTFILE="$XDG_CONFIG_HOME"/gdb/.gdb_history
+#gef
+export GEF_RC="$XDG_CONFIG_HOME"/gef/.gef.rc
+#go
+export GOPATH="$XDG_DATA_HOME"/go
+#ipython
+export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
+#python
+export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
+# node
+export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
+#cargo
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+# rustup
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+# sqlite
+export SQLITE_HISTORY="$XDG_CACHE_HOME"/sqlite_history
+
+
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+export QT_QPA_PLATFORM=wayland
+export IGNOREOF=100
+export LANG=en_IN.UTF-8
+export LC_CTYPE=en_IN.UTF-8
+export HISTFILE="${XDG_STATE_HOME}"/shell_history
+#export TERM="tmux-256color"
+export HISTSIZE=10000
+export SAVEHIST=10000
+export LIBSEAT_BACKEND=logind
+
+export XCURSOR_THEME=bibata
+export XCURSOR_SIZE=32
