@@ -1,6 +1,7 @@
 local mod = {}
 
 mod.setup = function()
+    vim.g.completeopt = "menu,menuone,noselect"
     local status, ls, cmp, lspkind
     status, ls = pcall(require, "luasnip")
     if not status then
@@ -23,10 +24,9 @@ mod.setup = function()
                 ls.lsp_expand(args.body)
             end,
         },
-        preselect = cmp.PreselectMode.None,
-        mapping = {
-            ["<C-j>"] = cmp.mapping.scroll_docs(-4),
-            ["<C-k>"] = cmp.mapping.scroll_docs(4),
+        mapping = cmp.mapping.preset.insert({
+            ["<C-j>"] = cmp.mapping.scroll_docs(4),
+            ["<C-k>"] = cmp.mapping.scroll_docs(-4),
             ["<C-s>"] = cmp.mapping(function(fallback)
                 if not ls.expand_or_jump() then
                     fallback()
@@ -56,9 +56,9 @@ mod.setup = function()
                 end
             end),
             ["<C-c>"] = cmp.mapping.close(),
-        },
+        }),
 
-        sources = {
+        sources = cmp.config.sources({
             { name = "luasnip", max_item_count = 4 },
             { name = "nvim_lsp", max_item_count = 8 },
             { name = "nvim_lua" },
@@ -66,13 +66,13 @@ mod.setup = function()
             { name = "git" },
             { name = "path" },
             { name = "buffer", keyword_length = 4 },
-        },
+        }),
         formatting = {
             format = lspkind.cmp_format(),
         },
         experimental = {
             native_menu = false,
-            ghost_text = false,
+            ghost_text = true,
         },
     })
 end

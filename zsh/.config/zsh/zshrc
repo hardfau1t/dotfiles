@@ -44,7 +44,7 @@ zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 # More completions https://github.com/zsh-users/zsh-completions
 
 # Key-bindings
-bindkey -s '^o' 'vifm^M'
+bindkey -s '^o' 'ranger^M'
 # bindkey -s '^n' 'nvim $(fzf)^M'
 # bindkey -s '^v' 'nvim\n'
 bindkey '^[[P' delete-char
