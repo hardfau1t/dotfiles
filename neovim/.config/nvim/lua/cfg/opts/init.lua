@@ -1,30 +1,30 @@
-vim.g.mapleader = ' '
+vim.g.mapleader = " "
 vim.g.rust_recommended_style = 0
 vim.g.netrw_winsize = 10
 -- show tabs and spaces
 vim.o.list = true
-vim.o.listchars='tab:> ,trail:●,extends:…,precedes:…'
-vim.o.sidescrolloff=20
+vim.o.listchars = "tab:> ,trail:●,extends:…,precedes:…"
+vim.o.sidescrolloff = 20
 
-vim.bo.autoindent = true                  -- use treesitter indentation
+vim.bo.autoindent = true -- use treesitter indentation
 vim.bo.smartindent = true
 
-vim.wo.cursorline=true
+vim.wo.cursorline = true
 
-vim.o.tabstop=4
-vim.o.softtabstop=4
-vim.o.shiftwidth=4
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
 vim.o.number = true
-vim.o.foldmethod="indent"
-vim.o.foldenable=false
-vim.o.scrolloff=10
-vim.o.textwidth=0
-vim.o.undodir= vim.fn.stdpath("cache") .. "/undodir"
-vim.o.inccommand="nosplit"
-vim.o.timeoutlen=1000
-vim.o.updatetime=1500                       -- for this interval file is not written to disk(incase of swap file)
-vim.o.clipboard="unnamed"
-vim.o.linebreak  = false
+vim.o.foldmethod = "indent"
+vim.o.foldenable = false
+vim.o.scrolloff = 10
+vim.o.textwidth = 0
+vim.o.undodir = vim.fn.stdpath("cache") .. "/undodir"
+vim.o.inccommand = "nosplit"
+vim.o.timeoutlen = 1000
+vim.o.updatetime = 1500 -- for this interval file is not written to disk(incase of swap file)
+vim.o.clipboard = "unnamed"
+vim.o.linebreak = false
 vim.o.wrap = false
 vim.o.swapfile = false
 vim.o.backup = false
@@ -47,22 +47,22 @@ vim.o.signcolumn = "number"
 vim.o.numberwidth = 3
 
 vim.opt.spell = false
-vim.opt.spelllang = { 'en_us' }
+vim.opt.spelllang = { "en_us" }
 
 -- vim.cmd("syntax on")                     -- if enabled treesitter fails to start
 vim.cmd("filetype plugin indent on")
 
-vim.api.nvim_create_autocmd("WinEnter",
-{
+vim.api.nvim_create_autocmd("WinEnter", {
     desc = "set cursorline on bufenter",
-    callback  = function ()
-        vim.wo.cursorline=true
+    callback = function()
+        vim.wo.cursorline = true
+        vim.wo.cursorcolumn = true
     end,
 })
-vim.api.nvim_create_autocmd("WinLeave",
-{
+vim.api.nvim_create_autocmd("WinLeave", {
     desc = "set cursorline on bufenter",
-    callback  = function ()
-        vim.wo.cursorline=false
+    callback = function()
+        vim.wo.cursorline = false
+        vim.wo.cursorcolumn = false
     end,
 })

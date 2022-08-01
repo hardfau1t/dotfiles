@@ -60,6 +60,10 @@ function mod.init()
                     },
                 },
             },
+            ["core.integrations.nvim-cmp"] = {
+                config = {
+                },
+            },
             ["core.norg.completion"] = {
                 config = {
                     engine = "nvim-cmp", -- We current support nvim-compe and nvim-cmp only

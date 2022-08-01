@@ -24,15 +24,25 @@ mod.setup = function()
                 ls.lsp_expand(args.body)
             end,
         },
+        preselect = cmp.PreselectMode.Item,
         mapping = cmp.mapping.preset.insert({
             ["<C-j>"] = cmp.mapping.scroll_docs(4),
             ["<C-k>"] = cmp.mapping.scroll_docs(-4),
             ["<C-s>"] = cmp.mapping(function(fallback)
-                if not ls.expand_or_jump() then
+                if ls.expandable() then
+                    ls.expand()
+                else
                     fallback()
                 end
             end),
-            ["<C-o>"] = cmp.mapping(function(fallback)
+            ["<Tab>"] = cmp.mapping(function(fallback)
+                if ls.jumpable(1) then
+                    ls.jump(1)
+                else
+                    fallback()
+                end
+            end),
+            ["<S-Tab>"] = cmp.mapping(function(fallback)
                 if ls.jumpable(-1) then
                     ls.jump(-1)
                 else

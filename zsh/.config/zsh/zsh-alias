@@ -13,6 +13,7 @@ alias mbsync=mbsync -c "$XDG_CONFIG_HOME"/isync/mbsyncrc
 alias mitmproxy="mitmproxy --set confdir=$XDG_CONFIG_HOME/mitmproxy"
 alias mitmweb="mitmweb --set confdir=$XDG_CONFIG_HOME/mitmproxy"
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
+alias dig='resolvectl query'
 #alias cfg='/usr/bin/git --git-dir=/home/gireesh/playground/gits/dotfiles --work-tree=/home/gireesh'
 
 alias mea='mv "/drives/storage/music/$(mpc current -f '%file%')" "/home/gireesh/storage/music/average" && mpc update && mpc next'
