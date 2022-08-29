@@ -292,6 +292,17 @@ local cfg = {
             },
         },
     },
+    javascript = {
+        lsp = {
+            provider = "denols",
+            setup = {
+                cmd = {
+                    "deno",
+                    "lsp"
+                }
+            }
+        }
+    },
 }
 
 return cfg

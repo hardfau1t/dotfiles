@@ -24,7 +24,7 @@ mod.setup = function()
                 ls.lsp_expand(args.body)
             end,
         },
-        preselect = cmp.PreselectMode.Item,
+        preselect = cmp.PreselectMode.None,
         mapping = cmp.mapping.preset.insert({
             ["<C-j>"] = cmp.mapping.scroll_docs(4),
             ["<C-k>"] = cmp.mapping.scroll_docs(-4),
