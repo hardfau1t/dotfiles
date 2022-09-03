@@ -25,6 +25,19 @@ function status(){
     fi
 }
 
+function connect(){
+    declare -A address
+    devices=`bluetoothctl devices | cut -d ' ' -f 2-`
+    IFS=$'\n'
+     for dev in `bluetoothctl devices | cut -d  ' ' -f 2-`
+     do
+         name=(`echo -n "$dev" | cut -d ' ' -f 2-`)
+         names+=("$name")
+         address["$name"]="$(echo -n "$dev" | cut -d ' ' -f 1)"
+     done
+     bluetoothctl connect "${address[`echo "${names[*]}" | fuzzel -d 2>/dev/null`]}"
+}
+
 function toggle(){
     if bluetoothctl show  | rg -i 'powered'| rg -o 'no' > /dev/null
     then
