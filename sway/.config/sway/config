@@ -1,4 +1,4 @@
-# vim: syntax=config
+# vim: syntax=i3config
 
 #==============programs===================
 set $menu fuzzel
@@ -7,13 +7,13 @@ set $term alacritty
 include private.config
 include shortcuts.config
 include style.config
+include bar
 include init.config
 
 output * bg "/home/gireesh/Pictures/wallpapers/minimal_planes.jpg" fill
 xwayland enable
 input $keyboard xkb_layout cust
 focus_follows_mouse no
-bar swaybar_command waybar
 
 # exec swayidle -w                                    \
 #    timeout 180 'swaymsg "output * dpms off"'       \

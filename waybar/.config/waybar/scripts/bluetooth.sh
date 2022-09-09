@@ -44,10 +44,7 @@ function toggle(){
         # power on device
         bluetoothctl power on > /dev/null
         echo ""
-        # list 
-         bluetoothctl devices | fuzzel -d 2> /dev/null  | cut -d " " -f2| xargs bluetoothctl connect 
-        # bluetoothctl --timeout 2 scan on | tail +3 | wofi --show dmenu | xargs bluetoothctl connect
-        # connect
+        connect
     else
         # poweroff
         bluetoothctl power off > /dev/null
@@ -56,11 +53,12 @@ function toggle(){
 
 }
 
-while getopts ":st" opt
+while getopts ":stc" opt
 do
     case $opt in 
         s) status ;;
         t) toggle ;;
+        c) connect ;;
         *) exit 1;;
     esac
 done

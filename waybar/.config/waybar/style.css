@@ -31,7 +31,7 @@ window#waybar {
 
 /* right module */
 #pulseaudio,
-#custom-bluetooth,
+#bluetooth,
 #network,
 #disk,
 #memory,
@@ -111,7 +111,7 @@ window#waybar {
 #pulseaudio {
   color: #fb4934;
 }
-#custom-bluetooth {
+#bluetooth {
   color: #fe8019;
 }
 #network {

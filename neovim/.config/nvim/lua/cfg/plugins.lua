@@ -138,6 +138,13 @@ packer.startup(function()
         end,
         requires = { "nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope" },
     })
+    -- init.lua
+    use {
+        'lukas-reineke/headlines.nvim',
+        config = function()
+            require('headlines').setup()
+        end,
+    }
     use({
         "nvim-lualine/lualine.nvim",
         requires = { "kyazdani42/nvim-web-devicons", opt = true },

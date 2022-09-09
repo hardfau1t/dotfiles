@@ -1,19 +1,11 @@
 // vim:syntax=json
 {
-    "layer" : "top",
+    "output": "eDP-1",
+    "ipc" : true,
     "modules-left": ["sway/workspaces", "mpd"],
     "modules-center": ["clock"],
-    "modules-right": ["custom/left_pad", "pulseaudio", "custom/pipe", "custom/bluetooth", "custom/pipe", "network", "custom/pipe", "disk", "custom/pipe", "memory", "custom/pipe", "cpu", "custom/pipe", "backlight", "custom/pipe", "battery", "custom/right_pad", "custom/left_pad", "tray","custom/power", "custom/right_pad"],
+    "modules-right": [ "pulseaudio", "custom/pipe", "bluetooth", "custom/pipe", "network", "custom/pipe", "disk", "custom/pipe", "memory", "custom/pipe", "cpu", "custom/pipe", "backlight", "custom/pipe", "battery", "tray","custom/power"],
 
-    "custom/right_pad":{
-        "format": " "
-        },
-    "custom/left_pad":{
-        "format": " "
-        },
-    "custom/pipe":{
-        "format": "|"
-        },
     "sway/workspaces": {
       "disable-scroll": false,
       "all-outputs": true,
@@ -41,29 +33,7 @@
         "default": ""
       }
     },
-    "custom/media": {
-       "format":"{icon}   {}",
-       "return-type": "json",
-       "format-icons": {
-          "Playing": "",
-          "Paused": "",
-          "Music": ""
-       },
-       "max-length":45,
-       "interval":3,
-       "exec": "fish -c playerstatus | tail -1",
-       "exec-on-event":"fish -c playerstatus | tail -1",
-       "on-click": "playerctl play-pause",
-       "on-click-right": "cmus-remote -u"
-    },
     "tray": {
-    },
-    "idle_inhibitor": {
-         "format": "{icon}",
-         "format-icons": {
-         "activated": "",
-         "deactivated": ""
-      }
     },
     "clock": {
         "format": "{:%I:%M %p}",
@@ -72,9 +42,8 @@
     },
     "cpu": {
         "format": "{usage}% ",
-        "on-click": "alacritty -e ytop",
-        "tooltip": false,
-        "on-click": "alacritty -e htop"
+        "on-click": "alacritty -e btm",
+        "tooltip": false
     },
     "memory": {
         "format": "{}% ",
@@ -165,27 +134,6 @@
       	"on-click": "nwgbar -o 0.4",
     	  "tooltip": false 
     },
-    "custom/github": {
-    	  "format": "",
-    	  "on-click": "xdg-open https://github.com",
-    	  "tooltip": false 
-    },
-    "custom/youtube": {
-      	"format": "",
-    	  "on-click": "xdg-open https://www.youtube.com/",
-    	  "tooltip": false 
-    },
-    "wlr/taskbar": {
-        "format": "{icon}",
-        // "format": "{title:.16}",
-        "icon-theme": "Papirus",
-        "icon-size": 15,
-        "on-click": "activate",
-        "markup": true,
-        "max-length": 7,
-        "on-click-right": "minimize",
-        "on-click-middle": "close"
-    },
     "mpd": {
         "format": "{stateIcon} {title} - {elapsedTime:%M:%S}/{totalTime:%M:%S}",
         "format-paused": "{title}  懶",
@@ -197,18 +145,13 @@
         "on-click": "mpc toggle",
         "on-click-right": "~/.config/waybar/scripts/mp_toggle.sh",
     },
-    "custom/network":{
-        "format": "{}",
-        "interval": 2,
-        "format-alt-click": "click-right",
-        "exec": "~/.config/waybar/scripts/network.sh",
-        "return-type": "json",
-        "escape": true,
-    },
-    "custom/bluetooth": {
-        "format": "{}",
-        "interval": 1,
-        "exec": "~/.config/waybar/scripts/bluetooth.sh -s",
+    "bluetooth": {
+        "format-disabled": "",
+        "format-on": "",
+        "format-off": "",
+        "format-connected": "",
+        "tooltip-format" : "{status} {device_alias}",
         "on-click" : "~/.config/waybar/scripts/bluetooth.sh -t",
+        "on-click-right" : "~/.config/waybar/scripts/bluetooth.sh -c"
     }
 }
