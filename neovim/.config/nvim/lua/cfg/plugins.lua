@@ -1,7 +1,7 @@
-
 local fn = vim.fn
 -- install packer if its not installed
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+
 
 local fresh_inst = false
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -54,9 +54,6 @@ packer.startup(function()
     })
     use("folke/tokyonight.nvim")
     use("morhetz/gruvbox")
-    --------------
-    -- for syncing files with remote repo
-    -- use("kenn7/vim-arsync")
     use({
         "windwp/nvim-autopairs",
         config = function()
@@ -136,6 +133,7 @@ packer.startup(function()
         config = function()
             require("cfg.neorg").init()
         end,
+        run = ":Neorg sync-parsers",
         requires = { "nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope" },
     })
     use({
@@ -171,7 +169,7 @@ packer.startup(function()
         end,
     })
 
-    use( "neovim/nvim-lspconfig")
+    use("neovim/nvim-lspconfig")
     use({
         "simrat39/rust-tools.nvim",
         requires = { { "neovim/nvim-lspconfig", required = true } },
@@ -200,14 +198,14 @@ packer.startup(function()
 end)
 -- auto load packer file if its written
 vim.api.nvim_create_autocmd("BufWritePost", {
-    group = vim.api.nvim_create_augroup("WriteSync", {clear = true}),
-    pattern = {"*plugins.lua"},
+    group = vim.api.nvim_create_augroup("WriteSync", { clear = true }),
+    pattern = { "*plugins.lua" },
     command = 'source <afile> | PackerSync '
 })
 
 vim.api.nvim_create_autocmd("BufWritePost", {
     -- 2 groups should have different name otherwise first group will be overwritten
-    group = vim.api.nvim_create_augroup("WriteCompile", {clear = true}),
-    pattern = {"*/.config/nvim/*"},
+    group = vim.api.nvim_create_augroup("WriteCompile", { clear = true }),
+    pattern = { "*/.config/nvim/*" },
     command = 'source <afile> | PackerCompile '
 })

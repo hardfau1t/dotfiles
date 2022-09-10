@@ -3,7 +3,7 @@ require("cfg.lsp.visuals")
 
 -- cursor highlighting enable
 local function documentHighlight(client, _)
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.document_highlight then
     vim.api.nvim_exec(
       [[
       hi LspReferenceRead cterm=bold ctermbg=red guibg=#464646
@@ -23,8 +23,8 @@ end
 mod.custom_attach = function(client, bufnr)
   documentHighlight(client, bufnr)
   if client.name == "sumneko_lua" then
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+    client.server_capabilities.document_formatting = false
+    client.server_capabilities.document_range_formatting = false
   end
   require("cfg.lsp.keymaps").setup(bufnr)
 end

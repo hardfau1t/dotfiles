@@ -41,13 +41,25 @@ vim.keymap.set("v", "<", "<gv", { silent = true })
 -- copy content to system buffer in visual mode as well as
 vim.keymap.set("v", "y", '"+ygvy', { silent = true })
 
+local sync_all = function()
+    local found, pc = pcall(require, "packer")
+    if not found then
+        print("packer not found")
+        return
+    end
+    pc.clean()
+    pc.update()
+    vim.api.nvim_command("TSUpdate")
+
+end
+
 wk.register({
     ---------------------Packer------------------------------
     p = {
         name = "packer",
         i = { ":PackerInstall<CR>", "Install" },
         u = { ":PackerUpdate<CR>", "Update" },
-        s = { ":PackerSync<CR>", "Sync all" },
+        s = { sync_all, "Sync all" },
         S = { ":PackerStatus<CR>", "status" },
         c = { ":PackerCompile<CR>", "compile" },
         r = { ":PackerClean<CR>", "clean/remove" },
@@ -71,4 +83,8 @@ wk.register({
         n = { ":bnext<CR>", "Next" },
         p = { ":bprevious<CR>", "Prev" },
     },
+    r = {
+        name = "Run Programs",
+        c = { ":source %<CR>", "source current program" },
+    }
 }, { prefix = "<leader>" })
