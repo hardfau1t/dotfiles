@@ -138,13 +138,6 @@ packer.startup(function()
         end,
         requires = { "nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope" },
     })
-    -- init.lua
-    use {
-        'lukas-reineke/headlines.nvim',
-        config = function()
-            require('headlines').setup()
-        end,
-    }
     use({
         "nvim-lualine/lualine.nvim",
         requires = { "kyazdani42/nvim-web-devicons", opt = true },
@@ -203,6 +196,7 @@ packer.startup(function()
     use({ "onsails/lspkind-nvim", requires = { "hrsh7th/nvim-cmp" } }) -- lsp completion formatting
     use({ "petertriho/cmp-git", requires = { "hrsh7th/nvim-cmp", "nvim-lua/plenary.nvim" } }) -- vim spell check
     use 'NoahTheDuke/vim-just'
+    use 'lervag/vimtex'
 end)
 -- auto load packer file if its written
 vim.api.nvim_create_autocmd("BufWritePost", {
