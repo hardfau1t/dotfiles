@@ -40,6 +40,7 @@ vim.keymap.set("v", "<", "<gv", { silent = true })
 
 -- copy content to system buffer in visual mode as well as
 vim.keymap.set("v", "y", '"+ygvy', { silent = true })
+vim.keymap.set("v", "P", '"_dP', { silent = true })
 
 local sync_all = function()
     local found, pc = pcall(require, "packer")

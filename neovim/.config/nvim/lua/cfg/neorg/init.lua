@@ -10,7 +10,7 @@ function mod.init()
             ["core.export"] = {},
             ["core.export.markdown"] = {
                 config = {
-                extensions = {"math"}
+                extensions = {"todo-items-basic", "todo-items-pending", "todo-items-extended", "definition-lists", "mathematics" }
                 }
             },
             ["core.gtd.base"] = {
@@ -23,14 +23,13 @@ function mod.init()
                             show_projects_without_tasks = false,
                         },
                     },
-                    --[[ exclude = {
-                        "notes",
+                    exclude = {
                         "references",
-                    }, ]]
+                    },
                 },
             },
             ["core.integrations.telescope"] = {},
-            ["core.norg.dirman"] = { -- Manage your directories with Neorg
+            ["core.norg.dirman"] = {
                 config = {
                     workspaces = {
                         my_workspace = "~/.local/share/personal_space",
@@ -43,11 +42,11 @@ function mod.init()
             },
             ["core.norg.completion"] = {
                 config = {
-                    engine = "nvim-cmp", -- We current support nvim-compe and nvim-cmp only
+                    engine = "nvim-cmp",
                 },
             },
             ["core.keybinds"] = {
-                config = { -- Note that this table is optional and doesn't need to be provided
+                config = {
                     default_keybinds = true,
                     neorg_leader = "\\",
                     hook = require("cfg.neorg.keymaps").set_keymaps,
