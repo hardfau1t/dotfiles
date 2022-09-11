@@ -86,6 +86,6 @@ wk.register({
     },
     r = {
         name = "Run Programs",
-        c = { ":source %<CR>", "source current program" },
+        s = { ":source %<CR>", "source current program" },
     }
 }, { prefix = "<leader>" })
