@@ -27,7 +27,7 @@ local function math_expr()
         local cont = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
         vim.api.nvim_buf_delete(buf, {})
         -- ignore if the buffer is empty
-        if cont and not (#cont == 1 and cont[1] == "") then
+        if cont and not vim.deep_equal(cont, {"$$"}) then
             vim.api.nvim_put(cont, "", true, true)
         end
     end
