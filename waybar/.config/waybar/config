@@ -1,7 +1,7 @@
 // vim:syntax=json
 {
-    "output": "eDP-1",
     "ipc" : true,
+    /* "modules-left": ["hyprland/window", "mpd"], */
     "modules-left": ["sway/workspaces", "mpd"],
     "modules-center": ["clock"],
     "modules-right": [ "pulseaudio", "custom/pipe", "bluetooth", "custom/pipe", "network", "custom/pipe", "disk", "custom/pipe", "memory", "custom/pipe", "cpu", "custom/pipe", "backlight", "custom/pipe", "battery", "tray","custom/power"],
@@ -32,6 +32,9 @@
         "urgent": "",
         "default": ""
       }
+    },
+    "hyprland/window": {
+    "format": "👉 {}"
     },
     "tray": {
     },

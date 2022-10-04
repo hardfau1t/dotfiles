@@ -194,6 +194,7 @@ packer.startup(function()
     use({ "onsails/lspkind-nvim", requires = { "hrsh7th/nvim-cmp" } }) -- lsp completion formatting
     use({ "petertriho/cmp-git", requires = { "hrsh7th/nvim-cmp", "nvim-lua/plenary.nvim" } }) -- vim spell check
     use 'NoahTheDuke/vim-just'
+    use 'elkowar/yuck.vim'
 end)
 -- auto load packer file if its written
 vim.api.nvim_create_autocmd("BufWritePost", {
