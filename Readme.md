@@ -3,6 +3,8 @@ My dot files for arch/sway desktop.
 
 ---
 
+###Note: these screenshots are from commit **b4fc8ad** or [link](https://github.com/hardfau18/dotfiles/tree/v1)
+
 ![screenshot](screenshot.png)
 
 ---
