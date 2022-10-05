@@ -64,3 +64,6 @@ export LIBSEAT_BACKEND=logind
 
 export XCURSOR_THEME=bibata
 export XCURSOR_SIZE=32
+
+# uses all cores for compilation
+export MAKEFLAGS="${MAKEFLAGS} -j$(expr $(nproc) - 1)"

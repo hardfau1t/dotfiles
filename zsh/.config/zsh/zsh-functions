@@ -31,7 +31,7 @@ function zsh_add_completion() {
     if [ "$2" = true ] && compinit "${completion_file:1}"
 }
 
-await ()
+function await ()
 {
     until ping -c 1 -q -W 1 $1  >/dev/null
     do
@@ -40,4 +40,13 @@ await ()
     (mpv /usr/share/sounds/freedesktop/stereo/complete.oga 2>/dev/null > /dev/null &)
     notify-send -t 5000 "$1" up
     wait
+}
+
+function countdown() {
+    for i in $(seq 1 $1)
+    do
+        echo -ne "remaining time: $(expr $1 - $i )\r"
+        sleep 1;
+    done
+    notify-send "Times Up" "$2" -t 10000
 }

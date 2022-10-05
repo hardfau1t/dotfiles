@@ -34,6 +34,8 @@ source "$ZDOTDIR/zsh-functions"
 zsh_add_file "zsh-exports"
 zsh_add_file "zsh-vim-mode"
 zsh_add_file "zsh-alias"
+
+
 # api keys and other things
 [ -f "$XDG_CONFIG_HOME/keys" ] && source "$XDG_CONFIG_HOME/keys"
 
