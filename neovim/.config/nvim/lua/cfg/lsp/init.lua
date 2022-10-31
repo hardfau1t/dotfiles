@@ -49,7 +49,7 @@ mod.setup = function()
       lsp.setup.capabilities = vim.lsp.protocol.make_client_capabilities()
       local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
       if status_ok then
-        lsp.setup.capabilities = cmp_nvim_lsp.update_capabilities(lsp.setup.capabilities)
+        lsp.setup.capabilities = cmp_nvim_lsp.default_capabilities()
       end
       lspconfig[lsp.provider].setup(lsp.setup)
     end
