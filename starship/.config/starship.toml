@@ -1,5 +1,5 @@
 scan_timeout=10
-command_timeout=500
+command_timeout=100
 add_newline=false
 
 format= "$status[\\[](bold green) $battery$hostname$directory$git_branch$git_status$git_state[\\]](bold green)$jobs"

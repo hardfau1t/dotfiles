@@ -12,7 +12,10 @@ include init.config
 
 output * bg "/home/gireesh/Pictures/wallpapers/minimal_planes.jpg" fill
 xwayland enable
-input $keyboard xkb_layout cust
+input $keyboard {
+    xkb_layout cust,in
+    xkb_variant ,kan
+}
 focus_follows_mouse no
 
 # exec swayidle -w                                    \

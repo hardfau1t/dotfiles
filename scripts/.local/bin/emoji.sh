@@ -81,6 +81,7 @@ exit
 😰 anxious face with sweat
 😥 sad but relieved face
 😢 crying face
+🥹 face holding back tears
 😭 loudly crying face
 😱 face screaming in fear
 😖 confounded face

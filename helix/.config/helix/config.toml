@@ -17,5 +17,3 @@ character = "╎"
 [editor.whitespace.render]
 newline = "all"
 
-[editor.whitespace.render]
-newline = "⏎"

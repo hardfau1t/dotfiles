@@ -58,8 +58,8 @@ mod.set_keymaps = function(kb)
     kb.map("norg", "n", kb.leader .. "oc", ":Neorg toc close<CR>")
     kb.map("norg", "n", kb.leader .. "oq", ":Neorg toc toqflist<CR>")
     kb.map_event("norg", "i", "<C-l>", "core.integrations.telescope.insert_link")
-    kb.map("norg", "i", "<C-i>", math_expr)
-    kb.map("norg", "n", "\\im", math_expr)
+    -- kb.map("norg", "i", "<C-i>", math_expr)
+    -- kb.map("norg", "n", "\\im", math_expr)
 end
 
 vim.keymap.set("n", "\\", "<nop>")
