@@ -52,6 +52,7 @@ packer.startup(function()
             vim.cmd([[colorscheme kanagawa]])
         end,
     })
+    use 'rafcamlet/nvim-luapad'
     use("folke/tokyonight.nvim")
     use("morhetz/gruvbox")
     use({
