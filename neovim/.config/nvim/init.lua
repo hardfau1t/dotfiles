@@ -1,4 +1,4 @@
-require("cfg.opts")
+require("cfg")
 require("cfg.utils")
 require("cfg.packer")
 require("cfg.global_keymaps")

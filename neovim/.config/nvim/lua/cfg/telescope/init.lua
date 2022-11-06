@@ -6,7 +6,7 @@ function mod.setup()
         print("telescope is not installed")
         return
     end
-    local builtin = require("telescope.builtin")
+    local builtin  = require("telescope.builtin")
     telescope.setup({
         defaults = {
             vimgrep_arguments = {
@@ -74,7 +74,7 @@ function mod.setup()
     vim.keymap.set("n", "<leader>te",
         function() builtin.find_files({ cwd = vim.fn.stdpath("config"), follow = true }) end,
         { silent = true })
-    vim.keymap.set("n", "<leader>t;", function() builtin.find_files({ follow = true }) end,
+    vim.keymap.set("n", "<leader>t<space>", function () builtin.find_files({ follow = true }) end,
         { silent = true })
 end
 
