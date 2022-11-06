@@ -23,7 +23,7 @@ function mod.setup()
 	}
 	ntree.setup(options)
 	-- keymaps
-	require("cfg.nvim-tree.keymaps")
+    vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", {silent=true})
 end
 
 return mod

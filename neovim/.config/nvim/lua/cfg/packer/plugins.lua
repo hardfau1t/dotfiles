@@ -26,13 +26,6 @@ function mod.plugins()
         end,
     })
     use({
-        "folke/which-key.nvim",
-        config = function()
-            require("cfg.which-key").setup()
-        end,
-    })
-
-    use({
         "nvim-treesitter/nvim-treesitter",
         config = function()
             require("cfg.treesitter").setup()
