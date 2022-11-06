@@ -1,6 +1,6 @@
 require("cfg.opts")
 require("cfg.utils")
 require("cfg.packer")
-require("cfg.key_maps")
+require("cfg.global_keymaps")
 require("cfg.lsp").setup()
 require("cfg.rust-tools").setup({})

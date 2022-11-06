@@ -50,14 +50,14 @@ function mod.plugins()
     use({
         "numToStr/Comment.nvim",
         config = function()
-            require("cfg.comment_nvim.init").setup()
+            require("cfg.comment_nvim").setup()
         end,
     })
     use({ -- diagnostics looks cool
         "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
         config = function()
-            require("cfg.trouble").setup()
+            require("trouble").setup({})
         end,
     })
     use({
