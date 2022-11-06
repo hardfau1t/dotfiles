@@ -1,52 +1,32 @@
 local mod = {}
-local buf_keymap = vim.api.nvim_buf_set_keymap
 
-mod.setup = function(bufn)
-    local opts = { noremap = true, silent = true }
-    local avail, wk = pcall(require, "which-key")
-    if not avail then
-        print("which key is required")
-        return
-    end
-    buf_keymap(bufn, "i", "<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-    buf_keymap(bufn, "n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-    buf_keymap(bufn, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-    buf_keymap(bufn, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-    buf_keymap(bufn, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-    wk.register({
-        l = {
-            name = "Lsp",
-            w = {
-                name = "workspace actions",
-                a = { function () vim.lsp.buf.add_workspace_folder() end, "add folder" },
-                r = { function () vim.lsp.buf.remove_workspace_folder() end, "remove folder" },
-                l = {
-                    function () print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
-                    "list folders",
-                },
-            },
-            p = { function () require'lsp.utils'.PeekDefinition() end, "peak definition" },
-            h = { function () vim.lsp.buf.hover() end, "hover" },
-            s = { function () vim.lsp.buf.signature_help() end, "signature" },
-            r = { function () vim.lsp.buf.rename() end, "Rename" },
-            a = { function () vim.lsp.buf.code_action() end, "Code actions" },
-            t = { function () vim.lsp.buf.type_definition() end, "type definition" },
-            f = { function() vim.lsp.buf.format({async = true})end, "format" },
-            T = { "<cmd>LspStop<CR>", "Stop" },
-            i = { "<cmd>LspInfo<CR>", "Info" },
-            R = { "<cmd>LspRestart<CR>", "Restart" },
-        },
-        d = {
-            name = "diagnostics",
-            o = { function () vim.diagnostic.open_float() end, "open" },
-            p = { function () vim.diagnostic.goto_prev() end, "previous" },
-            n = { function () vim.diagnostic.goto_next() end, "next" },
-            s = { function () vim.diagnostic.show() end, "show" },
-            h = { function () vim.diagnostic.hide() end, "hide" },
-            d = { function () vim.diagnostic.disable() end, "disable" },
-            e = { function () vim.diagnostic.enable() end, "enable" },
-            q = { function () vim.diagnostic.toqflist() end, "to quickfix list" },
-        },
-    }, { prefix = "<leader>", buffer = bufn })
+mod.setup = function(_)
+    vim.keymap.set("i", "<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { buffer = true, silent = true })
+    vim.keymap.set("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", { buffer = true, silent = true })
+    vim.keymap.set("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", { buffer = true, silent = true })
+    vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { buffer = true, silent = true })
+    vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", { buffer = true, silent = true })
+    vim.keymap.set('n', "<leader>lwa", function() vim.lsp.buf.add_workspace_folder() end, { buffer = true })
+    vim.keymap.set('n', "<leader>lwr", function() vim.lsp.buf.remove_workspace_folder() end, { buffer = true })
+    vim.keymap.set('n', "<leader>lwl",
+        function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, { buffer = true })
+    vim.keymap.set('n', "<leader>lp", function() require 'lsp.utils'.PeekDefinition() end, { buffer = true })
+    vim.keymap.set('n', "<leader>lh", function() vim.lsp.buf.hover() end, { buffer = true })
+    vim.keymap.set('n', "<leader>ls", function() vim.lsp.buf.signature_help() end, { buffer = true })
+    vim.keymap.set('n', "<leader>lr", function() vim.lsp.buf.rename() end, { buffer = true })
+    vim.keymap.set('n', "<leader>la", function() vim.lsp.buf.code_action() end, { buffer = true })
+    vim.keymap.set('n', "<leader>lt", function() vim.lsp.buf.type_definition() end, { buffer = true })
+    vim.keymap.set('n', "<leader>lf", function() vim.lsp.buf.format({ async = true }) end, { buffer = true })
+    vim.keymap.set('n', "<leader>lT", "<cmd>LspStop<CR>", { buffer = true })
+    vim.keymap.set('n', "<leader>li", "<cmd>LspInfo<CR>", { buffer = true })
+    vim.keymap.set('n', "<leader>lR", "<cmd>LspRestart<CR>", { buffer = true })
+    vim.keymap.set('n', "<leader>do", function() vim.diagnostic.open_float() end, { buffer = true })
+    vim.keymap.set('n', "<leader>dp", function() vim.diagnostic.goto_prev() end, { buffer = true })
+    vim.keymap.set('n', "<leader>dn", function() vim.diagnostic.goto_next() end, { buffer = true })
+    vim.keymap.set('n', "<leader>ds", function() vim.diagnostic.show() end, { buffer = true })
+    vim.keymap.set('n', "<leader>dh", function() vim.diagnostic.hide() end, { buffer = true })
+    vim.keymap.set('n', "<leader>dd", function() vim.diagnostic.disable() end, { buffer = true })
+    vim.keymap.set('n', "<leader>de", function() vim.diagnostic.enable() end, { buffer = true })
+    vim.keymap.set('n', "<leader>dq", function() vim.diagnostic.toqflist() end, { buffer = true })
 end
 return mod

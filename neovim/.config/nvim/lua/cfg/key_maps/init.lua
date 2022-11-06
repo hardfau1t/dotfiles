@@ -1,10 +1,3 @@
-local avail, wk = pcall(require, "which-key")
-
-if not avail then
-    print("which key is required")
-    return
-end
-
 -- setting for leader key
 vim.keymap.set("n", "<Space>", "<NOP>")
 
@@ -60,32 +53,22 @@ local sync_all = function()
 
 end
 
-wk.register({
-    ---------------------Packer------------------------------
-    p = {
-        name = "packer",
-        i = { ":PackerInstall<CR>", "Install" },
-        u = { ":PackerUpdate<CR>", "Update" },
-        s = { sync_all, "Sync all" },
-        S = { ":PackerStatus<CR>", "status" },
-        c = { ":PackerCompile<CR>", "compile" },
-        r = { ":PackerClean<CR>", "clean/remove" },
-    },
-    ----------------------------------------cscope--------------------------------------------------
-    s = {
-        h = { ":cscope help<CR>" },
-        a = { ":cscope find a <cword><CR>", "assignments to this symbol" },
-        c = { ":cscope find c <cword><CR>", "functions calling this function" },
-        d = { ":cscope find d <cword><CR>", "functions called by this function" },
-        e = { ":cscope find e <cword><CR>", "egrep pattern" },
-        f = { ":cscope find f <cword><CR>", "Find this file" },
-        g = { ":cscope find g <cword><CR>", "definition" },
-        i = { ":cscope find i <cword><CR>", "files #including this file" },
-        s = { ":cscope find s <cword><CR>", "Find C symbol" },
-        t = { ":cscope find t <cword><CR>", "Find text string" },
-    },
-    r = {
-        name = "Run Programs",
-        s = { ":source %<CR>", "source current program" },
-    }
-}, { prefix = "<leader>" })
+---------------------Packer------------------------------
+vim.keymap.set("n", "<leader>pi", ":PackerInstall<CR>", { silent = true })
+vim.keymap.set("n", "<leader>pu", ":PackerUpdate<CR>", { silent = true })
+vim.keymap.set("n", "<leader>ps", sync_all, { silent = true })
+vim.keymap.set("n", "<leader>pS", ":PackerStatus<CR>", { silent = true })
+vim.keymap.set("n", "<leader>pc", ":PackerCompile<CR>", { silent = true })
+vim.keymap.set("n", "<leader>pr", ":PackerClean<CR>", { silent = true })
+----------------------------------------cscope--------------------------------------------------
+vim.keymap.set("n", "<leader>sa", ":cscope find a <cword><CR>", { silent = true })
+vim.keymap.set("n", "<leader>sc", ":cscope find c <cword><CR>", { silent = true })
+vim.keymap.set("n", "<leader>sd", ":cscope find d <cword><CR>", { silent = true })
+vim.keymap.set("n", "<leader>se", ":cscope find e <cword><CR>", { silent = true })
+vim.keymap.set("n", "<leader>sf", ":cscope find f <cword><CR>", { silent = true })
+vim.keymap.set("n", "<leader>sg", ":cscope find g <cword><CR>", { silent = true })
+vim.keymap.set("n", "<leader>si", ":cscope find i <cword><CR>", { silent = true })
+vim.keymap.set("n", "<leader>ss", ":cscope find s <cword><CR>", { silent = true })
+vim.keymap.set("n", "<leader>st", ":cscope find t <cword><CR>", { silent = true })
+
+vim.keymap.set("n", "<leader>st", ":source %<CR>", { silent = true })
