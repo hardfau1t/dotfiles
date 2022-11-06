@@ -86,9 +86,6 @@ function mod.plugins()
     use({
         "iamcco/markdown-preview.nvim",
         run = ":call mkdp#util#install()",
-        setup = function()
-            require("cfg.markdown-prev").setup()
-        end,
         ft = { "markdown" },
     })
     use({
