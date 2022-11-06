@@ -11,14 +11,14 @@ function mod.setup()
         extra = {
             above = "<leader>cO",
             below = "<leader>co",
-            eol = "<leader>cA",
+            eol = "<leader>ca",
         },
         mappings = {
             basic = "toggler",
         },
         opleader = {
-            line = "<leader>c",
-            block = "<leader>b",
+            line = "<leader>cc",
+            block = "<leader>cb",
         },
     })
     local avail, wk = pcall(require, "which-key")

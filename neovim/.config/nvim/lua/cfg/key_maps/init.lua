@@ -31,8 +31,13 @@ vim.keymap.set("n", "<C-w>>", "<C-w>><C-w>", { silent = true, remap = true })
 vim.keymap.set("n", "<C-w><", "<C-w><<C-w>", { silent = true, remap = true })
 vim.keymap.set("n", "<C-w>+", "<C-w>+<C-w>", { silent = true, remap = true })
 vim.keymap.set("n", "<C-w>-", "<C-w>-<C-w>", { silent = true, remap = true })
-
 vim.keymap.set("n", "<C-w><CR>", "<NOP>", { silent = true })
+
+-- buffer management
+vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { silent = true })
+vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { silent = true })
+vim.keymap.set("n", "<leader>bw", ":bwipeout<CR>", { silent = true })
+vim.keymap.set("n", "<leader>bc", clean_buf, { silent = true })
 
 -- shifting in visual mode
 vim.keymap.set("v", ">", ">gv", { silent = true })
@@ -41,6 +46,7 @@ vim.keymap.set("v", "<", "<gv", { silent = true })
 -- copy content to system buffer in visual mode as well as
 vim.keymap.set("v", "y", '"+ygvy', { silent = true })
 vim.keymap.set("v", "P", '"_dP', { silent = true })
+
 
 local sync_all = function()
     local found, pc = pcall(require, "packer")
@@ -77,12 +83,6 @@ wk.register({
         i = { ":cscope find i <cword><CR>", "files #including this file" },
         s = { ":cscope find s <cword><CR>", "Find C symbol" },
         t = { ":cscope find t <cword><CR>", "Find text string" },
-    },
-    ------------------------------------ Buffer management------------------------
-    b = {
-        name = "BufferManagement",
-        n = { ":bnext<CR>", "Next" },
-        p = { ":bprevious<CR>", "Prev" },
     },
     r = {
         name = "Run Programs",

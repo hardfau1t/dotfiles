@@ -1,8 +1,4 @@
-function _G.p(...)
-    print(vim.inspect(...))
-    return ...
-end
-
+-- removes all the unused buffers
 function _G.clean_buf()
     for _, v in pairs(vim.fn.getbufinfo()) do
         if v.hidden ~= 0 and v.listed == 1 then
