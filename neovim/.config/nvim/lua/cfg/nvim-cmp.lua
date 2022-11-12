@@ -34,21 +34,21 @@ mod.setup = function()
                 else
                     fallback()
                 end
-            end),
-            ["<Tab>"] = cmp.mapping(function(fallback)
+            end, {"i", "s"}),
+            ["<C-i>"] = cmp.mapping(function(fallback)
                 if ls.jumpable(1) then
                     ls.jump(1)
                 else
                     fallback()
                 end
-            end),
-            ["<S-Tab>"] = cmp.mapping(function(fallback)
+            end, {"i", "s"}),
+            ["<C-o>"] = cmp.mapping(function(fallback)
                 if ls.jumpable(-1) then
                     ls.jump(-1)
                 else
                     fallback()
                 end
-            end),
+            end, {"i", "s"}),
             ["<C-n>"] = cmp.mapping(
                 function(fallback) -- if completion available go to next,else if snippets available next item
                     if cmp.visible() then

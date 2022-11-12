@@ -7,6 +7,7 @@ vim.keymap.set("n", "<F3>", ":set hlsearch!<CR>")
 -- redo remap
 vim.keymap.set("n", "U", "<C-r>", { silent = true })
 vim.keymap.set("n", "<C-r>", "<NOP>", { silent = true })
+vim.keymap.set("i", "<C-o>", "<NOP>", { silent = true })
 
 -----------------window management------------------------
 -- window movement
