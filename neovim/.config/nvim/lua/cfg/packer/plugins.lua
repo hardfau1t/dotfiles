@@ -106,15 +106,21 @@ function mod.plugins()
         end,
     })
 
-    use("neovim/nvim-lspconfig")
-    use({
-        "simrat39/rust-tools.nvim",
-        requires = { { "neovim/nvim-lspconfig", required = true } },
-        afetr = "neovim/nvim-lspconfig",
-        -- config = function()
-        --     require("cfg.rust-tools").setup({})
-        -- end,
+    use 'j-hui/fidget.nvim' -- lsp status
+    use({ 'simrat39/symbols-outline.nvim',
+        config = function() require('cfg.lsp.symbols').setup()
+        end
     })
+    use({ 'simrat39/inlay-hints.nvim', config = function() require("inlay-hints").setup({
+            renderer = "inlay-hints/render/eol",
+            hints = {
+                parameter = {
+                    show = false,
+                }
+            }
+        })
+    end })
+    use("neovim/nvim-lspconfig")
     -- nvim cmp plugin and sources
     use({
         "hrsh7th/nvim-cmp",

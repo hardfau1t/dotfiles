@@ -1,5 +1,6 @@
 local schemas = nil
 local status_ok, jsonls_settings = pcall(require, "nlspsettings.jsonls")
+local ih_available, ih = pcall(require, "inlay-hints")
 if status_ok then
     schemas = jsonls_settings.get_default_schemas()
 end
@@ -148,6 +149,14 @@ local cfg = {
         },
         linters = {},
         lsp = {
+            on_attach = function(client, bufnr, custom_attach)
+                if ih_available then
+                    ih.on_attach(client, bufnr)
+                else
+                    vim.api.nvim_notify("Couldn't find inlay-hints", vim.log.levels.WARN)
+                end
+                custom_attach(client, bufnr)
+            end,
             provider = "sumneko_lua",
             setup = {
                 cmd = {
@@ -155,6 +164,7 @@ local cfg = {
                 },
                 settings = {
                     Lua = {
+                        hint = { enable = true },
                         runtime = {
                             -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
                             version = "LuaJIT",
@@ -200,58 +210,70 @@ local cfg = {
             },
         },
     },
-    --  rust = {
-    --      formatters = {},
-    --      linters = {},
-    --      lsp = {
-    --          provider = "rust_analyzer",
-    --          setup = {
-    --              filetypes = { "rust" },
-    --              cmd = {
-    --                  vim.fn.expand("~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyzer"),
-    --              },
-    --              settings = {
-    --                  ["rust-analyzer"] = {
-    --                      assist = {
-    --                          importMergeBehavior = "last",
-    --                          importPrefix = "by_self",
-    --                      },
-    --                      cargo = {
-    --                          loadOutDirsFromCheck = true,
-    --                          -- features = {"stm32f767", "device-selected"},
-    --                          -- target = {"thumbv7em-none-eabihf"}
-    --                      },
-    --                      checkOnSave = {
-    --                          command = "clippy",
-    --                      },
-    --                      completion = {
-    --                          autoimport = {
-    --                              enable = true,
-    --                          },
-    --                      },
-    --                         rustfmt = {
-    --                             extraArgs = {"--config", "tab_spaces=2"}
-    --                         },
-    --                      inlay_hints = {
-    --                          only_current_line = false,
-    --                          only_current_line_autocmd = "CursorHold",
-    --                          show_parameter_hints = true,
-    --                          parameter_hints_prefix = "<- ",
-    --                          other_hints_prefix = "=> ",
-    --                          max_len_align = false,
-    --                          max_len_align_padding = 1,
-    --                          right_align = false,
-    --                          right_align_padding = 7,
-    --                          highlight = "Comment",
-    --                      },
-    --                      procMacro = {
-    --                          enable = true,
-    --                      },
-    --                  },
-    --              },
-    --          },
-    --      },
-    --  },
+    rust = {
+        formatters = {},
+        linters = {},
+        lsp = {
+            on_init = function()
+                if ih_available then
+                    ih.set_all()
+                else
+                    vim.api.nvim_notify("Couldn't find inlay-hints", vim.log.levels.WARN)
+                end
+            end,
+            on_attach = function(client, bufnr, custom_attach)
+                custom_attach(client, bufnr)
+                if ih_available then
+                    ih.on_attach(client, bufnr)
+                else
+                    vim.api.nvim_notify("Couldn't find inlay-hints", vim.log.levels.WARN)
+                end
+            end,
+            provider = "rust_analyzer",
+            setup = {
+                filetypes = { "rust" },
+                cmd = { "rust-analyzer" },
+                settings = {
+                    ["rust-analyzer"] = {
+                        imports = {
+                            granularity = {
+                                group = "crate"
+                            },
+                            prefix = "crate",
+                        },
+                        cargo = {
+                            loadOutDirsFromCheck = true,
+                            -- features = {"stm32f767", "device-selected"},
+                            -- target = {"thumbv7em-none-eabihf"}
+                        },
+                        checkOnSave = {
+                            command = "clippy",
+                        },
+                        completion = {
+                            autoimport = {
+                                enable = true,
+                            },
+                        },
+                        inlay_hints = {
+                            only_current_line = false,
+                            only_current_line_autocmd = "CursorHold",
+                            show_parameter_hints = true,
+                            parameter_hints_prefix = "<- ",
+                            other_hints_prefix = "=> ",
+                            max_len_align = false,
+                            max_len_align_padding = 1,
+                            right_align = false,
+                            right_align_padding = 7,
+                            highlight = "Comment",
+                        },
+                        procMacro = {
+                            enable = true,
+                        },
+                    },
+                },
+            },
+        },
+    },
     sh = {
         formatters = {
             -- {

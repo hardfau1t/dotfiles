@@ -31,24 +31,26 @@ mod.setup = function()
             ["<C-s>"] = cmp.mapping(function(fallback)
                 if ls.expandable() then
                     ls.expand()
+                elseif cmp.visible() then
+                    cmp.confirm()
                 else
                     fallback()
                 end
-            end, {"i", "s"}),
+            end, { "i", "s" }),
             ["<C-i>"] = cmp.mapping(function(fallback)
                 if ls.jumpable(1) then
                     ls.jump(1)
                 else
                     fallback()
                 end
-            end, {"i", "s"}),
+            end, { "i", "s" }),
             ["<C-o>"] = cmp.mapping(function(fallback)
                 if ls.jumpable(-1) then
                     ls.jump(-1)
                 else
                     fallback()
                 end
-            end, {"i", "s"}),
+            end, { "i", "s" }),
             ["<C-n>"] = cmp.mapping(
                 function(fallback) -- if completion available go to next,else if snippets available next item
                     if cmp.visible() then

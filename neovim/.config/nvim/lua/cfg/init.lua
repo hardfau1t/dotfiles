@@ -10,6 +10,7 @@ vim.bo.autoindent = true -- use treesitter indentation
 vim.bo.smartindent = true
 
 vim.wo.cursorline = true
+vim.wo.cursorcolumn = true
 
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
@@ -22,7 +23,7 @@ vim.o.textwidth = 0
 vim.o.undodir = vim.fn.stdpath("cache") .. "/undodir"
 vim.o.inccommand = "nosplit"
 vim.o.timeoutlen = 1000
-vim.o.updatetime = 500 -- for this interval file is not written to disk(incase of swap file)
+vim.o.updatetime = 200 -- cursor hold
 vim.o.clipboard = "unnamed"
 vim.o.linebreak = false
 vim.o.wrap = false
@@ -44,7 +45,7 @@ vim.o.termguicolors = true
 vim.o.wildmenu = true
 vim.o.hlsearch = true
 vim.o.signcolumn = "number"
-vim.o.numberwidth = 3
+vim.o.numberwidth = 4
 
 vim.opt.spell = false
 vim.opt.spelllang = { "en_us" }

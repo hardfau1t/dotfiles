@@ -32,7 +32,7 @@ mod.custom_attach = function(client, bufnr)
     -- print("is_stopped", vim.inspect(client.is_stopped))
     -- print("requests", vim.inspect(client.requests))
     -- print("id", vim.inspect(client.id))
-    print("server_capabilities", vim.inspect(client.server_capabilities))
+    -- print("server_capabilities", vim.inspect(client.server_capabilities))
     -- print("workspace_folders", vim.inspect(client.workspace_folders))
     -- print("rpc", vim.inspect(client.rpc))
     -- print("_on_attach", vim.inspect(client._on_attach))
@@ -51,6 +51,7 @@ mod.custom_attach = function(client, bufnr)
     require("cfg.lsp.keymaps").setup(bufnr)
 end
 
+
 mod.setup = function()
     local config = require("cfg.lsp.config")
     if config == nil then
@@ -67,13 +68,28 @@ mod.setup = function()
     for _, cfg in pairs(config) do
         local lsp = cfg.lsp
         if lsp ~= nil and lsp.provider ~= nil and lsp.provider ~= "" then
-            lsp.setup.on_attach = mod.custom_attach
+            if lsp.on_attach then
+                lsp.setup.on_attach = function (client, bufnr)
+                    lsp.on_attach(client, bufnr, mod.custom_attach)
+                end
+            else
+                lsp.setup.on_attach = mod.custom_attach
+            end
+            if lsp.on_attach then
+                lsp.setup.on_init = lsp.on_init
+            end
             lsp.setup.capabilities = vim.lsp.protocol.make_client_capabilities()
             if cmp_lsp_available then
                 lsp.setup.capabilities = cmp_nvim_lsp.default_capabilities()
             end
             lspconfig[lsp.provider].setup(lsp.setup)
         end
+    end
+    local available, fidget = pcall(require, "fidget")
+    if available then
+        fidget.setup {}
+    else
+        vim.api.nvim_notify("fidget is not installed", vim.log.levels.WARN)
     end
 end
 
