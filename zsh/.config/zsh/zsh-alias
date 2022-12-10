@@ -1,8 +1,5 @@
 alias mp_stat='mpc sticker "`mpc current -f "%file%"`" list'
-alias cat=bat
-alias ls='exa'
-alias du='dust'
-alias du='dust'
+alias x='exa'
 alias v=/usr/bin/nvim
 alias fm=vifm
 alias gdb='gdb -q'
