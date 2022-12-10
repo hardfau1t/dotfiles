@@ -19,6 +19,11 @@ window#waybar {
   padding-bottom: 1px;
   padding-top: 1px;
 }
+#window {
+    border-radius: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
 /* center module */
 #clock {
   margin: 2px 0px 2px 0px;

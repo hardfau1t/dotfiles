@@ -1,11 +1,30 @@
 // vim:syntax=json
 {
     "ipc" : true,
-    /* "modules-left": ["hyprland/window", "mpd"], */
-    "modules-left": ["sway/workspaces", "mpd"],
+    "modules-left": ["wlr/workspaces", "mpd"],
     "modules-center": ["clock"],
     "modules-right": [ "pulseaudio", "custom/pipe", "bluetooth", "custom/pipe", "network", "custom/pipe", "disk", "custom/pipe", "memory", "custom/pipe", "cpu", "custom/pipe", "backlight", "custom/pipe", "battery", "tray","custom/power"],
 
+    "wlr/workspaces": {
+      "format": "{icon}",
+      "on-click": "activate",
+      "sort-by-number": true,
+      "format-icons": {
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": "❺",
+        "6": "❻",
+        "7": "❼",
+        "8": "",
+        "9": "❾",
+        "0": "",
+        "focused": "",
+        "urgent": "",
+        "default": ""
+      }
+    },
     "sway/workspaces": {
       "disable-scroll": false,
       "all-outputs": true,
@@ -33,9 +52,7 @@
         "default": ""
       }
     },
-    "hyprland/window": {
-    "format": "👉 {}"
-    },
+    "hyprland/window": { "format": "👉 {}", "separate-outputs": false },
     "tray": {
     },
     "clock": {
