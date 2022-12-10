@@ -12,6 +12,7 @@ function mod.setup()
         ensure_installed = {
             "rust",
             "c",
+            "cpp",
             "python",
             "norg",
             "lua",
@@ -23,7 +24,7 @@ function mod.setup()
             "json",
         },
         highlight = {
-            enable = true, -- false will disable the whole extension
+            enable = true,
         },
         indent = {
             enable = false,

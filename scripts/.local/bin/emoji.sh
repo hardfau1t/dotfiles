@@ -43,6 +43,7 @@ exit
 😒 unamused face
 🙄 face with rolling eyes
 😬 grimacing face
+🫣 face_with_peeking_eye
 🤥 lying face
 😌 relieved face
 😔 pensive face
@@ -183,6 +184,8 @@ exit
 🙌 raising hands
 👐 open hands
 🤲 palms up together
+🫴 palms up
+🫳 palms down
 🤝 handshake
 🙏 folded hands
 ✍️ writing hand
