@@ -22,9 +22,11 @@ export SYSTEMD_EDITOR=nvim
 # application config export
 export GRIM_DEFAULT_DIR=~/Pictures/grim/
 export STARSHIP_CACHE=~/.starship/cache
+export STARSHIP_LOG=error
 export CHEAT_CONFIG_PATH="~/.config/cheat/conf.yml"
 export MOZ_ENABLE_WAYLAND=1
 export MPC_FORMAT="%position% \t- %id% \t- %title% \t- %file%"
+export MP_RATER_USE_TAGS=1
 export PASSWORD_STORE_DIR=~/.config/password-store
 export GNUPGHOME="~/.config/gnupg"
 #android studio

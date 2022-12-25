@@ -1,4 +1,4 @@
-// vim:syntax=json
+// vim:syntax=jsonc
 {
     "ipc" : true,
     "modules-left": ["wlr/workspaces", "mpd"],
