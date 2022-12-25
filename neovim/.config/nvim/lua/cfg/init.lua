@@ -51,6 +51,9 @@ vim.o.numberwidth = 4
 
 vim.opt.spell = false
 vim.opt.spelllang = { "en_us" }
+vim.opt.fillchars = {
+    fold = " ",
+}
 
 -- vim.cmd("syntax on")                     -- if enabled treesitter fails to start
 vim.cmd("filetype plugin indent on")
