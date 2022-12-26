@@ -1,0 +1,5 @@
+# vim: set filetype=nu:
+
+export def await [host: string] {
+    print $"pinging ($host)"
+}
