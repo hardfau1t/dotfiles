@@ -10,18 +10,19 @@ function mod.setup()
     vim.o.foldexpr = "nvim_treesitter#foldexpr()"
     ts.setup({
         ensure_installed = {
-            "rust",
+            "bash",
             "c",
             "cpp",
-            "python",
-            "norg",
-            "lua",
-            "bash",
-            "html",
             "css",
-            "yaml",
-            "toml",
+            "html",
             "json",
+            "lua",
+            "norg",
+            "nu",
+            "python",
+            "rust",
+            "toml",
+            "yaml",
         },
         highlight = {
             enable = true,

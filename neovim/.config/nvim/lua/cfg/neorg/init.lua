@@ -13,21 +13,6 @@ function mod.init()
                 extensions = {"todo-items-basic", "todo-items-pending", "todo-items-extended", "definition-lists", "mathematics" }
                 }
             },
-            ["core.gtd.base"] = {
-                config = {
-                    workspace = "my_workspace",
-                    inbox = "inbox.norg",
-                    displayers = {
-                        projects = {
-                            show_completed_projects = false,
-                            show_projects_without_tasks = false,
-                        },
-                    },
-                    exclude = {
-                        "references",
-                    },
-                },
-            },
             ["core.integrations.telescope"] = {},
             ["core.norg.dirman"] = {
                 config = {

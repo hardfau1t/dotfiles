@@ -153,7 +153,7 @@ local cfg = {
                 if ih_available then
                     ih.on_attach(client, bufnr)
                 else
-                    vim.api.nvim_notify("Couldn't find inlay-hints", vim.log.levels.WARN)
+                    vim.api.nvim_notify("Couldn't find inlay-hints", vim.log.levels.WARN, {})
                 end
                 custom_attach(client, bufnr)
             end,

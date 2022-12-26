@@ -1,25 +1,82 @@
-export PATH=/home/gireesh/.local/bin:$PATH:/home/gireesh/playground/scripts:~/.cargo/bin:~/programs/stm33cubeide/
+# xdg-exports
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_STATE_HOME=$HOME/.local/state
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_CONFIG_HOME=~/.config
+export XDG_LIB_DIR=~/.local/share/lib
+export XDG_CURRENT_DESKTOP=sway
+export XDG_CACHE_DIR=~/.cache
+export XDG_SESSION_TYPE=wayland
+#cargo
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+# rustup
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+source "$CARGO_HOME/env"
+# if rustup is present then only set rust tools
+export PATH=~/.local/bin:$PATH
+
+if which rustup > /dev/null
+then
+    test -n "$RUSTUP_HOME" && RUSTUP_DEFAULT=$RUSTUP_HOME/toolchains/$(rustup default | grep -o -e "^\S\+") || RUSTUP_DEFAULT=${HOME}/.rustup/toolchains/$(rustup default | grep -o -e "^\S\+")
+    export PATH=$PATH:$RUSTUP_DEFAULT/bin
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$RUSTUP_DEFAULT/lib
+fi
+
+
+
+# applications
 export CM_LAUNCHER=fuzzel
 export BROWSER=firefox
 export TERMINAL=alacritty
 export READER=zathura
-export MOZ_ENABLE_WAYLAND=1
-export XDG_CURRENT_DESKTOP=sway
-export QT_QPA_PLATFORM=wayland
-export XDG_SESSION_TYPE=wayland
-export GRIM_DEFAULT_DIR=~/Pictures/grim/
-export IGNOREOF=100
-# For Gradle
-export XDG_CONFIG_HOME=~/.config
-export TERM=tmux-256color
-export ZDOTDIR=~/.config/zsh
-export MPC_FORMAT="%position% \t- %id% \t- %title% \t- %file%"
-export GTK_THEME=Adwaita:dark
-source "$HOME/.cargo/env"
-XCURSOR_THEME=bibata
-XCURSOR_SIZE=32
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
+export EDITOR=nvim
+export SYSTEMD_EDITOR=nvim
 
-alias sway="sway > /tmp/sway.log 2>&1"
-if [[ $(tty) = /dev/tty1 ]]; then
-	sway
-fi
+# application config export
+export GRIM_DEFAULT_DIR=~/Pictures/grim/
+export STARSHIP_CACHE=~/.starship/cache
+export STARSHIP_LOG=error
+export CHEAT_CONFIG_PATH="~/.config/cheat/conf.yml"
+export MOZ_ENABLE_WAYLAND=1
+export MPC_FORMAT="%position% \t- %id% \t- %title% \t- %file%"
+export MP_RATER_USE_TAGS=1
+export PASSWORD_STORE_DIR=~/.config/password-store
+export GNUPGHOME="~/.config/gnupg"
+#android studio
+export ANDROID_HOME="$XDG_DATA_HOME"/android
+#gdb
+export GDBHISTFILE="$XDG_CONFIG_HOME"/gdb/.gdb_history
+#gef
+export GEF_RC="$XDG_CONFIG_HOME"/gef/.gef.rc
+#go
+export GOPATH="$XDG_DATA_HOME"/go
+#ipython
+export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
+#python
+export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
+# node
+export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
+# sqlite
+export SQLITE_HISTORY="$XDG_CACHE_HOME"/sqlite_history
+
+
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+export QT_QPA_PLATFORM=wayland
+export IGNOREOF=100
+export LANG=en_IN.UTF-8
+export LC_CTYPE=en_IN.UTF-8
+export HISTFILE="${XDG_STATE_HOME}"/shell_history
+#export TERM="tmux-256color"
+export HISTSIZE=10000
+export SAVEHIST=10000
+export LIBSEAT_BACKEND=logind
+
+export XCURSOR_THEME=bibata
+export XCURSOR_SIZE=32
+
+# uses all cores for compilation
+export MAKEFLAGS="${MAKEFLAGS} -j$(expr $(nproc) - 1)"

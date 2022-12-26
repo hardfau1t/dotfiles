@@ -89,7 +89,7 @@ mod.setup = function()
     if available then
         fidget.setup {}
     else
-        vim.api.nvim_notify("fidget is not installed", vim.log.levels.WARN)
+        vim.api.nvim_notify("fidget is not installed", vim.log.levels.WARN, {})
     end
 end
 

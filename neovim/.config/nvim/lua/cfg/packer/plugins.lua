@@ -121,6 +121,12 @@ function mod.plugins()
         })
     end })
     use("neovim/nvim-lspconfig")
+    use({
+        'LhKipp/nvim-nu',
+        config = function ()
+            require("nu").setup({ complete_cmd_names = false})
+        end
+    })
     -- nvim cmp plugin and sources
     use({
         "hrsh7th/nvim-cmp",

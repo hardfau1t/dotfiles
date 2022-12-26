@@ -302,7 +302,7 @@ live_config_reload: true
 # Shell
 #
 shell:
-    program: /usr/bin/zsh
+    program: /usr/bin/nu
 #  args:
 #    - --login
 
