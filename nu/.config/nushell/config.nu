@@ -245,7 +245,7 @@ let-env config = {
       name: completion_menu
       modifier: none
       keycode: tab
-      mode: emacs # Options: emacs vi_normal vi_insert
+      mode: [ vi_insert, vi_normal, emacs ] # Options: emacs vi_normal vi_insert
       event: {
         until: [
           { send: menu name: completion_menu }
@@ -344,5 +344,3 @@ let-env config = {
   ]
 }
 use basics *
-source ~/.cache/starship/init.nu
-

@@ -1,5 +1,18 @@
 # vim: set filetype=nu:
 
-export def await [host: string] {
-    print $"pinging ($host)"
+export def wait-for [host: string] {
+    let syms = [ '/' '|' '\' '-' ]
+    mut i = 0
+    loop {
+        print -n $"[($syms | get ($i mod 4))] Waiting for ($host)\r"
+        let code = (do -s {ping -c 1 -W 1 $"($host)" -q }| complete).exit_code
+        if $code == 0 {
+            break
+        } else if $code == 2 {
+            sleep 1
+        }
+        $i = $i + 1
+    }
+    (notify-send -t 5000 $"($host)" "up" | complete )| null
+    do -i {mpv /usr/share/sounds/freedesktop/stereo/complete.oga} | complete | null
 }
