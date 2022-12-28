@@ -1,7 +1,7 @@
 // vim:syntax=jsonc
 {
     "ipc" : true,
-    "modules-left": ["wlr/workspaces", "mpd"],
+    "modules-left": ["sway/workspaces", "mpd"],
     "modules-center": ["clock"],
     "modules-right": [ "pulseaudio", "custom/pipe", "bluetooth", "custom/pipe", "network", "custom/pipe", "disk", "custom/pipe", "memory", "custom/pipe", "cpu", "custom/pipe", "backlight", "custom/pipe", "battery", "tray","custom/power"],
 

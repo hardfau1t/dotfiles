@@ -4,15 +4,19 @@ export def wait-for [host: string] {
     let syms = [ '/' '|' '\' '-' ]
     mut i = 0
     loop {
-        print -n $"[($syms | get ($i mod 4))] Waiting for ($host)\r"
-        let code = (do -s {ping -c 1 -W 1 $"($host)" -q }| complete).exit_code
-        if $code == 0 {
-            break
-        } else if $code == 2 {
-            sleep 1
+        let resp = (do -s {ping -c 1 -W 1 $"($host)" -q }| complete)
+        if $resp.exit_code == 1 {
+            print -n $"[($syms | get ($i mod 4))] Waiting for ($host)\r"
+            $i = $i + 1
+            continue
         }
-        $i = $i + 1
+        if $resp.exit_code == 2 {
+            print $"($resp.stderr)"
+            return
+        }
+        break
     }
     (notify-send -t 5000 $"($host)" "up" | complete )| null
     do -i {mpv /usr/share/sounds/freedesktop/stereo/complete.oga} | complete | null
 }
+
