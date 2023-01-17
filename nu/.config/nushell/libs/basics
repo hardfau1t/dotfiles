@@ -19,4 +19,18 @@ export def wait-for [host: string] {
     (notify-send -t 5000 $"($host)" "up" | complete )| null
     do -i {mpv /usr/share/sounds/freedesktop/stereo/complete.oga} | complete | null
 }
+let mpd_dir = $"($env.HOME)/storage/music"
 
+export def mr [] {
+    let current_song = ([$mpd_dir,(mpc current -f "%file%")] | path join )
+    mv $current_song $"($env.HOME)/tmp"
+    mpc rescan
+    mpc next
+    notify-send "mpd" $"'($current_song | path basename)' moved to ~/tmp" -t 5000
+}
+
+# Edit neovim configurations
+export def "config nvim" [] {
+    cd ~/.dots/neovim/.config/nvim/
+    nvim init.lua
+}

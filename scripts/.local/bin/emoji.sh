@@ -89,6 +89,7 @@ exit
 😣 persevering face
 😞 disappointed face
 😓 downcast face with sweat
+😮‍💨 exhaling
 😩 weary face
 😫 tired face
 🥱 yawning face

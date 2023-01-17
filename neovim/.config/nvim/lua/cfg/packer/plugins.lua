@@ -124,7 +124,7 @@ function mod.plugins()
     use({
         'LhKipp/nvim-nu',
         config = function ()
-            require("nu").setup({ complete_cmd_names = false})
+            require("nu").setup({ use_lsp_features = false})
         end
     })
     -- nvim cmp plugin and sources

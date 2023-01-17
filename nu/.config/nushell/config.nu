@@ -344,3 +344,4 @@ let-env config = {
   ]
 }
 use basics *
+use work.nu *
