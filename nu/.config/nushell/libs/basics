@@ -19,9 +19,10 @@ export def wait-for [host: string] {
     (notify-send -t 5000 $"($host)" "up" | complete )| null
     do -i {mpv /usr/share/sounds/freedesktop/stereo/complete.oga} | complete | null
 }
-let mpd_dir = $"($env.HOME)/storage/music"
 
 export def mr [] {
+    let mpd_dir = $"($env.HOME)/storage/music"
+    #--------------------
     let current_song = ([$mpd_dir,(mpc current -f "%file%")] | path join )
     mv $current_song $"($env.HOME)/tmp"
     mpc rescan
