@@ -1,5 +1,5 @@
 ; vars
-(defpoll battery :interval "15s" "./scripts/battery --bat")
+(defpoll battery :interval "1m" "./scripts/battery --bat")
 (defpoll battery_status :interval "1m" "./scripts/battery --bat-st")
 
 ; widgets
@@ -10,10 +10,7 @@
                 :thickness 4
             (button 
                 :class "iconbat"
-                :limit-width 2
                 :tooltip "battery on ${battery}%"
-                :show_truncated false
                 :onclick "$HOME/.config/eww/bar/scripts/pop system"
-                :wrap false
                 ""))))
 

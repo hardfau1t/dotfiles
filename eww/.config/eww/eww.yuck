@@ -80,6 +80,8 @@
                         :anchor "top right"
                         :width "270px" 
                         :height "60px")
+  :monitor 0
+  :exclusive false
   (cal)
 )
 
@@ -89,6 +91,8 @@
                         :anchor "top right"
                         :width "280px" 
                         :height "60px")
+  :monitor 0
+  :exclusive false
   (audio)
 )
 
@@ -98,8 +102,17 @@
                         :anchor "top right"
                         :width "290px" 
                         :height "120px")
+  :monitor 0
+  :exclusive false
   (system)
 )
 
 
+
+(defwindow music_win :focusable "false" :screen 1
+    :geometry (geometry :x "0" :y "7%" :width 428 :height 104 :anchor "top center")
+  :monitor 0
+  :exclusive false
+  (music_pop)
+)
 

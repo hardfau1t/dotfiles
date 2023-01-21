@@ -52,10 +52,3 @@
                     (button :class "music_btn_next" :onclick "~/.config/eww/bar/scripts/music_info --next" ""))
                 (box :class "music_bar" :halign "center" :vexpand "false" :hexpand "false" :space-evenly "false"
                     (scale :onscroll "mpc -q seek {}" :min 0 :active "true" :max 100 :value current_status)))))
-
-
-;;  music
-        (defwindow music_win :focusable "false" :screen 1
-                :geometry (geometry :x "0" :y "7%" :width 428 :height 104 :anchor "top center")
-                                (music_pop))
-
