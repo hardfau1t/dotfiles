@@ -29,9 +29,3 @@ export def mr [] {
     mpc next
     notify-send "mpd" $"'($current_song | path basename)' moved to ~/tmp" -t 5000
 }
-
-# Edit neovim configurations
-export def "config nvim" [] {
-    cd ~/.dots/neovim/.config/nvim/
-    nvim init.lua
-}
