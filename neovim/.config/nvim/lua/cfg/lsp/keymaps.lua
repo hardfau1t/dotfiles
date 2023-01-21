@@ -10,7 +10,7 @@ mod.setup = function(client, bufnr)
     vim.keymap.set('n', "<leader>lwr", function() vim.lsp.buf.remove_workspace_folder() end, { buffer = bufnr })
     vim.keymap.set('n', "<leader>lwl",
         function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, { buffer = bufnr })
-    vim.keymap.set('n', "<leader>lp", function() require 'lsp.utils'.PeekDefinition() end, { buffer = bufnr })
+    vim.keymap.set('n', "<leader>lp", function() require 'cfg.lsp.utils'.PeekDefinition() end, { buffer = bufnr })
     vim.keymap.set('n', "<leader>lh", function() vim.lsp.buf.hover() end, { buffer = bufnr })
     vim.keymap.set('n', "<leader>ls", function() vim.lsp.buf.signature_help() end, { buffer = bufnr })
     vim.keymap.set('n', "<leader>lr", function() vim.lsp.buf.rename() end, { buffer = bufnr })
