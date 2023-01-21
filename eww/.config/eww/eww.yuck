@@ -1,78 +1,105 @@
-(defwidget bar []
-  (centerbox :orientation "h"
+(include "./modules/audio.yuck")
+(include "./modules/brightness.yuck")
+(include "./modules/battery.yuck")
+(include "./modules/clock.yuck")
+(include "./modules/mpd.yuck")
+(include "./modules/memory.yuck")
+(include "./modules/system.yuck")
+(include "./modules/wifi.yuck")
+(include "./modules/workspace.yuck")
+
+(defvar eww "$HOME/.local/bin/eww/eww -c $HOME/.config/eww/bar")
+
+(defwidget sep []
+  (box :class "module-2" :vexpand "false" :hexpand "false"
+    (label :class "separ" :text "|")
+  )
+)
+
+
+(defwidget right []
+  (box :orientation "h" 
+         :space-evenly false  
+         :halign "end"
+         :class "left_modules"
+    ; (bright)
+    ; (volume)
+    ; (wifi)
+    (sep)
+    (bat)
+    (mem)
+    (sep)
+    (clock_module)
+  )
+)
+
+
+(defwidget left []
+    (box :orientation "h"
+         :space-evenly true
+         :halign "start"
+         :class "right_modules"
     (workspaces)
-    (music)
-    (sidestuff)))
+    (mpd)
+  )
+)
 
-(defwidget sidestuff []
-  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
-    (metric :label "🔊"
-            :value {echo 23}
-            :onchange "amixer -D pulse sset Master {}%")
-    (metric :label ""
-            :value {EWW_RAM.used_mem_perc}
-            :onchange "")
-    (metric :label "💾"
-            :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
-            :onchange "")
-    time))
 
-(defwidget workspaces []
-  (box :class "workspaces"
+(defwidget center []
+    (box :orientation "h" 
+         :space-evenly false  
+         :halign "center"
+         :class "center_modules"
+      (date)
+  )
+)
+
+(defwidget bar []
+  (box :class "bar_class"
        :orientation "h"
-       :space-evenly true
-       :halign "start"
-       :spacing 10
-    (button :onclick "wmctrl -s 0" 1)
-    (button :onclick "wmctrl -s 1" 2)
-    (button :onclick "wmctrl -s 2" 3)
-    (button :onclick "wmctrl -s 3" 4)
-    (button :onclick "wmctrl -s 4" 5)
-    (button :onclick "wmctrl -s 5" 6)
-    (button :onclick "wmctrl -s 6" 7)
-    (button :onclick "wmctrl -s 7" 8)
-    (button :onclick "wmctrl -s 8" 9)))
-
-(defwidget music []
-  (box :class "music"
-       :orientation "h"
-       :space-evenly false
-       :halign "center"
-    {music != "" ? "🎵${music}" : ""}))
-
-
-(defwidget metric [label value onchange]
-  (box :orientation "h"
-       :class "metric"
-       :space-evenly false
-    (box :class "label" label)
-    (scale :min 0
-           :max 101
-           :active {onchange != ""}
-           :value value
-           :onchange onchange)))
-
-
-
-(deflisten music :initial ""
-  "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
-
-(defpoll volume :interval "1s"
-  '54')
-
-(defpoll time :interval "10s"
-  "date '+%H:%M %b %d, %Y'")
+    (left)
+    (center)
+    (right)
+  )
+)
 
 (defwindow bar
-  :monitor 1
-  :geometry (geometry :x "0%"
-                      :y "0%"
-                      :width "99%"
-                      :height "10px"
-                      :anchor "top center")
+          :geometry (geometry :x "0%"
+                       :y "5px"
+                       :width "98%"
+                       :height "10px"
+                       :anchor "top center")
+  :monitor 0
   :exclusive true
-  :focusable false
   (bar)
-  )
+)
+
+(defwindow calendar
+    :geometry (geometry :x "-20px" 
+                        :y "7%" 
+                        :anchor "top right"
+                        :width "270px" 
+                        :height "60px")
+  (cal)
+)
+
+(defwindow audio_ctl
+    :geometry (geometry :x "-20px" 
+                        :y "7%" 
+                        :anchor "top right"
+                        :width "280px" 
+                        :height "60px")
+  (audio)
+)
+
+(defwindow system
+    :geometry (geometry :x "-20px" 
+                        :y "7%" 
+                        :anchor "top right"
+                        :width "290px" 
+                        :height "120px")
+  (system)
+)
+
 
 

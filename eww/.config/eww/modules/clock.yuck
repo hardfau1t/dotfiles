@@ -1,0 +1,43 @@
+; variables
+(defvar time_rev false)
+(defpoll clock_time :interval "5m" "date +\%I")
+(defpoll clock_minute :interval "5s" "date +\%M")
+(defpoll clock_date :interval "10h" "date '+%d/%m'")
+
+(defpoll calendar_day :interval "20h" "date '+%d'")
+(defpoll calendar_year :interval "20h" "date '+%Y'")
+
+; widgets
+(defwidget clock_module []
+  (eventbox :onhover "${eww} update time_rev=true"
+              :onhoverlost "${eww} update time_rev=false"
+    (box :class "module" :space-evenly "false" :orientation "h" :spacing "3" 
+      (label :text clock_time :class "clock_time_class" )
+      (label :text "" :class "clock_time_sep" )
+      (label :text clock_minute :class "clock_minute_class")
+      (revealer :transition "slideleft"
+              :reveal time_rev
+              :duration "350ms"
+      (button :class "clock_date_class"
+             :onclick "$HOME/.config/eww/bar/scripts/pop calendar" clock_date
+        )
+  ))))
+
+(defwidget cal []
+    (box :class "cal" :orientation "v"
+    (box :class "cal-in"
+    (calendar :class "cal" 
+              :day calendar_day 
+              :year calendar_year))))
+
+; Newer
+(defpoll date-time :interval "1m" "date '+%H:%M'")
+(defwidget date []
+  (box :orientation "h" 
+      :space-evenly false  
+      :halign "end"
+      :class "container-date-time"
+    (label :text date-time :class "label-date-time")
+  )
+)
+

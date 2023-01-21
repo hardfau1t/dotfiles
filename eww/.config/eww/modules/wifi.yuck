@@ -1,0 +1,21 @@
+; variables
+(defvar wifi_rev false)
+(defpoll COL_WLAN :interval "1m" "~/.config/eww/bar/scripts/wifi --COL")
+(defpoll ESSID_WLAN :interval "1m" "~/.config/eww/bar/scripts/wifi --ESSID")
+(defpoll WLAN_ICON :interval "1m" "~/.config/eww/bar/scripts/wifi --ICON")
+;; ---------------- widgets -----
+
+(defwidget wifi [] 
+  (eventbox :onhover "${eww} update wifi_rev=true"
+              :onhoverlost "${eww} update wifi_rev=false"
+        (box :vexpand "false" :hexpand "false" :space-evenly "false"
+                (button :class "module-wif" :onclick "networkmanager_dmenu" :wrap "false" :limit-width 12 :style "color: ${COL_WLAN};" WLAN_ICON)
+    (revealer :transition "slideright"
+              :reveal wifi_rev
+              :duration "350ms"
+    (label    :class "module_essid"
+              :text ESSID_WLAN
+              :orientation "h"
+              )))))
+
+
