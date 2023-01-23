@@ -31,10 +31,10 @@
               :year calendar_year))))
 
 ; Newer
-(defpoll date-time :interval "1m" "date '+%H:%M'")
+(defpoll date-time :interval "1m" "date '+%I:%M %p'")
 (defwidget date []
-  (box :orientation "h" 
-      :space-evenly false  
+  (box :orientation "h"
+      :space-evenly false
       :halign "end"
       :class "container-date-time"
     (label :text date-time :class "label-date-time")

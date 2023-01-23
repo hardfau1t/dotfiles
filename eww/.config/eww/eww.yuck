@@ -18,12 +18,12 @@
 
 
 (defwidget right []
-  (box :orientation "h" 
-         :space-evenly false  
+  (box :orientation "h"
+         :space-evenly false
          :halign "end"
          :class "left_modules"
     ; (bright)
-    ; (volume)
+    (volume)
     ; (wifi)
     (sep)
     (bat)
@@ -39,7 +39,7 @@
          :space-evenly true
          :halign "start"
          :class "right_modules"
-    (workspaces)
+    (hypr_workspaces)
     (mpd)
   )
 )

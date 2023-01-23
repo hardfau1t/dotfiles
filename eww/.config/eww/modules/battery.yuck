@@ -5,12 +5,11 @@
 ; widgets
 (defwidget bat []
         (box :class "bat_module" :vexpand "false" :hexpand "false"
-            (circular-progress :value battery
+            (circular-progress :value "${EWW_BATTERY.BAT0.capacity}"
                 :class "batbar"
                 :thickness 4
             (button 
                 :class "iconbat"
-                :tooltip "battery on ${battery}%"
-                :onclick "$HOME/.config/eww/bar/scripts/pop system"
+                :tooltip "battery on ${EWW_BATTERY.BAT0.capacity}% and currently ${EWW_BATTERY.BAT0.status}"
                 ""))))
 

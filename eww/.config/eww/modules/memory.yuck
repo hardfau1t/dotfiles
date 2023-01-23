@@ -1,21 +1,12 @@
-; vars
-(defpoll memory :interval "15s" "scripts/memory")
-(defpoll memory_used_mb :interval "2m" "scripts/mem-ad used")
-(defpoll memory_total_mb :interval "2m" "scripts/mem-ad total")
-(defpoll memory_free_mb :interval "2m" "scripts/mem-ad free")
-
-
-; widgets
-
 (defwidget mem []
         (box :class "mem_module" :vexpand "false" :hexpand "false"
-            (circular-progress :value memory
+            (circular-progress :value "${EWW_RAM.used_mem_perc}"
                 :class "membar"
                 :thickness 4
             (button 
                 :class "iconmem"
-                :tooltip "using ${memory}% ram"
-                :onclick "$HOME/.config/eww/bar/scripts/pop system"
+                :tooltip "using ${round(EWW_RAM.used_mem_perc, 1)}% ram"
+                :onclick "${EWW_CMD} open system"
                 ""))))
 
 

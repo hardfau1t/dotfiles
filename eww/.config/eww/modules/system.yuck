@@ -29,7 +29,7 @@
     )
     (label :text "" :class "sys_sep" :halign "center")
   (box :class "sys_mem_box" :orientation "h" :space-evenly "false" :halign "start"
-      (circular-progress :value memory
+      (circular-progress :value "${EWW_RAM.used_mem_perc}"
                 :class "sys_mem"
                 :thickness 9
             (label :text ""
@@ -38,17 +38,17 @@
                 :wrap false
                 :angle 0.0))
             (box :orientation "v" :space-evenly "false" :spacing 0 :hexpand "false" :vexpand "false"
-            (label :text "memory"
+            (label :text "Memory"
                 :halign "start"
                 :class "sys_text_mem"
                 :limit-width 9
                 :wrap false)
-            (label :text "${memory_used_mb} | ${memory_total_mb}mb "
+            (label :text "${round( EWW_RAM.used_mem / 1048576 , 0 )} | ${round(EWW_RAM.total_mem/ 1048576, 0)}mb "
                 :halign "start"
                 :class "sys_text_mem_sub"
                 :limit-width 22
                 :wrap false)
-            (label :text "${memory_free_mb}mb free"
+            (label :text "${round(EWW_RAM.available_mem / 1048576, 0)}mb free"
                 :halign "start"
                 :class "sys_text_mem_sub"
                 :limit-width 22
