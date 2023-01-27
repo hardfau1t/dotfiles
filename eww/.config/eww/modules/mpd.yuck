@@ -1,54 +1,51 @@
 (deflisten mpd-info "pfui start mpd")
 
 (defwidget mpd []
-  (box :orientation "h" 
-      :space-evenly false  
+  (box :orientation "h"
+      :space-evenly false
       :halign "start"
       :class "container-mpd"
-    (label :text {
-        mpd-info.ok == 1 ?
-        mpd-info.data.state.status == 2 ?
-        "Stopped"
-        : mpd-info.data.state.status == 0 ?
-        mpd-info.data.song.artist + " - " + mpd-info.data.song.title
-        : "Paused"
-        : "MPD Unreachable"
-      } :limit-width 40 :class "label-mpd"
+    (label :limit-width 40 :class "label-mpd" 
+           :text {
+            mpd-info != '' ?
+              mpd-info.ok == 1 ?
+                mpd-info.data.state.status == 2 ?
+                  "Stopped" : mpd-info.data.state.status == 0 ?
+                    mpd-info.data.song.title  + " - " + mpd-info.data.song.artist : "Paused"
+                : "MPD Unreachable" ; ok == 1
+              : ""  ; info != ''
+          }
     )
   )
 )
 ;--------------- provided ----------------
 (defvar music_reveal false)
-(defpoll song :interval "2s"  "~/.config/eww/bar/scripts/music_info --song")
-(defpoll song_artist :interval "2s"  "~/.config/eww/bar/scripts/music_info --artist")
-(defpoll current_status :interval "1s"  "~/.config/eww/bar/scripts/music_info --time")
-(defpoll song_status :interval "2s"  "~/.config/eww/bar/scripts/music_info --status")
-(defpoll cover_art :interval "2s"  "~/.config/eww/bar/scripts/music_info --cover")
+(defvar current_value 0)
 
 (defwidget music [] 
-  (eventbox :onhover "${eww} update music_reveal=true"
-              :onhoverlost "${eww} update music_reveal=false"
+  (eventbox :onhover "${EWW_CMD} update music_reveal=true"
+              :onhoverlost "${EWW_CMD} update music_reveal=false"
         (box :class "module-2" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false" 
-            (box :class "song_cover_art" :vexpand "false" :hexpand "false" :style "background-image: url('${cover_art}');")
-            (button :class "song" :wrap "true" :onclick "~/.config/eww/bar/scripts/pop music" song)
+            (box :class "song_cover_art" :vexpand "false" :hexpand "false" )
+            (button :class "song" :wrap "true" :onclick "~/.config/eww/bar/scripts/pop music" {mpd-info.data.song.title})
         (revealer :transition "slideright"
                   :reveal music_reveal
                   :duration "350ms"
           (box :vexpand "false" :hexpand "false" :oreintation "h" 
-                    (button :class "song_btn_prev" :onclick "~/.config/eww/bar/scripts/music_info --prev" "")
-                    (button :class "song_btn_play" :onclick "~/.config/eww/bar/scripts/music_info --toggle" song_status)
+                    (button :class "song_btn_prev" :onclick "mpc prev" "")
+                    (button :class "song_btn_play" :onclick "mpc toggle" {mpd-info.data.state.status})
                     (button :class "song_btn_next" :onclick "~/.config/eww/bar/scripts/music_info --next" ""))))))
 
 ;;  Music
 (defwidget music_pop []
         (box :class "music_pop" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false"
-            (box :class "music_cover_art" :vexpand "false" :hexpand "false" :style "background-image: url('${cover_art}');")
+            (box :class "music_cover_art" :vexpand "false" :hexpand "false" )
             (box :orientation "v" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false"
-                (label :halign "center" :class "music" :wrap "true" :limit-width 13 :text song)
-                (label :halign "center" :class "music_artist" :wrap "true" :limit-width 15 :text song_artist)
+                (label :halign "center" :class "music" :wrap "true" :limit-width 13 :text {mpd-info.data.song.title})
+                (label :halign "center" :class "music_artist" :wrap "true" :limit-width 15 :text {mpd-info.data.song.artist})
                 (box :orientation "h" :spacing 15 :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
-                    (button :class "music_btn_prev" :onclick "~/.config/eww/bar/scripts/music_info --prev" "")
-                    (button :class "music_btn_play" :onclick "~/.config/eww/bar/scripts/music_info --toggle" song_status)
-                    (button :class "music_btn_next" :onclick "~/.config/eww/bar/scripts/music_info --next" ""))
-                (box :class "music_bar" :halign "center" :vexpand "false" :hexpand "false" :space-evenly "false"
-                    (scale :onscroll "mpc -q seek {}" :min 0 :active "true" :max 100 :value current_status)))))
+                    (button :class "music_btn_prev" :onclick "mpc prev" "")
+                    (button :class "music_btn_play" :onclick "mpc toggle" {mpd-info.data.state.status == 0 ? "" : "喇"})
+                    (button :class "music_btn_next" :onclick "mpc next" ""))
+                (box :class "music_bar" :spacing 10 :halign "center" :vexpand false :hexpand false :space-evenly false
+                    (scale :onscroll "mpc -q seek {}" :min 0 :max 100 :value 20)))))

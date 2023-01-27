@@ -1,0 +1,9 @@
+(defpoll notif_disabled :interval "10m" :initial false "dunstctl is-paused")
+
+(defwidget dunst []
+  (box 
+    (button :onclick "bash -c '${EWW_CMD} update notif_disabled=${notif_disabled ? false : true}; dunstctl set-paused toggle'"
+      (label :text "${notif_disabled ? '' : '' }" )
+    )
+  )
+)

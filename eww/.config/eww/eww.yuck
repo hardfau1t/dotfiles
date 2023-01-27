@@ -1,56 +1,58 @@
 (include "./modules/audio.yuck")
-(include "./modules/brightness.yuck")
+(include "./modules/backlight.yuck")
 (include "./modules/battery.yuck")
 (include "./modules/clock.yuck")
+(include "./modules/dunst.yuck")
 (include "./modules/mpd.yuck")
 (include "./modules/memory.yuck")
 (include "./modules/system.yuck")
 (include "./modules/wifi.yuck")
-(include "./modules/workspace.yuck")
+(include "./modules/hyprland.yuck")
 
 (defvar eww "$HOME/.local/bin/eww/eww -c $HOME/.config/eww/bar")
 
 (defwidget sep []
-  (box :class "module-2" :vexpand "false" :hexpand "false"
+  (box 
+    ; :class "module-2" :vexpand "false" :hexpand "false"
     (label :class "separ" :text "|")
   )
 )
 
 
-(defwidget right []
-  (box :orientation "h"
-         :space-evenly false
-         :halign "end"
-         :class "left_modules"
-    ; (bright)
-    (volume)
-    ; (wifi)
-    (sep)
-    (bat)
-    (mem)
-    (sep)
-    (clock_module)
-  )
-)
 
 
 (defwidget left []
-    (box :orientation "h"
-         :space-evenly true
-         :halign "start"
-         :class "right_modules"
-    (hypr_workspaces)
+  (box ;:orientation "h"
+    ;:space-evenly true
+    ;:halign "start"
+    ;:class "right_modules"
+    (workspaces)
     (mpd)
   )
 )
 
 
 (defwidget center []
-    (box :orientation "h" 
-         :space-evenly false  
+    (box ;:orientation "h" 
+         ;:space-evenly false  
          :halign "center"
-         :class "center_modules"
+         ;:class "center_modules"
       (date)
+  )
+)
+(defwidget right []
+  (box   ;:orientation "h"
+         :space-evenly false
+         :halign "end"
+         ;:class "left_modules"
+    (dunst)
+    (bright)
+    (volume)
+    ; (wifi)
+    ; (sep)
+    (bat)
+    (mem)
+    ; (sep)
   )
 )
 
@@ -67,7 +69,7 @@
           :geometry (geometry :x "0%"
                        :y "5px"
                        :width "98%"
-                       :height "10px"
+                       :height "25px"
                        :anchor "top center")
   :monitor 0
   :exclusive true
@@ -75,21 +77,20 @@
 )
 
 (defwindow calendar
-    :geometry (geometry :x "-20px" 
-                        :y "7%" 
-                        :anchor "top right"
-                        :width "270px" 
-                        :height "60px")
+    :geometry (geometry :y "2%"
+                        :anchor "top center"
+                        :width "250px"
+                        :height "40px")
   :monitor 0
   :exclusive false
   (cal)
 )
 
 (defwindow audio_ctl
-    :geometry (geometry :x "-20px" 
-                        :y "7%" 
+    :geometry (geometry :x "1%"
+                        :y "2%"
                         :anchor "top right"
-                        :width "280px" 
+                        :width "280px"
                         :height "60px")
   :monitor 0
   :exclusive false
@@ -97,10 +98,10 @@
 )
 
 (defwindow system
-    :geometry (geometry :x "-20px" 
-                        :y "7%" 
+    :geometry (geometry :x "1%"
+                        :y "2%"
                         :anchor "top right"
-                        :width "290px" 
+                        :width "290px"
                         :height "120px")
   :monitor 0
   :exclusive false
@@ -110,7 +111,7 @@
 
 
 (defwindow music_win :focusable "false" :screen 1
-    :geometry (geometry :x "0" :y "7%" :width 428 :height 104 :anchor "top center")
+    :geometry (geometry :x "20%" :y "2%" :width '12%' :height '15%' )
   :monitor 0
   :exclusive false
   (music_pop)

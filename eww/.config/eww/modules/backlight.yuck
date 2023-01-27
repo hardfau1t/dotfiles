@@ -1,0 +1,29 @@
+; variables
+(deflisten brightness :initial '{"data": 1}' "pfui start backlight")
+(defvar br_reveal false)
+
+; widget
+(defwidget bright []
+  (eventbox :onhover "${EWW_CMD} update br_reveal=true" :onhoverlost "${EWW_CMD} update br_reveal=false"
+    (box :space-evenly false :orientation "h"
+      (revealer :transition "slideleft"
+                :reveal br_reveal
+                :duration "350ms"
+        (scale    ;:class "brightbar"
+                  :value {brightness.data}
+                  :orientation "h"
+                  :tooltip "${brightness.data}%"
+                  :max 100
+                  :min 0
+                  :onchange "light -S {}" )
+      )
+      (circular-progress :value "${brightness.data}"
+          :thickness 4
+        ""
+      )
+    )
+  )
+)
+
+
+

@@ -2,7 +2,7 @@
 (defwidget system []
   (box :class "sys_win" :orientation "v" :space-evenly "false" :hexpand "false" :vexpand "false" :spacing 0
     (box :class "sys_bat_box" :orientation "h" :space-evenly "false"
-      (circular-progress :value battery
+      (circular-progress :value "${EWW_BATTERY.BAT0.capacity}"
                 :class "sys_bat"
                 :thickness 9
             (label :text ""
@@ -10,17 +10,17 @@
                 :limit-width 2
                 :wrap false))
             (box :orientation "v" :space-evenly "false" :spacing 0 :hexpand "false" :vexpand "false"
-            (label :text "battery"
+            (label :text "${EWW_BATTERY.BAT0.capacity}"
                 :halign "start"
                 :class "sys_text_bat"
                 :limit-width 9
                 :wrap false)
-            (label :text "${battery}%"
+            (label :text "${EWW_BATTERY.BAT0.capacity}"
                 :halign "start"
                 :class "sys_text_bat_sub"
                 :limit-width 22
                 :wrap false)
-            (label :text "${battery_status}"
+            (label :text "${EWW_BATTERY.BAT0.status}"
                 :halign "start"
                 :class "sys_text_bat_sub"
                 :limit-width 22

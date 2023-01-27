@@ -1,15 +1,16 @@
 ; vars
-(defpoll battery :interval "1m" "./scripts/battery --bat")
-(defpoll battery_status :interval "1m" "./scripts/battery --bat-st")
 
 ; widgets
 (defwidget bat []
-        (box :class "bat_module" :vexpand "false" :hexpand "false"
-            (circular-progress :value "${EWW_BATTERY.BAT0.capacity}"
-                :class "batbar"
-                :thickness 4
-            (button 
-                :class "iconbat"
-                :tooltip "battery on ${EWW_BATTERY.BAT0.capacity}% and currently ${EWW_BATTERY.BAT0.status}"
-                ""))))
+  (box :class "bat_module" :vexpand "false" :hexpand "false"
+    (circular-progress :value "${EWW_BATTERY.BAT0.capacity}"
+        :class "batbar"
+        :thickness 4
+      (button 
+          :class "iconbat"
+          :tooltip "battery on ${EWW_BATTERY.BAT0.capacity}% and currently ${EWW_BATTERY.BAT0.status}"
+        "${EWW_BATTERY.BAT0.status == "Charging"? "󰠠" : "" }")
+    )
+  )
+)
 

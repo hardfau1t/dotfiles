@@ -1,28 +1,31 @@
 ;------- variables ------------
 (defvar vol_reveal false)
 (defvar mics "[]")
-(deflisten pulse "pfui start pulseaudio")
+(deflisten pulse :initial '{"data":{"volume":0,"muted":false}}' "pfui start pulseaudio")
 
 ; -------- widgets --------------
 (defwidget volume []
   (eventbox :onhover "${EWW_CMD} update vol_reveal=true"
               :onhoverlost "${EWW_CMD} update vol_reveal=false"
-    (box :class "module-2" :space-evenly "false" :orientation "h" :spacing "3" :tooltip "${pulse.data.volume}%"
+    (box :orientation "h" :space-evenly false :tooltip "${pulse.data.volume}%"
       (revealer :transition "slideleft"
                 :reveal vol_reveal
                 :duration "350ms"
-        (scale    :class "volbar"
+        (scale
                   :value {pulse.data.volume}
                   :orientation "h"
                   :max 100
                   :min 0
                   :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%" )
       )
-      ; TODO: fix this list of mics is updated when click, but it should update when opened
-      (button   :onclick '${EWW_CMD} update mics="`pactl -f json list sources`"; ${EWW_CMD} open --toggle audio_ctl'   :class "volume_icon" "" )
+      (circular-progress :value "${pulse.data.volume >100 ? 100 : pulse.data.volume}"
+          :thickness 4
+        (button   :onclick '${EWW_CMD} update mics="`pactl -f json list sources`"; ${EWW_CMD} open --toggle audio_ctl'   "" )
+      )
     )
   )
 )
+
 
 
 
