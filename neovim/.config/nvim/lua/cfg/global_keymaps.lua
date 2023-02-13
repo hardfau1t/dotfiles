@@ -43,25 +43,7 @@ vim.keymap.set("v", "y", '"+ygvy', { silent = true })
 vim.keymap.set("v", "P", '"_dP', { silent = true })
 
 
-local sync_all = function()
-    local found, pc = pcall(require, "packer")
-    if not found then
-        print("packer not found")
-        return
-    end
-    pc.clean()
-    pc.update()
-    vim.api.nvim_command("TSUpdate")
 
-end
-
----------------------Packer------------------------------
-vim.keymap.set("n", "<leader>pi", ":PackerInstall<CR>", { silent = true })
-vim.keymap.set("n", "<leader>pu", ":PackerUpdate<CR>", { silent = true })
-vim.keymap.set("n", "<leader>ps", sync_all, { silent = true })
-vim.keymap.set("n", "<leader>pS", ":PackerStatus<CR>", { silent = true })
-vim.keymap.set("n", "<leader>pc", ":PackerCompile<CR>", { silent = true })
-vim.keymap.set("n", "<leader>pr", ":PackerClean<CR>", { silent = true })
 ----------------------------------------cscope--------------------------------------------------
 vim.keymap.set("n", "<leader>sa", ":cscope find a <cword><CR>", { silent = true })
 vim.keymap.set("n", "<leader>sc", ":cscope find c <cword><CR>", { silent = true })

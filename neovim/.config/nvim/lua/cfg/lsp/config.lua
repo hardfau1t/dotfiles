@@ -157,7 +157,7 @@ local cfg = {
                 end
                 custom_attach(client, bufnr)
             end,
-            provider = "sumneko_lua",
+            provider = "lua_ls",
             setup = {
                 cmd = {
                     "lua-language-server",

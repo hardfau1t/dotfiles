@@ -1,5 +1,5 @@
 require("cfg")
 require("cfg.utils")
-require("cfg.packer")
+require("cfg.lazy")
 require("cfg.global_keymaps")
 require("cfg.lsp").setup()
