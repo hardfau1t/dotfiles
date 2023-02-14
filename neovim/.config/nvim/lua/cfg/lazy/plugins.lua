@@ -1,16 +1,16 @@
 return {
-    "folke/tokyonight.nvim",
-    "morhetz/gruvbox",
+    {"folke/tokyonight.nvim", lazy = true},
+    {"morhetz/gruvbox", lazy = true},
     {
         "rebelot/kanagawa.nvim",
         name = "kanagawa",
+        lazy = "true",
         config = function()
             require("kanagawa").setup({
                 dimInactive = false,
                 globalStatus = true,
                 transparent = true,
             })
-            vim.cmd([[colorscheme kanagawa]])
         end,
     },
     {
@@ -30,6 +30,7 @@ return {
     },
     {
         "nvim-treesitter/playground",
+        lazy = true,
         dependencies = { "nvim-treesitter/nvim-treesitter" },
     },
     {
@@ -52,14 +53,14 @@ return {
     },
     { -- diagnostics looks cool
         "folke/trouble.nvim",
-        dependencies = {"kyazdani42/nvim-web-devicons"},
+        dependencies = { "kyazdani42/nvim-web-devicons" },
         config = function()
             require("trouble").setup({})
         end,
     },
     {
         "nvim-telescope/telescope.nvim",
-        dependencies = {  "nvim-lua/popup.nvim" ,  "nvim-lua/plenary.nvim"  },
+        dependencies = { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim" },
         config = function()
             require("cfg.telescope").setup()
         end,
@@ -70,18 +71,19 @@ return {
         config = function()
             require("cfg.neorg").init()
         end,
-        run = ":Neorg sync-parsers",
+        build = ":Neorg sync-parsers| echo 'abc'",
         dependencies = { "nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope" },
     },
     {
         "nvim-lualine/lualine.nvim",
-        dependencies = { "kyazdani42/nvim-web-devicons"},
+        dependencies = { "kyazdani42/nvim-web-devicons" },
         config = function()
             require("cfg.lua_line")
         end,
     },
     {
         "iamcco/markdown-preview.nvim",
+        lazy = true,
         build = ":call mkdp#util#install()",
         ft = { "markdown" },
     },
@@ -93,35 +95,43 @@ return {
     },
     {
         "rafamadriz/friendly-snippets",
-        dependencies = { "L3MON4D3/LuaSnip"},
+        dependencies = { "L3MON4D3/LuaSnip" },
     },
     {
         "kyazdani42/nvim-tree.lua",
-        dependencies = {"kyazdani42/nvim-web-devicons"},
+        dependencies = { "kyazdani42/nvim-web-devicons" },
         config = function()
             require("cfg.nvim-tree").setup()
         end,
     },
 
-     'j-hui/fidget.nvim', -- lsp status
+    'j-hui/fidget.nvim', -- lsp status
     { 'simrat39/symbols-outline.nvim',
-        config = function() require('cfg.lsp.symbols').setup()
+        config = function()
+            require('cfg.lsp.symbols').setup()
         end
     },
-    { 'simrat39/inlay-hints.nvim', config = function() require("inlay-hints").setup({
-            renderer = "inlay-hints/render/eol",
-            hints = {
-                parameter = {
-                    show = false,
+    { 'simrat39/inlay-hints.nvim',
+        config = function()
+            require("inlay-hints").setup({
+                renderer = "inlay-hints/render/eol",
+                hints = {
+                    parameter = {
+                        show = false,
+                    }
                 }
-            }
-        })
-    end },
+            })
+        end,
+        lazy = true,
+        ft = { "rust" }
+    },
     "neovim/nvim-lspconfig",
     {
         'LhKipp/nvim-nu',
-        config = function ()
-            require("nu").setup({ use_lsp_features = false})
+        lazy = true,
+        ft = {"nu"},
+        config = function()
+            require("nu").setup({ use_lsp_features = false })
         end
     },
     -- nvim cmp plugin and sources
@@ -133,12 +143,15 @@ return {
         end,
     },
     { "saadparwaiz1/cmp_luasnip", dependencies = { "hrsh7th/nvim-cmp", "L3MON4D3/LuaSnip" } }, -- luasnip completion support
-    { "hrsh7th/cmp-nvim-lsp", dependencies = { "hrsh7th/nvim-cmp" } }, -- basic lsp cmp
-    { "hrsh7th/cmp-buffer", dependencies = { "hrsh7th/nvim-cmp" } }, -- buffer words completion
-    { "hrsh7th/cmp-path", dependencies = { "hrsh7th/nvim-cmp" } }, -- path completion
-    { "hrsh7th/cmp-nvim-lua", dependencies = { "hrsh7th/nvim-cmp" } }, -- lua completion source
-    { "onsails/lspkind-nvim", dependencies = { "hrsh7th/nvim-cmp" } }, -- lsp completion formatting
-    { "petertriho/cmp-git", dependencies = { "hrsh7th/nvim-cmp", "nvim-lua/plenary.nvim" } }, -- vim spell check
-    'NoahTheDuke/vim-just',
-    'elkowar/yuck.vim',
+    { "hrsh7th/cmp-nvim-lsp",     dependencies = { "hrsh7th/nvim-cmp" } }, -- basic lsp cmp
+    { "hrsh7th/cmp-buffer",       dependencies = { "hrsh7th/nvim-cmp" } }, -- buffer words completion
+    { "hrsh7th/cmp-path",         dependencies = { "hrsh7th/nvim-cmp" } }, -- path completion
+    { "hrsh7th/cmp-nvim-lua",     dependencies = { "hrsh7th/nvim-cmp" } }, -- lua completion source
+    { "onsails/lspkind-nvim",     dependencies = { "hrsh7th/nvim-cmp" } }, -- lsp completion formatting
+    { "petertriho/cmp-git",       dependencies = { "hrsh7th/nvim-cmp", "nvim-lua/plenary.nvim" } }, -- vim spell check
+    { 'NoahTheDuke/vim-just',
+        lazy = true,
+        ft = { "just" }
+    },
+    { 'elkowar/yuck.vim', lazy = true, ft = { "yuck" } },
 }
