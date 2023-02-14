@@ -21,15 +21,4 @@ end
 
 lazy.setup(plugins, {})
 
--- vim.api.nvim_create_autocmd("BufWritePost", {
---     group = vim.api.nvim_create_augroup("WriteSync", { clear = true }),
---     pattern = { "*plugins.lua" },
---     command = 'source <afile> | PackerSync '
--- })
--- 
--- vim.api.nvim_create_autocmd("BufWritePost", {
---     -- 2 groups should have different name otherwise first group will be overwritten
---     group = vim.api.nvim_create_augroup("WriteCompile", { clear = true }),
---     pattern = { "*/.config/nvim/*" },
---     command = 'source <afile> | PackerCompile'
--- })
+vim.keymap.set("n", "<leader>ll", ":Lazy<CR>", {})
