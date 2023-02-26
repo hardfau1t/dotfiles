@@ -8,6 +8,7 @@
 (include "./modules/system.yuck")
 (include "./modules/wifi.yuck")
 (include "./modules/hyprland.yuck")
+(include "./modules/disks.yuck")
 
 (defvar eww "$HOME/.local/bin/eww/eww -c $HOME/.config/eww/bar")
 
@@ -22,10 +23,10 @@
 
 
 (defwidget left []
-  (box ;:orientation "h"
-    ;:space-evenly true
-    ;:halign "start"
-    ;:class "right_modules"
+  (box :orientation "h"
+    :space-evenly false
+    :halign "start"
+    :class "left"
     (workspaces)
     (mpd)
   )
@@ -33,18 +34,17 @@
 
 
 (defwidget center []
-    (box ;:orientation "h" 
-         ;:space-evenly false  
+    (box :orientation "h" 
          :halign "center"
-         ;:class "center_modules"
+         :class "center"
       (date)
   )
 )
 (defwidget right []
-  (box   ;:orientation "h"
+  (box   :orientation "h"
          :space-evenly false
          :halign "end"
-         ;:class "left_modules"
+         :class "right"
     (dunst)
     (bright)
     (volume)
@@ -52,6 +52,7 @@
     ; (sep)
     (bat)
     (mem)
+    (disk_widget)
     ; (sep)
   )
 )
@@ -66,9 +67,9 @@
 )
 
 (defwindow bar
-          :geometry (geometry :x "0%"
-                       :y "5px"
-                       :width "98%"
+          :geometry (geometry
+                       :y "0.5%"
+                       :width "99%"
                        :height "25px"
                        :anchor "top center")
   :monitor 0
@@ -117,3 +118,13 @@
   (music_pop)
 )
 
+(defwindow disks
+    :geometry (geometry :x "1%"
+                        :y "2%"
+                        :anchor "top right"
+                        :width "290px"
+                        :height "120px")
+  :monitor 0
+  :exclusive false
+  (disks)
+)

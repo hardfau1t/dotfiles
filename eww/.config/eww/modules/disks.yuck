@@ -1,0 +1,28 @@
+(deflisten disk_info :initial '{"ok": 0, "data": null }' "pfui start disks")
+(defwidget disk_widget []
+  (box
+    :visible {disk_info.ok == 0 ? false : true}
+    (button
+      :onclick "${EWW_CMD} open disks"
+      "󱇰"
+    )
+  )
+)
+(defwidget disks []
+  (eventbox
+    :onhoverlost "${EWW_CMD} close disks"
+    (box
+      :orientation "v"
+      :visible {disk_info.ok == 0 ? false : true}
+      ( for drive in {disk_info.data}
+        (box
+          (label :text { drive[1] != "null" ? "${drive[0]} : ${drive[1]}" : "/dev/${drive[0]}"})
+          (button
+            :onclick "udisksctl ${drive[1] == "null" ? "mount" : "unmount -f"} -b /dev/${drive[0]}"
+          {drive[1] == "null" ? "󰮑" : ""}
+          )
+        )
+      )
+    )
+  )
+)
