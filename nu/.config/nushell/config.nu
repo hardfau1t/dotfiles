@@ -346,3 +346,5 @@ let-env config = {
 use basics *
 use work.nu *
 use conf.nu *
+alias vpn = sudo /opt/forticlient/vpn --server=vpn2.india.saankhyalabs.com:8443 --user=gireesh.marathi -p
+alias zj = zellij
