@@ -3,20 +3,30 @@ keybinds clear-defaults=true {
         bind "Ctrl a" { SwitchToMode "Tmux"; }
     }
     tmux {
+        bind "-" { Resize "Decrease"; SwitchToMode "Normal"; }
+        bind "1" { GoToTab 1; SwitchToMode "Normal"; }
+        bind "2" { GoToTab 2; SwitchToMode "Normal"; }
+        bind "3" { GoToTab 3; SwitchToMode "Normal"; }
+        bind "4" { GoToTab 4; SwitchToMode "Normal"; }
+        bind "5" { GoToTab 5; SwitchToMode "Normal"; }
+        bind "6" { GoToTab 6; SwitchToMode "Normal"; }
+        bind "7" { GoToTab 7; SwitchToMode "Normal"; }
+        bind "8" { GoToTab 8; SwitchToMode "Normal"; }
+        bind "9" { GoToTab 9; SwitchToMode "Normal"; }
+        bind "=" { Resize "Increase"; SwitchToMode "Normal"; }
+        bind "Tab" { ToggleTab; SwitchToMode "Normal"; }
+        bind "g" { SwitchToMode "Locked"; }
+        bind "h" { MoveFocus "Left"; SwitchToMode "Normal"; }
+        bind "j" { MoveFocus "Down";  SwitchToMode "Normal"; }
+        bind "k" { MoveFocus "Up"; SwitchToMode "Normal"; }
+        bind "l" { MoveFocus "Right"; SwitchToMode "Normal"; }
+        bind "m" { SwitchToMode "Move"; }
+        bind "n" { NewPane; SwitchToMode "Normal";}
+        bind "o" { SwitchToMode "Session"; }
         bind "p" { SwitchToMode "Pane"; }
         bind "r" { SwitchToMode "Resize"; }
         bind "s" { SwitchToMode "Scroll"; }
-        bind "o" { SwitchToMode "Session"; }
         bind "t" { SwitchToMode "Tab"; }
-        bind "h" { SwitchToMode "Move"; }
-        bind "g" { SwitchToMode "Locked"; }
-        bind "n" { NewPane; }
-        bind "h" { MoveFocus "Left"; SwitchToMode "Normal"; }
-        bind "l" { MoveFocus "Right"; SwitchToMode "Normal"; }
-        bind "j" { MoveFocus "Down";  SwitchToMode "Normal"; }
-        bind "k" { MoveFocus "Up"; SwitchToMode "Normal"; }
-        bind "=" { Resize "Increase"; SwitchToMode "Normal"; }
-        bind "-" { Resize "Decrease"; SwitchToMode "Normal"; }
     }
     locked {
         bind "Ctrl a" { SwitchToMode "Normal"; }
@@ -62,16 +72,16 @@ keybinds clear-defaults=true {
         bind "l" "Right" "Down" "j" { GoToNextTab; }
         bind "n" { NewTab; SwitchToMode "Normal"; }
         bind "x" { CloseTab; SwitchToMode "Normal"; }
-        bind "s" { ToggleActiveSyncTab; SwitchToMode "Normal"; }
-        bind "1" { GoToTab 1; SwitchToMode "Normal"; }
-        bind "2" { GoToTab 2; SwitchToMode "Normal"; }
-        bind "3" { GoToTab 3; SwitchToMode "Normal"; }
-        bind "4" { GoToTab 4; SwitchToMode "Normal"; }
-        bind "5" { GoToTab 5; SwitchToMode "Normal"; }
-        bind "6" { GoToTab 6; SwitchToMode "Normal"; }
-        bind "7" { GoToTab 7; SwitchToMode "Normal"; }
-        bind "8" { GoToTab 8; SwitchToMode "Normal"; }
-        bind "9" { GoToTab 9; SwitchToMode "Normal"; }
+        bind "s" { ToggleActiveSyncTab; }
+        bind "1" { GoToTab 1; }
+        bind "2" { GoToTab 2; }
+        bind "3" { GoToTab 3; }
+        bind "4" { GoToTab 4; }
+        bind "5" { GoToTab 5; }
+        bind "6" { GoToTab 6; }
+        bind "7" { GoToTab 7; }
+        bind "8" { GoToTab 8; }
+        bind "9" { GoToTab 9; }
         bind "Tab" { ToggleTab; }
     }
     scroll {
