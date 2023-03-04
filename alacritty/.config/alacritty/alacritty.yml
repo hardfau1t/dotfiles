@@ -276,7 +276,7 @@ bell:
   color: '0xffffff'
 
 window:
-  opacity: 0.60
+  opacity: 0.7
 
 #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
@@ -306,7 +306,7 @@ live_config_reload: true
 # Shell
 #
 shell:
-    program: /usr/bin/nu
+    program: nu
 #  args:
 #    - --login
 

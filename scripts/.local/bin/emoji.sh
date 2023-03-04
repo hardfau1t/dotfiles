@@ -156,6 +156,7 @@ exit
 🗯️ right anger bubble
 💭 thought balloon
 💤 zzz
+🫶 heart hand
 👋 waving hand
 🤚 raised back of hand
 🖐️ hand with fingers splayed
