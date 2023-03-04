@@ -11,6 +11,7 @@ vim.bo.smartindent = true
 
 vim.wo.cursorline = true
 vim.wo.cursorcolumn = true
+vim.wo.conceallevel = 1
 
 vim.o.tabstop = 4
 vim.o.softtabstop = 4

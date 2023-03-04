@@ -66,5 +66,9 @@ mod.set_keymaps = function(kb)
 end
 
 vim.keymap.set("n", "\\", "<nop>")
-vim.keymap.set("n", "\\\\", ":NeorgStart<CR>")
+vim.keymap.set("n", "\\\\", function ()
+    vim.cmd("Neorg workspace")
+    vim.cmd("Neorg index")
+    vim.cmd("colorscheme tokyonight")
+end)
 return mod

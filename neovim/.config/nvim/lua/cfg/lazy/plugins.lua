@@ -134,7 +134,8 @@ return {
     "neovim/nvim-lspconfig",
     {
         'LhKipp/nvim-nu',
-        lazy = true,
+        lazy = false,
+        build = ":TSInstall nu",
         ft = { "nu" },
         config = function()
           require("nu").setup({ use_lsp_features = false })

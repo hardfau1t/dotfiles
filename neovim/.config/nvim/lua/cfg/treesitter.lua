@@ -18,6 +18,7 @@ function mod.setup()
             "json",
             "lua",
             "norg",
+            "nu",
             "python",
             "rust",
             "toml",
