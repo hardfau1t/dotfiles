@@ -175,6 +175,7 @@ exit
 👆 backhand index pointing up
 🖕 middle finger
 👇 backhand index pointing down
+🫰 hand with index and thumb crossed
 ☝️ index pointing up
 👍 thumbs up
 👎 thumbs down

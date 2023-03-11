@@ -25,3 +25,10 @@ export def "config eww" [] {
     cd ~/.config/eww/
     nvim eww.yuck
 }
+export def "config emoji" [] {
+    nvim (which emoji.sh).path
+}
+export def "config zellij" [] {
+    cd ~/.config/zellij
+    nvim config.kdl
+}

@@ -1,6 +1,7 @@
 return {
     { "folke/tokyonight.nvim", lazy = true },
     { "morhetz/gruvbox",       lazy = true },
+    { "imsnif/kdl.vim"}, -- kdl support for vim
     {
         "rebelot/kanagawa.nvim",
         name = "kanagawa",
