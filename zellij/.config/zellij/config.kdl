@@ -12,23 +12,30 @@ keybinds clear-defaults=true {
         bind "8" { GoToTab 8; SwitchToMode "Normal"; }
         bind "9" { GoToTab 9; SwitchToMode "Normal"; }
         bind "=" { Resize "Increase"; SwitchToMode "Normal"; }
-        bind "Tab" { ToggleTab; SwitchToMode "Normal"; }
+        bind "-" { NewPane "Down"; SwitchToMode "Normal"; }
+        bind "|" { NewPane "Right"; SwitchToMode "Normal"; }
+        bind "Tab" { TogglePaneFrames; SwitchToMode "Normal"; }
+        bind "b" { FocusPreviousPane; SwitchToMode "Normal"; }
+        bind "c" { SwitchToMode "Scroll"; }
+        bind "d" { Detach; }
         bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "Normal";}
-        bind "f" { ToggleFocusFullscreen; SwitchToMode "Normal";}
+        bind "f" { ToggleFloatingPanes; SwitchToMode "Normal";}
         bind "g" { SwitchToMode "Locked"; }
         bind "h" { MoveFocus "Left"; SwitchToMode "Normal"; }
         bind "j" { MoveFocus "Down";  SwitchToMode "Normal"; }
         bind "k" { MoveFocus "Up"; SwitchToMode "Normal"; }
         bind "l" { MoveFocus "Right"; SwitchToMode "Normal"; }
         bind "m" { SwitchToMode "Move"; }
-        bind "n" { NewPane; SwitchToMode "Normal";}
-        bind "o" { SwitchToMode "Session"; }
+        bind "n" { NewTab; SwitchToMode "Normal";}
         bind "p" { SwitchToMode "Pane"; }
+        bind "Q" { Quit; }
         bind "r" { SwitchToMode "Resize"; }
-        bind "s" { SwitchToMode "Scroll"; }
+        bind "s" { SwitchToMode "Session"; }
         bind "t" { SwitchToMode "Tab"; }
-        bind "w" { ToggleFloatingPanes; SwitchToMode "Normal";}
-        bind "z" { TogglePaneFrames; SwitchToMode "Normal"; }
+        bind "w" { ToggleTab; SwitchToMode "Normal"; }
+        bind "x" { CloseFocus ; SwitchToMode "Normal";}
+        bind "X" { CloseTab ; SwitchToMode "Normal";}
+        bind "z" { ToggleFocusFullscreen; SwitchToMode "Normal";}
     }
     locked {
         bind "Ctrl a" { SwitchToMode "Normal"; }
@@ -46,7 +53,7 @@ keybinds clear-defaults=true {
         bind "-" { Resize "Decrease"; }
     }
     pane {
-        bind "-" { NewPane "Down"; SwitchToMode "Normal"; }
+        bind "-" { NewPane "Down"; }
         bind "e" { TogglePaneEmbedOrFloating;}
         bind "f" { ToggleFocusFullscreen;}
         bind "h" "Left" { MoveFocus "Left"; }
@@ -59,7 +66,7 @@ keybinds clear-defaults=true {
         bind "w" { ToggleFloatingPanes;}
         bind "x" { CloseFocus; SwitchToMode "Normal"; }
         bind "z" { TogglePaneFrames; SwitchToMode "Normal"; }
-        bind "|" { NewPane "Right"; SwitchToMode "Normal"; }
+        bind "|" { NewPane "Right"; }
     }
     move {
         bind "n" "Tab"      { MovePane; }
@@ -149,7 +156,7 @@ plugins {
 //   - detach (Default)
 //   - quit
 //
-// on_force_close "quit"
+on_force_close "quit"
 
 //  Send a request for a simplified ui (without arrow fonts) to plugins
 //  Options:
@@ -227,7 +234,7 @@ copy_on_select true
 // Path to the default editor to use to edit pane scrollbuffer
 // Default: $EDITOR or $VISUAL
 //
-scrollback_editor "/usr/bin/nvim"
+scrollback_editor "nvim"
 
 // When attaching to an existing session with other users,
 // should the session be mirrored (true)
