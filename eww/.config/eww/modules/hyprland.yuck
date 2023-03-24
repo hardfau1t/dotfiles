@@ -6,6 +6,7 @@
         :space-evenly false
     (for workspace in { hyprland != "" ? hyprland.data : "[]"}
       (box
+        :visible {!(workspace.data.name =~ 'special.*')}
         (button
           :onclick "hyprctl dispatch workspace  ${workspace.data.name}"
           "${workspace.is_active ? '[' : '' } ${workspace.data.name} ${workspace.is_active ? ']' : '' }")
