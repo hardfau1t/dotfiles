@@ -69,6 +69,10 @@ return {
 
     {
         "nvim-neorg/neorg",
+        lazy = true,
+        -- load only when neorg cmd ran or shortcut is given
+        cmd = {"Neorg workspace", "Neorg index", "Neorg"},
+        keys = {"\\\\"},
         config = function()
           require("cfg.neorg").init()
         end,
@@ -93,6 +97,7 @@ return {
         config = function()
           require("luasnip/loaders/from_vscode").lazy_load()
         end,
+        dependencies = "rafamadriz/friendly-snippets"
     },
     {
         "rafamadriz/friendly-snippets",

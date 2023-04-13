@@ -28,7 +28,7 @@ function mod.init()
           ["core.norg.dirman"] = {
               config = {
                   workspaces = {
-                      my_workspace = "~/.local/share/personal_space",
+                      my_workspace = "~/.local/share/notes/",
                   },
                   default_workspace = "my_workspace",
               },
