@@ -17,4 +17,4 @@ let-env NU_PLUGIN_DIRS = [
 let-env PROMPT_INDICATOR_VI_INSERT = { || "" }
 let-env PROMPT_INDICATOR_VI_NORMAL = { || "" }
 let-env PROMPT_MULTILINE_INDICATOR = { || "" }
-source "~/.cache/starship/init.nu"
+let-env EDITOR = "nvim"

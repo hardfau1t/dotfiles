@@ -44,4 +44,14 @@ export def est [] {
                 print $"[(date now )] Remaining time ($remain) hours"
         }
 }
+export def push-conf [] {
+    let current_branch = (git branch | rg -e '\*' | split row ' ').1
+    git stash
+    git checkout main
+    git cherry-pick $current_branch
+    git push
+    git switch -
+    git rebase main
+    git stash pop
+}
 

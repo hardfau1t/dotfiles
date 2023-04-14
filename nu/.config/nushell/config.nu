@@ -348,3 +348,5 @@ alias zj = zellij
 use basics.nu *
 use work.nu *
 use conf.nu *
+
+source "~/.cache/starship/init.nu"
