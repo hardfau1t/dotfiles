@@ -16,6 +16,7 @@ keybinds clear-defaults=true {
         bind "|" { NewPane "Right"; SwitchToMode "Normal"; }
         bind "Tab" { TogglePaneFrames; SwitchToMode "Normal"; }
         bind "b" { FocusPreviousPane; SwitchToMode "Normal"; }
+        bind "C" { Clear; }
         bind "c" { SwitchToMode "Scroll"; }
         bind "d" { Detach; }
         bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "Normal";}
@@ -56,6 +57,7 @@ keybinds clear-defaults=true {
     }
     pane {
         bind "-" { NewPane "Down"; }
+        // bind "c" { ClearScreen;}
         bind "e" { TogglePaneEmbedOrFloating;}
         bind "f" { ToggleFocusFullscreen;}
         bind "h" "Left" { MoveFocus "Left"; }
@@ -252,3 +254,9 @@ layout_dir "/home/gireesh/.config/zj-layout/"
 // The folder in which Zellij will look for themes
 //
 // theme_dir "/path/to/my/theme_dir"
+ui {
+    pane_frames {
+        rounded_corners true
+        hide_session_name true
+    }
+}
