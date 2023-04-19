@@ -249,7 +249,7 @@ scrollback_editor "nvim"
 
 // The folder in which Zellij will look for layouts
 //
-layout_dir "/home/gireesh/.config/zj-layout/"
+layout_dir ".config/zj-layout/"
 
 // The folder in which Zellij will look for themes
 //
