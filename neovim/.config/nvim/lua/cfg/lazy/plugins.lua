@@ -55,7 +55,7 @@ return {
     {
       -- diagnostics looks cool
         "folke/trouble.nvim",
-        dependencies = { "kyazdani42/nvim-web-devicons" },
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
             require("trouble").setup({})
         end,
@@ -82,7 +82,7 @@ return {
     },
     {
         "nvim-lualine/lualine.nvim",
-        dependencies = { "kyazdani42/nvim-web-devicons" },
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
             require("cfg.lua_line")
         end,
@@ -106,7 +106,7 @@ return {
     },
     {
         "kyazdani42/nvim-tree.lua",
-        dependencies = { "kyazdani42/nvim-web-devicons" },
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
             require("cfg.nvim-tree").setup()
         end,
