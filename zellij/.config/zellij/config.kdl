@@ -29,7 +29,7 @@ keybinds clear-defaults=true {
         bind "m" { SwitchToMode "Move"; }
         bind "n" { NewTab; SwitchToMode "Normal";}
         bind "o" { NextSwapLayout; SwitchToMode "Normal";}
-        bind "o" { PreviousSwapLayout; SwitchToMode "Normal";}
+        bind "O" { PreviousSwapLayout; SwitchToMode "Normal";}
         bind "p" { SwitchToMode "Pane"; }
         bind "Q" { Quit; }
         bind "r" { SwitchToMode "Resize"; }
@@ -57,7 +57,7 @@ keybinds clear-defaults=true {
     }
     pane {
         bind "-" { NewPane "Down"; }
-        // bind "c" { ClearScreen;}
+        bind "c" { Clear;}
         bind "e" { TogglePaneEmbedOrFloating;}
         bind "f" { ToggleFocusFullscreen;}
         bind "h" "Left" { MoveFocus "Left"; }

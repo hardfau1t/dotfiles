@@ -43,16 +43,4 @@ vim.keymap.set("v", "y", '"+ygvy', { silent = true })
 vim.keymap.set("v", "P", '"_dP', { silent = true })
 
 
-
-----------------------------------------cscope--------------------------------------------------
-vim.keymap.set("n", "<leader>sa", ":cscope find a <cword><CR>", { silent = true })
-vim.keymap.set("n", "<leader>sc", ":cscope find c <cword><CR>", { silent = true })
-vim.keymap.set("n", "<leader>sd", ":cscope find d <cword><CR>", { silent = true })
-vim.keymap.set("n", "<leader>se", ":cscope find e <cword><CR>", { silent = true })
-vim.keymap.set("n", "<leader>sf", ":cscope find f <cword><CR>", { silent = true })
-vim.keymap.set("n", "<leader>sg", ":cscope find g <cword><CR>", { silent = true })
-vim.keymap.set("n", "<leader>si", ":cscope find i <cword><CR>", { silent = true })
-vim.keymap.set("n", "<leader>ss", ":cscope find s <cword><CR>", { silent = true })
-vim.keymap.set("n", "<leader>st", ":cscope find t <cword><CR>", { silent = true })
-
 vim.keymap.set("n", "<leader>st", ":source %<CR>", { silent = true })
