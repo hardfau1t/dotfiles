@@ -122,6 +122,7 @@ keybinds clear-defaults=true {
         bind "c" { SearchToggleOption "CaseSensitivity"; }
         bind "w" { SearchToggleOption "Wrap"; }
         bind "o" { SearchToggleOption "WholeWord"; }
+        bind "s" { SwitchToMode "EnterSearch"; SearchInput 0; }
     }
     entersearch {
         bind "Ctrl c" "Esc" { SwitchToMode "Scroll"; }
@@ -184,7 +185,7 @@ pane_frames true
 // Choose the theme that is specified in the themes section.
 // Default: default
 //
-theme "tokyonight-storm"
+theme "forest-light"
 
 // The name of the default layout to load on startup
 // Default: "default"
