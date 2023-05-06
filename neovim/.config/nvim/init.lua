@@ -1,6 +1,6 @@
 require("cfg")
 require("cfg.utils")
-require("cfg.lazy")
 require("cfg.global_keymaps")
+require("cfg.lazy")
 require("cfg.lsp").setup()
 vim.cmd([[colorscheme kanagawa]])

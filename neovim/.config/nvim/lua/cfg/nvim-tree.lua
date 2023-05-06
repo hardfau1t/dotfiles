@@ -6,20 +6,11 @@ function mod.setup()
         print("nvim-tree is not installed")
 		return
 	end
-	local config = require("nvim-tree.config")
-	local tree_cb = config.nvim_tree_callback
 	-- default mappings
 	local options = {
-		update_cwd = true,
-		view = {
-			mappings = {
-				list = {
-		{ key =  "<CR>", cb = tree_cb("edit") },
-		{ key = "o", cb = tree_cb("cd") },
-		{ key = "<C-h>", cb = tree_cb("split") },
-	},
-			},
-		},
+        disable_netrw = true,
+        hijack_cursor = true,
+        hijack_unnamed_buffer_when_opening = true,
 	}
 	ntree.setup(options)
 	-- keymaps

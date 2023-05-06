@@ -6,7 +6,6 @@ function mod.setup()
         return
     end
 
-    vim.o.foldmethod = "expr"
     vim.o.foldexpr = "nvim_treesitter#foldexpr()"
     ts.setup({
         ensure_installed = {

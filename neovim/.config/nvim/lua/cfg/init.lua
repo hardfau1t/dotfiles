@@ -13,7 +13,7 @@ vim.wo.cursorline = true
 vim.wo.cursorcolumn = true
 vim.wo.conceallevel = 1
 
-vim.o.tabstop = 4
+vim.o.tabstop = 8
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.o.number = true
@@ -56,6 +56,9 @@ vim.opt.fillchars = {
     fold = " ",
 }
 vim.g.c_syntax_for_h = true
+vim.g.loaded_netrw       = 1 -- for nvim-tree
+vim.g.loaded_netrwPlugin = 1 -- for nvim-tree
+
 
 -- vim.cmd("syntax on")                     -- if enabled treesitter fails to start
 vim.cmd("filetype plugin indent on")

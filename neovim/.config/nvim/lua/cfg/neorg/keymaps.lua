@@ -7,7 +7,7 @@ local function math_expr()
     end
     local ui = vim.api.nvim_list_uis()[1]
     local width = math.floor(ui.width / 3)
-    local height = math.floor(ui.height/3)
+    local height = math.floor(ui.height / 3)
     local win_options = {
         relative = 'editor',
         width = width,
@@ -27,7 +27,7 @@ local function math_expr()
         local cont = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
         vim.api.nvim_buf_delete(buf, {})
         -- ignore if the buffer is empty
-        if cont and not vim.deep_equal(cont, {"$$"}) then
+        if cont and not vim.deep_equal(cont, { "$$" }) then
             vim.api.nvim_put(cont, "", true, true)
         end
     end
@@ -42,13 +42,6 @@ mod.set_keymaps = function(kb)
     kb.remap_key("norg", "n", kb.leader .. "tv", kb.leader .. "v")
     kb.remap_key("norg", "n", kb.leader .. "te", kb.leader .. "e")
     kb.remap_key("norg", "n", kb.leader .. "nn", kb.leader .. "n")
-    kb.remap_key("norg", "n", "gtu", kb.leader .. "tu")
-    kb.remap_key("norg", "n", "gtp", kb.leader .. "tp")
-    kb.remap_key("norg", "n", "gtd", kb.leader .. "td")
-    kb.remap_key("norg", "n", "gth", kb.leader .. "th")
-    kb.remap_key("norg", "n", "gtc", kb.leader .. "tc")
-    kb.remap_key("norg", "n", "gtr", kb.leader .. "tr")
-    kb.remap_key("norg", "n", "gti", kb.leader .. "ti")
     -- journal shortcuts
     kb.map("norg", "n", kb.leader .. "jt", ":Neorg journal today<CR>")
     kb.map("norg", "n", kb.leader .. "jy", ":Neorg journal yesterday<CR>")
@@ -61,15 +54,13 @@ mod.set_keymaps = function(kb)
     kb.map("norg", "n", kb.leader .. "oc", ":Neorg toc close<CR>")
     kb.map("norg", "n", kb.leader .. "oq", ":Neorg toc toqflist<CR>")
     kb.map_event("norg", "i", "<C-l>", "core.integrations.telescope.insert_link")
-    -- kb.map("norg", "i", "<C-i>", math_expr)
-    -- kb.map("norg", "n", "\\im", math_expr)
 end
 
 vim.keymap.set("n", "\\", "<nop>")
-vim.keymap.set("n", "\\\\", function ()
+vim.keymap.set("n", "\\\\", function()
     vim.cmd("Neorg workspace")
     vim.cmd("Neorg index")
-    vim.cmd("colorscheme gruvbox")
+    -- vim.cmd("colorscheme gruvbox")
     vim.cmd("cd ~/.local/share/notes")
 end)
 return mod

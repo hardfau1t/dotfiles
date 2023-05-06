@@ -53,7 +53,7 @@ return {
         end,
     },
     {
-      -- diagnostics looks cool
+        -- diagnostics looks cool
         "folke/trouble.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
@@ -77,7 +77,6 @@ return {
         config = function()
             require("cfg.neorg").init()
         end,
-        build = ":Neorg sync-parsers| echo 'abc'",
         dependencies = { "nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope" },
     },
     {
@@ -181,5 +180,5 @@ return {
             }
         end,
         dependencies = { { 'nvim-tree/nvim-web-devicons' } }
-    }
+    },
 }
