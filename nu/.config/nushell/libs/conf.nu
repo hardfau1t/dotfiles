@@ -32,8 +32,8 @@ export def "config zellij" [] {
     cd ~/.config/zellij
     nvim config.kdl
 }
-export def push [] {
-    cd ~/dots
+export def "config push" [] {
+    cd $"($env.HOME)/.dots"
     let current_branch = (git branch | rg -e '\*' | split row ' ').1
     git stash
     git checkout main

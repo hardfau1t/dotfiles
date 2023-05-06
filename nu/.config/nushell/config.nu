@@ -345,8 +345,13 @@ let-env config = {
 }
 alias vpn = sudo /opt/forticlient/vpn --server=vpn2.india.saankhyalabs.com:8443 --user=gireesh.marathi -p
 alias zj = zellij
+alias pdsink = pactl set-default-sink
+alias pdsource = pactl set-default-source
+alias bctl = bluetoothctl
+alias wifi = iwctl station wlan0
 use basics.nu *
 use work.nu *
 use conf.nu *
+use audio.nu
 
 source "~/.cache/starship/init.nu"

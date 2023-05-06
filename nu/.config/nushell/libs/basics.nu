@@ -45,3 +45,11 @@ export def est [] {
         }
 }
 
+export def get-song [link: string] {
+    if not "MUSIC_DIR" in $env {
+        print -e "Failed to get $env.MUSIC_DIR, is it set?"
+        return
+    }
+    cd $env.MUSIC_DIR/temp
+    yt-dlp --embed-thumbnail --embed-metadata -x --audio-format mp3 --no-embed-info-json $link
+}
