@@ -58,7 +58,7 @@ let dark_theme = {
 let-env config = {
   ls: {
     use_ls_colors: true # use the LS_COLORS environment variable to colorize output
-    clickable_links: true # enable or disable clickable links. Your terminal has to support links.
+    clickable_links: false # enable or disable clickable links. Your terminal has to support links.
   }
   rm: {
     always_trash: true # always act as if -t was given. Can be overridden with -p
@@ -94,6 +94,10 @@ let-env config = {
   filesize: {
     metric: true # true => KB, MB, GB (ISO standard), false => KiB, MiB, GiB (Windows standard)
     format: "auto" # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, zb, zib, auto
+  }
+  cursor_shape: {
+    vi_insert: line # block, underscore, line , blink_block, blink_underscore, blink_line (block is the default)
+    vi_normal: blink_block # block, underscore, line, blink_block, blink_underscore, blink_line (underscore is the default)
   }
   color_config: $dark_theme   # if you want a light theme, replace `$dark_theme` to `$light_theme`
   use_grid_icons: true
@@ -349,6 +353,9 @@ alias pdsink = pactl set-default-sink
 alias pdsource = pactl set-default-source
 alias bctl = bluetoothctl
 alias wifi = iwctl station wlan0
+alias se = sudoedit
+alias dig = resolvectl query
+alias ncmp = ncmpcpp
 use basics.nu *
 use work.nu *
 use conf.nu *

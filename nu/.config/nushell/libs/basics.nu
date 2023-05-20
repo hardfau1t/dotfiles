@@ -22,6 +22,8 @@ export def wait-for [host: string] {
     }
 }
 
+use std
+
 export def mr [] {
     let mpd_dir = $"($env.HOME)/storage/music"
     #--------------------
@@ -45,11 +47,37 @@ export def est [] {
         }
 }
 
+def get-youtube-song [link: string] {
+    let links = ($link | parse -r 'youtube\.com/watch\?v=(?<link>[\w-]+)' | get link)
+    if ($links | length) != 1 {
+        print -e $"Failed to parse link '($link)', found ($links | length) valid link matches"
+        return 1
+    }
+    std log info $"Downloading from youtube: ($links.0)"
+    try {
+        yt-dlp --embed-thumbnail --embed-metadata -x --audio-format mp3 --no-embed-info-json $links.0
+    } catch {
+        std log warning $"couldn't download ($links.0)"
+        return 1
+    }
+    return $links.0
+}
+
 export def get-song [link: string] {
     if not "MUSIC_DIR" in $env {
         print -e "Failed to get $env.MUSIC_DIR, is it set?"
         return
     }
-    cd $env.MUSIC_DIR/temp
-    yt-dlp --embed-thumbnail --embed-metadata -x --audio-format mp3 --no-embed-info-json $link
+    cd $"($env.MUSIC_DIR)/temp"
+    let ret = if $link =~ '^(https://)?(music|www)\.youtube\.com/watch\?v=\w+' {
+        std log debug "matched link to youtube"
+        get-youtube-song $link
+    } else {
+        std log error $"Failed to get the provider for the link: '($link)'"
+        1
+    }
+    if $ret == 1 {
+        std log error "Download Failed"
+    }
+    mpc update
 }
