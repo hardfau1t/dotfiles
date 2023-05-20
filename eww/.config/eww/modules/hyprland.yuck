@@ -1,19 +1,21 @@
 (deflisten hyprland "pfui start hyprland workspace")
 (defwidget workspaces []
-  (box	:class "works"	
-        :orientation "h"
-        :spacing 5
-        :space-evenly false
+  (box
+    :space-evenly false
+    :spacing 10
     (for workspace in { hyprland != "" ? hyprland.data : "[]"}
       (box
         :visible {!(workspace.data.name =~ 'special.*')}
         (button
           :onclick "hyprctl dispatch workspace  ${workspace.data.name}"
-          "${workspace.is_active ? '[' : '' } ${workspace.data.name} ${workspace.is_active ? ']' : '' }")
+          (label
+            :class "${workspace.is_active ? 'active-workspace' : 'workspace'}"
+            :text "${workspace.data.name}")
+          )
         (button
           :onclick "hyprctl dispatch fullscreen 1"
           :visible {workspace.data.hasfullscreen && workspace.is_active }
-          '')
+          '󰊔')
       )
     )
   )

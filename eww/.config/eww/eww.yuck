@@ -4,30 +4,29 @@
 (include "./modules/clock.yuck")
 (include "./modules/dunst.yuck")
 (include "./modules/mpd.yuck")
-(include "./modules/memory.yuck")
 (include "./modules/system.yuck")
-(include "./modules/wifi.yuck")
 (include "./modules/hyprland.yuck")
 (include "./modules/disks.yuck")
+(include "./modules/connection.yuck")
 
 (defvar eww "$HOME/.local/bin/eww/eww -c $HOME/.config/eww/bar")
 
 (defwidget sep []
   (box 
+    :valign "center"
     ; :class "module-2" :vexpand "false" :hexpand "false"
     (label :class "separ" :text "|")
   )
 )
 
-
-
-
 (defwidget left []
   (box :orientation "h"
-    :space-evenly false
+    :spacing 15
     :halign "start"
     :class "left"
+    :space-evenly false
     (workspaces)
+    (sep)
     (mpd)
   )
 )
@@ -41,25 +40,29 @@
   )
 )
 (defwidget right []
-  (box   :orientation "h"
-         :space-evenly false
-         :halign "end"
-         :class "right"
+  (box
+    :orientation "h"
+    :space-evenly false
+    :spacing 8
+    :halign "end"
+    :class "right"
     (dunst)
+    (bluetooth)
+    (ip_con)
     (bright)
-    (volume)
-    ; (wifi)
-    ; (sep)
+    (audio_sink)
+    (audio_src)
     (bat)
     (mem)
+    (cpu)
     (disk_widget)
-    ; (sep)
   )
 )
 
 (defwidget bar []
   (box :class "bar_class"
        :orientation "h"
+
     (left)
     (center)
     (right)
@@ -74,6 +77,7 @@
                        :anchor "top center")
   :monitor 0
   :exclusive true
+  :focusable false
   (bar)
 )
 
@@ -91,11 +95,10 @@
     :geometry (geometry :x "1%"
                         :y "2%"
                         :anchor "top right"
-                        :width "280px"
-                        :height "60px")
+                        )
   :monitor 0
   :exclusive false
-  (audio)
+  (audio_panel)
 )
 
 (defwindow system
@@ -111,8 +114,8 @@
 
 
 
-(defwindow music_win :focusable "false" :screen 1
-    :geometry (geometry :x "20%" :y "2%" :width '12%' :height '15%' )
+(defwindow music_win :focusable "false"
+  :geometry (geometry :x "2%" :y "2%" :width '12%' :height '15%' )
   :monitor 0
   :exclusive false
   (music_pop)

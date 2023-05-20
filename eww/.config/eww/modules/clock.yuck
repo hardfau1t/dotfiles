@@ -5,7 +5,7 @@
 
 (defwidget cal []
   (eventbox :onhoverlost "${EWW_CMD} close calendar"
-    (box :class "cal" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false"
+    (box :class "cal-box" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false"
       (box :class "cal-in"
         (calendar :class "cal")
       )

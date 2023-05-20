@@ -1,25 +1,79 @@
 *{
-all: unset;
-color : #0C0B10;
+    all: unset;
+    color : #2A7CAB;
 }
-.left, .right, .center {
-   background-color: #AFBACC;
-   border-radius: 10px;
-   padding: 0 10 0 10;
-   border: 2px solid #27496A;
-}
-
-.left{
-   background-color: #ABA16E;
-   border: 2px solid #FD7977;
+.left, .right, .center, .cal-box, .sys_win, .audio-box, .music_pop {
+    background-color: #192229;
+    border-radius: 10px;
+    padding: 0 10 0 10;
+    border: 2px solid #85341f;
 }
 
-.center{
-   background-color: #F8CDA3;
-   border: 2px solid #2B1E09;
+.audio-box {
+    padding: 10;
 }
 
-.right{
-   background-color: #ABA16E;
-   border: 2px solid #FD7977;
+
+.iconbat, .iconmem, .iconcpu, .iconsink, .iconsink-loud, .iconsrc, .iconsrc-loud, .iconbacklight, .iconbat-full, .iconbat-low {
+    // size: 2;
+    font-size: 13px;
+    padding-left: 5 ;
+    padding-right: 5 ;
+    padding-top: 5 ;
+    padding-bottom: 5 ;
+}
+
+
+.tooltip{
+    border-radius: 10px;
+    border: 2px solid #E25506;
+}
+
+.active-workspace {
+    background-color: #1D3247;
+    padding: 0 8 0 8;
+    margin: 4 0 4 0;
+    border-radius: 6px;
+}
+
+.iconbat-low, .iconbat-full, .iconsink-loud, .iconsrc-loud, .notif-disabled, .active-workspace, .default-source-icon, .default-sink-icon {
+    color: #CA4810;
+}
+
+.iconsink, .iconsink-loud {
+    padding: 4px;
+}
+.iconsrc, .iconsrc-loud, .iconbat-low, .iconbat, .iconbat-full{
+    padding: 7px;
+}
+.iconbat-full {
+    // IDK whats the issue but with default it is pushed to left a little
+    padding-left: 8
+}
+
+
+
+.slider trough highlight, .audio-scale trough highlight {
+  background-image: linear-gradient(to right, #afcee0 30%, #a1bdce 50%, #77a5bf 100% *50);
+  border-radius: 10px;
+}
+
+scale trough {
+  all: unset;
+  background-color: #22242b;
+  box-shadow: 0 2px 3px 2px #06060b;
+  border-radius: 16px;
+  min-height: 10px;
+  min-width: 70px;
+  margin: 0px 10px 0px 0px;
+}
+
+.music_cover_art {
+    background-size: cover;
+    background-position: center;
+    min-height: 100px;
+    box-shadow: 5px 5px 5px 5px #06060b;
+    min-width: 200px;
+    margin: 10px 10px 10px 10px;
+    border-radius: 10px;
 }

@@ -1,0 +1,25 @@
+#!/usr/bin/env nu
+
+def status [] {
+    print -e "Why am I clicked"
+    bluetooth | parse -r 'bluetooth = (?<status>on|off)' | get 0 | to json -r
+}
+
+def toggle [] {
+    bluetooth toggle | null
+}
+
+def connect [] {
+    let device_name = (do {bluetoothctl devices |lines| str replace "Device" "" | to text | fuzzel -d}| complete | get stdout | str trim | parse -r  '^\s*(?<name>\S+)' | get 0 | get  name )
+    bluetoothctl connect $device_name | null
+}
+
+def main [action: string] {
+    if $action == "status" {
+        status
+    } else if $action == "toggle" {
+        toggle
+    } else if $action == "connect" {
+        connect
+    }
+}

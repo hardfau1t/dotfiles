@@ -1,0 +1,41 @@
+#!/usr/bin/env nu
+
+def usage [] {
+    print -e "monitors (toggle|off|on)"
+}
+
+def off [] {
+    for mon in (hyprctl monitors -j | from json) {
+        hyprctl dispatch dpms off $mon.name
+    }
+}
+
+def toggle [] {
+    for mon in (hyprctl monitors -j | from json) {
+        if $mon.dpmsStatus == true {
+            hyprctl dispatch dpms off $mon.name
+        } else {
+            hyprctl dispatch dpms on $mon.name
+        }
+    }
+
+}
+
+def on [] {
+    for mon in (hyprctl monitors -j | from json) {
+        hyprctl dispatch dpms on $mon.name
+    }
+
+}
+
+def main [action: string] {
+    if $action == "toggle" {
+        toggle
+    } else if $action == "off" {
+        off
+    } else if $action == "on" {
+        on
+    } else {
+        usage
+    }
+}

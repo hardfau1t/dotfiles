@@ -1,0 +1,8 @@
+#!/usr/bin/env nu
+let connections = (networkctl list --json=short | from json | get Interfaces | where OperationalState == routable  )
+if ( $connections |length) == 0 {
+# return dummy interface indicating disconnected
+    [{Type: disconnected, Name: Disconnected}] | to json -r
+} else {
+    $connections | to json -r
+}

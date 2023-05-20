@@ -3,7 +3,7 @@
 (defwidget dunst []
   (box 
     (button :onclick "bash -c '${EWW_CMD} update notif_disabled=${notif_disabled ? false : true}; dunstctl set-paused toggle'"
-      (label :text "${notif_disabled ? '' : '' }" )
+      (label :class "${notif_disabled ? 'notif-disabled' : 'notif-enabled' }" :text "${notif_disabled ? '' : '' }" )
     )
   )
 )

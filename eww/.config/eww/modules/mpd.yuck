@@ -1,51 +1,57 @@
-(deflisten mpd-info "pfui start mpd")
+(deflisten mpd-info :initial '{"ok":0}' "pfui start mpd")
+(defvar music_reveal false)
+(defvar cover_image '/tmp/cover.png')
 
 (defwidget mpd []
-  (box :orientation "h"
+  (eventbox :onhover "${EWW_CMD} update music_reveal=true"
+              :onhoverlost "${EWW_CMD} update music_reveal=false"
+    (box
       :space-evenly false
-      :halign "start"
-      :class "container-mpd"
-    (label :limit-width 40 :class "label-mpd" 
-           :text {
-            mpd-info != '' ?
-              mpd-info.ok == 1 ?
-                mpd-info.data.state.status == 2 ?
-                  "Stopped" : mpd-info.data.state.status == 0 ?
-                    mpd-info.data.song.title  + " - " + mpd-info.data.song.artist : "Paused"
-                : "MPD Unreachable" ; ok == 1
-              : ""  ; info != ''
+      :spacing 5
+      (button
+        :onclick "${EWW_CMD} open --toggle music_win"
+        (label 
+          :limit-width 40
+          :text 
+          {
+            mpd-info.ok == 1 ?
+              mpd-info.data.state.status == 2 ?
+                "Stopped" : mpd-info.data.state.status == 0 ?
+                  mpd-info.data.song.title  + " - " + mpd-info.data.song.artist : "Paused"
+              : "MPD Unreachable" ; ok == 1
           }
+        )
+      )
+      (revealer :transition "slideright"
+                  :reveal "${music_reveal}"
+                  :duration "350ms"
+        (box :vexpand false :hexpand true :spacing 10
+                  (button :class "song_btn_prev" :onclick "mpc prev" "")
+                  (button :class "song_btn_play" :onclick "mpc toggle" {mpd-info.ok == 1 ? mpd-info.data.state.status == 0 ? "" : "" : ""} )
+                  (button :class "song_btn_next" :onclick "~/.config/eww/bar/scripts/music_info --next" "")
+        )
+      )
     )
   )
 )
-;--------------- provided ----------------
-(defvar music_reveal false)
-(defvar current_value 0)
-
-(defwidget music [] 
-  (eventbox :onhover "${EWW_CMD} update music_reveal=true"
-              :onhoverlost "${EWW_CMD} update music_reveal=false"
-        (box :class "module-2" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false" 
-            (box :class "song_cover_art" :vexpand "false" :hexpand "false" )
-            (button :class "song" :wrap "true" :onclick "~/.config/eww/bar/scripts/pop music" {mpd-info.data.song.title})
-        (revealer :transition "slideright"
-                  :reveal music_reveal
-                  :duration "350ms"
-          (box :vexpand "false" :hexpand "false" :oreintation "h" 
-                    (button :class "song_btn_prev" :onclick "mpc prev" "")
-                    (button :class "song_btn_play" :onclick "mpc toggle" {mpd-info.data.state.status})
-                    (button :class "song_btn_next" :onclick "~/.config/eww/bar/scripts/music_info --next" ""))))))
 
 ;;  Music
 (defwidget music_pop []
-        (box :class "music_pop" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false"
-            (box :class "music_cover_art" :vexpand "false" :hexpand "false" )
-            (box :orientation "v" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false"
-                (label :halign "center" :class "music" :wrap "true" :limit-width 13 :text {mpd-info.data.song.title})
-                (label :halign "center" :class "music_artist" :wrap "true" :limit-width 15 :text {mpd-info.data.song.artist})
-                (box :orientation "h" :spacing 15 :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
-                    (button :class "music_btn_prev" :onclick "mpc prev" "")
-                    (button :class "music_btn_play" :onclick "mpc toggle" {mpd-info.data.state.status == 0 ? "" : "喇"})
-                    (button :class "music_btn_next" :onclick "mpc next" ""))
-                (box :class "music_bar" :spacing 10 :halign "center" :vexpand false :hexpand false :space-evenly false
-                    (scale :onscroll "mpc -q seek {}" :min 0 :max 100 :value 20)))))
+  (box :class "music_pop" :orientation "h" :space-evenly false :vexpand false :hexpand false :halign "center"
+    (eventbox :onhoverlost "${EWW_CMD} close music_win"
+      (box :orientation "v" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false" 
+        (box :class "music_cover_art" :vexpand "false" :hexpand "false" :style "background-image: url('${cover_image}');")
+        (label :halign "center" :class "music" :wrap "true" :limit-width 13 :text {mpd-info.data.song.title})
+        (label :halign "center" :class "music_artist" :wrap "true" :limit-width 15 :text {mpd-info.data.song.artist})
+        (box :orientation "h" :spacing 15 :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
+              (button :class "music_btn_prev" :onclick "mpc prev" "")
+              (button :class "music_btn_play" :onclick "mpc toggle" {mpd-info.data.state.status == 0 ? "" : ""})
+              (button :class "music_btn_next" :onclick "mpc next" "")
+        )
+        (box :spacing 10 :halign "center" :vexpand false :hexpand false :space-evenly false
+          (scale :class "slider" :onchange "mpc -q seek {}" :min 0 :max {mpd-info.data.state.duration} :value {mpd-info.data.state.elapsed})
+        )
+      )
+    )
+  )
+)

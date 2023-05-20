@@ -1,15 +1,28 @@
 ; vars
+(defvar charging_icons '["󰢟","󰢜","󰂆","󰂇","󰂈","󰢝","󰂉","󰢞","󰂊","󰂋","󰂅"]')
+(defvar discharging_icons '["󰂎","󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"]')
 
 ; widgets
 (defwidget bat []
-  (box :class "bat_module" :vexpand "false" :hexpand "false"
+  (box :vexpand true :hexpand true 
     (circular-progress :value "${EWW_BATTERY.BAT0.capacity}"
         :class "batbar"
-        :thickness 4
+        :thickness 2
       (button 
-          :class "iconbat"
+        (label
+          :class "${(EWW_BATTERY.BAT0.status == 'Charging' || EWW_BATTERY.BAT0.status == 'Not charging') && EWW_BATTERY.BAT0.capacity > 90 ? 'iconbat-full' :
+                      EWW_BATTERY.BAT0.status != 'Charging' && EWW_BATTERY.BAT0.capacity < 20 ? 'iconbat-low' :
+                       'iconbat'}"
           :tooltip "battery on ${EWW_BATTERY.BAT0.capacity}% and currently ${EWW_BATTERY.BAT0.status}"
-        "${EWW_BATTERY.BAT0.status == "Charging"? "󰠠" : "" }")
+          :text "${EWW_BATTERY.BAT0.status == "Charging"?
+            ; charing
+             charging_icons[ round(EWW_BATTERY.BAT0.capacity / 10,0 ) ]
+          :
+            ; discharing
+             discharging_icons[ round(EWW_BATTERY.BAT0.capacity / 10,0 ) ]
+          }"
+        )
+      )
     )
   )
 )

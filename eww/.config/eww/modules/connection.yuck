@@ -1,0 +1,34 @@
+(defpoll interfaces :interval '2s' '~/.config/eww/scripts/ip_conn' )
+
+(defpoll bluetooth_info :interval '2s' :initial '{"status": "off"}' '~/.config/eww/scripts/bluetooth status' )
+
+(defwidget ip_con []
+  (box
+    :space-evenly true
+    :orientation "h"
+    :spacing 1
+    (for interface in {interfaces == '[]' || interfaces == ''? '[{"Type": "disconnected","Name": "Disconnected","Driver": "none"}]': interfaces }
+      (label
+        :text "${interface.Type == "ether" ? '󰈀 ' :
+                  interface.Type == "wlan" ? '󱚽 ' :
+                    interface.Type == "none" && interface.Driver == 'tun' ? '󱠽' :
+                      interface.Type == 'disconnected'? '' : ' '
+                }"
+        :tooltip "${interface == 'null' ? 'Disconnected': interface.Name}"
+      )
+    )
+  )
+)
+
+(defwidget bluetooth []
+  (box
+    (button
+      :onclick "~/.config/eww/scripts/bluetooth toggle"
+      :onrightclick  "~/.config/eww/scripts/bluetooth connect"
+      :timeout "1min"
+      "${bluetooth_info.status == 'on'? '󰂯' :
+        bluetooth_info.status == 'off' ? '󰂲' : '󰂳'
+      }"
+    )
+  )
+)
