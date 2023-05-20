@@ -34,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             /*******************************************************************************************************************************************************/
 	[2] = LAYOUT_split_3x6_3(
             KC_F1,          KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,      /*------*/      KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       KC_DELETE,
-            RESET,          KC_HOME,    KC_LEFT,    KC_UP,      KC_RIGHT,   KC_END,     /*------*/      KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_LPRN,    KC_RPRN,    KC_UNDS,
+            KC_NO,        KC_HOME,    KC_LEFT,    KC_UP,      KC_RIGHT,   KC_END,     /*------*/      KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_LPRN,    KC_RPRN,    KC_UNDS,
             KC_WAKE,        KC_CUT,     KC_COPY,    KC_DOWN,    KC_WBAK,    KC_WFWD,    /*------*/      KC_TRNS,    KC_TRNS,    KC_QUES,    KC_LBRC,    KC_RBRC,    RSFT_T(KC_SLSH),
                                     KC_LCTL,    KC_SPC,    MO(2),                      /*------*/              MO(3),          MOD_RGUI,         KC_RALT),
 
@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                     KC_LCTL,    KC_SPC, KC_ESC,                  /*------*/              LT(1,KC_SLSH),  LGUI_T(KC_ENT),  LALT_T(KC_BSLS)),
 };
 
-#ifdef OLED_DRIVER_ENABLE
+#ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
     if (!is_keyboard_master()) {
         return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
@@ -77,10 +77,10 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
     return rotation;
 }
 
-#    define L_BASE 0
-#    define L_LOWER 2
-#    define L_RAISE 4
-#    define L_ADJUST 8
+#define L_BASE 0
+#define L_LOWER 2
+#define L_RAISE 4
+#define L_ADJUST 8
 
 void oled_render_layer_state(void) {
     oled_write_P(PSTR("Layer: "), false);
@@ -108,19 +108,22 @@ char keylog_str[24] = {};
 const char code_to_name[60] = {' ', ' ', ' ', ' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'R', 'E', 'B', 'T', '_', '-', '=', '[', ']', '\\', '#', ';', '\'', '`', ',', '.', '/', ' ', ' ', ' '};
 
 void set_keylog(uint16_t keycode, keyrecord_t *record) {
-    char name = ' ';
-    if ((keycode >= QK_MOD_TAP && keycode <= QK_MOD_TAP_MAX) || (keycode >= QK_LAYER_TAP && keycode <= QK_LAYER_TAP_MAX)) {
-        keycode = keycode & 0xFF;
-    }
-    if (keycode < 60) {
-        name = code_to_name[keycode];
-    }
+  char name = ' ';
+    if ((keycode >= QK_MOD_TAP && keycode <= QK_MOD_TAP_MAX) ||
+        (keycode >= QK_LAYER_TAP && keycode <= QK_LAYER_TAP_MAX)) { keycode = keycode & 0xFF; }
+  if (keycode < 60) {
+    name = code_to_name[keycode];
+  }
 
-    // update keylog
-    snprintf(keylog_str, sizeof(keylog_str), "%dx%d, k%2d : %c", record->event.key.row, record->event.key.col, keycode, name);
+  // update keylog
+  snprintf(keylog_str, sizeof(keylog_str), "%dx%d, k%2d : %c",
+           record->event.key.row, record->event.key.col,
+           keycode, name);
 }
 
-void oled_render_keylog(void) { oled_write(keylog_str, false); }
+void oled_render_keylog(void) {
+    oled_write(keylog_str, false);
+}
 
 void render_bootmagic_status(bool status) {
     /* Show Ctrl-Gui Swap options */
@@ -137,18 +140,25 @@ void render_bootmagic_status(bool status) {
     }
 }
 
-void oled_render_logo(void) {
-    static const char PROGMEM crkbd_logo[] = {0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8a, 0x8b, 0x8c, 0x8d, 0x8e, 0x8f, 0x90, 0x91, 0x92, 0x93, 0x94, 0xa0, 0xa1, 0xa2, 0xa3, 0xa4, 0xa5, 0xa6, 0xa7, 0xa8, 0xa9, 0xaa, 0xab, 0xac, 0xad, 0xae, 0xaf, 0xb0, 0xb1, 0xb2, 0xb3, 0xb4, 0xc0, 0xc1, 0xc2, 0xc3, 0xc4, 0xc5, 0xc6, 0xc7, 0xc8, 0xc9, 0xca, 0xcb, 0xcc, 0xcd, 0xce, 0xcf, 0xd0, 0xd1, 0xd2, 0xd3, 0xd4, 0};
-    oled_write_P(crkbd_logo, false);
+static void render_logo(void) {
+    static const char PROGMEM raw_logo[] = {
+        255,255, 63, 15,  7,  7,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  7,  7, 15,
+        63,255,255,255,255,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,192,254,255, 14,  0,128,128,128,128,  0,  0,  0,  0,  0,128,128,128,128,128,  0,128,128,  0,  0,128,128,  0,  0,128,128,128,128,128,128,  0,  0,  0,  0,128,128,128,128,128,224,254,255,  6,  0,128,128,128,240,248,188,142,134,134,  6,  0,  0,128,128,128,128,128,128,128,128,  0,128,128,128,  0,  0,  0,  0,  0,128,128,  0,  0,  0,  0,  6,230,255,255, 15,  0,  0,  0,190,255,247,227,243, 63, 31, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+        0,255,255,255,255,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,248,255, 63, 15,  7,  3,  3,  1,255,255,127, 24,126,255,231,195,195,193,225,249,255,255,  3,224,255,255, 15,  7,  7,  3,  3,  1,  1,  1,  1,124,254,255,199,195,225,225,113,253,255, 63,  0,  0,  1,  1,241,255,127,  3,  1,  1,  1, 60,126,255,195,195,193,193,225,253,255, 15,  1,126,255,239,193,224,224,112,240,255,255,  3,  0,  0,  0,  0,252,255, 63,  1,  0, 60,126,255,199,195,193,195,255,127,126,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
+        
+        2,255,255,
+    };
+    oled_write_raw_P(raw_logo, sizeof(raw_logo));
 }
 
-void oled_task_user(void) {
+bool oled_task_user(void) {
     if (is_keyboard_master()) {
         oled_render_layer_state();
         oled_render_keylog();
     } else {
-        oled_render_logo();
+        render_logo();
     }
+    return false;
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -157,4 +167,4 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 }
-#endif  // OLED_DRIVER_ENABLE
+#endif // OLED_ENABLE
