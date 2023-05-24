@@ -19,6 +19,7 @@ function mod.init()
                 }
             }, -- Allows for use of icons
             ["core.export"] = {},
+            ["core.ui.calendar"] = {},
             ["core.export.markdown"] = {
                 config = {
                     extensions = { "todo-items-basic", "todo-items-pending", "todo-items-extended", "definition-lists",
