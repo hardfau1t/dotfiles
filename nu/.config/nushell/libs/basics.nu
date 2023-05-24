@@ -25,10 +25,9 @@ export def wait-for [host: string] {
 use std
 
 export def mr [] {
-    let mpd_dir = $"($env.HOME)/storage/music"
     #--------------------
-    let current_song = ([$mpd_dir,(mpc current -f "%file%")] | path join )
-    mv $current_song $"($env.HOME)/tmp"
+    let current_song = ([$env.MUSIC_DIR,(mpc current -f "%file%")] | path join )
+    ^mv $current_song $"($env.HOME)/tmp"
     mpc rescan
     mpc next
     notify-send "mpd" $"'($current_song | path basename)' moved to ~/tmp" -t 5000
@@ -47,23 +46,28 @@ export def est [] {
         }
 }
 
+
+
+
 def get-youtube-song [link: string] {
     let links = ($link | parse -r 'youtube\.com/watch\?v=(?<link>[\w-]+)' | get link)
     if ($links | length) != 1 {
         print -e $"Failed to parse link '($link)', found ($links | length) valid link matches"
-        return 1
+        return ""
     }
     std log info $"Downloading from youtube: ($links.0)"
     try {
-        yt-dlp --embed-thumbnail --embed-metadata -x --audio-format mp3 --no-embed-info-json $links.0
+        let metadata = (yt-dlp --dump-json --skip-download $links.0 | from json)
+        yt-dlp --embed-thumbnail --embed-metadata -x --audio-format mp3 --no-embed-info-json $links.0 -o '%(title)s.%(ext)s'
+        return $"($metadata.title).mp3"
     } catch {
         std log warning $"couldn't download ($links.0)"
-        return 1
     }
-    return $links.0
+    return ""
 }
 
 export def get-song [link: string] {
+    let MusicDownloadDir = "temp/"
     if not "MUSIC_DIR" in $env {
         print -e "Failed to get $env.MUSIC_DIR, is it set?"
         return
@@ -71,7 +75,11 @@ export def get-song [link: string] {
     cd $"($env.MUSIC_DIR)/temp"
     let ret = if $link =~ '^(https://)?(music|www)\.youtube\.com/watch\?v=\w+' {
         std log debug "matched link to youtube"
-        get-youtube-song $link
+        let title = (get-youtube-song $link)
+        if $title != "" {
+            mpc update
+            mpc add ($MusicDownloadDir | path join $title)
+        }
     } else {
         std log error $"Failed to get the provider for the link: '($link)'"
         1
@@ -79,5 +87,12 @@ export def get-song [link: string] {
     if $ret == 1 {
         std log error "Download Failed"
     }
-    mpc update
+}
+
+export def commit-pass [] {
+    cd ~/.dots/personal/
+    git add .
+    git commit -m $"(date now | date format "%d-%m-%Y")"
+    git push
+    cd -
 }
