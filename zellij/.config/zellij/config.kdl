@@ -98,7 +98,7 @@ keybinds clear-defaults=true {
         bind "Tab" { ToggleTab; }
     }
     scroll {
-        bind "e" { EditScrollback; }
+        bind "e" { EditScrollback; SwitchToMode "Normal";}
         bind "s" { SwitchToMode "EnterSearch"; SearchInput 0; }
         bind "q" { SwitchToMode "Normal"; }
         bind "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }
