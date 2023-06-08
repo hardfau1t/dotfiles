@@ -14,7 +14,10 @@ function mod.init()
                             level_4 = { icon = "◇" },
                             level_5 = { icon = "◆" },
                             level_6 = { icon = "⋄" },
-                        }
+                          },
+                          code_block = {
+                            width = "content"
+                          }
                     }
                 }
             }, -- Allows for use of icons
