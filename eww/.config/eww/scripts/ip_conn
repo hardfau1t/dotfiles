@@ -1,5 +1,17 @@
 #!/usr/bin/env nu
-let connections = (networkctl list --json=short | from json | get Interfaces | where OperationalState == routable  )
+
+let ignore_list = ["docker0", "tap0", "veth.*"]
+
+def filter-interfaces [if_name: string] {
+    for ign in $ignore_list {
+        if $if_name =~ $ign {
+            return false
+        }
+    }
+    return true
+}
+
+let connections = (networkctl list --json=short | from json | get Interfaces | where OperationalState == routable  | filter {|if| filter-interfaces $if.Name })
 if ( $connections |length) == 0 {
 # return dummy interface indicating disconnected
     [{Type: disconnected, Name: Disconnected}] | to json -r
