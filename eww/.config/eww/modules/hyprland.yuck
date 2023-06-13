@@ -1,4 +1,5 @@
 (deflisten hyprland "pfui start hyprland workspace")
+(deflisten layout "pfui start hyprland keyboard")
 (defwidget workspaces []
   (box
     :space-evenly false
@@ -17,6 +18,14 @@
           :visible {workspace.data.hasfullscreen && workspace.is_active }
           '󰊔')
       )
+    )
+  )
+)
+
+(defwidget keyboard []
+  (box
+    (button
+      (label :text "${layout.data.layout}")
     )
   )
 )

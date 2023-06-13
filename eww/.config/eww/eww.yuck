@@ -46,6 +46,7 @@
     :spacing 8
     :halign "end"
     :class "right"
+    (keyboard)
     (dunst)
     (bluetooth)
     (ip_con)
