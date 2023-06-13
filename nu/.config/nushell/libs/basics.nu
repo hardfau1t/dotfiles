@@ -57,8 +57,8 @@ def get-youtube-song [link: string] {
     }
     std log info $"Downloading from youtube: ($links.0)"
     try {
-        let metadata = (yt-dlp --dump-json --skip-download $links.0 | from json)
-        yt-dlp --embed-thumbnail --embed-metadata -x --audio-format mp3 --no-embed-info-json $links.0 -o '%(title)s.%(ext)s'
+        let metadata = (yt-dlp --dump-json --skip-download $link | from json)
+        yt-dlp --embed-thumbnail --embed-metadata -x --audio-format mp3 --no-embed-info-json $link -o '%(title)s.%(ext)s'
         return $"($metadata.title).mp3"
     } catch {
         std log warning $"couldn't download ($links.0)"
@@ -73,12 +73,12 @@ export def get-song [link: string] {
         return
     }
     cd $"($env.MUSIC_DIR)/temp"
-    let ret = if $link =~ '^(https://)?(music|www)\.youtube\.com/watch\?v=\w+' {
+    let ret = if $link =~ '^(https://)?(music|www)\.youtube\.com/watch\?v=[\w-]+' {
         std log debug "matched link to youtube"
         let title = (get-youtube-song $link)
         if $title != "" {
-            mpc update
-            mpc add ($MusicDownloadDir | path join $title)
+            mpc update -w
+            mpc add $"($MusicDownloadDir | path join $title)"
         }
     } else {
         std log error $"Failed to get the provider for the link: '($link)'"

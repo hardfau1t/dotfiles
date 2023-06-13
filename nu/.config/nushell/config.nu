@@ -352,13 +352,19 @@ alias zj = zellij
 alias pdsink = pactl set-default-sink
 alias pdsource = pactl set-default-source
 alias bctl = bluetoothctl
-alias wifi = iwctl station wlan0
+alias wlan = iwctl station wlan0
 alias se = sudoedit
 alias dig = resolvectl query
 alias ncmp = ncmpcpp
+alias com = picocom
+alias nups = ps
+alias ps = ^ps
+
+use wrappers.nu *
 use basics.nu *
-use work.nu *
 use conf.nu *
 use audio.nu
+
+use work.nu *
 
 source "~/.cache/starship/init.nu"
