@@ -109,6 +109,7 @@ let-env config = {
   shell_integration: true # enables terminal markers and a workaround to arrow keys stop working issue
   show_banner: false # true or false to enable or disable the banner
   render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
+  bracketed_paste: false
   hooks: {
     pre_prompt: [{||
       $nothing  # replace with source code to run before the prompt is shown
@@ -347,10 +348,14 @@ let-env config = {
     }
   ]
 }
+
+# aliases
 alias vpn = sudo /opt/forticlient/vpn --server=vpn2.india.saankhyalabs.com:8443 --user=gireesh.marathi -p
 alias zj = zellij
-alias pdsink = pactl set-default-sink
-alias pdsource = pactl set-default-source
+alias pdsi = pactl set-default-sink
+alias pdso = pactl set-default-source
+alias plsi = pactl set-default-sink
+alias plso = pactl set-default-source
 alias bctl = bluetoothctl
 alias wlan = iwctl station wlan0
 alias se = sudoedit
@@ -359,6 +364,20 @@ alias ncmp = ncmpcpp
 alias com = picocom
 alias nups = ps
 alias ps = ^ps
+alias & = pueue add
+
+alias e = exa
+alias v = /usr/bin/nvim
+alias fm = vifm
+alias gdb = gdb -q
+alias arm-none-eabi-gdb = arm-none-eabi-gdb -q
+alias mbsync = mbsync -c $"($env.XDG_CONFIG_HOME)/isync/mbsyncrc"
+alias mitmproxy = mitmproxy --set confdir=$"($env.XDG_CONFIG_HOME)/mitmproxy"
+alias mitmweb = mitmweb --set confdir=$"($env.XDG_CONFIG_HOME)/mitmproxy"
+alias wget = wget --hsts-file=$"($env.XDG_DATA_HOME)/wget-hsts"
+alias hx = helix
+alias hostname = hostnamectl hostname
+
 
 use wrappers.nu *
 use basics.nu *

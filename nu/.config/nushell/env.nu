@@ -2,6 +2,7 @@
 # Directories to search for scripts when calling source or use
 let config_path = ($nu.home-path | path join ".config/nushell")
 #
+
 # By default, <nushell-config-dir>/scripts is added
 let-env NU_LIB_DIRS = [
     ($config_path |  path join 'libs')
@@ -18,5 +19,7 @@ let-env PROMPT_INDICATOR_VI_INSERT = { || "" }
 let-env PROMPT_INDICATOR_VI_NORMAL = { || "" }
 let-env PROMPT_MULTILINE_INDICATOR = { || "" }
 let-env EDITOR = "nvim"
+let-env CARGO_HOME = ("~/.local/share/cargo/" | path expand)
+let-env RUSTUP_HOME = ("~/.local/share/rustup" | path expand)
 
 let-env MUSIC_DIR =  $"($env.HOME)/Music"

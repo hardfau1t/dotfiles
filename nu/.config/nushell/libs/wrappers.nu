@@ -8,7 +8,7 @@ export extern aws [...params: any] {
     try {
        actual-aws $params | from json
     } catch {
-       actual-aws $params | from json
+       actual-aws $params
     }
 }
 
