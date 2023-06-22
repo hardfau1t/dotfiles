@@ -250,11 +250,11 @@ scrollback_editor "nvim"
 
 // The folder in which Zellij will look for layouts
 //
-layout_dir ".config/zj-layout/"
+layout_dir "~/.config/zj-layout/"
 
 // The folder in which Zellij will look for themes
 //
-// theme_dir "/path/to/my/theme_dir"
+// theme_dir "~/.config/zellij/themes/"
 ui {
     pane_frames {
         rounded_corners true
