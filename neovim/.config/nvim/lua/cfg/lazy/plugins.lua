@@ -1,7 +1,21 @@
 return {
     { "folke/tokyonight.nvim", lazy = true },
-    { "morhetz/gruvbox",       lazy = true },
     { "imsnif/kdl.vim" }, -- kdl support for vim
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
+        config = function()
+            require("catppuccin").setup({
+                flavor = "mocha",
+                transparent_background = false,
+                dim_inactive = {
+                    enabled = true,
+                }
+            })
+        end
+    },
+    { "morhetz/gruvbox",          lazy = true },
     {
         "rebelot/kanagawa.nvim",
         name = "kanagawa",
