@@ -66,6 +66,9 @@ let-env config = {
   cd: {
     abbreviations: false # allows `cd s/o/f` to expand to `cd some/other/folder`
   }
+  explore: {
+    exit_esc: false
+  }
   table: {
     mode: rounded # basic, compact, compact_double, light, thin, with_love, rounded, reinforced, heavy, none, other
     index_mode: always # "always" show indexes, "never" show indexes, "auto" = show indexes when a table has "index" column
@@ -76,9 +79,10 @@ let-env config = {
     }
   }
   history: {
-    max_size: 10000 # Session has to be reloaded for this to take effect
+    max_size: 30000 # Session has to be reloaded for this to take effect
     sync_on_enter: true # Enable to share history between multiple sessions, else you have to close the session to write history to file
-    file_format: "plaintext" # "sqlite" or "plaintext"
+    file_format: "sqlite" # "sqlite" or "plaintext"
+    history_isolation: true
   }
   completions: {
     case_sensitive: true # set to true to enable case-sensitive completions
@@ -254,51 +258,6 @@ let-env config = {
       event: {
         until: [
           { send: menu name: completion_menu }
-          { send: menunext }
-        ]
-      }
-    }
-    {
-      name: completion_previous
-      modifier: shift
-      keycode: backtab
-      mode: [emacs, vi_normal, vi_insert] # Note: You can add the same keybinding to all modes by using a list
-      event: { send: menuprevious }
-    }
-    {
-      name: history_menu
-      modifier: control
-      keycode: char_r
-      mode: emacs
-      event: { send: menu name: history_menu }
-    }
-    {
-      name: next_page
-      modifier: control
-      keycode: char_x
-      mode: emacs
-      event: { send: menupagenext }
-    }
-    {
-      name: undo_or_previous_page
-      modifier: control
-      keycode: char_z
-      mode: emacs
-      event: {
-        until: [
-          { send: menupageprevious }
-          { edit: undo }
-        ]
-       }
-    }
-    {
-      name: yank
-      modifier: control
-      keycode: char_y
-      mode: emacs
-      event: {
-        until: [
-          {edit: pastecutbufferafter}
         ]
       }
     }
