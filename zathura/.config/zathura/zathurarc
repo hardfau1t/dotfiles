@@ -50,3 +50,4 @@ set selection-clipboard clipboard
 
 map <Return> navigate next
 map <S-Return> navigate previous
+include catppuccin
