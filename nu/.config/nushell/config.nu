@@ -343,6 +343,4 @@ use basics.nu *
 use conf.nu *
 use audio.nu
 
-use work.nu *
-
 source "~/.cache/starship/init.nu"
