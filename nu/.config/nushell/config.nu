@@ -258,6 +258,7 @@ let-env config = {
       event: {
         until: [
           { send: menu name: completion_menu }
+          { send: menunext }
         ]
       }
     }
@@ -313,8 +314,8 @@ alias vpn = sudo /opt/forticlient/vpn --server=vpn2.india.saankhyalabs.com:8443 
 alias zj = zellij
 alias pdsi = pactl set-default-sink
 alias pdso = pactl set-default-source
-alias plsi = pactl set-default-sink
-alias plso = pactl set-default-source
+alias plsi = pactl list sinks --format=json
+alias plso = pactl list sources --format=json
 alias bctl = bluetoothctl
 alias wlan = iwctl station wlan0
 alias se = sudoedit
@@ -341,6 +342,5 @@ alias hostname = hostnamectl hostname
 use wrappers.nu *
 use basics.nu *
 use conf.nu *
-use audio.nu
 
 source "~/.cache/starship/init.nu"
