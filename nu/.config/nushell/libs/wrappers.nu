@@ -20,14 +20,6 @@ export extern hyprctl [...params: any] {
     }
 }
 
-export extern pactl [...params] {
-    try {
-        actual-pactl --format=json $params | from json
-    } catch {
-        actual-pactl $params
-    }
-}
-
 export extern resolvectl [...params] {
     try {
        actual-resolvectl --json=short $params | from json

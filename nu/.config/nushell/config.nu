@@ -314,8 +314,8 @@ alias vpn = sudo /opt/forticlient/vpn --server=vpn2.india.saankhyalabs.com:8443 
 alias zj = zellij
 alias pdsi = pactl set-default-sink
 alias pdso = pactl set-default-source
-alias plsi = pactl list sinks --format=json
-alias plso = pactl list sources --format=json
+alias plsi = pactl --format=json list sinks
+alias plso = pactl --format=json list sources
 alias bctl = bluetoothctl
 alias wlan = iwctl station wlan0
 alias se = sudoedit
