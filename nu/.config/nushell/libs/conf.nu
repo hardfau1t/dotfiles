@@ -43,3 +43,8 @@ export def "config push" [] {
     git rebase main
     git stash pop
 }
+
+export def "config libs" [] {
+    cd ~/.dots/nu/.config/nushell/libs/
+    nvim basics.nu
+}

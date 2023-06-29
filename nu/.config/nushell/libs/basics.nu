@@ -32,6 +32,7 @@ export def mr [] {
     mpc next
     notify-send "mpd" $"'($current_song | path basename)' moved to ~/tmp" -t 5000
 }
+
 export def est [] {
     let init =  (cat /sys/class/power_supply/BAT0/energy_now | into int) / ( cat /sys/class/power_supply/BAT0/energy_full | into int)
         let init_time = (date now)
@@ -95,4 +96,12 @@ export def commit-pass [] {
     git commit -m $"(date now | date format "%d-%m-%Y")"
     git push
     cd -
+}
+
+export def tty-size [] {
+    stty size | parse "{rows} {cols}" | get 0 | format 'stty rows {rows} cols {cols}' | str trim | std clip
+}
+
+export def bsource [pth: string ] {
+    bash -c $"'source ($pth) && nu'"
 }

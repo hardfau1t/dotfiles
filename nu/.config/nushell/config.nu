@@ -82,7 +82,6 @@ let-env config = {
     max_size: 30000 # Session has to be reloaded for this to take effect
     sync_on_enter: true # Enable to share history between multiple sessions, else you have to close the session to write history to file
     file_format: "sqlite" # "sqlite" or "plaintext"
-    history_isolation: true
   }
   completions: {
     case_sensitive: true # set to true to enable case-sensitive completions
