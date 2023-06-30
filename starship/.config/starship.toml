@@ -21,6 +21,7 @@ format = '[${symbol}${pyenv_prefix}(\($virtualenv\) )]($style)'
 disabled=false
 format="[$symbol]($style) "
 map_symbol=true
+symbol = ""
 
 [jobs]
 symbol="✦ "
