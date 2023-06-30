@@ -435,17 +435,20 @@
 #    set_stack_tag = "volume"
 #
 
-# [urgency_low]
-# background = "#1E1E2E"
-# foreground = "#CDD6F4"
+[urgency_low]
+background = "#1E1E2E"
+foreground = "#CDD6F4"
+timeout = 0
 
-# [urgency_normal]
-# background = "#1E1E2E"
-# foreground = "#CDD6F4"
+[urgency_normal]
+background = "#1E1E2E"
+foreground = "#CDD6F4"
+timeout = 0
 
-# [urgency_critical]
-# background = "#1E1E2E"
-# foreground = "#CDD6F4"
-# frame_color = "#FAB387"
+[urgency_critical]
+background = "#1E1E2E"
+foreground = "#CDD6F4"
+frame_color = "#FAB387"
+timeout = 0
 #
 # vim: ft=cfg
