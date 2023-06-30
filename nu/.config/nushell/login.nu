@@ -72,7 +72,9 @@ let-env RUSTUP_HOME = ([$env.XDG_DATA_HOME, rustup] | path join)
 let-env SQLITE_HISTORY = ([$env.XDG_CACHE_HOME, sqlite_history] | path join)
 
 
-let-env XAUTHORITY = ([$env.XDG_RUNTIME_DIR, Xauthority] | path join)
+if "XDG_RUNTIME_DIR" in $env { 
+    let-env XAUTHORITY = ([$env.XDG_RUNTIME_DIR, Xauthority] | path join)
+}
 let-env LESSHISTFILE = ([$env.XDG_CACHE_HOME, less/history] | path join)
 let-env QT_QPA_PLATFORM = wayland
 let-env IGNOREOF = 100
