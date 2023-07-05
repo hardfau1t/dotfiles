@@ -3,6 +3,7 @@ alias actual-aws = aws
 alias actual-hyprctl = hyprctl
 alias actual-pactl = pactl
 alias actual-resolvectl = resolvectl
+alias actual-ip = ip
 
 export extern aws [...params: any] {
     try {
@@ -25,5 +26,13 @@ export extern resolvectl [...params] {
        actual-resolvectl --json=short $params | from json
     } catch {
        actual-resolvectl $params
+    }
+}
+
+export extern ip [...params] {
+    try {
+       actual-ip -j $params | from json
+    } catch {
+       actual-ip $params
     }
 }
