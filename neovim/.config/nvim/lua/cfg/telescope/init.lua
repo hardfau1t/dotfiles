@@ -71,6 +71,7 @@ function mod.setup()
     vim.keymap.set("n", "<leader>ts", ":Telescope git_status<CR>", { silent = true })
     vim.keymap.set("n", "<leader>tt", ":Telescope git_files<CR>", { silent = true })
     vim.keymap.set("n", "<leader>t;", ":Telescope filetypes<CR>", { silent = true })
+    vim.keymap.set("n", "<leader>t*", ":Telescope grep_string<CR>", { silent = true })
     vim.keymap.set("n", "<leader>te",
         function() builtin.find_files({ cwd = vim.fn.stdpath("config"), follow = true }) end,
         { silent = true })
