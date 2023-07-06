@@ -24,4 +24,3 @@ let-env RUSTUP_HOME = ("~/.local/share/rustup" | path expand)
 
 let-env MUSIC_DIR =  $"($env.HOME)/Music"
 let-env WGPU_BACKEND = gl
-

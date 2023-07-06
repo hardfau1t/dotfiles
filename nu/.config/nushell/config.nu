@@ -82,6 +82,7 @@ let-env config = {
     max_size: 30000 # Session has to be reloaded for this to take effect
     sync_on_enter: true # Enable to share history between multiple sessions, else you have to close the session to write history to file
     file_format: "sqlite" # "sqlite" or "plaintext"
+    isolation: true
   }
   completions: {
     case_sensitive: true # set to true to enable case-sensitive completions
@@ -341,4 +342,13 @@ use basics.nu *
 use conf.nu *
 use audio.nu *
 
-source "~/.cache/starship/init.nu"
+if (which starship | length) >= 1 {
+    let starship_init = "~/.cache/starship/init.nu"
+    if not ($starship_init | path exists) {
+        print -e "currently dynamically sourcing is not supported"
+        starship init nu | save $starship_init
+    }
+    source "~/.cache/starship/init.nu"
+} else {
+    print -e "starship is not installed"
+}
