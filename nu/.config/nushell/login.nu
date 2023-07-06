@@ -11,7 +11,7 @@ let-env PATH = (
 let-env LD_LIBRARY_PATH  = (
     [
         ($env | get -i LD_LIBRARY_PATH),
-        ($"($env.RUSTUP_HOME)/toolchains/(rustup default | grep -o -e '^\S\+')"),
+        (if (which rustup | length) >= 1 {$"($env.RUSTUP_HOME)/toolchains/(rustup default | grep -o -e '^\S\+')"}),
         "/usr/local/lib",
 
     ]
