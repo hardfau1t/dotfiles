@@ -125,7 +125,10 @@ return {
         end,
     },
 
-    'j-hui/fidget.nvim', -- lsp status
+    {
+        'j-hui/fidget.nvim', -- lsp status
+        tag = 'legacy'
+    },
     {
         'simrat39/symbols-outline.nvim',
         config = function()
