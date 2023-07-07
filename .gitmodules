@@ -1,6 +1,3 @@
 [submodule "personal"]
 	path = personal
 	url = git@github.com:hardfau18/personal.git
-[submodule "alacritty/.config/alacritty/catpuccin"]
-	path = alacritty/.config/alacritty/catpuccin
-	url = https://github.com/catppuccin/alacritty.git
