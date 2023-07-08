@@ -26,7 +26,7 @@ use std
 
 export def mr [] {
     #--------------------
-    let current_song = ([$env.MUSIC_DIR,(mpc current -f "%file%")] | path join )
+    let current_song = ([$env.MPD_DIR,(mpc current -f "%file%")] | path join )
     ^mv $current_song $"($env.HOME)/tmp"
     mpc rescan
     mpc next
@@ -59,7 +59,7 @@ def get-youtube-song [link: string] {
     std log info $"Downloading from youtube: ($links.0)"
     try {
         let metadata = (yt-dlp --dump-json --skip-download $link | from json)
-        yt-dlp --embed-thumbnail --embed-metadata -x --audio-format mp3 --no-embed-info-json $link -o '%(title)s.%(ext)s'
+        yt-dlp --embed-thumbnail --embed-metadata -x --audio-format mp3 --no-embed-info-json $link -o $"($metadata.title).mp3"
         return $"($metadata.title).mp3"
     } catch {
         std log warning $"couldn't download ($links.0)"
@@ -69,11 +69,11 @@ def get-youtube-song [link: string] {
 
 export def get-song [link: string] {
     let MusicDownloadDir = "temp/"
-    if not "MUSIC_DIR" in $env {
-        print -e "Failed to get $env.MUSIC_DIR, is it set?"
+    if not "MPD_DIR" in $env {
+        print -e "Failed to get $env.MPD_DIR, is it set?"
         return
     }
-    cd $"($env.MUSIC_DIR)/temp"
+    cd $"($env.MPD_DIR)/($MusicDownloadDir)"
     let ret = if $link =~ '^(https://)?(music|www)\.youtube\.com/watch\?v=[\w-]+' {
         std log debug "matched link to youtube"
         let title = (get-youtube-song $link)
