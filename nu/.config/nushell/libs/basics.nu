@@ -103,5 +103,5 @@ export def tty-size [] {
 }
 
 export def bsource [pth: string ] {
-    bash -c $"'source ($pth) && nu'"
+    exec bash -c $"'source ($pth) && exec nu'"
 }
