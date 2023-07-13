@@ -41,6 +41,7 @@ export def "config push" [] {
     git stash
     git checkout main
     git cherry-pick $"($current_branch)...per-dev"
+    git pull
     git push
     git switch -
     git rebase main
