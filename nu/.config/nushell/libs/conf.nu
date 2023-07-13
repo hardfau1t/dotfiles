@@ -28,6 +28,9 @@ export def "config eww" [] {
 export def "config emoji" [] {
     nvim (which emoji.sh).path
 }
+export def "config starship" [] {
+    nvim (which emoji.sh).path
+}
 export def "config zellij" [] {
     cd ~/.config/zellij
     nvim config.kdl
@@ -37,7 +40,7 @@ export def "config push" [] {
     let current_branch = (git branch | rg -e '\*' | split row ' ').1
     git stash
     git checkout main
-    git cherry-pick $current_branch
+    git cherry-pick $"($current_branch)...per-dev"
     git push
     git switch -
     git rebase main
