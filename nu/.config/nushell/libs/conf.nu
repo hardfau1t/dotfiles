@@ -40,9 +40,8 @@ export def "config push" [] {
     let current_branch = (git branch | rg -e '\*' | split row ' ').1
     git stash
     git checkout main
-    let ignore_commit = (git rev-list $"main..($current_branch)" | lines | last)
     git pull
-    git cherry-pick $"($ignore_commit)..($current_branch)"
+    git rev-list $"main..($current_branch)" | lines | drop 1 | git cherry-pick $in
     git push
     git switch -
     git rebase main
