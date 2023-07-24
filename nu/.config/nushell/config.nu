@@ -342,13 +342,3 @@ use basics.nu *
 use conf.nu *
 use audio.nu *
 
-if (which starship | length) >= 1 {
-    let starship_init = "~/.cache/starship/init.nu"
-    if not ($starship_init | path exists) {
-        print -e "currently dynamically sourcing is not supported"
-        starship init nu | save $starship_init
-    }
-    source "~/.cache/starship/init.nu"
-} else {
-    print -e "starship is not installed"
-}
