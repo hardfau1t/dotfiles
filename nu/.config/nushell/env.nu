@@ -1,8 +1,6 @@
 
 # Directories to search for scripts when calling source or use
 let config_path = ($nu.home-path | path join ".config/nushell")
-#
-
 # By default, <nushell-config-dir>/scripts is added
 let-env NU_LIB_DIRS = [
     ($config_path |  path join 'libs')
@@ -25,7 +23,6 @@ let-env RUSTUP_HOME = ("~/.local/share/rustup" | path expand)
 
 let-env MPD_DIR =  $"($env.HOME)/Music"
 let-env WGPU_BACKEND = gl
-}
 
 if not ("~/.cache/starship/init.nu" | path exists) {
     if ( which starship | length) > 0 {
