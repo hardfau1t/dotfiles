@@ -48,6 +48,16 @@ export def "config push" [] {
     git stash pop
 }
 
+export def "config pull" [] {
+    cd $"($env.HOME)/.dots"
+    git stash
+    git checkout main
+    git pull
+    git switch -
+    git rebase main
+    git stash pop
+}
+
 export def "config libs" [] {
     cd ~/.dots/nu/.config/nushell/libs/
     nvim basics.nu
