@@ -91,7 +91,7 @@ export def get-song [link: string] {
 }
 
 export def commit-pass [] {
-    cd ~/.dots/personal/
+    cd ~/.personal/
     git add .
     git commit -m $"(date now | date format "%d-%m-%Y")"
     git push
