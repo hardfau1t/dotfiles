@@ -25,3 +25,13 @@ let-env RUSTUP_HOME = ("~/.local/share/rustup" | path expand)
 
 let-env MPD_DIR =  $"($env.HOME)/Music"
 let-env WGPU_BACKEND = gl
+}
+
+if not ("~/.cache/starship/init.nu" | path exists) {
+    if ( which starship | length) > 0 {
+        mkdir "~/.cache/starship"
+        starship init nu | save "~/.cache/starship/init.nu"
+    } else {
+        print -e "Install starship"
+    }
+}

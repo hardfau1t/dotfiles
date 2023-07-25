@@ -341,4 +341,5 @@ use wrappers.nu *
 use basics.nu *
 use conf.nu *
 use audio.nu *
+source "~/.cache/starship/init.nu"
 
