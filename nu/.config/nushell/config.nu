@@ -55,7 +55,7 @@ let dark_theme = {
 
 
 # The default config record. This is where much of your global configuration is setup.
-let-env config = {
+$env.config = {
   ls: {
     use_ls_colors: true # use the LS_COLORS environment variable to colorize output
     clickable_links: false # enable or disable clickable links. Your terminal has to support links.
