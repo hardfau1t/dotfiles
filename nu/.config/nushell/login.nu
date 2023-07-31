@@ -93,4 +93,3 @@ $env.XCURSOR_SIZE = 32
 # uses all cores for compilation
 $env.MAKEFLAGS = $"($env | get -i MAKEFLAGS) -j((nproc | into int) - 1)"
 
-source "~/.cache/starship/init.nu"

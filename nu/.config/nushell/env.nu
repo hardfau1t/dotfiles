@@ -24,6 +24,7 @@ $env.RUSTUP_HOME = ("~/.local/share/rustup" | path expand)
 $env.MPD_DIR =  $"($env.HOME)/Music"
 $env.WGPU_BACKEND = gl
 
+# check first here then source in config.nu
 if not ("~/.cache/starship/init.nu" | path exists) {
     if ( which starship | length) > 0 {
         mkdir "~/.cache/starship"
