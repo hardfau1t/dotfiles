@@ -1,17 +1,30 @@
+(defvar icons '{
+              "1"               : "",
+              "2"               : "",
+              "3"               : "󰇰",
+              "4"               : "",
+              "5"               : "",
+              "6"               : "",
+              "7"               : "",
+              "8"               : "",
+              "9"               : "󰈹",
+              "10"              : "󰗹",
+              "special"         : "",
+              "special:element" : "󰍥"
+  }')
 (deflisten hyprland "pfui start hyprland workspace")
-(deflisten layout "pfui start hyprland keyboard")
+(deflisten layout :initial '{"ok": 1, "data": ""}' "pfui start hyprland keyboard")
 (defwidget workspaces []
   (box
     :space-evenly false
     :spacing 10
     (for workspace in { hyprland != "" ? hyprland.data : "[]"}
       (box
-        :visible {!(workspace.data.name =~ 'special.*')}
         (button
           :onclick "hyprctl dispatch workspace  ${workspace.data.name}"
           (label
             :class "${workspace.is_active ? 'active-workspace' : 'workspace'}"
-            :text "${workspace.data.name}")
+            :text "${icons[workspace.data.name]}")
           )
         (button
           :onclick "hyprctl dispatch fullscreen 1"
