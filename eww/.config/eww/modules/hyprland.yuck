@@ -13,7 +13,7 @@
               "special:element" : "󰍥"
   }')
 (deflisten hyprland "pfui start hyprland workspace")
-(deflisten layout :initial '{"ok": 1, "data": ""}' "pfui start hyprland keyboard")
+(deflisten layout :initial '{"ok": 1, "data": {"layout": "" }}' "pfui start hyprland keyboard")
 (defwidget workspaces []
   (box
     :space-evenly false

@@ -64,6 +64,7 @@
   (box :vexpand "false" :hexpand "false"
       (circular-progress :value "${EWW_RAM.used_mem_perc}"
           :thickness 2
+          :class "progress"
         (button 
             :class "iconmem"
             :tooltip "using ${round(EWW_RAM.used_mem_perc, 1)}% ram"
@@ -79,6 +80,7 @@
   (box :vexpand "false" :hexpand "false"
       (circular-progress :value "${EWW_CPU.avg}"
           :thickness 2
+          :class "progress"
         (button 
             :class "iconcpu"
             :tooltip "using ${round(EWW_CPU.avg, 1)}% cpu"

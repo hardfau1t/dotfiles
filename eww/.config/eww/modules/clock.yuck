@@ -3,17 +3,6 @@
 (defvar today "")
 (defpoll date-time :interval "15s" "date '+%I:%M %p'")
 
-(defwidget cal []
-  (eventbox :onhoverlost "${EWW_CMD} close calendar"
-    (box :class "cal-box" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false"
-      (box :class "cal-in"
-        (calendar :class "cal")
-      )
-    )
-  )
-)
-
-; Newer
 (defwidget date []
   (eventbox :onhover "${EWW_CMD} update time_rev=true today=\"$(date '+%a / %d')\" "
               :onhoverlost "${EWW_CMD} update time_rev=false"

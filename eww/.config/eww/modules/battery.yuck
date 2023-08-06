@@ -6,7 +6,7 @@
 (defwidget bat []
   (box :vexpand true :hexpand true 
     (circular-progress :value "${EWW_BATTERY.BAT0.capacity}"
-        :class "batbar"
+        :class "progress"
         :thickness 2
       (button 
         (label

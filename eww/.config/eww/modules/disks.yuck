@@ -14,6 +14,7 @@
     (box
       :orientation "v"
       :visible {disk_info.ok == 0 ? false : true}
+      (sep)
       ( for drive in {disk_info.data}
         (box
           (label :text { drive[1] != "null" ? "${drive[0]} : ${drive[1]}" : "/dev/${drive[0]}"})

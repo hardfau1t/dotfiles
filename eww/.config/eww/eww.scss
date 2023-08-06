@@ -1,12 +1,18 @@
+@import "_mocha.scss"
+
 *{
     all: unset;
-    color : #2A7CAB;
+    color : $text;
 }
 .left, .right, .center, .cal-box, .sys_win, .audio-box, .music_pop {
-    background-color: #192229;
+    background-color: $base;
     border-radius: 10px;
     padding: 0 10 0 10;
-    border: 2px solid #85341f;
+    border: 2px solid $lavender;
+}
+
+.separator {
+    color: $overlay2;
 }
 
 .audio-box {
@@ -14,7 +20,7 @@
 }
 
 
-.iconbat, .iconmem, .iconcpu, .iconsink, .iconsink-loud, .iconsrc, .iconsrc-loud, .iconbacklight, .iconbat-full, .iconbat-low {
+.iconbat, .iconmem, .iconcpu, .iconsink, .iconsink-loud, .iconsource, .iconsource-loud, .iconbacklight, .iconbat-full, .iconbat-low {
     // size: 2;
     font-size: 13px;
     padding-left: 5 ;
@@ -23,27 +29,53 @@
     padding-bottom: 5 ;
 }
 
-
-.tooltip{
-    border-radius: 10px;
-    border: 2px solid #E25506;
+.progress {
+    margin-top: 2;
+    margin-bottom: 2;
 }
 
-.active-workspace {
-    background-color: #1D3247;
+
+tooltip.background {
+    border-radius: 10px;
+    border: 1px solid $blue;
+    background: $base
+}
+
+
+.active-workspace{
+    background-color: $text;
     padding: 0 8 0 8;
     margin: 4 0 4 0;
     border-radius: 6px;
 }
 
-.iconbat-low, .iconbat-full, .iconsink-loud, .iconsrc-loud, .notif-disabled, .active-workspace, .default-source-icon, .default-sink-icon {
-    color: #CA4810;
+.default-source-icon, .default-sink-icon,  .sink-icon, .source-icon {
+    border-radius: 6px;
+    padding: 8 8 8 8;
+    margin: 8 8 8 8;
+}
+
+.source-icon, .sink-icon {
+    border: 1px solid $text;
+    color: $text;
+}
+.default-source-icon, .default-sink-icon  {
+    background-color: $text;
+    color: $crust;
+}
+
+.iconbat-low, .iconbat-full, .iconsink-loud, .iconsource-loud, .notif-disabled {
+    color: $red;
+}
+
+.active-workspace {
+    color: $crust;
 }
 
 .iconsink, .iconsink-loud {
     padding: 4px;
 }
-.iconsrc, .iconsrc-loud, .iconbat-low, .iconbat, .iconbat-full{
+.iconsource, .iconsource-loud, .iconbat-low, .iconbat, .iconbat-full{
     padding: 7px;
 }
 .iconbat-full {
@@ -54,7 +86,7 @@
 
 
 .slider trough highlight, .audio-scale trough highlight {
-  background-image: linear-gradient(to right, #afcee0 30%, #a1bdce 50%, #77a5bf 100% *50);
+  background-image: linear-gradient(to right, $yellow 30%, $pink 50%, $red 100% *50);
   border-radius: 10px;
 }
 

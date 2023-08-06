@@ -14,8 +14,7 @@
 (defwidget sep []
   (box 
     :valign "center"
-    ; :class "module-2" :vexpand "false" :hexpand "false"
-    (label :class "separ" :text "|")
+    (label :class "separator" :text "")
   )
 )
 
@@ -47,14 +46,22 @@
     :halign "end"
     :class "right"
     (keyboard)
+    (sep)
     (dunst)
+    (sep)
     (bluetooth)
     (ip_con)
+    (sep)
     (bright)
+    (sep)
     (audio_sink)
-    (audio_src)
+    (sep)
+    (audio_source)
+    (sep)
     (bat)
+    (sep)
     (mem)
+    (sep)
     (cpu)
     (disk_widget)
   )
@@ -92,14 +99,23 @@
   (cal)
 )
 
-(defwindow audio_ctl
+(defwindow audio_source_ctl
     :geometry (geometry :x "1%"
                         :y "2%"
                         :anchor "top right"
                         )
   :monitor 0
   :exclusive false
-  (audio_panel)
+  (audio_source_panel)
+)
+(defwindow audio_sink_ctl
+    :geometry (geometry :x "1%"
+                        :y "2%"
+                        :anchor "top right"
+                        )
+  :monitor 0
+  :exclusive false
+  (audio_sink_panel)
 )
 
 (defwindow system
