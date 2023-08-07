@@ -310,7 +310,6 @@ $env.config = {
 }
 
 # aliases
-alias vpn = sudo /opt/forticlient/vpn --server=vpn2.india.saankhyalabs.com:8443 --user=gireesh.marathi -p
 alias zj = zellij
 alias pdsi = pactl set-default-sink
 alias pdso = pactl set-default-source
@@ -341,5 +340,8 @@ use wrappers.nu *
 use basics.nu *
 use conf.nu *
 use audio.nu *
+
 source "~/.cache/starship/init.nu"
 
+# display random help
+help (help commands | where command_type != "alias" and command_type != 'custom' | get name | shuffle | first)
