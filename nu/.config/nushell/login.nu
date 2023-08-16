@@ -11,7 +11,9 @@ $env.PATH = (
 $env.LD_LIBRARY_PATH  = (
     [
         ($env | get -i LD_LIBRARY_PATH),
-        (if (which rustup | length) >= 1 {$"($env.RUSTUP_HOME)/toolchains/(rustup default | grep -o -e '^\S\+')"}),
+        (if (which rustup | length) >= 1 and (do -i {rustup default}| complete).exit_code == 0 {
+            $"($env.RUSTUP_HOME)/toolchains/(rustup default | grep -o -e '^\S\+')"
+        }),
         "/usr/local/lib",
 
     ]
