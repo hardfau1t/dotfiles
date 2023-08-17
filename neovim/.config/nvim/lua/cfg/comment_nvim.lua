@@ -17,7 +17,7 @@ function mod.setup()
             basic = "toggler",
         },
         opleader = {
-            line = "<leader>cc",
+            line = "<leader>c<leader>",
             block = "<leader>cb",
         },
     })
