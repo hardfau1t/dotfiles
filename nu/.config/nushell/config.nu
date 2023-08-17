@@ -344,4 +344,4 @@ use audio.nu *
 source "~/.cache/starship/init.nu"
 
 # display random help
-help (help commands | where command_type != "alias" and command_type != 'custom' | get name | shuffle | first)
+help (help commands | where command_type not-in ["alias", 'custom' , "external"]| get name | shuffle | first)

@@ -29,7 +29,7 @@ export def "config emoji" [] {
     nvim (which emoji.sh).path
 }
 export def "config starship" [] {
-    nvim (which emoji.sh).path
+    nvim ~/.config/starship.toml
 }
 export def "config zellij" [] {
     cd ~/.config/zellij

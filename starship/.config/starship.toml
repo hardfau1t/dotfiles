@@ -3,7 +3,7 @@ command_timeout=100
 add_newline=false
 palette = "catppuccin_mocha"
 
-format= "$status[\\[](bold green) $battery$hostname$directory$git_branch$git_status$git_state$python[\\]](bold green)$jobs"
+format= "$status[\\[](bold green) $battery$hostname$directory$git_branch$git_status$git_state$python[\\]](bold green)$jobs "
 
 [battery]
 full_symbol = "🔋 "
