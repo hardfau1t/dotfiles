@@ -17,7 +17,7 @@
             mpd-info.ok == 1 ?
               mpd-info.data.state.status == 2 ?
                 "Stopped" :
-                   "${mpd-info.data.state.status == 0 ? ' ' : ''}" + mpd-info.data.song.title  + " - " + mpd-info.data.song.artist 
+                   "${mpd-info.data.state.status == 0 ? ' ' : ''} " + mpd-info.data.song.title  + " - " + mpd-info.data.song.artist 
               : "MPD Unreachable" ; ok == 1
           }
         )
