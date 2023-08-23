@@ -93,7 +93,7 @@ export def get-song [link: string] {
 export def commit-pass [] {
     cd ~/.personal/
     git add .
-    git commit -m $"(date now | date format "%d-%m-%Y")"
+    git commit -m $"(date now | format date  "%d-%m-%Y")"
     git push
     cd -
 }
