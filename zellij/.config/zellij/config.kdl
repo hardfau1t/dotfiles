@@ -17,7 +17,6 @@ keybinds clear-defaults=true {
         bind "Tab" { TogglePaneFrames; SwitchToMode "Normal"; }
         bind "b" { FocusPreviousPane; SwitchToMode "Normal"; }
         bind "C" { Clear; }
-        bind "c" { SwitchToMode "Scroll"; }
         bind "d" { Detach; }
         bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "Normal";}
         bind "f" { ToggleFloatingPanes; SwitchToMode "Normal";}
@@ -33,7 +32,14 @@ keybinds clear-defaults=true {
         bind "p" { SwitchToMode "Pane"; }
         bind "Q" { Quit; }
         bind "r" { SwitchToMode "Resize"; }
-        bind "s" { SwitchToMode "Session"; }
+        bind "s" { SwitchToMode "Scroll"; }
+        bind "S" {
+            LaunchOrFocusPlugin "zellij:session-manager" {
+                floating true
+                move_to_focused_tab true
+            };
+            SwitchToMode "Normal"
+        }
         bind "t" { SwitchToMode "Tab"; }
         bind "w" { ToggleTab; SwitchToMode "Normal"; }
         bind "x" { CloseFocus ; SwitchToMode "Normal";}
@@ -73,7 +79,9 @@ keybinds clear-defaults=true {
         bind "|" { NewPane "Right"; }
     }
     move {
-        bind "n" "Tab"      { MovePane; }
+        bind "b" { BreakPane; SwitchToMode "Normal"; }
+        bind "n" { BreakPaneRight; SwitchToMode "Normal"; }
+        bind "p" { BreakPaneLeft; SwitchToMode "Normal"; }
         bind "h" "Left"     { MovePane "Left"; }
         bind "j" "Down"     { MovePane "Down"; }
         bind "k" "Up"       { MovePane "Up"; }
@@ -234,7 +242,7 @@ copy_command "wl-copy"                    // wayland
 // Enable or disable automatic copy (and clear) of selection when releasing mouse
 // Default: true
 //
-copy_on_select true
+copy_on_select false
 
 // Path to the default editor to use to edit pane scrollbuffer
 // Default: $EDITOR or $VISUAL
