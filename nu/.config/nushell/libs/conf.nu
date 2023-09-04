@@ -37,6 +37,8 @@ export def "config zellij" [] {
 }
 export def "config push" [] {
     cd $"($env.HOME)/.dots"
+    # disable autoreloading in hyprland
+    hyprctl keyword misc:disable_autoreload "false"
     let current_branch = (git branch | rg -e '\*' | split row ' ').1
     git stash
     git checkout main
@@ -46,6 +48,8 @@ export def "config push" [] {
     git switch -
     git rebase main
     git stash pop
+    # enable autoreloading in hyprland
+    hyprctl keyword misc:disable_autoreload "true"
 }
 
 export def "config pull" [] {
