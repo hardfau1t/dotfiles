@@ -77,6 +77,7 @@ $env.config = {
       wrapping_try_keep_words: true # A strategy used by the 'wrapping' methodology
       truncating_suffix: "..." # A suffix used by the 'truncating' methodology
     }
+    header_on_separator: false
   }
   history: {
     max_size: 30000 # Session has to be reloaded for this to take effect
@@ -344,4 +345,8 @@ use audio.nu *
 source "~/.cache/starship/init.nu"
 
 # display random help
-help (help commands | where command_type not-in ["alias", 'custom' , "external"]| get name | shuffle | first)
+let command =  help commands | where command_type not-in ["alias", 'custom' , "external"]| get name | shuffle | first
+print ===================================================
+print $command
+print ===================================================
+help $command
