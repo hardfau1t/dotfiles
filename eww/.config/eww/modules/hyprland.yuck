@@ -38,6 +38,7 @@
 (defwidget keyboard []
   (box
     (button
+      :onclick "hyprctl keyword input:kb_layout ${layout.data.layout == 'cust' ? 'us' : 'cust'}"
       (label :text "${layout.data.layout}")
     )
   )
