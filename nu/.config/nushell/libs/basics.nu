@@ -105,3 +105,7 @@ export def tty-size [] {
 export def bsource [pth: string ] {
     exec bash -c $"'source ($pth) && exec nu'"
 }
+
+export def notif [wait: duration ...params] {
+    systemd-run --on-active ($wait | format duration sec | split row ' ' | get 0 ) --user notify-send $params
+}
