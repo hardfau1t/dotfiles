@@ -140,6 +140,7 @@ return {
         config = function()
             require("inlay-hints").setup({
                 renderer = "inlay-hints/render/eol",
+                autoclose = true,
                 hints = {
                     parameter = {
                         show = false,

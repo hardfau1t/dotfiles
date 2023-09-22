@@ -57,6 +57,7 @@ mod.set_keymaps = function(kb)
 end
 
 vim.keymap.set("n", "\\", "<nop>")
+vim.keymap.set("n", "\\s", "<cmd>Telescope neorg search_headings<CR>", {desc="search headings"})
 vim.keymap.set("n", "\\\\", function()
     vim.cmd("Neorg workspace")
     vim.cmd("Neorg index")
