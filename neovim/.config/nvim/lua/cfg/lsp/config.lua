@@ -325,6 +325,14 @@ local cfg = {
             }
         }
     },
+    zig = {
+        lsp = {
+            provider = "zls",
+            setup = {
+                cmd = {"zls"},
+            }
+        }
+    }
 }
 
 return cfg
