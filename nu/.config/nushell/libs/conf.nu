@@ -31,6 +31,12 @@ export def "config emoji" [] {
 export def "config starship" [] {
     nvim ~/.config/starship.toml
 }
+
+export def "config mpv" [] {
+    cd ~/.dots/mpv/.config/mpv
+    nvim mpv.conf
+}
+
 export def "config zellij" [] {
     cd ~/.config/zellij
     nvim config.kdl
