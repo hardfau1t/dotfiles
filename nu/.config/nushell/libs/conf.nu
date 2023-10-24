@@ -72,3 +72,8 @@ export def "config libs" [] {
     cd ~/.dots/nu/.config/nushell/libs/
     nvim basics.nu
 }
+
+export def "config bat" [] {
+    cd ~/.config/bat/
+    nvim ~/.config/bat/config
+}
