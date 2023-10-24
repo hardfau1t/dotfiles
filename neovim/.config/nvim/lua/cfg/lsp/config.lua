@@ -149,13 +149,12 @@ local cfg = {
         },
         linters = {},
         lsp = {
-            on_attach = function(client, bufnr, custom_attach)
+            on_attach = function(client, bufnr)
                 if ih_available then
                     ih.on_attach(client, bufnr)
                 else
                     vim.api.nvim_notify("Couldn't find inlay-hints", vim.log.levels.WARN, {})
                 end
-                custom_attach(client, bufnr)
             end,
             provider = "lua_ls",
             setup = {
@@ -221,8 +220,7 @@ local cfg = {
                     vim.api.nvim_notify("Couldn't find inlay-hints", vim.log.levels.WARN)
                 end
             end,
-            on_attach = function(client, bufnr, custom_attach)
-                custom_attach(client, bufnr)
+            on_attach = function(client, bufnr)
                 if ih_available then
                     ih.on_attach(client, bufnr)
                 else

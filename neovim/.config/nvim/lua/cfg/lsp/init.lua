@@ -23,32 +23,21 @@ local function documentHighlight(client, _)
     end
 end
 
-mod.custom_attach = function(client, bufnr)
-    -- print("stop", vim.inspect(client.stop))
-    -- print("name", vim.inspect(client.name))
-    -- print("notify", vim.inspect(client.notify))
-    -- print("initialized", vim.inspect(client.initialized))
-    -- print("handlers", vim.inspect(client.handlers))
-    -- print("is_stopped", vim.inspect(client.is_stopped))
-    -- print("requests", vim.inspect(client.requests))
-    -- print("id", vim.inspect(client.id))
-    -- print("server_capabilities", vim.inspect(client.server_capabilities))
-    -- print("workspace_folders", vim.inspect(client.workspace_folders))
-    -- print("rpc", vim.inspect(client.rpc))
-    -- print("_on_attach", vim.inspect(client._on_attach))
-    -- print("offset_encoding", vim.inspect(client.offset_encoding))
-    -- print("request_sync", vim.inspect(client.request_sync))
-    -- print("supports_method", vim.inspect(client.supports_method))
-    -- print("attached_buffers", vim.inspect(client.attached_buffers))
-    -- print("workspaceFolders", vim.inspect(client.workspaceFolders))
-    -- print("commands", vim.inspect(client.commands))
-    -- print("workspace_did_change_configuration", vim.inspect(client.workspace_did_change_configuration))
-    -- print("messages", vim.inspect(client.messages))
-    -- print("request", vim.inspect(client.request))
-    -- print("cancel_request", vim.inspect(client.cancel_request))
-    -- print("config", vim.inspect(client.config))
+mod.default_attach = function(client, bufnr)
     documentHighlight(client, bufnr)
     require("cfg.lsp.keymaps").setup(bufnr)
+    local nav_buddy_available, nav_buddy = pcall(require, "nvim-navbuddy")
+    if not nav_buddy_available then
+        vim.api.nvim_notify("nav_buddy is not installed", vim.log.levels.WARN, {})
+    else
+        nav_buddy.attach(client, bufnr)
+    end
+    local navic_avail, navic = pcall(require, "nvim-navic")
+    if navic_avail and client.server_capabilities.documentSymbolProvider then
+        navic.attach(client, bufnr)
+    else
+        vim.api.nvim_notify("navic is not installed or server has no capabilities", vim.log.levels.WARN, {})
+    end
 end
 
 
@@ -66,23 +55,19 @@ mod.setup = function()
     local cmp_lsp_available, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
     require("vim.lsp.log").set_level(vim.log.levels.ERROR)
     for _, cfg in pairs(config) do
-        local lsp = cfg.lsp
-        if lsp ~= nil and lsp.provider ~= nil and lsp.provider ~= "" then
-            if lsp.on_attach then
-                lsp.setup.on_attach = function (client, bufnr)
-                    lsp.on_attach(client, bufnr, mod.custom_attach)
+        local setup = {}
+        if cfg.lsp ~= nil and cfg.lsp.provider ~= nil and cfg.lsp.provider ~= "" then
+            setup.on_attach = function(client, bufnr)
+                if cfg.lsp.on_attach then
+                    cfg.lsp.on_attach(client, bufnr)
                 end
-            else
-                lsp.setup.on_attach = mod.custom_attach
+                mod.default_attach(client, bufnr)
             end
-            if lsp.on_attach then
-                lsp.setup.on_init = lsp.on_init
-            end
-            lsp.setup.capabilities = vim.lsp.protocol.make_client_capabilities()
+            setup.capabilities = vim.lsp.protocol.make_client_capabilities()
             if cmp_lsp_available then
-                lsp.setup.capabilities = cmp_nvim_lsp.default_capabilities()
+                setup.capabilities = cmp_nvim_lsp.default_capabilities()
             end
-            lspconfig[lsp.provider].setup(lsp.setup)
+            lspconfig[cfg.lsp.provider].setup(setup)
         end
     end
     local available, fidget = pcall(require, "fidget")
