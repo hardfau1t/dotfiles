@@ -109,3 +109,7 @@ export def bsource [pth: string ] {
 export def notif [wait: duration ...params] {
     systemd-run --on-active ($wait | format duration sec | split row ' ' | get 0 ) --user notify-send $params
 }
+
+export def copy-remote [remote_id: string] {
+    ssh $remote_id cat /tmp/clip | wl-copy
+}
