@@ -190,23 +190,26 @@ local cfg = {
     },
     python = {
         formatters = {
-            -- {
-            --   exe = "yapf",
-            --   args = {},
-            -- },
-            -- {
-            --   exe = "isort",
-            --   args = {},
-            -- },
+            {
+              exe = "yapf",
+              args = {},
+            },
         },
         linters = {},
         lsp = {
-            provider = "jedi_language_server",
+            provider = "pyright",
             setup = {
-                cmd = {
-                    "jedi-language-server",
-                },
+                cmd = { "pyright-langserver", "--stdio" },
             },
+            settings = {
+              python = {
+                analysis = {
+                  autoSearchPaths = true,
+                  diagnosticMode = "openFilesOnly",
+                  useLibraryCodeForTypes = true
+                }
+              }
+            }
         },
     },
     rust = {
