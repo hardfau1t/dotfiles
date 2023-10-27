@@ -225,4 +225,9 @@ return {
     {
         "benfowler/telescope-luasnip.nvim",
     },
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        opts = {}
+    }
 }

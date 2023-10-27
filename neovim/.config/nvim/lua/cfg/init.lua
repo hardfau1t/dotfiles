@@ -25,6 +25,7 @@ vim.o.scrolloff = 10
 vim.o.textwidth = 0
 vim.o.undodir = vim.fn.stdpath("cache") .. "/undodir"
 vim.o.inccommand = "nosplit"
+vim.o.timeout = true
 vim.o.timeoutlen = 1000
 vim.o.updatetime = 200 -- cursor hold
 vim.o.clipboard = "unnamed"
