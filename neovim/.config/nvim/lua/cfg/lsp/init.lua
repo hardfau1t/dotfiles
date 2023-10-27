@@ -27,10 +27,11 @@ mod.default_attach = function(client, bufnr)
     documentHighlight(client, bufnr)
     require("cfg.lsp.keymaps").setup(bufnr)
     local nav_buddy_available, nav_buddy = pcall(require, "nvim-navbuddy")
-    if not nav_buddy_available then
-        vim.api.nvim_notify("nav_buddy is not installed", vim.log.levels.WARN, {})
-    else
+    if nav_buddy_available and client.server_capabilities.documentSymbolProvider then
         nav_buddy.attach(client, bufnr)
+    else
+        vim.api.nvim_notify("nav_buddy is not installed or server has no documentSymbolProvider capabilities",
+            vim.log.levels.WARN, {})
     end
     local navic_avail, navic = pcall(require, "nvim-navic")
     if navic_avail and client.server_capabilities.documentSymbolProvider then
