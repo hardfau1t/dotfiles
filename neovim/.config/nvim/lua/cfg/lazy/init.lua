@@ -21,4 +21,4 @@ end
 
 lazy.setup(plugins, {})
 
-vim.keymap.set("n", "<leader>ll", ":Lazy<CR>", {})
+vim.keymap.set("n", "<leader>p", ":Lazy<CR>", {desc = "open package manager(lazy)"})
