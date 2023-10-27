@@ -167,21 +167,18 @@ local cfg = {
                         runtime = {
                             -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
                             version = "LuaJIT",
-                            path = vim.split(package.path, ";"),
                         },
                         diagnostics = {
                             -- Get the language server to recognize the `vim` global
-                            globals = { "vim", "package", "require", "use" },
+                            globals = { "vim" },
                         },
                         workspace = {
-                            -- Make the server aware of Neovim runtime files
                             library = {
-                                [vim.fn.expand("~/.config/nvim/lua")] = true,
-                                [vim.fn.expand("$vimruntime/lua")] = true,
-                                [vim.fn.expand("$vimruntime/lua/vim/lsp")] = true,
+                                [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+                                [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
                             },
                             maxPreload = 100000,
-                            preloadFileSize = 1000,
+                            preloadFileSize = 10000,
                         },
                     },
                 },
@@ -191,8 +188,8 @@ local cfg = {
     python = {
         formatters = {
             {
-              exe = "yapf",
-              args = {},
+                exe = "yapf",
+                args = {},
             },
         },
         linters = {},
@@ -202,13 +199,13 @@ local cfg = {
                 cmd = { "pyright-langserver", "--stdio" },
             },
             settings = {
-              python = {
-                analysis = {
-                  autoSearchPaths = true,
-                  diagnosticMode = "openFilesOnly",
-                  useLibraryCodeForTypes = true
+                python = {
+                    analysis = {
+                        autoSearchPaths = true,
+                        diagnosticMode = "openFilesOnly",
+                        useLibraryCodeForTypes = true
+                    }
                 }
-              }
             }
         },
     },
@@ -330,7 +327,7 @@ local cfg = {
         lsp = {
             provider = "zls",
             setup = {
-                cmd = {"zls"},
+                cmd = { "zls" },
             }
         }
     }
