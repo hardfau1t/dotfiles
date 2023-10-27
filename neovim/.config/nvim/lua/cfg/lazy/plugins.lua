@@ -221,5 +221,8 @@ return {
     {
         "SmiteshP/nvim-navic",
         requires = "neovim/nvim-lspconfig"
-    }
+    },
+    {
+        "benfowler/telescope-luasnip.nvim",
+    },
 }
