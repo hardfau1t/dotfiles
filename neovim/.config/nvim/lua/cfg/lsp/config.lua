@@ -213,15 +213,9 @@ local cfg = {
         formatters = {},
         linters = {},
         lsp = {
-            on_init = function()
-                if ih_available then
-                    ih.set_all()
-                else
-                    vim.api.nvim_notify("Couldn't find inlay-hints", vim.log.levels.WARN)
-                end
-            end,
             on_attach = function(client, bufnr)
                 if ih_available then
+                    ih.set_all()
                     ih.on_attach(client, bufnr)
                 else
                     vim.api.nvim_notify("Couldn't find inlay-hints", vim.log.levels.WARN)
