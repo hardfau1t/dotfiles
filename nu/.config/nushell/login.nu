@@ -27,7 +27,7 @@ $env.XDG_STATE_HOME = ([$env.HOME,.local/state ] | path join)
 $env.XDG_CACHE_HOME = ([$env.HOME,.cache ] | path join)
 $env.XDG_CONFIG_HOME = ([$env.HOME, .config ] | path join )
 $env.XDG_LIB_DIR = ([$env.HOME, .local/share/lib ] | path join )
-$env.XDG_CURRENT_DESKTOP = sway
+$env.XDG_CURRENT_DESKTOP = Hyprland
 $env.XDG_CACHE_DIR = ([$env.HOME, .cache ] | path join )
 $env.XDG_SESSION_TYPE = wayland
 
