@@ -5,13 +5,13 @@
     color : $text;
     font-family: "ComicShannsMonoNerdFontPropo";
 }
-.left, .right, .center, .cal-box, .sys_win, .audio-box, .music_pop {
+.left, .right, .center, .cal-box, .sys_win, .audio-box, .music_pop, .disk-box {
     background-color: $surface0;
     border-radius: 10px;
     padding: 0 10 0 10;
     border: 2px solid $lavender;
 }
-.cal-box, .sys_win, .audio-box, .music_pop {
+.cal-box, .sys_win, .audio-box, .music_pop, .disk-box {
     border: 2px solid $peach;
 }
 

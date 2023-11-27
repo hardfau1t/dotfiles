@@ -69,7 +69,6 @@
 (defwidget audio_source_panel []
   (eventbox :onhoverlost "${EWW_CMD} close audio_source_ctl"
     (box :class "audio-box" :orientation "v" :space-evenly false :spacing 15
-      (box :orientation "v" :space-evenly false
         (for source in {pulse.data.sources}
           (box :orientation "h" :spacing 10 :space-evenly false
             (button
@@ -99,7 +98,6 @@
             )
           )
         )
-      )
 
     )
   )
@@ -108,7 +106,6 @@
 (defwidget audio_sink_panel []
   (eventbox :onhoverlost "${EWW_CMD} close audio_sink_ctl"
     (box :class "audio-box" :orientation "v" :space-evenly false :spacing 15
-      (box :orientation "v" :space-evenly false
         (for sink in {pulse.data.sinks}
           (box :orientation "h" :space-evenly false :spacing 10 :halign "start"
             (button
@@ -138,7 +135,6 @@
             )
           )
         )
-      )
     )
   )
 )

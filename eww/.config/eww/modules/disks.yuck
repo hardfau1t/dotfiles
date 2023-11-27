@@ -12,17 +12,20 @@
   (eventbox
     :onhoverlost "${EWW_CMD} close disks"
     (box
+      :class "disk-box"
+      :space-evenly false
+      :spacing 15
       :orientation "v"
-      :visible {disk_info.ok == 0 ? false : true}
-      (sep)
+      ;; :visible {disk_info.ok == 0 ? false : true}
       ( for drive in {disk_info.data}
-        (box
-          (label :text { drive[1] != "null" ? "${drive[0]} : ${drive[1]}" : "/dev/${drive[0]}"})
-          (button
-            :onclick "udisksctl ${drive[1] == "null" ? "mount" : "unmount -f"} -b /dev/${drive[0]}"
-          {drive[1] == "null" ? "󰮑" : ""}
-          )
-        )
+        ;; (box :orientation "h" :space-evenly false :spacing 10
+        ;;   (label :text { drive[1] != "null" ? "${drive[0]} : ${drive[1]}" : "/dev/${drive[0]}"})
+        ;;   (button
+        ;;     :onclick "udisksctl ${drive[1] == "null" ? "mount" : "unmount -f"} -b /dev/${drive[0]}"
+        ;;   {drive[1] == "null" ? "󰮑" : ""}
+        ;;   )
+        ;; )
+          (label :text "obeuc")
       )
     )
   )
