@@ -1,22 +1,22 @@
 # Edit neovim configurations
 export def "config nvim" [] {
-    cd ~/.dots/neovim/.config/nvim/
+    cd ~/.config/nvim/
     nvim init.lua
 }
 # Edit alacritty.yml
 export def "config alacritty" [] {
-    nvim ~/.dots/alacritty/.config/alacritty/alacritty.yml
+    nvim ~/.config/alacritty/alacritty.yml
 }
 
 # Edit hyprland config
 export def "config hypr" [] {
-    cd ~/.dots/hypr/.config/hypr/
+    cd ~/.config/hypr/
     nvim hyprland.conf
 }
 
 # Edit sway config
 export def "config sway" [] {
-    cd ~/.dots/sway/.config/sway/
+    cd ~/.config/sway/
     nvim config
 }
 
@@ -33,7 +33,7 @@ export def "config starship" [] {
 }
 
 export def "config mpv" [] {
-    cd ~/.dots/mpv/.config/mpv
+    cd ~/.config/mpv
     nvim mpv.conf
 }
 
@@ -69,7 +69,7 @@ export def "config pull" [] {
 }
 
 export def "config libs" [] {
-    cd ~/.dots/nu/.config/nushell/libs/
+    cd ~/.config/nushell/libs/
     nvim basics.nu
 }
 
