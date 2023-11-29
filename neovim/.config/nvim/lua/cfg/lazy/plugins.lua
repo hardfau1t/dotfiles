@@ -1,5 +1,5 @@
 return {
-    { "folke/tokyonight.nvim", lazy = true },
+
     { "imsnif/kdl.vim" }, -- kdl support for vim
     {
         "catppuccin/nvim",
@@ -229,5 +229,11 @@ return {
         "folke/which-key.nvim",
         event = "VeryLazy",
         opts = {}
+    },
+    {
+        'ojroques/nvim-osc52',
+        config = function ()
+            require("cfg.osc52").setup()
+        end
     }
 }
