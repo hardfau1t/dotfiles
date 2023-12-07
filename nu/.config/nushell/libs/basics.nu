@@ -62,28 +62,37 @@ def confirm-download [ file: string dir: path ] {
 	print $results
 	if (not ($results| is-empty))  and $results.0.rating == 0 {
 		std log error $"($file) already exists"
-		return false
+		return {'continue': false, 'file': null}
 	}
-	(input -n 1 "Above similar songs exists, Do you want to Continue? [Y/n]") != 'n'
+	let resp = (input -n 1 "Above similar songs exists, Do you want to Continue? [Y/n/e]" | str downcase)
+        if $resp == 'e' {
+            return {'continue': true, 'file': ($file | vipe)}
+        } else if $resp == 'n' {
+            return {'continue': false, 'file': null}
+        } else {
+            return {'continue': true, 'file': $file}
+        }
 }
 
-def get-youtube-song [link: string output_dir: path = "./"] {
-    let links = ($link | parse -r 'youtube\.com/watch\?v=(?<link>[\w-]+)' | get link)
+def get-youtube-song [unparsed_link: string output_dir: path = "./"] {
+    let links = ($unparsed_link | parse -r 'youtube\.com/watch\?v=(?<link>[\w-]+)' | get link)
     if ($links | length) != 1 {
-        print -e $"Failed to parse link '($link)', found ($links | length) valid link matches"
+        print -e $"Failed to parse link '($unparsed_link)', found ($links | length) valid link matches"
         return ""
     }
-    std log info $"Downloading from youtube: ($links.0)"
+    let link = $links.0
+    std log info $"Downloading from youtube: ($links)"
     try {
         let metadata = (yt-dlp --dump-json --skip-download $link | from json)
-	let title = $metadata.title | str replace -ra '(\(.*\)|\[.*\])' ''
-        std log debug $"Output file ($output_dir)/($title).mp3"
-	if (confirm-download $title $output_dir) {
-		yt-dlp --embed-thumbnail --embed-metadata -x --audio-format mp3 --no-embed-info-json $link -o $"($output_dir)/($title).mp3"
-		return $"($title).mp3"
+# replace all contents within () and [] and any special characters
+	let title = $metadata.title | str replace -ra '(\(.*\)|\[.*\]|[^\x00-\x7f]|[\\/^%!$\|])' ''
+        let resp = confirm-download $title $output_dir
+	if $resp.continue {
+                yt-dlp --embed-thumbnail --embed-metadata -x --audio-format mp3 --no-embed-info-json -o $"($output_dir)/($resp.file).mp3" $link
+		return $"($resp.file).mp3"
 	}
-    } catch {
-        std log warning $"couldn't download ($links.0)"
+    } catch { |error|
+        std log warning $"couldn't download ($links.0): ($error)"
     }
     return ""
 }
@@ -99,7 +108,7 @@ export def get-song [link: string] {
         let title = (get-youtube-song $link $MusicDownloadDir)
         if $title != "" {
             mpc update -w
-            mpc add $"($MusicDownloadDir | path join $title)"
+            mpc add $"($MusicDownloadDir | path join $title | path relative-to $env.MPD_DIR)"
         }
     } else {
         std log error $"Failed to get the provider for the link: '($link)'"
