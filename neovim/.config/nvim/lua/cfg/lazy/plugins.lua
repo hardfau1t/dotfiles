@@ -15,7 +15,7 @@ return {
             })
         end
     },
-    { "morhetz/gruvbox",          lazy = true },
+    { "morhetz/gruvbox", lazy = true },
     {
         "rebelot/kanagawa.nvim",
         name = "kanagawa",
@@ -230,10 +230,19 @@ return {
         event = "VeryLazy",
         opts = {}
     },
+    -- for copying remote to system clipboard
     {
         'ojroques/nvim-osc52',
-        config = function ()
+        config = function()
             require("cfg.osc52").setup()
         end
+    },
+    -- for converting word casing
+    {
+        "johmsalas/text-case.nvim",
+        dependencies = { "nvim-telescope/telescope.nvim" },
+        config = function()
+            require("cfg.text-case").setup()
+        end,
     }
 }
