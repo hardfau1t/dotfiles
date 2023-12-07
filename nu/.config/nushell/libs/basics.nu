@@ -77,9 +77,10 @@ def get-youtube-song [link: string output_dir: path = "./"] {
     try {
         let metadata = (yt-dlp --dump-json --skip-download $link | from json)
 	let title = $metadata.title | str replace -ra '(\(.*\)|\[.*\])' ''
+        std log debug $"Output file ($output_dir)/($title).mp3"
 	if (confirm-download $title $output_dir) {
 		yt-dlp --embed-thumbnail --embed-metadata -x --audio-format mp3 --no-embed-info-json $link -o $"($output_dir)/($title).mp3"
-		return $"($metadata.title).mp3"
+		return $"($title).mp3"
 	}
     } catch {
         std log warning $"couldn't download ($links.0)"
