@@ -47,10 +47,27 @@ export def est [] {
         }
 }
 
+def confirm-download [ file: string dir: path ] {
+	let results = fd . -t f $dir | lines | par-each { |song | 
+		{name: $song, rating: ($song 
+			| path basename 
+			| str replace -ra '(\(.*\)|\[.*\])' '' 
+			| path parse
+			| get stem
+			| str distance $file)
+		}
+	}
+	|sort-by rating | first 5 | where rating <= 10
+	print $"for '($file)', matching results"
+	print $results
+	if (not ($results| is-empty))  and $results.0.rating == 0 {
+		std log error $"($file) already exists"
+		return false
+	}
+	(input -n 1 "Above similar songs exists, Do you want to Continue? [Y/n]") != 'n'
+}
 
-
-
-def get-youtube-song [link: string] {
+def get-youtube-song [link: string output_dir: path = "./"] {
     let links = ($link | parse -r 'youtube\.com/watch\?v=(?<link>[\w-]+)' | get link)
     if ($links | length) != 1 {
         print -e $"Failed to parse link '($link)', found ($links | length) valid link matches"
@@ -59,8 +76,11 @@ def get-youtube-song [link: string] {
     std log info $"Downloading from youtube: ($links.0)"
     try {
         let metadata = (yt-dlp --dump-json --skip-download $link | from json)
-        yt-dlp --embed-thumbnail --embed-metadata -x --audio-format mp3 --no-embed-info-json $link -o $"($metadata.title).mp3"
-        return $"($metadata.title).mp3"
+	let title = $metadata.title | str replace -ra '(\(.*\)|\[.*\])' ''
+	if (confirm-download $title $output_dir) {
+		yt-dlp --embed-thumbnail --embed-metadata -x --audio-format mp3 --no-embed-info-json $link -o $"($output_dir)/($title).mp3"
+		return $"($metadata.title).mp3"
+	}
     } catch {
         std log warning $"couldn't download ($links.0)"
     }
@@ -68,15 +88,14 @@ def get-youtube-song [link: string] {
 }
 
 export def get-song [link: string] {
-    let MusicDownloadDir = "temp/"
     if not "MPD_DIR" in $env {
         print -e "Failed to get $env.MPD_DIR, is it set?"
         return
     }
-    cd $"($env.MPD_DIR)/($MusicDownloadDir)"
+    let MusicDownloadDir = $"($env.MPD_DIR)/temp/"
     let ret = if $link =~ '^(https://)?(music|www)\.youtube\.com/watch\?v=[\w-]+' {
         std log debug "matched link to youtube"
-        let title = (get-youtube-song $link)
+        let title = (get-youtube-song $link $MusicDownloadDir)
         if $title != "" {
             mpc update -w
             mpc add $"($MusicDownloadDir | path join $title)"
