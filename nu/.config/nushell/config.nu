@@ -705,6 +705,7 @@ alias mitmweb = mitmweb --set confdir=$"($env.XDG_CONFIG_HOME)/mitmproxy"
 alias wget = wget --hsts-file=$"($env.XDG_DATA_HOME)/wget-hsts"
 alias hx = helix
 alias hostname = hostnamectl hostname
+alias adb = with-env [HOME, $"($env.XDG_DATA_HOME)/android"] { adb }
 
 
 use wrappers.nu *
