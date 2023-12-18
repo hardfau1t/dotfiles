@@ -1,4 +1,15 @@
 local mod = {}
+
+local NEORG_DIR =  vim.fn.expand("~/.local/share/notes/")
+
+
+local function setup_auto_commands()
+    print(NEORG_DIR)
+    vim.api.nvim_create_autocmd("BufNewFile", {
+        command = "Neorg templates journal load",
+        pattern = { NEORG_DIR .. "journal/*.norg" },
+    })
+end
 function mod.init()
     local opts = {
         load = {
@@ -14,10 +25,10 @@ function mod.init()
                             level_4 = { icon = "◇" },
                             level_5 = { icon = "◆" },
                             level_6 = { icon = "⋄" },
-                          },
-                          code_block = {
+                        },
+                        code_block = {
                             width = "content"
-                          }
+                        }
                     }
                 }
             }, -- Allows for use of icons
@@ -33,7 +44,7 @@ function mod.init()
             ["core.dirman"] = {
                 config = {
                     workspaces = {
-                        my_workspace = "~/.local/share/notes/",
+                        my_workspace = NEORG_DIR,
                     },
                     default_workspace = "my_workspace",
                 },
@@ -50,9 +61,14 @@ function mod.init()
                     hook = require("cfg.neorg.keymaps").set_keymaps,
                 },
             },
+            ["external.templates"] = {
+                config = {
+                    templates_dir = vim.fn.stdpath("config") .. "/lua/cfg/neorg/templates"
+                }
+            }
         },
     }
-
+    setup_auto_commands()
     require("neorg").setup(opts)
 end
 

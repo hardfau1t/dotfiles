@@ -92,7 +92,7 @@ return {
         config = function()
             require("cfg.neorg").init()
         end,
-        dependencies = { "nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope" },
+        dependencies = { "nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope", { "pysan3/neorg-templates", dependencies = { "L3MON4D3/LuaSnip" } } },
     },
     {
         "nvim-lualine/lualine.nvim",
@@ -162,7 +162,7 @@ return {
     "neovim/nvim-lspconfig",
     {
         'LhKipp/nvim-nu',
-        lazy = false,
+        lazy = true,
         build = ":TSInstall nu",
         ft = { "nu" },
         config = function()

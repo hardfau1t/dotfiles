@@ -1,0 +1,24 @@
+@document.meta
+title: {TODAY_OF_FILETREE}
+description:
+authors: {AUTHOR}
+categories:
+created: {TODAY_OF_FILETREE}
+updated: {TODAY}
+version: 1.0.0
+@end
+
+* Summary
+** How was you day
+   - woke up at: {CURSOR}
+   - slept at:
+   - Rate your day for usefulness: 
+***  How I felt about the day: (🤪, 😃, 🙂, 😒, 😔, 😫)
+** Personal 
+   - ( ) update the daily account sheet
+
+* Journal
+** Personal
+** Office
+
+* scratchpad
