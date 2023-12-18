@@ -1,0 +1,14 @@
+[init]
+	defaultBranch = main
+[user]
+[pull]
+	rebase = true
+[alias]
+	ch = checkout
+	co = commit
+	ci = commit
+	s = status
+[advice]
+	skipeedCherryPicks = false
+[push]
+	autoSetupRemote = true
