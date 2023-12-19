@@ -76,13 +76,12 @@ def confirm-download [ title: string dir: path ] {
 }
 
 def get-youtube-song [unparsed_link: string output_dir: path = "./"] {
-    let links = ($unparsed_link | parse -r 'youtube\.com/watch\?v=(?<link>[\w-]+)' | get link)
-    if ($links | length) != 1 {
-        print -e $"Failed to parse link '($unparsed_link)', found ($links | length) valid link matches"
+    let link = ($unparsed_link | url parse | get -i params.v)
+    if $link == null {
+        print -e $"Failed to parse link '($unparsed_link)'"
         return ""
     }
-    let link = $links.0
-    std log info $"Downloading from youtube: ($links)"
+    std log info $"Downloading from youtube: ($link)"
     try {
         let metadata = (yt-dlp --dump-json --skip-download $link | from json)
 # replace all contents within () and [] and any special characters
@@ -97,7 +96,7 @@ def get-youtube-song [unparsed_link: string output_dir: path = "./"] {
 		return $"($title).mp3"
 	}
     } catch { |error|
-        std log warning $"couldn't download ($links.0): ($error)"
+        std log warning $"couldn't download ($link): ($error)"
     }
     return ""
 }
@@ -108,8 +107,10 @@ export def get-song [link: string] {
         return
     }
     let MusicDownloadDir = $"($env.MPD_DIR)/temp/"
-    let ret = if $link =~ '^(https://)?(music|www)\.youtube\.com/watch\?v=[\w-]+' {
-        std log debug "matched link to youtube"
+    let host = $link | url parse | get host
+    # let ret = if $host =~ '^(https://)?(music|www)\.youtube\.com/watch\?v=[\w-]+' {
+    let ret = if $host =~ 'youtube.com' {
+        std log debug "Downloading from youtube"
         let title = (get-youtube-song $link $MusicDownloadDir)
         if $title != "" {
             mpc update -w
