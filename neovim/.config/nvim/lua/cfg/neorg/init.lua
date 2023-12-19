@@ -1,13 +1,16 @@
 local mod = {}
 
-local NEORG_DIR =  vim.fn.expand("~/.local/share/notes/")
+NEORG_DIR =  vim.fn.expand("~/.local/share/notes/")
 
 
 local function setup_auto_commands()
-    print(NEORG_DIR)
+    local neorg_journal_template_handler = vim.api.nvim_create_augroup("NeorgJournalTemplate", {})
     vim.api.nvim_create_autocmd("BufNewFile", {
-        command = "Neorg templates journal load",
-        pattern = { NEORG_DIR .. "journal/*.norg" },
+        group = neorg_journal_template_handler,
+        command = "Neorg templates load journal ",
+        -- since this autocammand is only setup if the neorg workspace is initialized no need to check for valid path
+        pattern = { "*journal/*.norg" },
+        desc = "Create journal template on creation"
     })
 end
 function mod.init()

@@ -62,6 +62,6 @@ vim.keymap.set("n", "\\\\", function()
     vim.cmd("Neorg workspace")
     vim.cmd("Neorg index")
     -- vim.cmd("colorscheme gruvbox")
-    vim.cmd("cd ~/.local/share/notes")
+    vim.cmd("cd ".. NEORG_DIR)
 end)
 return mod

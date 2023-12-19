@@ -2,7 +2,7 @@
 title: {TODAY_OF_FILETREE}
 description:
 authors: {AUTHOR}
-categories:
+categories: journal
 created: {TODAY_OF_FILETREE}
 updated: {TODAY}
 version: 1.0.0
@@ -14,8 +14,6 @@ version: 1.0.0
    - slept at:
    - Rate your day for usefulness: 
 ***  How I felt about the day: (🤪, 😃, 🙂, 😒, 😔, 😫)
-** Personal 
-   - ( ) update the daily account sheet
 
 * Journal
 ** Personal
