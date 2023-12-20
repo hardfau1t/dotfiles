@@ -61,6 +61,7 @@ $env.PYTHONSTARTUP = ([$env.XDG_CONFIG_HOME, python/pythonrc] | path join )
 $env.NODE_REPL_HISTORY = ([$env.XDG_DATA_HOME, node_repl_history] | path join)
 #cargo
 $env.CARGO_HOME = ([$env.XDG_DATA_HOME, cargo] | path join)
+$env.CARGO_BUILD_TARGET_DIR = ([$env.XDG_CACHE_DIR, cargo] | path join)
 # rustup
 $env.RUSTUP_HOME = ([$env.XDG_DATA_HOME, rustup] | path join)
 # sqlite
