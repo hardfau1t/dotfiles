@@ -9,6 +9,7 @@ version: 1.0.0
 @end
 
 * Summary
+{{:$/journal/{YESTERDAY_OF_FILETREE}:}}[Yesterday] - {{:$/journal/{TOMORROW_OF_FILENAME}:}}[Tomorrow]
 ** How was you day
    - woke up at: {CURSOR}
    - slept at:

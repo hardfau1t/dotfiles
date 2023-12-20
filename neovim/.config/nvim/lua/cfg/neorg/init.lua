@@ -66,7 +66,11 @@ function mod.init()
             },
             ["external.templates"] = {
                 config = {
-                    templates_dir = vim.fn.stdpath("config") .. "/lua/cfg/neorg/templates"
+                    templates_dir = vim.fn.stdpath("config") .. "/lua/cfg/neorg/templates",
+                    snippets_overwrite = {
+                        date_format = [[%Y/%m/%d]],
+                    }
+
                 }
             }
         },

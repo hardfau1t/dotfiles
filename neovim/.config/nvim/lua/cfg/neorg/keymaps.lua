@@ -38,10 +38,6 @@ end
 
 mod.set_keymaps = function(kb)
     -- remaps all the non leader keys
-    kb.remap_key("norg", "n", kb.leader .. "tc", kb.leader .. "c")
-    kb.remap_key("norg", "n", kb.leader .. "tv", kb.leader .. "v")
-    kb.remap_key("norg", "n", kb.leader .. "te", kb.leader .. "e")
-    kb.remap_key("norg", "n", kb.leader .. "nn", kb.leader .. "n")
     -- journal shortcuts
     kb.map("norg", "n", kb.leader .. "jj", ":Neorg journal today<CR>")
     kb.map("norg", "n", kb.leader .. "jy", ":Neorg journal yesterday<CR>")
