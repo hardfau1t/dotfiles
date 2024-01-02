@@ -103,9 +103,9 @@ return {
     },
     {
         "iamcco/markdown-preview.nvim",
-        lazy = true,
-        build = ":call mkdp#util#install()",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
         ft = { "markdown" },
+        build = function() vim.fn["mkdp#util#install"]() end,
     },
     {
         "L3MON4D3/LuaSnip",
@@ -118,14 +118,6 @@ return {
         "rafamadriz/friendly-snippets",
         dependencies = { "L3MON4D3/LuaSnip" },
     },
-    {
-        "kyazdani42/nvim-tree.lua",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function()
-            require("cfg.nvim-tree").setup()
-        end,
-    },
-
     {
         'j-hui/fidget.nvim', -- lsp status
         tag = 'legacy'
