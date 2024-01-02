@@ -1,0 +1,49 @@
+import = ["/home/gireesh/.config/alacritty/catpuccin/catppuccin-mocha.toml"]
+live_config_reload = true
+
+[bell]
+animation = "EaseOutExpo"
+color = "0xffffff"
+duration = 0
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[cursor]
+style = "Beam"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 11.0
+
+[font.normal]
+family = "ComicShannsMonoNerdFontPropo"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Plus"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "N"
+mods = "Control|Shift"
+
+[mouse]
+hide_when_typing = false
+
+[scrolling]
+history = 10000
+
+[shell]
+program = "nu"
+
+[window]
+opacity = 0.4
