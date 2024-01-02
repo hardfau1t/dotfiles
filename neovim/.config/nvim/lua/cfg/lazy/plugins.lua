@@ -119,6 +119,14 @@ return {
         dependencies = { "L3MON4D3/LuaSnip" },
     },
     {
+        'stevearc/oil.nvim',
+        opts = {},
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            require("cfg.oil").setup()
+        end,
+    },
+    {
         'j-hui/fidget.nvim', -- lsp status
         tag = 'legacy'
     },

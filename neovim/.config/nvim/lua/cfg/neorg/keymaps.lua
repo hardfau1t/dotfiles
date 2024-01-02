@@ -49,6 +49,7 @@ mod.set_keymaps = function(kb)
     kb.map("norg", "n", kb.leader .. "os", ":Neorg toc split<CR>")
     kb.map("norg", "n", kb.leader .. "oc", ":Neorg toc close<CR>")
     kb.map("norg", "n", kb.leader .. "oq", ":Neorg toc toqflist<CR>")
+    kb.map_event("norg", "n", kb.leader .. "e", "core.looking-glass.magnify-code-block")
     kb.map_event("norg", "i", "<C-l>", "core.integrations.telescope.insert_link")
 end
 
