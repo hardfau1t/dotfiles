@@ -5,7 +5,8 @@ export def "config nvim" [] {
 }
 # Edit alacritty.yml
 export def "config alacritty" [] {
-    nvim ~/.config/alacritty/alacritty.yml
+    cd ~/.config/alacritty
+    nvim alacritty.toml
 }
 
 # Edit hyprland config
