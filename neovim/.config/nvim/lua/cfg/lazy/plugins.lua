@@ -2,31 +2,15 @@ return {
 
     { "imsnif/kdl.vim" }, -- kdl support for vim
     {
-        "catppuccin/nvim",
-        name = "catppuccin",
+        "folke/tokyonight.nvim",
+        lazy = false,
         priority = 1000,
-        config = function()
-            require("catppuccin").setup({
-                flavor = "mocha",
-                transparent_background = false,
-                dim_inactive = {
-                    enabled = true,
-                }
-            })
-        end
-    },
-    { "morhetz/gruvbox", lazy = true },
-    {
-        "rebelot/kanagawa.nvim",
-        name = "kanagawa",
-        lazy = "true",
-        config = function()
-            require("kanagawa").setup({
-                dimInactive = false,
-                globalStatus = true,
-                transparent = true,
-            })
-        end,
+        opts = {
+            style = "night",
+            hide_inactive_statusline = false,
+            dim_inactive = true,
+            lualine_bold = false,
+        },
     },
     {
         "windwp/nvim-autopairs",
