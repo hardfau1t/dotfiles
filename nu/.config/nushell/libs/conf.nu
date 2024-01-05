@@ -88,5 +88,10 @@ export def "config libs" [] {
 
 export def "config bat" [] {
     cd ~/.config/bat/
-    nvim ~/.config/bat/config
+    nvim config
+}
+
+export def "config dunst" [] {
+    cd ~/.config/dunst/
+    nvim dunstrc
 }
