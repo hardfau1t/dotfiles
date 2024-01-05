@@ -68,9 +68,10 @@
 )
 
 (defwidget bar []
-  (box :class "bar_class"
+  (centerbox :class "bar_class"
        :orientation "h"
-
+        :space-evenly false
+        :hexpand true
     (left)
     (center)
     (right)
