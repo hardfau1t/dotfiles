@@ -134,7 +134,7 @@ export def commit-pass [] {
 }
 
 export def tty-size [] {
-    stty size | parse "{rows} {cols}" | get 0 | format 'stty rows {rows} cols {cols}' | str trim | std clip
+    stty size | parse "{rows} {cols}" | get 0 | format pattern 'stty rows {rows} cols {cols}' | str trim | wl-copy
 }
 
 export def bsource [pth: string ] {
