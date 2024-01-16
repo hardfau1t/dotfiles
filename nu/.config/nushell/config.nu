@@ -715,6 +715,9 @@ use audio.nu *
 
 source "~/.cache/starship/init.nu"
 
+# configs/envs local to given system
+use local.nu *
+
 # display random help
 let command =  help commands | where command_type not-in ["alias", 'custom' , "external"]| get name | shuffle | first
 print ===================================================
