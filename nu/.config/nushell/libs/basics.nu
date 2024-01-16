@@ -134,7 +134,7 @@ export def commit-pass [] {
 }
 
 export def tty-size [] {
-    stty size | parse "{rows} {cols}" | get 0 | format pattern 'stty rows {rows} cols {cols}' | str trim | wl-copy
+    # stty size | parse "{rows} {cols}" | get 0 | format pattern 'stty rows {rows} cols {cols}' | str trim | wl-copy
 }
 
 export def bsource [pth: string ] {
@@ -142,7 +142,7 @@ export def bsource [pth: string ] {
 }
 
 export def notif [wait: duration ...params] {
-    systemd-run --on-active ($wait | format duration sec | split row ' ' | get 0 ) --user notify-send $params
+    systemd-run --on-active ($wait | format duration sec | split row ' ' | get 0 ) --user notify-send ...$params
 }
 
 export def copy-remote [remote_id: string] {
