@@ -20,3 +20,7 @@ $env.LD_LIBRARY_PATH  = (
     | filter {|it| $it != null } 
     | str join ':' 
 )
+
+if (tty) == "/dev/tty1" {
+    exec Hyprland
+}
