@@ -22,6 +22,8 @@ function mod.setup()
             "rust",
             "toml",
             "yaml",
+            "vim",
+            "vimdoc",
         },
         highlight = {
             enable = true,
