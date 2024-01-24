@@ -1,4 +1,4 @@
 show-keyboard-layout
-color=000000
-#image="Pictures/wallpapers/forest of light.png"
+# color=000000
+image=~/.local/share/wallpaper/attack-on-titan-trio.png
 ignore-empty-password
