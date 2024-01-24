@@ -95,3 +95,8 @@ export def "config dunst" [] {
     cd ~/.config/dunst/
     nvim dunstrc
 }
+
+export def "config swaylock" [] {
+    cd ~/.config/swaylock/
+    nvim config
+}
