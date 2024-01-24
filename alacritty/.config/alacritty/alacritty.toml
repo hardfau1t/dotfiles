@@ -46,4 +46,4 @@ history = 10000
 program = "nu"
 
 [window]
-opacity = 0
+opacity = 0.5
