@@ -101,7 +101,10 @@ def get-youtube-song [unparsed_link: string output_dir: path = "./"] {
     return ""
 }
 
-export def get-song [link: string] {
+export def get-song [
+    --add(-a)          # add the song to current queue
+    link: string
+] {
     if not "MPD_DIR" in $env {
         print -e "Failed to get $env.MPD_DIR, is it set?"
         return
@@ -112,7 +115,8 @@ export def get-song [link: string] {
     let ret = if $host =~ 'youtube.com' {
         std log debug "Downloading from youtube"
         let title = (get-youtube-song $link $MusicDownloadDir)
-        if $title != "" {
+        if $title != "" and $add {
+            std log info $"adding ($title) to current queue"
             mpc update -w
             mpc add $"($MusicDownloadDir | path join $title | path relative-to $env.MPD_DIR)"
         }
