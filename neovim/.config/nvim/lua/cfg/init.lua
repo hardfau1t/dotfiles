@@ -48,7 +48,7 @@ vim.o.ttyfast = true
 vim.o.termguicolors = true
 vim.o.wildmenu = true
 vim.o.hlsearch = true
-vim.o.signcolumn = "number"
+vim.o.signcolumn = "auto"
 vim.o.numberwidth = 4
 
 vim.opt.spell = false
