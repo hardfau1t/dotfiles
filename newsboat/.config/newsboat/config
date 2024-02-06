@@ -7,3 +7,5 @@ bind-key h quit
 
 refresh-on-startup yes
 auto-reload yes
+notify-program notify-send
+notify-beep yes
