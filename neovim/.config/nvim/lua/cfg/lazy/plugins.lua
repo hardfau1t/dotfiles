@@ -173,7 +173,7 @@ return {
         lazy = true,
         ft = { "just" }
     },
-    { 'elkowar/yuck.vim', lazy = true, ft = { "yuck" } },
+    { 'elkowar/yuck.vim',      lazy = true, ft = { "yuck" } },
     {
         "SmiteshP/nvim-navbuddy",
         dependencies = { {
