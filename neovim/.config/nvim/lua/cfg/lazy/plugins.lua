@@ -226,4 +226,11 @@ return {
             auto_resize_height = true,
         },
     },
+    {
+        "lewis6991/gitsigns.nvim",
+        opts = {
+            on_attach = require("cfg.gitsigns").on_attach
+        }
+    },
+
 }
