@@ -1,0 +1,9 @@
+include ~/.config/newsboat/themes/catppuccin-dark
+
+bind-key j down
+bind-key k up
+bind-key l open
+bind-key h quit
+
+refresh-on-startup yes
+auto-reload yes
