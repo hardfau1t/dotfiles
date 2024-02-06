@@ -210,5 +210,20 @@ return {
         config = function()
             require("cfg.text-case").setup()
         end,
-    }
+    },
+    {
+        'crusj/bookmarks.nvim',
+        branch = 'main',
+        dependencies = { 'nvim-web-devicons' },
+        config = function()
+            require("cfg.bookmarks").setup()
+        end
+    },
+    {
+        'kevinhwang91/nvim-bqf',
+        ft = 'qf',
+        opts = {
+            auto_resize_height = true,
+        },
+    },
 }

@@ -19,7 +19,7 @@ local function set_keymap()
     vim.keymap.set("n", "<leader>tj", ":Telescope jumplist<CR>", { silent = true, desc = "list jumplist" })
     vim.keymap.set("n", "<leader>tk", ":Telescope keymaps<CR>", { silent = true, desc = "show keymaps" })
     vim.keymap.set("n", "<leader>tl", ":Telescope live_grep<CR>", { silent = true, desc = "live grep all files" })
-    vim.keymap.set("n", "<leader>tm", ":Telescope man_pages<CR>", { silent = true, desc = "search man pages" })
+    vim.keymap.set("n", "<leader>tm", ":Telescope bookmarks<CR>", { silent = true, desc = "search bookmarks" })
     vim.keymap.set("n", "<leader>tn", ":Telescope marks<CR>", { silent = true, desc = "show all marks" })
     vim.keymap.set("n", "<leader>tq", ":Telescope quickfix<CR>", { silent = true, desc = "fuzzy find quickfixlist" })
     vim.keymap.set("n", "<leader>tr", ":Telescope lsp_references<CR>",
