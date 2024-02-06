@@ -52,7 +52,7 @@ export def "config push" [] {
     git stash
     git checkout main
     git pull
-    git rev-list --reverse $"main..($current_branch)" | lines | drop 1 | git cherry-pick ...$in
+    git rev-list --reverse $"main..($current_branch)" | lines | skip 1 | git cherry-pick ...$in
     git push
     git switch -
     git rebase main
