@@ -185,6 +185,13 @@ local cfg = {
             },
         },
     },
+    nushell = {
+        formatters = {},
+        linters = {},
+        lsp = {
+            provider = "nushell",
+        }
+    },
     python = {
         formatters = {
             {
