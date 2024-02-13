@@ -2,14 +2,16 @@ local mod = {}
 require("cfg.lsp.visuals")
 
 -- cursor highlighting enable
-local function documentHighlight(client, _)
+local function documentHighlight(client, bufnr)
     if client.server_capabilities.documentHighlightProvider then
         vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
             group = vim.api.nvim_create_augroup("DocumentHighlight", { clear = true }),
             desc = "Highlights the reference to given symbol",
             callback = function()
                 vim.lsp.buf.document_highlight()
-            end
+            end,
+            buffer = bufnr,
+
         }
         )
         vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
@@ -17,9 +19,9 @@ local function documentHighlight(client, _)
             desc = "Clear highlighting",
             callback = function()
                 vim.lsp.buf.clear_references()
-            end
-        }
-        )
+            end,
+            buffer = bufnr,
+        })
     end
 end
 
