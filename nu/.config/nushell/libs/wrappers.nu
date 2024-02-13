@@ -36,3 +36,10 @@ export extern ip [...params] {
        actual-ip $params
     }
 }
+
+export def --wrapped mitmproxy [...rest] {
+    ^mitmproxy --set $"confdir=($env.XDG_CONFIG_HOME)/mitmproxy" ...$rest
+}
+export def --wrapped mitmweb [...rest] {
+    ^mitmweb --set $"confdir=($env.XDG_CONFIG_HOME)/mitmproxy" ...$rest
+}

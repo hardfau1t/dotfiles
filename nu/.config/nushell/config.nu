@@ -700,8 +700,6 @@ alias fm = vifm
 alias gdb = gdb -q
 alias arm-none-eabi-gdb = arm-none-eabi-gdb -q
 alias mbsync = mbsync -c $"($env.XDG_CONFIG_HOME)/isync/mbsyncrc"
-alias mitmproxy = mitmproxy --set confdir=$"($env.XDG_CONFIG_HOME)/mitmproxy"
-alias mitmweb = mitmweb --set confdir=$"($env.XDG_CONFIG_HOME)/mitmproxy"
 alias wget = wget --hsts-file=$"($env.XDG_DATA_HOME)/wget-hsts"
 alias hx = helix
 alias hostname = hostnamectl hostname
