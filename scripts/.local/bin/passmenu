@@ -1,27 +1,20 @@
-#!/usr/bin/env bash
+#!/usr/bin/env nu
 
-typeit=0
-if [[ $1 == "--type" ]]; then
-	typeit=1
-	shift
-fi
-
-if [[ -n $WAYLAND_DISPLAY ]]; then
-	dmenu="fuzzel -d"
-	xdotool="wtype"
-fi
+# vim: set ft=nu:
 
 
-prefix=${PASSWORD_STORE_DIR-~/.password-store}
-cd $prefix
-password=$(find . -name "*.gpg" | sed 's/\.\///' |sed 's/\.gpg//'| $dmenu "$@" )
-cd -
-[[ -n $password ]] || exit
-
-echo "password $password"
-if [[ $typeit -eq 0 ]]; then
-	pass show -c "$password" 2>/dev/null
-else
-    exit #unimplemented
-	pass show "$password" | { IFS= read -r pass; printf %s "$pass"; } 
-fi
+def main [
+    --pass-dir(-d): path, # default $env.PASSWORD_STORE_DIR | default ~/.password-store
+] {
+    let prefix = $pass_dir | default ($env | get -i PASSWORD_STORE_DIR) | default $"($env.HOME)/.password-store"
+    let pass_name = fd '\.gpg$' $prefix 
+        | lines 
+        | each { 
+            str replace -r '\.gpg$' ''
+            | str replace -r $'^($prefix)/?' ''
+        }
+        | to text
+        | fuzzel -d --log-level error
+    pass -c $pass_name
+    notify-send -t 10000 "pass" $"($pass_name) is copied to system clipboard"
+}
