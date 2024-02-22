@@ -25,7 +25,17 @@ local function documentHighlight(client, bufnr)
     end
 end
 
-mod.default_attach = function(client, bufnr, config)
+
+local function external_format (formatter, bufnr)
+    local cmd = formatter.exe.. ' ' .. (table.concat(formatter.args, ' ')) .. " " .. vim.api.nvim_buf_get_name(bufnr) .. " 2> /dev/null"
+    if vim.bo.modified then
+        vim.cmd.write("%")
+        log.warn("file saved for formatting")
+    end
+    os.execute(cmd)
+end
+
+mod.default_attach = function(client, bufnr, formatter)
     -- enable document highlighting
     documentHighlight(client, bufnr)
     -- setup lsp keymap for given buffer
@@ -43,6 +53,10 @@ mod.default_attach = function(client, bufnr, config)
         navic.attach(client, bufnr)
     else
         vim.api.nvim_notify("navic is not installed or server has no capabilities", vim.log.levels.WARN, {})
+    end
+
+    if not (client.server_capabilities.documentFormattingProvider or formatter == nil or formatter.exe == nil) then
+        vim.keymap.set("n", "<leader>lf", function () external_format(formatter, bufnr) end, {buffer = bufnr, desc = "format with "..formatter.exe})
     end
 end
 
@@ -84,7 +98,7 @@ mod.setup = function()
                 if cfg.on_attach then
                     cfg.on_attach(client, bufnr)
                 end
-                mod.default_attach(client, bufnr)
+                mod.default_attach(client, bufnr, cfg.formatter)
             end
             setup.capabilities = vim.lsp.protocol.make_client_capabilities()
             if cmp_lsp_available then
