@@ -25,9 +25,12 @@ local function documentHighlight(client, bufnr)
     end
 end
 
-mod.default_attach = function(client, bufnr)
+mod.default_attach = function(client, bufnr, config)
+    -- enable document highlighting
     documentHighlight(client, bufnr)
+    -- setup lsp keymap for given buffer
     require("cfg.lsp.keymaps").setup(bufnr)
+    -- enable navbuddy and navic
     local nav_buddy_available, nav_buddy = pcall(require, "nvim-navbuddy")
     if nav_buddy_available and client.server_capabilities.documentSymbolProvider then
         nav_buddy.attach(client, bufnr)
