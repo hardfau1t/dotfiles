@@ -48,6 +48,23 @@ end
 
 
 mod.setup = function()
+    vim.fn.sign_define({
+        {name = 'DiagnosticSignError', text='', texthl = "DiagnosticError" },
+        {name = 'DiagnosticSignWarn', text='', texthl = "DiagnosticWarn" },
+        {name = 'DiagnosticSignInfo', text='!', texthl = "DiagnosticInfo" },
+        {name = 'DiagnosticSignHint', text='', texthl = "DiagnosticHint" },
+    })
+    local severity = vim.diagnostic.severity
+    -- setup diagnostics
+    vim.diagnostic.config({
+        virtual_text = {
+            severity = {severity.WARN, severity.ERROR},
+            prefix = "[",
+            suffix = " ]",
+        },
+        underline = { severity = {severity.WARN, severity.ERROR }},
+        severity_sort = true,
+    })
     local config = require("cfg.lsp.config")
     if config == nil then
         print("lsp cfg table not found")
