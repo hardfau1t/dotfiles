@@ -61,11 +61,11 @@ mod.setup = function()
     local cmp_lsp_available, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
     require("vim.lsp.log").set_level(vim.log.levels.ERROR)
     for _, cfg in pairs(config) do
-        local setup = {}
-        if cfg.lsp ~= nil and cfg.lsp.provider ~= nil and cfg.lsp.provider ~= "" then
+        if cfg.provider ~= nil and cfg.provider ~= "" then
+            local setup = {}
             setup.on_attach = function(client, bufnr)
-                if cfg.lsp.on_attach then
-                    cfg.lsp.on_attach(client, bufnr)
+                if cfg.on_attach then
+                    cfg.on_attach(client, bufnr)
                 end
                 mod.default_attach(client, bufnr)
             end
@@ -73,7 +73,7 @@ mod.setup = function()
             if cmp_lsp_available then
                 setup.capabilities = cmp_nvim_lsp.default_capabilities()
             end
-            lspconfig[cfg.lsp.provider].setup(setup)
+            lspconfig[cfg.provider].setup(setup)
         end
     end
     local available, fidget = pcall(require, "fidget")

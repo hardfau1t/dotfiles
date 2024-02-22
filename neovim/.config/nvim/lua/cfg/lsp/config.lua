@@ -6,85 +6,64 @@ if status_ok then
 end
 local cfg = {
     arduino = {
-        formatters = {},
-        linters = {},
-        lsp = {
-            provider = "arduino_language_server",
-            setup = {
-                cmd = {
-                    "arduino-language-server",
-                    "-cli-config",
-                    vim.fn.expand("~/.arduino15/arduino-cli.yaml"),
-                    "-fqbn",
-                    "arduino:avr:nano:cpu=atmega328old",
-                    "-cli-daemon-addr",
-                    "localhost",
-                    "-cli-daemon-instance",
-                    "1",
-                    "-clangd",
-                    "/usr/bin/clangd",
-                },
+        formatter = {},
+        provider = "arduino_language_server",
+        setup = {
+            cmd = {
+                "arduino-language-server",
+                "-cli-config",
+                vim.fn.expand("~/.arduino15/arduino-cli.yaml"),
+                "-fqbn",
+                "arduino:avr:nano:cpu=atmega328old",
+                "-cli-daemon-addr",
+                "localhost",
+                "-cli-daemon-instance",
+                "1",
+                "-clangd",
+                "/usr/bin/clangd",
             },
         },
     },
     c = {
-        formatters = {
-            -- {
+        formatter = {
             --   exe = "clang_format",
             --   args = {},
-            -- },
-            -- {
-            --   exe = "uncrustify",
-            --   args = {},
-            -- },
         },
-        linters = {},
-        lsp = {
-            provider = "clangd",
-            setup = {
-                cmd = {
-                    "clangd",
-                    "--background-index",
-                    "--header-insertion=never",
-                    "--cross-file-rename",
-                    "--clang-tidy",
-                    "--clang-tidy-checks=-*,llvm-*,clang-analyzer-*",
-                },
+        provider = "clangd",
+        setup = {
+            cmd = {
+                "clangd",
+                "--background-index",
+                "--header-insertion=never",
+                "--cross-file-rename",
+                "--clang-tidy",
+                "--clang-tidy-checks=-*,llvm-*,clang-analyzer-*",
             },
         },
     },
     cmake = {
-        formatters = {
-            {
-                exe = "cmake-format",
-                args = {},
-            },
+        formatter = {
+            exe = "cmake-format",
+            args = {},
         },
-        linters = {},
-        lsp = {
-            provider = "cmake",
-            setup = {
-                cmd = {
-                    "cmake-language-server",
-                },
+        provider = "cmake",
+        setup = {
+            cmd = {
+                "cmake-language-server",
             },
         },
     },
     -- html = {
-    --  formatters = {
+    --  formatter = {
     --   exe = "prettier",
     --   args = { "-w", "--print-width 100" },
     --  },
     -- },
     -- css = {
-    --  formatters = {
-    --   {
+    --  formatter = {
     --    exe = "prettier",
     --    args = { "-w", "--print-width 100" },
-    --   },
     --  },
-    --  linters = {},
-    --  lsp = {
     --   provider = "cssls",
     --   setup = {
     --    cmd = {
@@ -93,243 +72,192 @@ local cfg = {
     --     "--stdio",
     --    },
     --   },
-    --  },
     -- },
     json = {
-        formatters = {
-            -- {
-            --   exe = "json_tool",
-            --   args = {},
-            -- },
-            -- {
-            --   exe = "prettier",
-            --   args = {},
-            -- },
-            -- {
-            --   exe = "prettierd",
-            --   args = {},
-            -- },
-        },
-        linters = {},
-        lsp = {
-            provider = "jsonls",
-            setup = {
-                cmd = {
-                    "node",
-                    "/usr/lib/node_modules/vscode-langservers-extracted/bin/vscode-json-language-server",
-                    "--stdio",
+        formatter = {},
+        provider = "jsonls",
+        setup = {
+            cmd = {
+                "node",
+                "/usr/lib/node_modules/vscode-langservers-extracted/bin/vscode-json-language-server",
+                "--stdio",
+            },
+            settings = {
+                json = {
+                    schemas = schemas,
+                    --   = {
+                    --   {
+                    --     fileMatch = { "package.json" },
+                    --     url = "https://json.schemastore.org/package.json",
+                    --   },
+                    -- },
                 },
-                settings = {
-                    json = {
-                        schemas = schemas,
-                        --   = {
-                        --   {
-                        --     fileMatch = { "package.json" },
-                        --     url = "https://json.schemastore.org/package.json",
-                        --   },
-                        -- },
-                    },
-                },
-                commands = {
-                    Format = {
-                        function()
-                            vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line("$"), 0 })
-                        end,
-                    },
+            },
+            commands = {
+                Format = {
+                    function()
+                        vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line("$"), 0 })
+                    end,
                 },
             },
         },
     },
     lua = {
-        formatters = {
-            {
-                exe = "stylua",
-                args = {},
-            },
+        formatter = {
+            exe = "stylua",
+            args = {},
         },
-        linters = {},
-        lsp = {
-            on_attach = function(client, bufnr)
-                if ih_available then
-                    ih.on_attach(client, bufnr)
-                else
-                    vim.api.nvim_notify("Couldn't find inlay-hints", vim.log.levels.WARN, {})
-                end
-            end,
-            provider = "lua_ls",
-            setup = {
-                cmd = {
-                    "lua-language-server",
-                },
-                settings = {
-                    Lua = {
-                        hint = { enable = true },
-                        runtime = {
-                            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                            version = "LuaJIT",
+        on_attach = function(client, bufnr)
+            if ih_available then
+                ih.on_attach(client, bufnr)
+            else
+                vim.api.nvim_notify("Couldn't find inlay-hints", vim.log.levels.WARN, {})
+            end
+        end,
+        provider = "lua_ls",
+        setup = {
+            cmd = {
+                "lua-language-server",
+            },
+            settings = {
+                Lua = {
+                    hint = { enable = true },
+                    runtime = {
+                        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                        version = "LuaJIT",
+                    },
+                    diagnostics = {
+                        -- Get the language server to recognize the `vim` global
+                        globals = { "vim" },
+                    },
+                    workspace = {
+                        library = {
+                            [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+                            [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
                         },
-                        diagnostics = {
-                            -- Get the language server to recognize the `vim` global
-                            globals = { "vim" },
-                        },
-                        workspace = {
-                            library = {
-                                [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-                                [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
-                            },
-                            maxPreload = 100000,
-                            preloadFileSize = 10000,
-                        },
+                        maxPreload = 100000,
+                        preloadFileSize = 10000,
                     },
                 },
             },
         },
     },
     nushell = {
-        formatters = {},
-        linters = {},
-        lsp = {
-            provider = "nushell",
-        }
+        formatter = {},
+        provider = "nushell",
     },
     python = {
-        formatters = {
-            {
-                exe = "yapf",
-                args = {},
-            },
+        formatter = {
+            exe = "black",
+            args = {},
         },
-        linters = {},
-        lsp = {
-            provider = "pyright",
-            setup = {
-                cmd = { "pyright-langserver", "--stdio" },
-            },
-            settings = {
-                python = {
-                    analysis = {
-                        autoSearchPaths = true,
-                        diagnosticMode = "openFilesOnly",
-                        useLibraryCodeForTypes = true
-                    }
+        provider = "pyright",
+        setup = {
+            cmd = { "pyright-langserver", "--stdio" },
+        },
+        settings = {
+            python = {
+                analysis = {
+                    autoSearchPaths = true,
+                    diagnosticMode = "openFilesOnly",
+                    useLibraryCodeForTypes = true
                 }
             }
-        },
+        }
     },
     rust = {
-        formatters = {},
-        linters = {},
-        lsp = {
-            on_attach = function(client, bufnr)
-                if ih_available then
-                    ih.set_all()
-                    ih.on_attach(client, bufnr)
-                else
-                    vim.api.nvim_notify("Couldn't find inlay-hints", vim.log.levels.WARN)
-                end
-            end,
-            provider = "rust_analyzer",
-            setup = {
-                filetypes = { "rust" },
-                cmd = { "rustup", "run", "stable", "rust-analyzer" },
-                settings = {
-                    ["rust-analyzer"] = {
-                        imports = {
-                            granularity = {
-                                group = "crate"
-                            },
-                            prefix = "crate",
+        formatter = {},
+        on_attach = function(client, bufnr)
+            if ih_available then
+                ih.set_all()
+                ih.on_attach(client, bufnr)
+            else
+                vim.api.nvim_notify("Couldn't find inlay-hints", vim.log.levels.WARN)
+            end
+        end,
+        provider = "rust_analyzer",
+        setup = {
+            filetypes = { "rust" },
+            cmd = { "rustup", "run", "stable", "rust-analyzer" },
+            settings = {
+                ["rust-analyzer"] = {
+                    imports = {
+                        granularity = {
+                            group = "crate"
                         },
-                        cargo = {
-                            loadOutDirsFromCheck = true,
-                            -- features = {"stm32f767", "device-selected"},
-                            -- target = {"thumbv7em-none-eabihf"}
-                        },
-                        checkOnSave = {
-                            command = "clippy",
-                        },
-                        completion = {
-                            autoimport = {
-                                enable = true,
-                            },
-                        },
-                        inlay_hints = {
-                            only_current_line = false,
-                            only_current_line_autocmd = "CursorHold",
-                            show_parameter_hints = true,
-                            parameter_hints_prefix = "<- ",
-                            other_hints_prefix = "=> ",
-                            max_len_align = false,
-                            max_len_align_padding = 1,
-                            right_align = false,
-                            right_align_padding = 7,
-                            highlight = "Comment",
-                        },
-                        procMacro = {
+                        prefix = "crate",
+                    },
+                    cargo = {
+                        loadOutDirsFromCheck = true,
+                        -- features = {"stm32f767", "device-selected"},
+                        -- target = {"thumbv7em-none-eabihf"}
+                    },
+                    checkOnSave = {
+                        command = "clippy",
+                    },
+                    completion = {
+                        autoimport = {
                             enable = true,
                         },
+                    },
+                    inlay_hints = {
+                        only_current_line = false,
+                        only_current_line_autocmd = "CursorHold",
+                        show_parameter_hints = true,
+                        parameter_hints_prefix = "<- ",
+                        other_hints_prefix = "=> ",
+                        max_len_align = false,
+                        max_len_align_padding = 1,
+                        right_align = false,
+                        right_align_padding = 7,
+                        highlight = "Comment",
+                    },
+                    procMacro = {
+                        enable = true,
                     },
                 },
             },
         },
     },
     sh = {
-        formatters = {
-            -- {
+        formatter = {
             --   exe = "shfmt",
             --   args = {},
-            -- },
         },
-        linters = {},
-        lsp = {
-            provider = "bashls",
-            setup = {
-                cmd = {
-                    "bash-language-server",
-                    "start",
-                },
+        provider = "bashls",
+        setup = {
+            cmd = {
+                "bash-language-server",
+                "start",
             },
         },
     },
     yaml = {
-        formatters = {
-            -- {
+        formatter = {
             --   exe = "prettier",
             --   args = {},
-            -- },
-            -- {
-            --   exe = "prettierd",
-            --   args = {},
-            -- },
         },
-        linters = {},
-        lsp = {
-            provider = "yamlls",
-            setup = {
-                cmd = {
-                    "/usr/bin/yaml-language-server",
-                    "--stdio",
-                },
+        provider = "yamlls",
+        setup = {
+            cmd = {
+                "/usr/bin/yaml-language-server",
+                "--stdio",
             },
         },
     },
     javascript = {
-        lsp = {
-            provider = "denols",
-            setup = {
-                cmd = {
-                    "deno",
-                    "lsp"
-                }
+        provider = "denols",
+        setup = {
+            cmd = {
+                "deno",
+                "lsp"
             }
         }
     },
     zig = {
-        lsp = {
-            provider = "zls",
-            setup = {
-                cmd = { "zls" },
-            }
+        provider = "zls",
+        setup = {
+            cmd = { "zls" },
         }
     }
 }
