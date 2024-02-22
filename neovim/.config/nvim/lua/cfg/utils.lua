@@ -10,5 +10,19 @@ function _G.clean_buf()
             end
         end
     end
-
 end
+
+_G.log = {
+    debug = function(msg)
+        vim.notify(msg, vim.log.levels.DEBUG, {})
+    end,
+    info = function(msg)
+        vim.notify(msg, vim.log.levels.INFO, {})
+    end,
+    warn = function(msg)
+        vim.notify(msg, vim.log.levels.WARN, {})
+    end,
+    error = function(msg)
+        vim.notify(msg, vim.log.levels.ERROR, {})
+    end,
+}
