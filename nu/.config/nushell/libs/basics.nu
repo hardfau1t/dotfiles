@@ -131,8 +131,11 @@ export def get-song [
 
 export def commit-pass [] {
     cd ~/.personal/
-    git add .
-    git commit -m $"(date now | format date  "%d-%m-%Y")"
+    if not ( git diff | is-empty) {
+        git add .
+        git commit -m $"(date now | format date  "%d-%m-%Y")"
+    }
+    git pull
     git push
     cd -
 }
