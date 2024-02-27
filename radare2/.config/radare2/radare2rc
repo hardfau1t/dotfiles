@@ -37,7 +37,6 @@ ec graph.diff.unmatch rgb:fab387
 ec graph.false rgb:f38ba8
 ec graph.traced rgb:fab387
 ec graph.true rgb:a6e3a1
-ec graph.ujump rgb:89dceb
 ec gui.alt_background rgb:bac2de
 ec gui.background rgb:181825
 ec gui.border rgb:181825
