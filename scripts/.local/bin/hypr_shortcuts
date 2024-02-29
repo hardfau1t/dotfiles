@@ -1,0 +1,40 @@
+#!/usr/bin/env nu
+# vim: set ft=nu :
+
+use std
+
+if  ( which fuzzel | is-empty) {
+    std log error "missing fuzzel"
+    return
+}
+
+let shortcuts = open ~/.config/hypr/shortcuts.conf 
+    | lines
+    | filter { $in !~ '^\s*(#|$)'}
+    | split column ','
+    | insert modifier {|row| $row.column1 | split row '=' | last }
+    | insert mode {|row| $row.column1 | split row '=' | first }
+    | reject column1
+    | compact column2
+    | move mode --before column2
+    | move modifier --after mode
+    | rename mode modifier key action args
+
+let choice = $shortcuts 
+    | enumerate 
+    | each {|row| $"($row.index). ($row.item.action) ($row.item | get -i args)" | str trim} 
+    | to text
+    | fuzzel -d --log-level=none
+    | str trim
+
+if not ($choice | is-empty) {
+    let index = $choice | split row '.' | first | into value | first
+    let shortcut = $shortcuts | get $index
+    notify-send 'hypr_shortcuts' $'shortcut for `($shortcut.action) ($shortcut |get -i args)` is "($shortcut.modifier),($shortcut.key)"\nexecuted shortcut'
+    match ($shortcut.action| str trim) {
+        "exec" => {
+                    std log info $"executing ($shortcut.args)"
+                    nu -c $shortcut.args
+                }
+    }
+}
