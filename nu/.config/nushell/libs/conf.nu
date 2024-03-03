@@ -100,3 +100,8 @@ export def "config swaylock" [] {
     cd ~/.config/swaylock/
     nvim config
 }
+
+export def "config bottom" [] {
+    cd ~/.config/bottom/
+    nvim bottom.toml
+}
