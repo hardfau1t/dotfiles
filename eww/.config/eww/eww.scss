@@ -6,7 +6,7 @@
     font-family: "ComicShannsMonoNerdFontPropo";
 }
 .left, .right, .center, .cal-box, .sys_win, .audio-box, .music_pop, .disk-box {
-    background-color: $surface0;
+    background-color: $base;
     border-radius: 10px;
     padding: 0 10 0 10;
     border: 2px solid $lavender;
@@ -37,6 +37,7 @@
 .progress {
     margin-top: 2;
     margin-bottom: 2;
+    color: $yellow;
 }
 
 
@@ -46,9 +47,6 @@ tooltip.background {
     background: $surface0
 }
 
-.progress {
-    color: $peach;
-}
 
 
 .active-workspace{
