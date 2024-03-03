@@ -2,15 +2,14 @@ return {
 
     { "imsnif/kdl.vim" }, -- kdl support for vim
     {
-        "folke/tokyonight.nvim",
-        lazy = false,
+        "catppuccin/nvim",
+        name = "catppuccin",
         priority = 1000,
         opts = {
-            style = "night",
-            hide_inactive_statusline = false,
-            dim_inactive = true,
-            lualine_bold = false,
-        },
+            flavour = 'macchiato',
+            transparent_background = true,
+            term_colors = true,
+        }
     },
     {
         "windwp/nvim-autopairs",

@@ -105,3 +105,8 @@ export def "config bottom" [] {
     cd ~/.config/bottom/
     nvim bottom.toml
 }
+
+export def "config newsboat" [] {
+    cd ~/.config/newsboat/
+    nvim config
+}
