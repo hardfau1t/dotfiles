@@ -160,7 +160,8 @@ local cfg = {
                 analysis = {
                     autoSearchPaths = true,
                     diagnosticMode = "openFilesOnly",
-                    useLibraryCodeForTypes = true
+                    useLibraryCodeForTypes = true,
+                    typeCheckingMode = "strict"
                 }
             }
         }

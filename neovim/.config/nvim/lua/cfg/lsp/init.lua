@@ -101,6 +101,7 @@ mod.setup = function()
                 mod.default_attach(client, bufnr, cfg.formatter)
             end
             setup.capabilities = vim.lsp.protocol.make_client_capabilities()
+            setup.settings = cfg.settings
             if cmp_lsp_available then
                 setup.capabilities = cmp_nvim_lsp.default_capabilities()
             end
