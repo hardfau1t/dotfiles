@@ -142,6 +142,7 @@ return {
             require('pretty-fold').setup({ fill_char = " " })
         end
     },
+    "folke/neodev.nvim",
     "neovim/nvim-lspconfig",
     {
         'LhKipp/nvim-nu',
@@ -231,5 +232,10 @@ return {
             on_attach = require("cfg.gitsigns").on_attach
         }
     },
-
+    {
+        'brenoprata10/nvim-highlight-colors',
+        config = function()
+            require('nvim-highlight-colors').setup {}
+        end
+    }
 }
