@@ -4,7 +4,7 @@ local function setup_keymaps()
     local bk_list = require('bookmarks.list')
     local bk = require("bookmarks")
     vim.keymap.set("n", "<leader>mm", bk.add_bookmarks, { silent = true, desc = "add bookmark" })
-    vim.keymap.set("n", "<leader>mt", bk.toggle_bookmarks, { silent = true, desc = "toggle bookmark" })
+    vim.keymap.set("n", "<leader>ml", bk.toggle_bookmarks, { silent = true, desc = "list bookmarks" })
     vim.keymap.set("n", "<leader>mi", bk_list.show_desc, { silent = true, desc = "show bookmark info" })
     vim.keymap.set("n", "<leader>md", bk_list.delete_on_virt, { silent = true, desc = "delete bookmark" })
 end
