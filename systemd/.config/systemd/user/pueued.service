@@ -3,7 +3,7 @@ Description=Pueue Daemon - CLI process scheduler and manager
 
 [Service]
 Restart=no
-ExecStart=/usr/bin/bash -c '${HOME}/.local/share/cargo/bin/pueued -vv'
+ExecStart=/usr/bin/bash -c '/usr/bin/pueued -vv'
 
 [Install]
 WantedBy=default.target

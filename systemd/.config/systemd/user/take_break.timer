@@ -1,0 +1,26 @@
+[Unit]
+Description=Trigger take break service every 30 minute
+
+[Timer]
+# which service to activate
+# Unit=
+
+# OnCalendar=
+# OnActiveSec=5s
+# OnBootSec=
+OnStartupSec=30min
+OnUnitActiveSec=30min
+# OnUnitInactiveSec=
+# WakeSystem=
+# AccuracySec=1s
+# TimerSlackNSec=
+# RandomizedDelaySec=
+# FixedRandomDelay=
+# OnClockChange=
+# OnTimezoneChange=
+# Persistent=
+# what=
+# RemainAfterElapse=
+
+[Install]
+WantedBy=timers.target

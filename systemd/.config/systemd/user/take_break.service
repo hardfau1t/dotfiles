@@ -1,0 +1,9 @@
+[Unit]
+Description=notifies to take break from screen
+
+[Service]
+ExecStart=/usr/bin/notify-send "well wisher" "take a break for 5 minutes"
+Type=oneshot
+
+[Install]
+WantedBy=basic.target
