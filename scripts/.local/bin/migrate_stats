@@ -1,0 +1,31 @@
+#!/usr/bin/env nu
+# vim: set filetype=nu :
+use std
+
+def parse-stats [ ] {
+     lines| parse "COMM={from}={lang}={comments}" | update comments {|row| $row.comments | from json}
+}
+
+def check-and-move [ ] {
+    let data = $in
+    let mprater_stats = ($data.stats | where from == mp_rater | get -i 0)
+    let mscout_stats = ($data.stats | where from == msout | get -i 0)
+    if not ($mprater_stats | is-empty) {
+        let play_cnt = $mscout_stats.comments.play_cnt + $mprater_stats.comments.play_cnt
+        let skip_cnt = $mscout_stats.comments.skip_cnt + $mprater_stats.comments.skip_cnt
+        std log info $"updating ($data.file) with ($play_cnt) ($skip_cnt), from ($mprater_stats)"
+        mid3v2 --delete-frames='COMM' $data.file
+        mscout set-stats $data.file -y $play_cnt -x $skip_cnt
+    }
+}
+
+# migrates older mp_rater stats to mscout
+def main [
+    music_dir: path,
+] {
+    fd '.mp3' $music_dir 
+        | lines 
+        | par-each {|song| 
+            {'file': $song, 'stats': (mid3v2 -l $song | parse-stats)} | check-and-move
+        }
+}
