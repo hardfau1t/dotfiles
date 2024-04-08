@@ -1,0 +1,34 @@
+#!/usr/bin/env nu
+
+# vim: set ft=nu :
+
+use std
+
+def main [
+    filepath: path,
+    play_cnt: int,
+    skip_cnt: int,
+] {
+    $env.NU_LOG_FORMAT = "%DATE%|%LEVEL% %MSG%"
+    std log info $"event file: '($filepath)', played: ($play_cnt), skipped: ($skip_cnt)"
+    let max_skips = $env | get -i MPD_LIMIT_SKIP | default 5
+    let retention_limit = $env | get -i MPD_LIMIT_RETENTION | default 15
+    let full_path = $env.MPD_DIR | path join $filepath
+    let archive_path = $env.MPD_DIR | path join 'archive.tar'
+    if $skip_cnt > $max_skips {
+        if $play_cnt >= $retention_limit {
+            std log info $"archiving song {$song_path}"
+            if not ($archive_path | path exists) {
+                tar -cvf $archive_path -C $env.MPD_DIR $filepath
+            } else {
+                tar -rvf $archive_path -C $env.MPD_DIR $filepath
+            }
+            notify-send -t 20000 'mscout' $'archived ($full_path)'
+        } else {
+            notify-send -t 20000 'mscout' $'removed ($full_path)'
+        }
+        std log info $"moving ($full_path) -> ~/tmp"
+        mv $full_path ~/tmp
+        mpc update -w
+    }
+}
