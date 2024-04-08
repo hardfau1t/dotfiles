@@ -69,6 +69,7 @@ return {
     {
         "nvim-neorg/neorg",
         lazy = true,
+        version = "v7.0.0",
         -- load only when neorg cmd ran or shortcut is given
         cmd = { "Neorg workspace", "Neorg index", "Neorg" },
         keys = { "\\\\" },
@@ -134,13 +135,6 @@ return {
         end,
         lazy = true,
         ft = { "rust" }
-    },
-    {
-        'anuvyklack/pretty-fold.nvim',
-        disable = true,
-        config = function()
-            require('pretty-fold').setup({ fill_char = " " })
-        end
     },
     "folke/neodev.nvim",
     "neovim/nvim-lspconfig",
