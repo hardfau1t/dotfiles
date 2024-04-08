@@ -1,4 +1,4 @@
-import = ["~/.config/alacritty/catpuccin/catppuccin-macchiato.toml"]
+# import = ["~/.config/alacritty/catpuccin/catppuccin-macchiato.toml"]
 live_config_reload = true
 
 [bell]
@@ -46,5 +46,5 @@ history = 10000
 program = "nu"
 
 [window]
-opacity = 0.0
+opacity = 0.4
 

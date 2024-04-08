@@ -51,10 +51,12 @@ tooltip.background {
 
 .active-workspace{
     color: $crust;
+    font-weight: 900;
     background-color: $teal;
     padding: 0 8 0 8;
     margin: 4 0 4 0;
     border-radius: 6px;
+    border: 1px solid $yellow
 }
 
 .default-source-icon, .default-sink-icon,  .sink-icon, .source-icon {
