@@ -34,11 +34,9 @@ mod.on_attach = function(bufnr)
     map('n', '<leader>hu', gs.undo_stage_hunk, "undo stage hunk")
     map('n', '<leader>hR', gs.reset_buffer, "reset buffer")
     map('n', '<leader>hp', gs.preview_hunk, "preview hunk")
-    map('n', '<leader>hb', function() gs.blame_line { full = true } end, "blame line")
-    map('n', '<leader>tb', gs.toggle_current_line_blame, "toggle line blame")
+    map('n', '<leader>hb', gs.toggle_current_line_blame, "toggle line blame")
     map('n', '<leader>hd', gs.diffthis, "diff")
     map('n', '<leader>hD', function() gs.diffthis('~') end, "diff agains ~")
-    map('n', '<leader>td', gs.toggle_deleted, "toggle deleted")
 
     -- Text object
     map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
