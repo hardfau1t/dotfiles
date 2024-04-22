@@ -1,4 +1,4 @@
-# import = ["~/.config/alacritty/catpuccin/catppuccin-macchiato.toml"]
+import = ["~/.config/alacritty/catpuccin/catppuccin-macchiato.toml"]
 live_config_reload = true
 
 [bell]
