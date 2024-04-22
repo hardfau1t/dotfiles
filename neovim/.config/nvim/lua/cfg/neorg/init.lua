@@ -1,4 +1,3 @@
-local mod = {}
 
 NEORG_DIR =  vim.fn.expand("~/.local/share/notes/")
 
@@ -13,7 +12,7 @@ local function setup_auto_commands()
         desc = "Create journal template on creation"
     })
 end
-function mod.init()
+do
     local opts = {
         load = {
             ["core.defaults"] = {}, -- Load all the default modules
@@ -79,4 +78,3 @@ function mod.init()
     require("neorg").setup(opts)
 end
 
-return mod

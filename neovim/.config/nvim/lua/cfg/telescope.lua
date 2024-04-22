@@ -1,4 +1,3 @@
-local mod = {}
 
 local function set_keymap()
     local builtin = require("telescope.builtin")
@@ -38,7 +37,7 @@ local function load_extensions()
     require("telescope").load_extension('luasnip')
 end
 
-function mod.setup()
+do
     local present, telescope = pcall(require, "telescope")
     if not present then
         print("telescope is not installed")
@@ -88,8 +87,6 @@ function mod.setup()
             buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
         },
     })
-    set_keymap()
     load_extensions()
+    set_keymap()
 end
-
-return mod

@@ -1,4 +1,3 @@
-local mod = {}
 require("cfg.lsp.visuals")
 
 -- cursor highlighting enable
@@ -35,7 +34,7 @@ local function external_format (formatter, bufnr)
     os.execute(cmd)
 end
 
-mod.default_attach = function(client, bufnr, formatter)
+local function default_attach (client, bufnr, formatter)
     -- enable document highlighting
     documentHighlight(client, bufnr)
     -- setup lsp keymap for given buffer
@@ -58,10 +57,11 @@ mod.default_attach = function(client, bufnr, formatter)
     if not (client.server_capabilities.documentFormattingProvider or formatter == nil or formatter.exe == nil) then
         vim.keymap.set("n", "<leader>lf", function () external_format(formatter, bufnr) end, {buffer = bufnr, desc = "format with "..formatter.exe})
     end
+    vim.lsp.inlay_hint.enable(true, {bufnr=bufnr})
 end
 
 
-mod.setup = function()
+do
     vim.fn.sign_define({
         {name = 'DiagnosticSignError', text='', texthl = "DiagnosticError" },
         {name = 'DiagnosticSignWarn', text='', texthl = "DiagnosticWarn" },
@@ -72,10 +72,12 @@ mod.setup = function()
     -- setup diagnostics
     vim.diagnostic.config({
         virtual_text = {
+            virt_text_hide = true,
             severity = {severity.WARN, severity.ERROR},
             prefix = "[",
             suffix = " ]",
         },
+        update_in_insert  = false,
         underline = { severity = {severity.WARN, severity.ERROR }},
         severity_sort = true,
     })
@@ -90,7 +92,7 @@ mod.setup = function()
         return
     end
     local cmp_lsp_available, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-    require("vim.lsp.log").set_level(vim.log.levels.ERROR)
+    require("vim.lsp.log").set_level(vim.log.levels.INFO)
     for _, cfg in pairs(config) do
         if cfg.provider ~= nil and cfg.provider ~= "" then
             local setup = {}
@@ -98,8 +100,11 @@ mod.setup = function()
                 if cfg.on_attach then
                     cfg.on_attach(client, bufnr)
                 end
-                mod.default_attach(client, bufnr, cfg.formatter)
+                default_attach(client, bufnr, cfg.formatter)
             end
+            -- if cfg.on_init then
+            --     setup.on_init = cfg.on_init
+            -- end
             setup.capabilities = vim.lsp.protocol.make_client_capabilities()
             setup.settings = cfg.settings
             if cmp_lsp_available then
@@ -108,12 +113,5 @@ mod.setup = function()
             lspconfig[cfg.provider].setup(setup)
         end
     end
-    local available, fidget = pcall(require, "fidget")
-    if available then
-        fidget.setup {}
-    else
-        vim.api.nvim_notify("fidget is not installed", vim.log.levels.WARN, {})
-    end
 end
 
-return mod

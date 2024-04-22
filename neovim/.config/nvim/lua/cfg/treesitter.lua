@@ -1,5 +1,4 @@
-local mod = {}
-function mod.setup()
+do
     local present, ts = pcall(require, "nvim-treesitter.configs")
     if not present then
         vim.api.nvim_notify("treesitter is not installed", vim.log.levels.ERROR)
@@ -16,8 +15,8 @@ function mod.setup()
             "html",
             "json",
             "lua",
+            "markdown",
             "norg",
-            "nu",
             "python",
             "rust",
             "toml",
@@ -36,5 +35,3 @@ function mod.setup()
         },
     })
 end
-
-return mod

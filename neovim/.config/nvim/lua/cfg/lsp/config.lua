@@ -1,6 +1,5 @@
 local schemas = nil
 local status_ok, jsonls_settings = pcall(require, "nlspsettings.jsonls")
-local ih_available, ih = pcall(require, "inlay-hints")
 if status_ok then
     schemas = jsonls_settings.get_default_schemas()
 end
@@ -107,38 +106,50 @@ local cfg = {
             exe = "stylua",
             args = {},
         },
-        on_attach = function(client, bufnr)
-            if ih_available then
-                ih.on_attach(client, bufnr)
-            else
-                vim.api.nvim_notify("Couldn't find inlay-hints", vim.log.levels.WARN, {})
-            end
-        end,
         provider = "lua_ls",
+        on_init = function(client, init_result)
+            local path = client.workspace_folders[1].name
+            if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
+                return
+            end
+
+            client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+                runtime = {
+                    version = 'LuaJIT'
+                },
+                -- Make the server aware of Neovim runtime files
+                workspace = {
+                    checkThirdParty = false,
+                    library = {
+                        vim.env.VIMRUNTIME
+                    }
+                }
+            })
+        end,
         setup = {
             cmd = {
                 "lua-language-server",
             },
             settings = {
-                Lua = {
-                    hint = { enable = true },
-                    runtime = {
-                        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                        version = "LuaJIT",
-                    },
-                    diagnostics = {
-                        -- Get the language server to recognize the `vim` global
-                        globals = { "vim" },
-                    },
-                    workspace = {
-                        library = {
-                            [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-                            [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
-                        },
-                        maxPreload = 100000,
-                        preloadFileSize = 10000,
-                    },
+                -- Lua = {
+                hint = { enable = true },
+                runtime = {
+                    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                    version = "LuaJIT",
                 },
+                diagnostics = {
+                    -- Get the language server to recognize the `vim` global
+                    globals = { "vim" },
+                },
+                workspace = {
+                    library = {
+                        [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+                        [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+                    },
+                    maxPreload = 100000,
+                    preloadFileSize = 10000,
+                },
+                -- },
             },
         },
     },
@@ -168,14 +179,6 @@ local cfg = {
     },
     rust = {
         formatter = {},
-        on_attach = function(client, bufnr)
-            if ih_available then
-                ih.set_all()
-                ih.on_attach(client, bufnr)
-            else
-                vim.api.nvim_notify("Couldn't find inlay-hints", vim.log.levels.WARN)
-            end
-        end,
         provider = "rust_analyzer",
         setup = {
             filetypes = { "rust" },

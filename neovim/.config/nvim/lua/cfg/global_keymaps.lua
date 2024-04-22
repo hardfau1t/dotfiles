@@ -21,12 +21,6 @@ vim.keymap.set("t", "<C-h>", "<C-\\><C-n>:wincmd h<CR>", { silent = true })
 vim.keymap.set("t", "<C-l>", "<C-\\><C-n>:wincmd l<CR>", { silent = true })
 vim.keymap.set("t", "<C-j>", "<C-\\><C-n>:wincmd j<CR>", { silent = true })
 vim.keymap.set("t", "<C-k>", "<C-\\><C-n>:wincmd k<CR>", { silent = true })
--- window resize
-vim.keymap.set("n", "<C-w>>", "<C-w>><C-w>", { silent = true})
-vim.keymap.set("n", "<C-w><", "<C-w><<C-w>", { silent = true})
-vim.keymap.set("n", "<C-w>+", "<C-w>+<C-w>", { silent = true})
-vim.keymap.set("n", "<C-w>-", "<C-w>-<C-w>", { silent = true})
-vim.keymap.set("n", "<C-w><CR>", "<NOP>", { silent = true })
 
 -- buffer management
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { silent = true , desc = "next buffer"})

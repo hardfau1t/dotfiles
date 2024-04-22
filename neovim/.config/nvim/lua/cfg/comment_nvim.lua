@@ -1,6 +1,5 @@
-local mod = {}
 
-function mod.setup()
+do
     local comment = require("Comment")
     comment.setup({
         ignore = "^$",
@@ -23,4 +22,3 @@ function mod.setup()
     })
 end
 
-return mod

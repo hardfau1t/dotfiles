@@ -1,6 +1,5 @@
-local mod = {}
 
-mod.setup = function()
+do
   require("ibl").setup({
       exclude = {
           filetypes = {"dashboard"}
@@ -8,4 +7,3 @@ mod.setup = function()
   })
 end
 
-return mod

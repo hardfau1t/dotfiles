@@ -1,6 +1,5 @@
-local mod = {}
 
-mod.on_attach = function(bufnr)
+local function on_attach (bufnr)
     local gs = package.loaded.gitsigns
 
     local function map(mode, l, r, desc)
@@ -42,4 +41,14 @@ mod.on_attach = function(bufnr)
     map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 end
 
-return mod
+do
+    opts = {
+            on_attach = on_attach
+    }
+    local status, mod = pcall(require, "gitsigns")
+    if status then
+        mod.setup(opts)
+    else
+        vim.notify("gitsigns not found", vim.log.levels.WARN)
+    end
+end

@@ -1,10 +1,4 @@
-local mod = {}
-
-local function keymaps()
-
-end
-
-mod.setup = function()
+do
     local opts = {
         float = {
             max_width = 60,
@@ -37,4 +31,3 @@ mod.setup = function()
     vim.keymap.set("n", "<leader>e", "<cmd>Oil --float<CR>", {desc = "Open oil explorer"})
 end
 
-return mod
