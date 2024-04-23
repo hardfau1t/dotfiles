@@ -1,4 +1,5 @@
 local opts = {
+    disable_hint = true,
     -- Disables signs for sections/items/hunks
     disable_signs = false,
     -- "ascii"   is the graph the git CLI generates
