@@ -4,7 +4,6 @@ do
         b = {name = "buffer-management"},
         c = {name = "comment"},
         d = {name = "diagnostics"},
-        g = {name = "git"},
         h = {name = "git-hunks(neogit)"},
         l = {name = "lsp"},
         o = {name = "text-case"},

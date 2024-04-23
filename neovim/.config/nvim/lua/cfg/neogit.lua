@@ -194,6 +194,7 @@ do
     local status, neogit = pcall(require, "neogit")
     if status then
         neogit.setup(opts)
+        vim.keymap.set("n", "<leader>g", ":Neogit", {desc="neogit pop"})
     else
         vim.notify("Neogit is not installed", vim.log.levels.WARN)
     end
