@@ -57,7 +57,7 @@ local function default_attach (client, bufnr, formatter)
     if not (client.server_capabilities.documentFormattingProvider or formatter == nil or formatter.exe == nil) then
         vim.keymap.set("n", "<leader>lf", function () external_format(formatter, bufnr) end, {buffer = bufnr, desc = "format with "..formatter.exe})
     end
-    vim.lsp.inlay_hint.enable(bufnr, true)
+    vim.lsp.inlay_hint.enable(true, {bufnr = bufnr})
 end
 
 
