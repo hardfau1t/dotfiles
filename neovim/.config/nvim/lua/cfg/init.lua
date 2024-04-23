@@ -58,7 +58,6 @@ vim.opt.fillchars = {
 vim.g.c_syntax_for_h = true
 vim.g.loaded_netrw       = 1 -- for nvim-tree
 vim.g.loaded_netrwPlugin = 1 -- for nvim-tree
-vim.opt.clipboard = "unnamedplus"
 vim.g.clipboard = {
   name = 'OSC 52',
   copy = {

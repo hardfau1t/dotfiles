@@ -4,6 +4,10 @@ local opts = {
     -- "ascii"   is the graph the git CLI generates
     -- "unicode" is the graph like https://github.com/rbong/vim-flog
     graph_style = "unicode",
+    -- Persist the values of switches/options within and across sessions
+    remember_settings = true,
+    -- Scope persisted settings on a per-project basis
+    use_per_project_settings = true,
     -- Table of settings to never persist. Uses format "Filetype--cli-value"
     ignored_settings = {
         "NeogitPushPopup--force-with-lease",
@@ -23,6 +27,7 @@ local opts = {
     -- Automatically show console if a command takes more than console_timeout milliseconds
     auto_show_console = true,
     status = {
+        show_head_commit_hash = true,
         recent_commit_count = 10,
     },
     commit_editor = {
@@ -115,6 +120,10 @@ local opts = {
             ["<c-c><c-c>"] = "Submit",
             ["<c-c><c-k>"] = "Abort",
         },
+        commit_editor_I = {
+            ["<c-c><c-c>"] = "Submit",
+            ["<c-c><c-k>"] = "Abort",
+        },
         rebase_editor = {
             ["p"] = "Pick",
             ["r"] = "Reword",
@@ -128,6 +137,12 @@ local opts = {
             ["<cr>"] = "OpenCommit",
             ["gk"] = "MoveUp",
             ["gj"] = "MoveDown",
+            ["<c-c><c-c>"] = "Submit",
+            ["<c-c><c-k>"] = "Abort",
+            ["[c"] = "OpenOrScrollUp",
+            ["]c"] = "OpenOrScrollDown",
+        },
+        rebase_editor_I = {
             ["<c-c><c-c>"] = "Submit",
             ["<c-c><c-k>"] = "Abort",
         },
@@ -153,6 +168,7 @@ local opts = {
             ["X"] = "ResetPopup",
             ["Z"] = "StashPopup",
             ["b"] = "BranchPopup",
+            ["B"] = "BisectPopup",
             ["c"] = "CommitPopup",
             ["f"] = "FetchPopup",
             ["l"] = "LogPopup",
@@ -186,6 +202,8 @@ local opts = {
             ["<c-t>"] = "TabOpen",
             ["{"] = "GoToPreviousHunkHeader",
             ["}"] = "GoToNextHunkHeader",
+            ["[c"] = "OpenOrScrollUp",
+            ["]c"] = "OpenOrScrollDown",
         },
     },
 }
@@ -194,7 +212,7 @@ do
     local status, neogit = pcall(require, "neogit")
     if status then
         neogit.setup(opts)
-        vim.keymap.set("n", "<leader>g", ":Neogit<CR>", {desc="neogit pop"})
+        vim.keymap.set("n", "<leader>g", ":Neogit<CR>", { desc = "neogit pop" })
     else
         vim.notify("Neogit is not installed", vim.log.levels.WARN)
     end

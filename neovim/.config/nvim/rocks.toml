@@ -114,4 +114,5 @@ git = 'j-hui/fidget.nvim'
 
 [plugins.ne]
 git = "NeogitOrg/neogit"
+rev = "nightly"
 
