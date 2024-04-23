@@ -16,7 +16,6 @@ local mods = {
     "cfg.nvim-cmp",
     "cfg.which-key",
     "cfg.indent_blankline",
-    "cfg.fugitive",
     "cfg.comment_nvim",
     "cfg.trouble",
     "cfg.text-case",
