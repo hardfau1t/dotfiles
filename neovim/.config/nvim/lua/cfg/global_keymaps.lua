@@ -34,9 +34,8 @@ do
     vim.keymap.set("v", ">", ">gv", { silent = true })
     vim.keymap.set("v", "<", "<gv", { silent = true })
 
-    -- copy content to system buffer in visual mode as well as
-    vim.keymap.set("v", "y", '"+ygvy', { silent = true })
     vim.keymap.set("v", "P", '"_dP', { silent = true })
+    vim.keymap.set({"n", "v"}, "<leader>y", '"+y', {desc = "copy to system clipboard"})
 
 
     vim.keymap.set("n", "<leader>st", ":source %<CR>", { silent = true })

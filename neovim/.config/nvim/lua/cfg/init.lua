@@ -28,7 +28,6 @@ vim.o.inccommand = "nosplit"
 vim.o.timeout = true
 vim.o.timeoutlen = 1000
 vim.o.updatetime = 200 -- cursor hold
-vim.o.clipboard = "unnamed"
 vim.o.linebreak = false
 vim.o.wrap = false
 vim.o.swapfile = false
@@ -59,6 +58,18 @@ vim.opt.fillchars = {
 vim.g.c_syntax_for_h = true
 vim.g.loaded_netrw       = 1 -- for nvim-tree
 vim.g.loaded_netrwPlugin = 1 -- for nvim-tree
+vim.opt.clipboard = "unnamedplus"
+vim.g.clipboard = {
+  name = 'OSC 52',
+  copy = {
+    ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+    ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+  },
+  paste = {
+    ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+    ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+  },
+}
 
 
 -- vim.cmd("syntax on")                     -- if enabled treesitter fails to start
@@ -78,3 +89,4 @@ vim.api.nvim_create_autocmd("WinLeave", {
         vim.wo.cursorcolumn = false
     end,
 })
+
