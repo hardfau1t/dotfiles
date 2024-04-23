@@ -25,6 +25,7 @@ nvim-navic = "scm"
 "comment.nvim" = "0.8.0"
 neogen = "2.17.1"
 nvim-surround = "2.1.5"
+"diffview.nvim" = "scm"
 
 [plugins.catppuccin]
 git = "catppuccin/nvim"
