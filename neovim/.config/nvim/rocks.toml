@@ -11,7 +11,7 @@
 # List of Neovim plugins to install alongside their versions.
 # If the plugin name contains a dot then you must add quotes to the key name!
 [plugins]
-"rocks.nvim" = "2.24.0"
+"rocks.nvim" = "2.26.0"
 neorg = "8.4.0"
 "rocks-git.nvim" = "1.4.0"
 nvim-autopairs = "scm"
@@ -23,9 +23,9 @@ luasnip = "2.3.0"
 nvim-navic = "scm"
 "nui.nvim" = "0.3.0" # required for navbuddy
 "comment.nvim" = "0.8.0"
-neogen = "2.17.1"
 nvim-surround = "2.1.5"
 "diffview.nvim" = "scm"
+neogen = "2.17.1"
 
 [plugins.catppuccin]
 git = "catppuccin/nvim"
@@ -86,10 +86,6 @@ git = "lukas-reineke/indent-blankline.nvim"
 [plugins."trouble.nvim"]
 git = "folke/trouble.nvim"
 
-[plugins."markdown-preview.nvim"]
-git = "iamcco/markdown-preview.nvim"
-build = ":call mkdp#util#install()"
-
 [plugins."text-case.nvim"]
 git = "johmsalas/text-case.nvim"
 
@@ -115,4 +111,7 @@ git = 'j-hui/fidget.nvim'
 [plugins.ne]
 git = "NeogitOrg/neogit"
 rev = "nightly"
+
+[plugins."markdown-preview.nvim"]
+git = "iamcco/markdown-preview.nvim"
 

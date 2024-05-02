@@ -26,7 +26,7 @@ do
         mapping = cmp.mapping.preset.insert({
             ["<C-j>"] = cmp.mapping.scroll_docs(4),
             ["<C-k>"] = cmp.mapping.scroll_docs(-4),
-            ["<C-e>"] = cmp.mapping(function(fallback)
+            ["<C-s>"] = cmp.mapping(function(fallback)
                 if ls.expandable() then
                     ls.expand()
                 elseif cmp.visible() then
@@ -35,7 +35,7 @@ do
                     fallback()
                 end
             end, { "i", "s" }),
-            ["<C-i>"] = cmp.mapping(function(fallback)
+            ["<C-e>"] = cmp.mapping(function(fallback)
                 if ls.jumpable(1) then
                     ls.jump(1)
                 else

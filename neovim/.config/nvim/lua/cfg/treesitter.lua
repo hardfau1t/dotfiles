@@ -19,6 +19,7 @@ do
             "norg",
             "python",
             "rust",
+            "sql",
             "toml",
             "yaml",
             "vim",
