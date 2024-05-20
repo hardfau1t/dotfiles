@@ -709,6 +709,7 @@ alias wget = wget --hsts-file=$"($env.XDG_DATA_HOME)/wget-hsts"
 alias hx = helix
 alias hostname = hostnamectl hostname
 alias adb = with-env [HOME, $"($env.XDG_DATA_HOME)/android"] { adb }
+alias yt-tor = yt-dlp --proxy socks5://127.0.0.1:9050
 
 
 use wrappers.nu *
