@@ -22,6 +22,7 @@
       )
       (circular-progress :value "${brightness.data}"
           :thickness 2
+          :start-at 25
           :class "progress"
         (label
           :class "iconbacklight"

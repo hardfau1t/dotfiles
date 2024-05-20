@@ -9,7 +9,7 @@
               "8"               : "",
               "9"               : "󰇰",
               "10"              : "󰗹",
-              "special"         : "",
+              "special:special" : "",
               "special:element" : "󰍥"
   }')
 (deflisten hyprland "pfui start hyprland workspace")

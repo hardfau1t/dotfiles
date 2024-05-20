@@ -7,6 +7,7 @@
   (box :vexpand true :hexpand true 
     (circular-progress :value "${EWW_BATTERY.BAT0.capacity}"
         :class "progress"
+        :start-at 25
         :thickness 2
       (button 
         (label

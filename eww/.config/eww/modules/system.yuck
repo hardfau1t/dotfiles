@@ -5,6 +5,7 @@
       (box :class "sys_bat_box" :orientation "h" :space-evenly "false"
         (circular-progress :value "${EWW_BATTERY.BAT0.capacity}"
                   :class "sys_bat"
+                  :start-at 25
                   :thickness 9
               (label :text ""
                   :class "sys_icon_bat"
@@ -32,6 +33,7 @@
     (box :class "sys_mem_box" :orientation "h" :space-evenly "false" :halign "start"
         (circular-progress :value "${EWW_RAM.used_mem_perc}"
                   :class "sys_mem"
+                  :start-at 25
                   :thickness 9
               (label :text ""
                   :class "sys_icon_mem"
@@ -64,6 +66,7 @@
   (box :vexpand "false" :hexpand "false"
       (circular-progress :value "${EWW_RAM.used_mem_perc}"
           :thickness 2
+          :start-at 25
           :class "progress"
         (button 
             :class "iconmem"
@@ -80,6 +83,7 @@
   (box :vexpand "false" :hexpand "false"
       (circular-progress :value "${EWW_CPU.avg}"
           :thickness 2
+          :start-at 25
           :class "progress"
         (button 
             :class "iconcpu"

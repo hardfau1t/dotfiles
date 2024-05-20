@@ -21,6 +21,7 @@
       )
       (circular-progress :value {pulse.data.default_sink.volume % 100}
           :thickness 2
+          :start-at 25
           :class "progress"
         (button
           :onclick '${EWW_CMD} open --toggle audio_sink_ctl; ${EWW_CMD} update sink_vol_reveal=false'
@@ -52,6 +53,7 @@
       )
       (circular-progress :value {pulse.data.default_source.volume % 100}
           :thickness 2
+          :start-at 25
           :class "progress"
         (button
           :onclick '${EWW_CMD} open --toggle audio_source_ctl; ${EWW_CMD} update source_vol_reveal=false'

@@ -1,0 +1,6 @@
+(defwidget sys_tray []
+  (box
+    (systray
+    )
+  )
+)
