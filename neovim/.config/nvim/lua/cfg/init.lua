@@ -14,8 +14,8 @@ vim.wo.cursorcolumn = true
 vim.wo.conceallevel = 1
 vim.wo.foldminlines = 4
 vim.wo.foldmethod = "expr"
-vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
-vim.wo.foldenable = true
+vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.wo.foldtext = ""
 
 vim.o.tabstop = 8
 vim.o.softtabstop = 4
@@ -52,9 +52,9 @@ vim.o.numberwidth = 4
 
 vim.opt.spell = false
 vim.opt.spelllang = { "en_us" }
-vim.opt.fillchars = {
-    fold = " ",
-}
+-- vim.opt.fillchars = {
+--     fold = " ",
+-- }
 vim.g.c_syntax_for_h = true
 vim.g.loaded_netrw       = 1 -- for nvim-tree
 vim.g.loaded_netrwPlugin = 1 -- for nvim-tree
