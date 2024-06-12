@@ -43,7 +43,8 @@ end
 
 do
     opts = {
-            on_attach = on_attach
+        on_attach = on_attach,
+        current_line_blame_formatter = '<author> : <abbrev_sha> : <author_time:%Y-%m-%d> - <summary>',
     }
     local status, mod = pcall(require, "gitsigns")
     if status then
