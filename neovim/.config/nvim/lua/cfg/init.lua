@@ -12,7 +12,7 @@ vim.bo.smartindent = true
 
 vim.wo.cursorline = true
 vim.wo.cursorcolumn = true
-vim.wo.conceallevel = 1
+vim.wo.conceallevel = 2
 vim.wo.foldminlines = 4
 vim.wo.foldmethod = "expr"
 vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
