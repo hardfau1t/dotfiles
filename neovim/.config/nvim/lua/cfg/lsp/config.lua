@@ -158,24 +158,8 @@ local cfg = {
         provider = "nushell",
     },
     python = {
-        formatter = {
-            exe = "black",
-            args = {},
-        },
-        provider = "pyright",
-        setup = {
-            cmd = { "pyright-langserver", "--stdio" },
-        },
-        settings = {
-            python = {
-                analysis = {
-                    autoSearchPaths = true,
-                    diagnosticMode = "openFilesOnly",
-                    useLibraryCodeForTypes = true,
-                    typeCheckingMode = "strict"
-                }
-            }
-        }
+        provider = "pylsp",
+        settings = {}
     },
     rust = {
         formatter = {},
