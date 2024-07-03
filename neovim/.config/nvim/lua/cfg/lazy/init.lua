@@ -15,6 +15,11 @@ end
 lazy.setup({
     spec = {
         import = "plugins"
+    },
+    change_detection = {
+        -- automatically check for config file changes and reload the ui
+        enabled = false,
+        notify = true, -- get a notification when changes are found
     }
 })
 

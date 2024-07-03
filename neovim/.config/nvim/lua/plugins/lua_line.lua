@@ -1,8 +1,3 @@
-local present, lualine = pcall(require, "lualine")
-if not present then
-    print("lualine is not installed")
-    return
-end
 
 
 -- Color table for highlights
@@ -219,4 +214,10 @@ ins_right({
 })
 
 -- Now don't forget to initialize lualine
-lualine.setup(config)
+return {
+        "nvim-lualine/lualine.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            require("lualine").setup(config)
+        end,
+    }

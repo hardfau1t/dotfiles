@@ -1,5 +1,4 @@
-
-local function on_attach (bufnr)
+local function on_attach(bufnr)
     local gs = package.loaded.gitsigns
 
     local function map(mode, l, r, desc)
@@ -41,15 +40,10 @@ local function on_attach (bufnr)
     map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 end
 
-do
+return {
+    "lewis6991/gitsigns.nvim",
     opts = {
         on_attach = on_attach,
         current_line_blame_formatter = '<author> : <abbrev_sha> : <author_time:%Y-%m-%d> - <summary>',
     }
-    local status, mod = pcall(require, "gitsigns")
-    if status then
-        mod.setup(opts)
-    else
-        vim.notify("gitsigns not found", vim.log.levels.WARN)
-    end
-end
+}

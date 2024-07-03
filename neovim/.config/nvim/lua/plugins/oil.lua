@@ -1,4 +1,4 @@
-do
+local function setup()
     local opts = {
         float = {
             max_width = 60,
@@ -29,5 +29,14 @@ do
     }
     require("oil").setup(opts)
     vim.keymap.set("n", "<leader>e", "<cmd>Oil --float<CR>", {desc = "Open oil explorer"})
+
 end
 
+return {
+    'stevearc/oil.nvim',
+    opts = {},
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+        setup()
+    end,
+}

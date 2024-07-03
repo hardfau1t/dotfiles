@@ -7,7 +7,7 @@ local function set_keymap()
     vim.keymap.set("n", "<leader>tb", ":Telescope buffers<CR>", { silent = true, desc = "list all buffers" })
     vim.keymap.set("n", "<leader>tc", ":Telescope commands<CR>", { silent = true, desc = "show all nvim ex commands" })
     vim.keymap.set("n", "<leader>td", ":Telescope diagnostics<CR>", { silent = true, desc = "fuzzy find diagnostics" })
-    vim.keymap.set("n", "<leader>te",
+    vim.keymap.set("n", "<leader>to",
         function() builtin.find_files({ cwd = vim.fn.stdpath("config"), follow = true }) end,
         { silent = true, desc = "fuzzy find neovim config files" })
     vim.keymap.set("n", "<leader>tf", ":Telescope oldfiles<CR>", { silent = true, desc = "show recent modified files" })
@@ -36,7 +36,7 @@ local function load_extensions()
     require("telescope").load_extension('luasnip')
 end
 
-do
+local function setup()
     local present, telescope = pcall(require, "telescope")
     if not present then
         print("telescope is not installed")
@@ -89,3 +89,11 @@ do
     load_extensions()
     set_keymap()
 end
+
+return {
+        "nvim-telescope/telescope.nvim",
+        dependencies = { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim" },
+        config = function()
+            setup()
+        end,
+}

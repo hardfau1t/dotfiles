@@ -40,120 +40,16 @@ sty = "latex"
 # List of Neovim plugins to install alongside their versions.
 # If the plugin name contains a dot then you must add quotes to the key name!
 [plugins]
-"rocks.nvim" = "2.31.3"
 neorg = "8.7.1"
-"rocks-git.nvim" = "1.5.1"
-nvim-autopairs = "scm"
-"lualine.nvim" = "scm"
-nvim-web-devicons = "0.100"
-"oil.nvim" = "2.10.0"
-"telescope.nvim" = "scm"
-luasnip = "2.3.0"
-nvim-navic = "scm"
-"nui.nvim" = "0.3.0" # required for navbuddy
-"comment.nvim" = "0.8.0"
 nvim-surround = "2.1.5"
-"diffview.nvim" = "scm"
-neogen = "2.17.1"
-tree-sitter-python = "scm"
-tree-sitter-toml = "scm"
-tree-sitter-norg = "0.2.4"
-tree-sitter-norg-meta = "0.1.0"
-tree-sitter-lua = "scm"
-tree-sitter-bash = "scm"
-tree-sitter-c = "scm"
-tree-sitter-cpp = "scm"
-tree-sitter-html = "scm"
-tree-sitter-json = "scm"
-tree-sitter-markdown = "scm"
-tree-sitter-rust = "scm"
-tree-sitter-sql = "scm"
-tree-sitter-yaml = "scm"
-tree-sitter-vim = "scm"
-tree-sitter-vimdoc = "scm"
-"rocks-treesitter.nvim" = "scm"
-"todo-comments.nvim" = "1.2.0"
-[plugins.kanagawa]
-git = "rebelot/kanagawa.nvim"
 
-
-[plugins.catppuccin]
-git = "catppuccin/nvim"
-rev = "v1.7.0"
-
-[plugins.friendly-snippets]
-git = "rafamadriz/friendly-snippets"
 
 [plugins.neorg-telescope]
 git = "nvim-neorg/neorg-telescope"
 rev = "v1.2.1"
 
-[plugins.nvim-navbuddy]
-git = "SmiteshP/nvim-navbuddy"
 
-[plugins."telescope-luasnip.nvim"]
-git = "benfowler/telescope-luasnip.nvim"
-
-[plugins.nvim-cmp]
-git = "hrsh7th/nvim-cmp"
-
-
-[plugins.cmp_luasnip]
-git = "saadparwaiz1/cmp_luasnip"
-
-[plugins.cmp-nvim-lsp]
-git = "hrsh7th/cmp-nvim-lsp"
-
-[plugins.cmp-path]
-git = "hrsh7th/cmp-path"
-
-[plugins.cmp-buffer]
-git = "hrsh7th/cmp-buffer"
-
-[plugins.cmp-nvim-lua]
-git = "hrsh7th/cmp-nvim-lua"
-
-[plugins.lspkind-nvim]
-git = "onsails/lspkind-nvim"
-
-[plugins.cmp-git]
-git = "petertriho/cmp-git"
-
-[plugins.which-key]
-git = "folke/which-key.nvim"
-
-[plugins.indent-blankline]
-git = "lukas-reineke/indent-blankline.nvim"
-
-[plugins."trouble.nvim"]
-git = "folke/trouble.nvim"
-
-[plugins."text-case.nvim"]
-git = "johmsalas/text-case.nvim"
-
-[plugins.nvim-bqf]
-git = "kevinhwang91/nvim-bqf"
-
-[plugins."gitsigns.nvim"]
-git = "lewis6991/gitsigns.nvim"
 
 [plugins.nvim-highlight-colors]
 git = "brenoprata10/nvim-highlight-colors"
-
-[plugins."neodev.nvim"]
-git = "folke/neodev.nvim"
-
-[plugins.nvim-lspconfig]
-git = "neovim/nvim-lspconfig"
-rev = "v0.1.8"
-
-[plugins.fidget]
-git = 'j-hui/fidget.nvim'
-
-[plugins.ne]
-git = "NeogitOrg/neogit"
-rev = "nightly"
-
-[plugins."markdown-preview.nvim"]
-git = "iamcco/markdown-preview.nvim"
 

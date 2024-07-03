@@ -1,21 +1,8 @@
-do
+local setup = function()
     vim.g.completeopt = "menu,menuone,noselect"
-    local status, ls, cmp, lspkind
-    status, ls = pcall(require, "luasnip")
-    if not status then
-        print("luasnip is not installed")
-        return
-    end
-    status, cmp = pcall(require, "cmp")
-    if not status then
-        print("nvim-cmp is not installed")
-        return
-    end
-    status, lspkind = pcall(require, "lspkind")
-    if not status then
-        print("lspkind is not installed")
-        return
-    end
+    local ls = require("luasnip")
+    local cmp = require("cmp")
+    local lspkind = require("lspkind")
     cmp.setup({
         snippet = {
             expand = function(args)
@@ -70,12 +57,13 @@ do
 
         sources = cmp.config.sources({
             { name = "nvim_lsp", max_item_count = 4 },
-            { name = "luasnip", max_item_count = 4 },
+            { name = "lazydev", group_index = 0}, -- this from lazy_dev plugin and provides vim completion
+            { name = "luasnip",  max_item_count = 4 },
             { name = "nvim_lua" },
             { name = "neorg" },
             { name = "git" },
             { name = "path" },
-            { name = "buffer", keyword_length = 4 },
+            { name = "buffer",   keyword_length = 4 },
         }),
         formatting = {
             format = lspkind.cmp_format(),
@@ -86,3 +74,23 @@ do
         },
     })
 end
+
+return {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+        "neovim/nvim-lspconfig",
+        "L3MON4D3/LuaSnip",
+        "onsails/lspkind-nvim",
+        "saadparwaiz1/cmp_luasnip",
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-nvim-lua",
+        "onsails/lspkind-nvim",
+        "petertriho/cmp-git",
+        "nvim-lua/plenary.nvim",
+    },
+    config = function()
+        setup()
+    end,
+}

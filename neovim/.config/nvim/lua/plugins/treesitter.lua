@@ -1,11 +1,4 @@
-do
-    local present, ts = pcall(require, "nvim-treesitter.configs")
-    if not present then
-        vim.api.nvim_notify("treesitter is not installed", vim.log.levels.ERROR)
-        return
-    end
-
-    ts.setup({
+local config = {
         ensure_installed = {
             "bash",
             "c",
@@ -33,5 +26,10 @@ do
         incremental_selection = {
             enable = true,
         },
-    })
-end
+    } 
+return {
+    "nvim-treesitter/nvim-treesitter",
+    config = function()
+        require("nvim-treesitter").setup(config)
+    end,
+}
