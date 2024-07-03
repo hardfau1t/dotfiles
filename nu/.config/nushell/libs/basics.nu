@@ -92,7 +92,8 @@ def get-youtube-song [unparsed_link: string output_dir: path = "./"] {
             $title
         }
 	if (confirm-download $title $output_dir) {
-                yt-dlp --embed-thumbnail --embed-metadata -x --audio-format mp3 --no-embed-info-json --default-search 'ytsearch' -o $"($output_dir)/($title).mp3" $"`'($link)'`"
+                print $"downloading ($link)"
+                yt-dlp --embed-thumbnail --embed-metadata -x --audio-format mp3 --no-embed-info-json --default-search 'ytsearch' -o $"($output_dir)/($title).mp3" $"`($link)`"
 		return $"($title).mp3"
 	}
     } catch { |error|
