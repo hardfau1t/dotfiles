@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = "<CR>"
 vim.g.rust_recommended_style = 0
 vim.g.netrw_winsize = 10
 -- show tabs and spaces
@@ -71,7 +72,7 @@ vim.g.clipboard = {
 }
 
 
--- vim.cmd("syntax on")                     -- if enabled treesitter fails to start
+vim.cmd("syntax on")                     -- if enabled treesitter fails to start
 vim.cmd("filetype plugin indent on")
 
 vim.api.nvim_create_autocmd("WinEnter", {

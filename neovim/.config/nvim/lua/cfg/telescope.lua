@@ -28,7 +28,6 @@ local function set_keymap()
     vim.keymap.set("n", "<leader>t;", ":Telescope filetypes<CR>", { silent = true, desc = "change current filetype" })
     vim.keymap.set("n", "<leader>t*", ":Telescope grep_string<CR>",
         { silent = true, desc = "find string under the cursor" })
-    vim.keymap.set('n', "<leader>,", require'telescope'.extensions.luasnip.luasnip, {silent = true, desc = "show all available snippets"})
     vim.keymap.set("n", "<leader>t<space>", function() builtin.find_files({ follow = true }) end,
         { silent = true, desc = "fuzzy find files" })
 end

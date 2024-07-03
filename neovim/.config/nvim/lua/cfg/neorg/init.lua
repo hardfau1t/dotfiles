@@ -2,16 +2,6 @@
 NEORG_DIR =  vim.fn.expand("~/.local/share/notes/")
 
 
-local function setup_auto_commands()
-    local neorg_journal_template_handler = vim.api.nvim_create_augroup("NeorgJournalTemplate", {})
-    vim.api.nvim_create_autocmd("BufNewFile", {
-        group = neorg_journal_template_handler,
-        command = "Neorg templates load journal ",
-        -- since this autocammand is only setup if the neorg workspace is initialized no need to check for valid path
-        pattern = { "*journal/*.norg" },
-        desc = "Create journal template on creation"
-    })
-end
 do
     local opts = {
         load = {
@@ -63,18 +53,8 @@ do
                     hook = require("cfg.neorg.keymaps").set_keymaps,
                 },
             },
-            ["external.templates"] = {
-                config = {
-                    templates_dir = vim.fn.stdpath("config") .. "/lua/cfg/neorg/templates",
-                    snippets_overwrite = {
-                        date_format = [[%Y/%m/%d]],
-                    }
-
-                }
-            }
         },
     }
-    setup_auto_commands()
     require("neorg").setup(opts)
 end
 

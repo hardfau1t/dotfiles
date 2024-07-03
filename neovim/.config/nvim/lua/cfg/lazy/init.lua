@@ -1,17 +1,10 @@
+-- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
 end
 vim.opt.rtp:prepend(lazypath)
-
-local plugins = require("cfg.lazy.plugins")
 
 local status, lazy = pcall(require, "lazy")
 if not status then
@@ -19,6 +12,10 @@ if not status then
     return
 end
 
-lazy.setup(plugins, {})
+lazy.setup({
+    spec = {
+        import = "plugins"
+    }
+})
 
 vim.keymap.set("n", "<leader>p", ":Lazy<CR>", {desc = "open package manager(lazy)"})

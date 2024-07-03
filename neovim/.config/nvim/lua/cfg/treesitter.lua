@@ -5,7 +5,6 @@ do
         return
     end
 
-    vim.o.foldexpr = "nvim_treesitter#foldexpr()"
     ts.setup({
         ensure_installed = {
             "bash",
