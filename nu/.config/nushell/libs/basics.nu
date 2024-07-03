@@ -156,3 +156,16 @@ export def notif [wait: duration ...params] {
 export def copy-remote [remote_id: string] {
     ssh $remote_id cat /tmp/clip | wl-copy
 }
+
+def retry [
+    --dur(-d): duration = 2sec, # time between retries
+    command: closure, # command to run
+] {
+    loop {
+        let till = (date now) + $dur
+        clear
+        do $command | print
+        sleep ($till - (date now))
+    }
+}
+
