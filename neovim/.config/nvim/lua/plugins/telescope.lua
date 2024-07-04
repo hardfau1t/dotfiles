@@ -7,7 +7,7 @@ local function set_keymap()
     vim.keymap.set("n", "<leader>tb", ":Telescope buffers<CR>", { silent = true, desc = "list all buffers" })
     vim.keymap.set("n", "<leader>tc", ":Telescope commands<CR>", { silent = true, desc = "show all nvim ex commands" })
     vim.keymap.set("n", "<leader>td", ":Telescope diagnostics<CR>", { silent = true, desc = "fuzzy find diagnostics" })
-    vim.keymap.set("n", "<leader>to",
+    vim.keymap.set("n", "<leader>te",
         function() builtin.find_files({ cwd = vim.fn.stdpath("config"), follow = true }) end,
         { silent = true, desc = "fuzzy find neovim config files" })
     vim.keymap.set("n", "<leader>tf", ":Telescope oldfiles<CR>", { silent = true, desc = "show recent modified files" })
