@@ -16,7 +16,7 @@ style = "Beam"
 TERM = "xterm-256color"
 
 [font]
-size = 11.0
+size = 12.0
 
 [font.normal]
 family = "ComicShannsMono Nerd Font Mono"
@@ -46,7 +46,7 @@ history = 10000
 program = "nu"
 
 [window]
-opacity = 0.6
+opacity = 0.9
 
 [terminal]
-osc52="OnlyCopy"
+osc52="CopyPaste"
