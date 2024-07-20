@@ -54,4 +54,9 @@ local opts = {
     },
 }
 
-return { "nvim-neorg/neorg", opts = opts, dependencies = { "nvim-neorg/neorg-telescope" } }
+return {
+    "nvim-neorg/neorg",
+    opts = opts,
+    dependencies = { "nvim-neorg/neorg-telescope" },
+    cmd = "Neorg"
+}
