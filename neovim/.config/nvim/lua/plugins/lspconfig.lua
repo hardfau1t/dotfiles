@@ -1,6 +1,6 @@
 return {
     "neovim/nvim-lspconfig",
     config = function()
-        require("cfg.lsp")
+        require("cfg.lsp").setup()
     end,
 }

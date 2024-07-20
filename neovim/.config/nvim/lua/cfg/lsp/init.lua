@@ -1,3 +1,4 @@
+local mod = {}
 require("cfg.lsp.visuals")
 
 -- cursor highlighting enable
@@ -61,7 +62,7 @@ local function default_attach (client, bufnr, formatter)
 end
 
 
-do
+mod.setup = function ()
     vim.fn.sign_define({
         {name = 'DiagnosticSignError', text='', texthl = "DiagnosticError" },
         {name = 'DiagnosticSignWarn', text='', texthl = "DiagnosticWarn" },
@@ -114,3 +115,5 @@ do
         end
     end
 end
+
+return mod
