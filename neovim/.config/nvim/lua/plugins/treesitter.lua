@@ -11,6 +11,7 @@ local config = {
         "norg",
         "python",
         "rust",
+        "regex",
         "sql",
         "toml",
         "yaml",
