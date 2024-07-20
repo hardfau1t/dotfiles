@@ -8,10 +8,6 @@ return {
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {}
     },
-    {
-        'j-hui/fidget.nvim', -- lsp status
-        opts = {}
-    },
     "folke/neodev.nvim",
     {
         'kevinhwang91/nvim-bqf',
