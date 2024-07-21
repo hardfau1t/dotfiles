@@ -9,6 +9,7 @@ local config = {
         "lua",
         "markdown",
         "norg",
+        "norg_meta",
         "python",
         "rust",
         "regex",

@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-vim.g.maplocalleader = "<CR>"
+vim.g.maplocalleader = "\\"
 vim.g.rust_recommended_style = 0
 vim.g.netrw_winsize = 10
 -- show tabs and spaces

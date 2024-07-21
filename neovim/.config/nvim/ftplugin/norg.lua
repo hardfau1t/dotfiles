@@ -1,7 +1,19 @@
-vim.o.tabstop=2
-vim.o.softtabstop=2
-vim.o.shiftwidth=2
-vim.o.autoindent=true
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.shiftwidth = 2
+vim.o.autoindent = true
 vim.o.listchars = ""
 vim.opt.spell = true
 
+vim.keymap.set("n", "<localleader>jj", ":Neorg journal today<CR>", { desc = "journal today" })
+vim.keymap.set("n", "<localleader>jy", ":Neorg journal yesterday<CR>", { desc = "journal yesterday" })
+vim.keymap.set("n", "<localleader>jt", ":Neorg journal tomorrow<CR>", { desc = "journal tomorrow" })
+vim.keymap.set("n", "<localleader>jc", ":Neorg journal custom<CR>", { desc = "journal custom date" })
+vim.keymap.set("n", "<localleader>ju", ":Neorg journal toc update<CR>", { desc = "journal toc udate" })
+vim.keymap.set("n", "<localleader>jo", ":Neorg journal toc open<CR>", { desc = "journal toc" })
+vim.keymap.set("n", "<localleader>os", ":Neorg toc split<CR>", { desc = "toc open in split" })
+vim.keymap.set("n", "<localleader>oc", ":Neorg toc close<CR>", { desc = "toc close" })
+vim.keymap.set("n", "<localleader>oq", ":Neorg toc toqflist<CR>", { desc = "toc quickfix list" })
+vim.keymap.set("n", "<localleader>e",   "<Plug>(core.looking-glass.magnify-code-block)", {desc = "edit code in separate window"})
+vim.keymap.set("n", "<localleader>sh", "<Plug>(neorg.telescope.search_headings)", { desc = "search headings" })
+vim.keymap.set("n", "<localleader>sl", "<Plug>(neorg.telescope.insert_link)", { desc = "insert link" })
