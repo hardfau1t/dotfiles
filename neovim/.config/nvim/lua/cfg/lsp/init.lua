@@ -96,7 +96,7 @@ mod.setup = function()
         local provider_attach = setup.on_attach
         setup.on_attach = function(client, bufnr)
             if provider_attach then
-                provider_attach(bufnr)
+                provider_attach(client, bufnr)
             end
             default_attach(client, bufnr)
         end

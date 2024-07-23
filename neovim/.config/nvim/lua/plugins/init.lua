@@ -41,4 +41,5 @@ return {
         event = "VeryLazy",
         config = true
     },
+    "neovim/nvim-lspconfig",
 }
