@@ -26,16 +26,17 @@ local function documentHighlight(client, bufnr)
 end
 
 
-local function external_format (formatter, bufnr)
-    local cmd = formatter.exe.. ' ' .. (table.concat(formatter.args, ' ')) .. " " .. vim.api.nvim_buf_get_name(bufnr) .. " 2> /dev/null"
-    if vim.bo.modified then
-        vim.cmd.write("%")
-        log.warn("file saved for formatting")
-    end
-    os.execute(cmd)
-end
+-- local function external_format(formatter, bufnr)
+--     local cmd = formatter.exe ..
+--         ' ' .. (table.concat(formatter.args, ' ')) .. " " .. vim.api.nvim_buf_get_name(bufnr) .. " 2> /dev/null"
+--     if vim.bo.modified then
+--         vim.cmd.write("%")
+--         log.warn("file saved for formatting")
+--     end
+--     os.execute(cmd)
+-- end
 
-local function default_attach (client, bufnr, formatter)
+local function default_attach(client, bufnr)
     -- enable document highlighting
     documentHighlight(client, bufnr)
     -- setup lsp keymap for given buffer
@@ -55,32 +56,29 @@ local function default_attach (client, bufnr, formatter)
         vim.api.nvim_notify("navic is not installed or server has no capabilities", vim.log.levels.WARN, {})
     end
 
-    if not (client.server_capabilities.documentFormattingProvider or formatter == nil or formatter.exe == nil) then
-        vim.keymap.set("n", "<leader>lf", function () external_format(formatter, bufnr) end, {buffer = bufnr, desc = "format with "..formatter.exe})
-    end
-    vim.lsp.inlay_hint.enable(true, {bufnr = bufnr})
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 end
 
 
-mod.setup = function ()
+mod.setup = function()
     vim.fn.sign_define({
-        {name = 'DiagnosticSignError', text='', texthl = "DiagnosticError" },
-        {name = 'DiagnosticSignWarn', text='', texthl = "DiagnosticWarn" },
-        {name = 'DiagnosticSignInfo', text='!', texthl = "DiagnosticInfo" },
-        {name = 'DiagnosticSignHint', text='', texthl = "DiagnosticHint" },
+        { name = 'DiagnosticSignError', text = '', texthl = "DiagnosticError" },
+        { name = 'DiagnosticSignWarn', text = '', texthl = "DiagnosticWarn" },
+        { name = 'DiagnosticSignInfo', text = '!', texthl = "DiagnosticInfo" },
+        { name = 'DiagnosticSignHint', text = '', texthl = "DiagnosticHint" },
     })
     local severity = vim.diagnostic.severity
     -- setup diagnostics
     vim.diagnostic.config({
-        virtual_text = {
+        virtual_text     = {
             virt_text_hide = true,
-            severity = {severity.WARN, severity.ERROR},
+            severity = { severity.WARN, severity.ERROR },
             prefix = "[",
             suffix = " ]",
         },
-        update_in_insert  = false,
-        underline = { severity = {severity.WARN, severity.ERROR }},
-        severity_sort = true,
+        update_in_insert = false,
+        underline        = { severity = { severity.WARN, severity.ERROR } },
+        severity_sort    = true,
     })
     local config = require("cfg.lsp.config")
     if config == nil then
@@ -94,25 +92,19 @@ mod.setup = function ()
     end
     local cmp_lsp_available, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
     require("vim.lsp.log").set_level(vim.log.levels.INFO)
-    for _, cfg in pairs(config) do
-        if cfg.provider ~= nil and cfg.provider ~= "" then
-            local setup = {}
-            setup.on_attach = function(client, bufnr)
-                if cfg.on_attach then
-                    cfg.on_attach(client, bufnr)
-                end
-                default_attach(client, bufnr, cfg.formatter)
+    for provider, setup in pairs(config) do
+        local provider_attach = setup.on_attach
+        setup.on_attach = function(client, bufnr)
+            if provider_attach then
+                provider_attach(bufnr)
             end
-            -- if cfg.on_init then
-            --     setup.on_init = cfg.on_init
-            -- end
-            setup.capabilities = vim.lsp.protocol.make_client_capabilities()
-            setup.settings = cfg.settings
-            if cmp_lsp_available then
-                setup.capabilities = cmp_nvim_lsp.default_capabilities()
-            end
-            lspconfig[cfg.provider].setup(setup)
+            default_attach(client, bufnr)
         end
+        setup.capabilities = vim.lsp.protocol.make_client_capabilities()
+        if cmp_lsp_available then
+            setup.capabilities = cmp_nvim_lsp.default_capabilities()
+        end
+        lspconfig[provider].setup(setup)
     end
 end
 
