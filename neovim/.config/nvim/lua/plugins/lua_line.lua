@@ -1,19 +1,18 @@
-
-
+local noice_available, noice = pcall(require, "noice")
 -- Color table for highlights
 -- stylua: ignore
 local colors = {
-  bg       = '#202328',
-  fg       = '#bbc2cf',
-  yellow   = '#ECBE7B',
-  cyan     = '#008080',
-  darkblue = '#081633',
-  green    = '#98be65',
-  orange   = '#FF8800',
-  violet   = '#a9a1e1',
-  magenta  = '#c678dd',
-  blue     = '#51afef',
-  red      = '#ec5f67',
+    bg       = '#202328',
+    fg       = '#bbc2cf',
+    yellow   = '#ECBE7B',
+    cyan     = '#008080',
+    darkblue = '#081633',
+    green    = '#98be65',
+    orange   = '#FF8800',
+    violet   = '#a9a1e1',
+    magenta  = '#c678dd',
+    blue     = '#51afef',
+    red      = '#ec5f67',
 }
 
 local conditions = {
@@ -42,7 +41,7 @@ local config = {
     tabline = {
         lualine_a = { "tabs" },
         lualine_b = { "filename" },
-        lualine_c = {"navic"},
+        lualine_c = { "navic" },
         lualine_x = {},
         lualine_y = {},
         lualine_z = { "buffers" },
@@ -82,7 +81,7 @@ ins_left({
     function()
         return "▊"
     end,
-    color = { fg = colors.blue }, -- Sets highlighting of component
+    color = { fg = colors.blue },      -- Sets highlighting of component
     padding = { left = 0, right = 1 }, -- We don't need space before this
 })
 
@@ -136,6 +135,18 @@ ins_left({
 ins_left({ "location" })
 
 ins_left({ "progress", color = { fg = colors.fg, gui = "bold" } })
+if noice_available then
+    ins_left({
+        noice.api.status.mode.get,
+        cond = noice.api.status.mode.has,
+        color = { fg = "#ff9e64" },
+    })
+    ins_right({
+        noice.api.status.command.get,
+        cond = noice.api.status.command.has,
+        color = { fg = "#ff9e64" },
+    })
+end
 
 -- Insert mid section. You can make any number of sections in neovim :)
 -- for lualine it's any number greater then 2
@@ -199,7 +210,7 @@ ins_right({
 })
 -- Add components to right sections
 ins_right({
-    "o:encoding", -- option component same as &encoding in viml
+    "o:encoding",       -- option component same as &encoding in viml
     fmt = string.upper, -- I'm not sure why it's upper case either ;)
     cond = conditions.hide_in_width,
     color = { fg = colors.green, gui = "bold" },
@@ -215,9 +226,9 @@ ins_right({
 
 -- Now don't forget to initialize lualine
 return {
-        "nvim-lualine/lualine.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function()
-            require("lualine").setup(config)
-        end,
-    }
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+        require("lualine").setup(config)
+    end,
+}
