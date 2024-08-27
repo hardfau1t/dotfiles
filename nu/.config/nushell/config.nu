@@ -718,6 +718,7 @@ use basics.nu *
 use conf.nu *
 use audio.nu *
 
+source completion.nu
 source "~/.cache/starship/init.nu"
 
 # configs/envs local to given system

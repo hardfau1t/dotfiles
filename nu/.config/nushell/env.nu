@@ -19,26 +19,26 @@ $env.XDG_DATA_HOME = ([$env.HOME, .local/share ] | path join)
 $env.XDG_STATE_HOME = ([$env.HOME,.local/state ] | path join)
 $env.XDG_CONFIG_HOME = ([$env.HOME, .config ] | path join )
 $env.XDG_LIB_DIR = ([$env.HOME, .local/share/lib ] | path join )
-$env.XDG_CURRENT_DESKTOP = Hyprland
+$env.XDG_CURRENT_DESKTOP = "Hyprland"
 $env.XDG_CACHE_DIR = ([$env.HOME, .cache ] | path join )
-$env.XDG_SESSION_TYPE = wayland
+$env.XDG_SESSION_TYPE = "wayland"
 
 
 # applications
-$env.CM_LAUNCHER = fuzzel
-$env.BROWSER = firefox
-$env.TERMINAL = alacritty
-$env.READER = zathura
+$env.CM_LAUNCHER = "fuzzel"
+$env.BROWSER = "firefox"
+$env.TERMINAL = "alacritty"
+$env.READER = "zathura"
 $env.MANPAGER = "sh -c 'col -bx |bat -l man -p'"
 $env.MANROFFOPT = "-c"
 $env.FZF_DEFAULT_COMMAND = 'rg --hidden -l ""'
-$env.EDITOR = nvim
-$env.SYSTEMD_EDITOR = nvim
+$env.EDITOR = "nvim"
+$env.SYSTEMD_EDITOR = "nvim"
 
 # application config export
 $env.GRIM_DEFAULT_DIR = ([$env.HOME, Pictures/grim/ ] | path join )
 $env.STARSHIP_CACHE = ([$env.HOME, .starship/cache ] | path join )
-$env.STARSHIP_LOG = error
+$env.STARSHIP_LOG = "error"
 $env.CHEAT_CONFIG_PATH = ([$env.HOME, .config/cheat/conf.yml ] | path join )
 $env.MOZ_ENABLE_WAYLAND = 1
 $env.MPC_FORMAT = "%position% \t- %title% \t- %file%"
@@ -74,17 +74,17 @@ if "XDG_RUNTIME_DIR" in $env {
 $env.XAUTHORITY = ([$env.XDG_RUNTIME_DIR, Xauthority] | path join)
 }
 $env.LESSHISTFILE = ([$env.XDG_CACHE_DIR, less/history] | path join)
-$env.QT_QPA_PLATFORM = wayland
+$env.QT_QPA_PLATFORM = "wayland"
 $env.IGNOREOF = 100
-$env.LANG = en_IN.UTF-8
-$env.LC_CTYPE = en_IN.UTF-8
+$env.LANG = "en_IN.UTF-8"
+$env.LC_CTYPE = "en_IN.UTF-8"
 $env.HISTFILE = ([$env.XDG_STATE_HOME, shell_history] | path join)
 #export TERM = "tmux-256color"
 $env.HISTSIZE = 10000
 $env.SAVEHIST = 10000
-$env.LIBSEAT_BACKEND = logind
+$env.LIBSEAT_BACKEND = "logind"
 
-$env.XCURSOR_THEME = bibata
+$env.XCURSOR_THEME = "bibata"
 $env.XCURSOR_SIZE = 32
 
 # uses all cores for compilation
@@ -105,7 +105,6 @@ $env.AWS_SHARED_CREDENTIALS_FILE = $"($env.XDG_CONFIG_HOME)/aws/credentials"
 $env.AWS_CONFIG_FILE = $"($env.XDG_CONFIG_HOME)/aws/config"
 
 $env.MPD_DIR =  $"($env.HOME)/Music"
-$env.WGPU_BACKEND = gl
 
 let STARSHIP_INIT_DIR = ([$env.XDG_CACHE_DIR, starship] | path join)
 let STARSHIP_INIT = ([$STARSHIP_INIT_DIR, init.nu] | path join)
