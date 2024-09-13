@@ -710,19 +710,16 @@ alias hx = helix
 alias hostname = hostnamectl hostname
 alias adb = with-env [HOME, $"($env.XDG_DATA_HOME)/android"] { adb }
 alias yt-tor = yt-dlp --proxy socks5://127.0.0.1:9050
-alias kubectl = minikube kubectl --
+alias pg = pigeon
 
-
-use wrappers.nu *
-use basics.nu *
-use conf.nu *
-use audio.nu *
-
+source libs/wrappers.nu
+source libs/basics.nu
+source libs/conf.nu
+source libs/audio.nu
+source libs/local.nu
 source completion.nu
 source "~/.cache/starship/init.nu"
 
-# configs/envs local to given system
-use local.nu *
 
 # display random help
 let command =  help commands | where command_type not-in ["alias", 'custom' , "external"]| get name | shuffle | first
