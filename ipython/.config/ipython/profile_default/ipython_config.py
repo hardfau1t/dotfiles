@@ -501,7 +501,7 @@ c.TerminalIPythonApp.display_banner = False
 
 ## Automatically call the pdb debugger after every exception.
 #  Default: False
-c.InteractiveShell.pdb = True
+c.InteractiveShell.pdb = False
 
 #  Default: False
 c.InteractiveShell.quiet = False
