@@ -14,6 +14,12 @@ keybinds clear-defaults=true {
         bind "=" { Resize "Increase"; SwitchToMode "Normal"; }
         bind "-" { NewPane "Down"; SwitchToMode "Normal"; }
         bind "|" { NewPane "Right"; SwitchToMode "Normal"; }
+        bind "?" { 
+            LaunchOrFocusPlugin "file:~/.cache/zellij/plugins/zellij_forgot.wasm" {
+            floating  true 
+            };
+            SwitchToMode "Normal"
+        }
         bind "Tab" { TogglePaneFrames; SwitchToMode "Normal"; }
         bind "b" { FocusPreviousPane; SwitchToMode "Normal"; }
         bind "C" { Clear; SwitchToMode "Normal";}
@@ -158,12 +164,13 @@ keybinds clear-defaults=true {
     }
 }
 
-plugins {
-    tab-bar { path "tab-bar"; }
-    status-bar { path "status-bar"; }
-    strider { path "strider"; }
-    compact-bar { path "compact-bar"; }
-}
+// plugins {
+//     tab-bar { path "tab-bar"; }
+//     status-bar { path "status-bar"; }
+//     strider { path "strider"; }
+//     compact-bar { path "compact-bar"; }
+//     bar { path "~/.cache/zellij/plugins/zjstatus.wasm"; }
+// }
 
 // Choose what to do when zellij receives SIGTERM, SIGINT, SIGQUIT or SIGHUP
 // eg. when terminal window with an active zellij session is closed
@@ -200,7 +207,7 @@ theme "catppuccin-macchiato"
 // The name of the default layout to load on startup
 // Default: "default"
 //
-default_layout "compact"
+// default_layout "default"
 
 // Choose the mode that zellij uses when starting up.
 // Default: normal
@@ -260,7 +267,7 @@ scrollback_editor "nvim"
 
 // The folder in which Zellij will look for layouts
 //
-layout_dir "~/.config/zj-layout"
+// layout_dir "~/.config/zj-layout"
 
 // The folder in which Zellij will look for themes
 //
