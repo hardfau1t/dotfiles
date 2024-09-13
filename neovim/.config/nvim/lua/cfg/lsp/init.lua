@@ -91,7 +91,7 @@ mod.setup = function()
         return
     end
     local cmp_lsp_available, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-    require("vim.lsp.log").set_level(vim.log.levels.INFO)
+    require("vim.lsp.log").set_level(vim.log.levels.WARN)
     for provider, setup in pairs(config) do
         local provider_attach = setup.on_attach
         setup.on_attach = function(client, bufnr)

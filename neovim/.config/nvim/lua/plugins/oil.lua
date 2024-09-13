@@ -25,6 +25,7 @@ local function setup()
             ["gx"] = "actions.open_external",
             ["g."] = "actions.toggle_hidden",
             ["g\\"] = "actions.toggle_trash",
+            ["gy"] = "actions.yank_entry",
         },
     }
     require("oil").setup(opts)

@@ -10,6 +10,7 @@ local config = {
         "markdown",
         "norg",
         "norg_meta",
+        "nu",
         "python",
         "rust",
         "regex",
@@ -35,4 +36,8 @@ return {
     config = function()
         require("nvim-treesitter.configs").setup(config)
     end,
+    dependencies = {
+        {"nushell/tree-sitter-nu"}
+    },
+    build = ":TSUpdate"
 }
