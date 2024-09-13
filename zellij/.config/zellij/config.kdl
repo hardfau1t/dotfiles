@@ -86,6 +86,8 @@ keybinds clear-defaults=true {
         bind "j" "Down"     { MovePane "Down"; }
         bind "k" "Up"       { MovePane "Up"; }
         bind "l" "Right"    { MovePane "Right"; }
+        bind "H" { MoveTab "Left"; }
+        bind "J" { MoveTab "Right"; }
     }
     tab {
         bind "r" { SwitchToMode "RenameTab"; TabNameInput 0; }
@@ -107,7 +109,7 @@ keybinds clear-defaults=true {
     }
     scroll {
         bind "e" { EditScrollback; SwitchToMode "Normal";}
-        bind "s" { SwitchToMode "EnterSearch"; SearchInput 0; }
+        bind "s" "/" { SwitchToMode "EnterSearch"; SearchInput 0; }
         bind "q" { SwitchToMode "Normal"; }
         bind "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }
         bind "j" "Down" { ScrollDown; }
@@ -242,7 +244,7 @@ copy_command "wl-copy"                    // wayland
 // Enable or disable automatic copy (and clear) of selection when releasing mouse
 // Default: true
 //
-copy_on_select false
+// copy_on_select false
 
 // Path to the default editor to use to edit pane scrollbuffer
 // Default: $EDITOR or $VISUAL
@@ -258,7 +260,7 @@ scrollback_editor "nvim"
 
 // The folder in which Zellij will look for layouts
 //
-layout_dir "~/.config/zj-layout/"
+layout_dir "~/.config/zj-layout"
 
 // The folder in which Zellij will look for themes
 //
