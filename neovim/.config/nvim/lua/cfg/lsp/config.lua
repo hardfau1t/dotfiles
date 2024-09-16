@@ -133,6 +133,7 @@ local cfg = {
             ["rust-analyzer"] = {},
         },
     },
+    ["taplo"] = {},
     ["bashls"] = {
         cmd = {
             "bash-language-server",
