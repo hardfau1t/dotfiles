@@ -169,3 +169,18 @@ def retry [
     }
 }
 
+# print clock of given timezones
+export def clock [ ] {
+    let timezones = $in | default ["utc"]
+    clear
+    loop {
+        clear
+        ansi green
+        $timezones | each {|timezone|
+            print $"(ansi yellow)(date now| date to-timezone $timezone| format date '%Y-%m-%d %H:%M:%S')(ansi reset)  ($timezone)"
+        }
+        ansi reset
+        sleep 1sec
+    }
+}
+
