@@ -79,6 +79,12 @@ $env.config = {
     rm: {
         always_trash: true # always act as if -t was given. Can be overridden with -p
     }
+    display_errors: {
+        exit_code: false
+        # Core dump errors are always printed, and SIGPIPE never triggers an error.
+        # The setting below controls message printing for termination by all other signals.
+        termination_signal: true
+    }
 
     table: {
         mode: light # basic, compact, compact_double, light, thin, with_love, rounded, reinforced, heavy, none, other
