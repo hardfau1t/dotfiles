@@ -17,7 +17,7 @@
           :orientation "h"
           :max 100
           :min 0
-          :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%" )
+          :onchange "wpctl set-volume @DEFAULT_SINK@ {}%" )
       )
       (circular-progress :value {pulse.data.default_sink.volume % 100}
           :thickness 2
@@ -49,7 +49,7 @@
           :orientation "h"
           :max 100
           :min 0
-          :onchange "pactl set-source-volume @DEFAULT_SOURCE@ {}%" )
+          :onchange "wpctl set-volume @DEFAULT_SOURCE@ {}%" )
       )
       (circular-progress :value {pulse.data.default_source.volume % 100}
           :thickness 2
@@ -74,7 +74,7 @@
         (for source in {pulse.data.sources}
           (box :orientation "h" :spacing 10 :space-evenly false
             (button
-              :onclick "pactl set-source-mute ${source.index} toggle"
+              :onclick "wpctl set-mute ${source.index} toggle"
               (label 
                 :text {source.muted ? "" : ""} 
                 :class {source.index == pulse.data.default_source.index ? 
@@ -83,13 +83,13 @@
             )
             (box :orientation "v" :halign "start"
               (button
-                :onclick "pactl set-default-source ${source.index}"
+                :onclick "wpctl set-default ${source.index}"
                 (label :text "${source.name}" :class "source-name" :halign "start" )
               )
               (scale
                 :value {source.volume}
                 :orientation "h"
-                :onchange "pactl set-source-volume ${source.index} {}%" 
+                :onchange "wpctl set-volume ${source.index} {}%" 
                 :tooltip "volume on ${pulse.data.volume}%"
                 :max 100
                 :min 0
@@ -111,7 +111,7 @@
         (for sink in {pulse.data.sinks}
           (box :orientation "h" :space-evenly false :spacing 10 :halign "start"
             (button
-              :onclick "pactl set-sink-mute ${sink.index} toggle"
+              :onclick "wpctl set-mute ${sink.index} toggle"
               (label 
                 :text {sink.muted ? '' : ""} 
                 :class {sink.index == pulse.data.default_sink.index ? "default-sink-icon" : "sink-icon"} 
@@ -120,13 +120,13 @@
             )
             (box :orientation "v"
               (button
-                :onclick "pactl set-default-sink ${sink.index}"
+                :onclick "wpctl set-default ${sink.index}"
                 (label :text "${sink.name}" :halign "start")
               )
               (scale
                 :value {sink.volume}
                 :orientation "h"
-                :onchange "pactl set-sink-volume ${sink.index} {}%" 
+                :onchange "wpctl set-volume ${sink.index} {}%" 
                 :tooltip "volume on ${pulse.data.volume}%"
                 :max 100
                 :min 0
