@@ -105,8 +105,17 @@ local cfg = {
             -- },
         },
     },
-    ["nushell"] = {
+    -- nix language server
+    ["nil_ls"] = {
+        settings = {
+            ['nil'] = {
+                formatting = {
+                    command = { "nixfmt" },
+                },
+            }
+        }
     },
+    ["nushell"] = { },
     -- ["ruff"] = {
     --     cmd_env = { RUFF_TRACE = "messages" },
     --     init_options = {
@@ -133,6 +142,7 @@ local cfg = {
             ["rust-analyzer"] = {},
         },
     },
+    -- toml language server
     ["taplo"] = {},
     ["bashls"] = {
         cmd = {
