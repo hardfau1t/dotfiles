@@ -37,6 +37,7 @@
     maple-mono
     mpc-cli
     mpv
+    neovim
     nil
     nushellPlugins.polars
     pass
@@ -69,6 +70,10 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
+    ".config/nvim" = {
+      source = ./configs/nvim;
+      recursive = true;
+    };
     ".config/nushell/libs" = {
       source = ./configs/nushell/libs;
       recursive = true;
