@@ -27,6 +27,7 @@
     dunst
     dust
     eww
+    eza
     fd
     fuzzel
     fzf
