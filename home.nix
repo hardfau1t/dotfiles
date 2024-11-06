@@ -73,6 +73,7 @@
       source = ./configs/nushell/libs;
       recursive = true;
     };
+    ".config/nushell/libs/local.nu".text = "";
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
