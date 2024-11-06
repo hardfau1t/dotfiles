@@ -74,6 +74,10 @@
       source = ./configs/nvim;
       recursive = true;
     };
+    ".config/zellij" = {
+      source = ./configs/zellij;
+      recursive = true;
+    };
     ".config/nushell/libs" = {
       source = ./configs/nushell/libs;
       recursive = true;
