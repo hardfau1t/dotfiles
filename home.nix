@@ -91,6 +91,7 @@ c.TerminalInteractiveShell.quiet = True
       source = ./configs/nvim;
       recursive = true;
     };
+    ".config/starship.toml".source = ./configs/starship.toml;
     ".config/zellij" = {
       source = ./configs/zellij;
       recursive = true;
