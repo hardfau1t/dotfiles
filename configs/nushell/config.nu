@@ -715,7 +715,6 @@ alias hx = helix
 alias hostname = hostnamectl hostname
 alias adb = with-env {HOME: $"($env.XDG_DATA_HOME)/android"} { adb }
 alias yt-tor = yt-dlp --proxy socks5://127.0.0.1:9050
-alias pg = pigeon
 alias hl = hledger --pretty --strict
 alias hle = ^$env.EDITOR $env.LEDGER_FILE
 
@@ -732,4 +731,4 @@ let command =  help commands | where command_type not-in ["alias", 'custom' , "e
 print ===================================================
 print $command
 print ===================================================
-help $command
+help $command | print

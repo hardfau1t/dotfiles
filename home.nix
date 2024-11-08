@@ -41,9 +41,11 @@
     neovim
     nil
     nushellPlugins.polars
+    nixfmt-rfc-style
     pass
     pinentry-gtk2
     python312Packages.ipython
+    pyright
     ripgrep
     slurp
     starship
@@ -97,7 +99,6 @@ c.TerminalInteractiveShell.quiet = True
       source = ./configs/nushell/libs;
       recursive = true;
     };
-    ".config/nushell/libs/local.nu".text = "";
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
