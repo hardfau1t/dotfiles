@@ -34,6 +34,7 @@
     gnumake
     grim
     hledger
+    imv
     libnotify
     maple-mono
     mpc-cli
@@ -47,6 +48,7 @@
     python312Packages.ipython
     pyright
     ripgrep
+    showmethekey
     slurp
     starship
     stow
@@ -91,6 +93,18 @@ c.TerminalInteractiveShell.quiet = True
       source = ./configs/nvim;
       recursive = true;
     };
+    ".config/xkb" = {
+      source = ./configs/xkb;
+      recursive = true;
+    };
+    ".config/eww" = {
+      source = ./configs/eww;
+      recursive = true;
+    };
+    ".config/hypr" = {
+      source = ./configs/hypr;
+      recursive = true;
+    };
     ".config/starship.toml".source = ./configs/starship.toml;
     ".config/zellij" = {
       source = ./configs/zellij;
@@ -99,6 +113,10 @@ c.TerminalInteractiveShell.quiet = True
     ".config/nushell/libs" = {
       source = ./configs/nushell/libs;
       recursive = true;
+    };
+    ".config/alacritty" = {
+        source = ./configs/alacritty;
+        recursive = true;
     };
 
     # # You can also set the file content immediately.
