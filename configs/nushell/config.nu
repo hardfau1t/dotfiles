@@ -717,6 +717,8 @@ alias adb = with-env {HOME: $"($env.XDG_DATA_HOME)/android"} { adb }
 alias yt-tor = yt-dlp --proxy socks5://127.0.0.1:9050
 alias hl = hledger --pretty --strict
 alias hle = ^$env.EDITOR $env.LEDGER_FILE
+alias hla = ^hledger --strict add
+alias hms = home-manager switch
 
 source libs/wrappers.nu
 source libs/basics.nu

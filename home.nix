@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -36,6 +35,7 @@
     hledger
     imv
     libnotify
+    lua-language-server
     maple-mono
     mpc-cli
     mpv
@@ -69,6 +69,55 @@
     # '')
   ];
 
+  xdg = {
+    enable = true;
+    configFile = {
+      "starship.toml".source = ./configs/starship.toml;
+      "bat" = {
+        source = ./configs/bat;
+        recursive = true;
+      };
+      "ipython/profile_default/ipython_config.py".text = ''
+        c = get_config()  #noqa
+        c.TerminalIPythonApp.display_banner = False
+        c.InteractiveShell.pdb = False
+        c.InteractiveShell.quiet = False
+        c.TerminalInteractiveShell.editing_mode = 'vi'
+        c.TerminalInteractiveShell.extra_open_editor_shortcuts = True
+        c.TerminalInteractiveShell.quiet = True
+      '';
+      "nvim" = {
+        source = ./configs/nvim;
+        recursive = true;
+      };
+      "xkb" = {
+        source = ./configs/xkb;
+        recursive = true;
+      };
+      "eww" = {
+        source = ./configs/eww;
+        recursive = true;
+      };
+      "hypr" = {
+        source = ./configs/hypr;
+        recursive = true;
+      };
+      # ".config/starship.toml".source = ./configs/starship.toml;
+      "zellij" = {
+        source = ./configs/zellij;
+        recursive = true;
+      };
+      "nushell/libs" = {
+        source = ./configs/nushell/libs;
+        recursive = true;
+      };
+      "alacritty" = {
+        source = ./configs/alacritty;
+        recursive = true;
+      };
+    };
+  };
+
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
@@ -76,48 +125,6 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
-    ".config/bat" = {
-      source = ./configs/bat;
-      recursive = true;
-    };
-    ".config/ipython/profile_default/ipython_config.py".text = ''
-c = get_config()  #noqa
-c.TerminalIPythonApp.display_banner = False
-c.InteractiveShell.pdb = False
-c.InteractiveShell.quiet = False
-c.TerminalInteractiveShell.editing_mode = 'vi'
-c.TerminalInteractiveShell.extra_open_editor_shortcuts = True
-c.TerminalInteractiveShell.quiet = True
-    '';
-    ".config/nvim" = {
-      source = ./configs/nvim;
-      recursive = true;
-    };
-    ".config/xkb" = {
-      source = ./configs/xkb;
-      recursive = true;
-    };
-    ".config/eww" = {
-      source = ./configs/eww;
-      recursive = true;
-    };
-    ".config/hypr" = {
-      source = ./configs/hypr;
-      recursive = true;
-    };
-    ".config/starship.toml".source = ./configs/starship.toml;
-    ".config/zellij" = {
-      source = ./configs/zellij;
-      recursive = true;
-    };
-    ".config/nushell/libs" = {
-      source = ./configs/nushell/libs;
-      recursive = true;
-    };
-    ".config/alacritty" = {
-        source = ./configs/alacritty;
-        recursive = true;
-    };
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -156,5 +163,16 @@ c.TerminalInteractiveShell.quiet = True
       loginFile.source = ./configs/nushell/login.nu;
     };
     carapace.enable = true;
+  };
+  services = {
+    mpd = {
+      musicDirectory = "/media/loud/music";
+      enable = true;
+      network.port =6600;
+      extraConfig = ''
+        bind_to_address  "/run/user/1000/mpd.socket"
+        bind_to_address "any"
+        '';
+    };
   };
 }
