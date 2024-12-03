@@ -29,29 +29,36 @@
     eza
     fd
     fuzzel
+    freecad-wayland
     fzf
     gnumake
     grim
     hledger
     imv
     libnotify
+    libiconv
     lua-language-server
     maple-mono
     mpc-cli
     mpv
     neovim
     nil
+    nodePackages.vscode-json-languageserver
     nushellPlugins.polars
     nixfmt-rfc-style
+    openssl
     pass
     pinentry-gtk2
     python312Packages.ipython
     pyright
+    pkg-config
     ripgrep
     showmethekey
+    sqlite
     slurp
     starship
     stow
+    taplo
     tealdeer
     wl-clipboard
     zellij

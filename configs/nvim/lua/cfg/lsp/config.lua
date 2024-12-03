@@ -56,8 +56,7 @@ local cfg = {
     -- },
     ["jsonls"] = {
         cmd = {
-            "node",
-            "/usr/lib/node_modules/vscode-langservers-extracted/bin/vscode-json-language-server",
+            "vscode-json-languageserver",
             "--stdio",
         },
         settings = {
