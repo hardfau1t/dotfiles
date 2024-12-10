@@ -61,6 +61,8 @@
     taplo
     tealdeer
     wl-clipboard
+    wesnoth
+    waybar
     zellij
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -84,6 +86,7 @@
         source = ./configs/bat;
         recursive = true;
       };
+      "dunst/dunstrc".source =  ./configs/dunst/dunstrc;
       "ipython/profile_default/ipython_config.py".text = ''
         c = get_config()  #noqa
         c.TerminalIPythonApp.display_banner = False
@@ -121,6 +124,10 @@
       "alacritty" = {
         source = ./configs/alacritty;
         recursive = true;
+      };
+      "waybar" = {
+          source = ./configs/waybar;
+          recursive = true;
       };
     };
   };
@@ -175,11 +182,15 @@
     mpd = {
       musicDirectory = "/media/loud/music";
       enable = true;
-      network.port =6600;
+      network.port = 6600;
       extraConfig = ''
         bind_to_address  "/run/user/1000/mpd.socket"
         bind_to_address "any"
-        '';
+          audio_output {
+            type "pipewire"
+            name "My PipeWire Output"
+          }
+      '';
     };
   };
 }

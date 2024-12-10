@@ -90,6 +90,11 @@ mod.setup = function()
         print("lspconfig module not found")
         return
     end
+    -- progress widget
+    local fidget_available, fidget = pcall(require, "fidget")
+    if fidget_available then
+        fidget.setup()
+    end
     local cmp_lsp_available, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
     require("vim.lsp.log").set_level(vim.log.levels.WARN)
     for provider, setup in pairs(config) do
