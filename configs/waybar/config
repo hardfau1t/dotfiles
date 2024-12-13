@@ -61,7 +61,7 @@
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "cpu": {
-        "format": "{usage}% ",
+        "format": "{usage}% ",
         "on-click": "alacritty -e btm",
         "tooltip": false
     },
@@ -95,9 +95,9 @@
           "critical": 15
         },
         "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
+        "format-charging": "{capacity}% ",
         "format-discharging": "{capacity}% {icon}",
-        "tooltip": "{time}",
+        "tooltip": "{time}, consuming {power}w, cycles {cycles}",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         "format-alt-click": "click-right",
@@ -123,8 +123,8 @@
         "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon}{format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
         "format-source": "",
         "format-alt-source": "{volume}% ",
         "format-alt-click": "click-right",
@@ -144,8 +144,8 @@
     },
     "disk": {
         "interval": 30,
-        "format": "{percentage_used}% ",
-        "format-alt": "{percentage_free}% ",
+        "format": "{percentage_used}% 󰋊",
+        "format-alt": "{percentage_free}% 󰋊",
         "format-alt-click": "click-right",
         "path": "/",
     },
@@ -156,7 +156,7 @@
     },
     "mpd": {
         "format": "{stateIcon} {title} - {elapsedTime:%M:%S}/{totalTime:%M:%S}",
-        "format-paused": "{title}  懶",
+        "format-paused": "{title}  ",
         "interval": 1,
         "state-icons": {
             "paused": "",
@@ -168,8 +168,8 @@
     "bluetooth": {
         "format-disabled": "",
         "format-on": "",
-        "format-off": "",
-        "format-connected": "",
+        "format-off": "󰂲",
+        "format-connected": "󰂱",
         "tooltip-format" : "{status} {device_alias}",
         "on-click" : "~/.config/waybar/scripts/bluetooth.sh -t",
         "on-click-right" : "~/.config/waybar/scripts/bluetooth.sh -c"

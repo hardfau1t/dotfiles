@@ -62,8 +62,9 @@
     tealdeer
     wl-clipboard
     wesnoth
-    waybar
+    yt-dlp
     zellij
+    (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -177,6 +178,11 @@
       loginFile.source = ./configs/nushell/login.nu;
     };
     carapace.enable = true;
+    waybar = {
+        enable = true;
+        systemd.enable = true;
+        systemd.target = "graphical-session.target";
+    };
   };
   services = {
     mpd = {
