@@ -1,5 +1,9 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
+  imports = [
+    ./services.nix
+    ./xdg.nix
+  ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "gireesh";
@@ -20,9 +24,11 @@
     alacritty
     angband
     aria2
+    bash-language-server
     bat
     bottom
     cliphist
+    clang-tools
     dunst
     dust
     eww
@@ -60,11 +66,12 @@
     stow
     taplo
     tealdeer
+    tokei
     wl-clipboard
     wesnoth
     yt-dlp
     zellij
-    (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
+    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -78,60 +85,6 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
-
-  xdg = {
-    enable = true;
-    configFile = {
-      "starship.toml".source = ./configs/starship.toml;
-      "bat" = {
-        source = ./configs/bat;
-        recursive = true;
-      };
-      "dunst/dunstrc".source =  ./configs/dunst/dunstrc;
-      "ipython/profile_default/ipython_config.py".text = ''
-        c = get_config()  #noqa
-        c.TerminalIPythonApp.display_banner = False
-        c.InteractiveShell.pdb = False
-        c.InteractiveShell.quiet = False
-        c.TerminalInteractiveShell.editing_mode = 'vi'
-        c.TerminalInteractiveShell.extra_open_editor_shortcuts = True
-        c.TerminalInteractiveShell.quiet = True
-      '';
-      "nvim" = {
-        source = ./configs/nvim;
-        recursive = true;
-      };
-      "xkb" = {
-        source = ./configs/xkb;
-        recursive = true;
-      };
-      "eww" = {
-        source = ./configs/eww;
-        recursive = true;
-      };
-      "hypr" = {
-        source = ./configs/hypr;
-        recursive = true;
-      };
-      # ".config/starship.toml".source = ./configs/starship.toml;
-      "zellij" = {
-        source = ./configs/zellij;
-        recursive = true;
-      };
-      "nushell/libs" = {
-        source = ./configs/nushell/libs;
-        recursive = true;
-      };
-      "alacritty" = {
-        source = ./configs/alacritty;
-        recursive = true;
-      };
-      "waybar" = {
-          source = ./configs/waybar;
-          recursive = true;
-      };
-    };
-  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -179,24 +132,9 @@
     };
     carapace.enable = true;
     waybar = {
-        enable = true;
-        systemd.enable = true;
-        systemd.target = "graphical-session.target";
-    };
-  };
-  services = {
-    mpd = {
-      musicDirectory = "/media/loud/music";
       enable = true;
-      network.port = 6600;
-      extraConfig = ''
-        bind_to_address  "/run/user/1000/mpd.socket"
-        bind_to_address "any"
-          audio_output {
-            type "pipewire"
-            name "My PipeWire Output"
-          }
-      '';
+      systemd.enable = true;
+      systemd.target = "graphical-session.target";
     };
   };
 }
