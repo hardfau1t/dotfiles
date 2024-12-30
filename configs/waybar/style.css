@@ -1,142 +1,120 @@
-@define-color bg1   #282828;
-@define-color ws_foc #e5e9f0;
-@define-color ws-clr #2e3440;
-@define-color font #ffc94a;
-@define-color mpd #fbf1c7;
-@define-color pipe #7d818a;
+@import "machiato.css";
 
-window#waybar {
-  /* background-color: rgba(0x11,0x11, 0x12, 0.6); */
-  /* background-color: #4c566a; */
-  background-color: #0b0c0d;
-}
 * {
-  min-height: 0px;
+  font-family:  Maple Mono NF;
+  font-weight: 900;
   font-size: 11px;
-  font-family: Sans;
-  min-height: 0px;
-  font-weight: 600;
-  padding-bottom: 1px;
-  padding-top: 1px;
-}
-#window {
-    border-radius: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-/* center module */
-#clock {
-  margin: 2px 0px 2px 0px;
-  color: #a2bab1;
-  padding-left: 8px;
-  padding-right: 8px;
-  background-color: @bg1;
-  border-radius: 8px;
+  min-height: 0;
 }
 
-/* right module */
-#pulseaudio,
+#waybar {
+  background: transparent;
+  color: @text;
+  margin: 5px 5px;
+}
+
+#workspaces {
+  border-radius: 1rem;
+  margin: 5px;
+  background-color: @surface0;
+  margin-left: 1rem;
+  padding: 0.2rem 0.2rem;
+}
+
+#workspaces button {
+  color: @lavender;
+  border-radius: 1rem;
+  padding: 0.0rem 0.0rem;
+}
+
+#workspaces button.active {
+  color: @sky;
+  border-radius: 1rem;
+  background-color: @surface1;
+}
+
+#workspaces button:hover {
+  color: @sapphire;
+  border-radius: 1rem;
+}
+
+#custom-music,
+#tray,
+#backlight,
+#clock,
+#battery,
+#wireplumber,
 #bluetooth,
 #network,
 #disk,
 #memory,
 #cpu,
-#backlight,
-#battery {
-  color: @font;
-  margin: 2px 0px 2px 0px;
-  padding: 0px 8px 0px 8px;
-  background-color: @bg1;
-  padding-top: 2px;
-  padding-bottom: 2px;
-}
-#tray,
 #custom-power {
-  color: @font;
-  margin: 2px 0px 2px 0px;
-  padding: 0px 2px 0px 2px;
-  background-color: @bg1;
-  color: #bf616a;
-  padding-top: 2px;
-  padding-bottom: 2px;
+  background-color: @surface0;
+  padding: 0.2rem 0.5rem;
+  margin: 5px 0;
 }
 
-#workspaces {
-  margin: 2px 2px 2px 2px;
-  padding: 0px 2px 0px 6px;
-  border-radius: 6px;
-  background-color: @bg1;
+#clock {
+  color: @sapphire;
+  border-radius: 1rem 1rem 1rem 1rem;
+  margin-right: 1rem;
 }
 
-#workspaces button {
-  background: @bg1;
-  color: @font;
-  margin: 2px 3px 2px 3px;
-  padding: 0px;
+#wireplumber {
+  color: @flamingo;
+  border-radius: 1rem 0px 0px 1rem;
+  margin-left: 1rem;
 }
 
-#workspaces button.focused {
-  /* color: @ws-clr; */
-  /* background: @ws_foc; */
-  border-width: 2px;
-  border-color: #cc241d;
-  color: #ffd77a;
-  background-color: #504945;
-  border-radius: 3px;
-  border-style: none none outset none;
-}
 
-#workspaces button.urgent {
-}
-
-#custom-left_pad {
-  border-radius: 8px 0px 0px 8px;
-  padding: 0px 2px 0px 2px;
-  margin: 2px 0px 2px 2px;
-  background-color: @bg1;
-}
-
-#custom-right_pad {
-  border-radius: 0px 8px 8px 0px;
-  padding: 0px 2px 0px 2px;
-  margin: 2px 2px 2px 0px;
-  background-color: @bg1;
-}
-#custom-pipe {
-  margin-top: 2px;
-  margin-bottom: 2px;
-  font-size: 16px;
-  background-color: @bg1;
-  color: @pipe;
-}
-
-#mpd {
-  color: @mpd;
-}
-#pulseaudio {
-  color: #fb4934;
-}
 #bluetooth {
-  color: #fe8019;
+  color: @pink;
 }
+
 #network {
-  color: #fabd2f;
+  color: @red;
 }
+
+
 #disk {
-  color: #ebdbb2;
+  color: @maroon;
 }
+
 #memory {
-  color: #b8bb26;
+  color: @peach;
 }
+
 #cpu {
-  color: #8ec07c;
+  color: @yellow;
 }
+
 #backlight {
-  color: #83a598;
+  color: @green;
 }
+
+#backlight, #battery {
+    border-radius: 0;
+}
+
 #battery {
-  color: #d3869b;
+  color: @teal;
+}
+
+#battery.charging {
+  color: @teal;
+}
+
+#battery.warning:not(.charging) {
+  color: @red;
 }
 #custom-power {
-  color: #fb4934;
+    margin-right: 1rem;
+    border-radius: 0px 1rem 1rem 0px;
+    color: @red;
+}
+
+#tray {
+  margin-right: 1rem;
+  border-radius: 1rem;
 }

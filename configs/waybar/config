@@ -1,9 +1,10 @@
 // vim:syntax=jsonc
 {
     "ipc" : true,
+    "height": 12,
     "modules-left": ["hyprland/workspaces", "mpd"],
     "modules-center": ["clock"],
-    "modules-right": [ "pulseaudio", "custom/pipe", "bluetooth", "custom/pipe", "network", "custom/pipe", "disk", "custom/pipe", "memory", "custom/pipe", "cpu", "custom/pipe", "backlight", "custom/pipe", "battery", "tray","custom/power"],
+    "modules-right": [ "wireplumber", "bluetooth", "network", "disk", "memory", "cpu", "backlight", "battery", "tray","custom/power"],
 
     "wlr/workspaces": {
       "format": "{icon}",
