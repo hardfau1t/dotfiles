@@ -27,48 +27,50 @@
     bash-language-server
     bat
     bottom
-    cliphist
     clang-tools
+    cliphist
     dunst
     dust
     eww
     eza
     fd
-    fuzzel
     freecad-wayland
+    fuzzel
     fzf
     gnumake
     grim
     hledger
+    hyprpaper
+    imagemagick
     imv
-    libnotify
     libiconv
+    libnotify
     lua-language-server
     maple-mono
     mpc-cli
     mpv
     neovim
     nil
+    nixfmt-rfc-style
     nodePackages.vscode-json-languageserver
     nushellPlugins.polars
-    nixfmt-rfc-style
     openssl
     pass
     pinentry-gtk2
-    python312Packages.ipython
-    pyright
     pkg-config
+    pyright
+    python312Packages.ipython
     ripgrep
     showmethekey
-    sqlite
     slurp
+    sqlite
     starship
     stow
     taplo
     tealdeer
     tokei
-    wl-clipboard
     wesnoth
+    wl-clipboard
     yt-dlp
     zellij
     (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
@@ -93,7 +95,10 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
-
+    ".local/share/wallpaper/main-mon.png".source = ./wallpaper/home.png;
+    ".local/share/wallpaper/external-mon.png".source = ./wallpaper/home.png;
+    ".local/share/wallpaper/main-mon-lock.png".source = ./wallpaper/lockscreen.png;
+    ".local/share/wallpaper/external-mon-lock.png".source = ./wallpaper/lockscreen.png;
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
