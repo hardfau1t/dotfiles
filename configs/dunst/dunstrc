@@ -299,6 +299,23 @@
     mouse_middle_click = do_action, close_current
     mouse_right_click = close_all
 
+    frame_color = "#8aadf4"
+    separator_color= frame
+    highlight = "#8aadf4"
+
+    [urgency_low]
+    background = "#24273a"
+    foreground = "#cad3f5"
+
+    [urgency_normal]
+    background = "#24273a"
+    foreground = "#cad3f5"
+
+    [urgency_critical]
+    background = "#24273a"
+    foreground = "#cad3f5"
+    frame_color = "#f5a97f"
+
 # Experimental features that may or may not work correctly. Do not expect them
 # to have a consistent behaviour across releases.
 [experimental]
@@ -455,19 +472,4 @@
 # # TokyoNight colors for dunst
 # For more configuraion options see https://github.com/dunst-project/dunst/blob/master/dunstrc
 #
-[global]
-frame_color = "#8AADF4"
-separator_color= frame
 
-[urgency_low]
-background = "#24273A"
-foreground = "#CAD3F5"
-
-[urgency_normal]
-background = "#24273A"
-foreground = "#CAD3F5"
-
-[urgency_critical]
-background = "#24273A"
-foreground = "#CAD3F5"
-frame_color = "#F5A97F"
