@@ -43,4 +43,10 @@ return {
     },
     "neovim/nvim-lspconfig",
     "j-hui/fidget.nvim",
+
+    {
+        "chrisgrieser/nvim-lsp-endhints",
+        event = "LspAttach",
+        opts = {}, -- required, even if empty
+    },
 }
