@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 sed '1,/^### DATA ###$/d' $0 | fuzzel -d | cut -d ' ' -f 1 | tr -d '\n' | wl-copy
 exit
 ### DATA ###

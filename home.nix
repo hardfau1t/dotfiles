@@ -99,6 +99,10 @@
     ".local/share/wallpaper/external-mon.png".source = ./wallpaper/home.png;
     ".local/share/wallpaper/main-mon-lock.png".source = ./wallpaper/lockscreen.png;
     ".local/share/wallpaper/external-mon-lock.png".source = ./wallpaper/lockscreen.png;
+    ".local/bin" = {
+      source = ./configs/scripts;
+      recursive = true;
+    };
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
