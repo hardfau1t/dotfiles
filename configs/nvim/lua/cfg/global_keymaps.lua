@@ -39,4 +39,10 @@ do
 
 
     vim.keymap.set("n", "<leader>st", ":source %<CR>", { silent = true })
+
+    -- quickfix list movement
+    vim.keymap.set("n", "<leader>qn", "<CMD>cnext<CR>", {desc = "next quickfix item"})
+    vim.keymap.set("n", "<leader>qp", "<CMD>cprev<CR>", {desc = "prev quickfix item"})
+    vim.keymap.set("n", "<leader>qg", "<CMD>cfirst<CR>", {desc = "first quickfix item"})
+    vim.keymap.set("n", "<leader>qG", "<CMD>clast<CR>", {desc = "last quickfix item"})
 end
