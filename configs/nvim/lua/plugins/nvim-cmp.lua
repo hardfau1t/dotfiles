@@ -56,14 +56,15 @@ local setup = function()
         }),
 
         sources = cmp.config.sources({
-            { name = "nvim_lsp", max_item_count = 4 },
-            { name = "lazydev", group_index = 0}, -- this from lazy_dev plugin and provides vim completion
-            { name = "luasnip",  max_item_count = 4 },
+            { name = "nvim_lsp",       max_item_count = 4 },
+            { name = "lazydev",        group_index = 0 }, -- this from lazy_dev plugin and provides vim completion
+            { name = "luasnip",        max_item_count = 4 },
             { name = "nvim_lua" },
             { name = "neorg" },
             { name = "git" },
             { name = "path" },
-            { name = "buffer",   keyword_length = 4 },
+            { name = "buffer",         keyword_length = 4 },
+            { name = 'render-markdown' },
         }),
         formatting = {
             format = lspkind.cmp_format(),
