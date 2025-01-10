@@ -1,4 +1,9 @@
 { pkgs, ... }:
+let
+    custom_freecad = pkgs.freecad-wayland.overrideAttrs {
+      buildInputs = pkgs.freecad-wayland.buildInputs ++ [ pkgs.python311Packages.ifcopenshell ];
+    };
+in
 {
   imports = [
     ./services.nix
@@ -34,7 +39,7 @@
     eww
     eza
     fd
-    freecad-wayland
+    custom_freecad
     fuzzel
     fzf
     gnumake
