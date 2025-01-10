@@ -3,13 +3,13 @@ command_timeout=100
 add_newline=false
 palette = "catppuccin_macchiato"
 
-format = '''$status$battery$hostname$directory$git_branch$git_status$git_state$python${custom.pigeon}$nix_shell$aws $jobs$line_break$character'''
+format = '''$status$battery$hostname$directory$git_branch$git_status$git_state$python${custom.qwicket}$nix_shell$aws $jobs$line_break$character'''
 
 
-[custom.pigeon]
-description = "show pigeon environment"
+[custom.qwicket]
+description = "show qwicket environment"
 command = "$env | get -i NEST | default \U0001FAB9"
-files = ["pigeon.toml"]
+files = ["qwicket.toml"]
 format = "[$output 🐦 ](bold yellow)"
 
 [battery]
