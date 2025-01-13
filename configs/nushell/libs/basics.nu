@@ -76,7 +76,7 @@ def confirm-download [ title: string dir: path ] {
 }
 
 def get-youtube-song [unparsed_link: string output_dir: path = "./"] {
-    let link = ($unparsed_link | url parse | update params {select v } | reject query| url join)
+    let link = ($unparsed_link | url parse | update params {where key == v } | reject query| url join)
     if $link == null {
         print -e $"Failed to parse link '($unparsed_link)'"
         return ""
