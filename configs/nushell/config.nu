@@ -725,6 +725,8 @@ source libs/basics.nu
 source libs/conf.nu
 source libs/audio.nu
 source libs/local.nu
+# all wrappers/script for trying out without home manager switch
+source libs/trial.nu
 source "~/.cache/starship/init.nu"
 
 
