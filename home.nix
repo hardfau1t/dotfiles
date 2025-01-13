@@ -52,6 +52,7 @@ in
     libnotify
     lua-language-server
     maple-mono
+    moreutils # for vipe
     mpc-cli
     mpv
     neovim
