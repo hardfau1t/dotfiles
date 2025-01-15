@@ -66,6 +66,7 @@ in
     pkg-config
     pyright
     python312Packages.ipython
+    python314
     ripgrep
     showmethekey
     slurp
