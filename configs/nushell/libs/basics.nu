@@ -130,7 +130,7 @@ export def get-song [
     }
 }
 
-export def commit-pass [] {
+export def "journal save" [] {
     cd ~/.personal/
     if not ( git diff | is-empty) {
         git add .
@@ -138,7 +138,6 @@ export def commit-pass [] {
     }
     git pull
     git push
-    cd -
 }
 
 export def tty-size [] {
