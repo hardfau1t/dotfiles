@@ -174,5 +174,10 @@
         "tooltip-format" : "{status} {device_alias}",
         "on-click" : "~/.config/waybar/scripts/bluetooth.sh -t",
         "on-click-right" : "~/.config/waybar/scripts/bluetooth.sh -c"
+    },
+    "wireplumber": {
+        "format": "{icon} {volume}%",
+        "format-muted": " {volume}%",
+        "format-icons": ["", "", ""]
     }
 }
