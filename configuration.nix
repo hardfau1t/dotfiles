@@ -131,6 +131,7 @@
       enable = true;
       acceleration = "rocm";
       user = "ollama";
+      home = "/mnt/storage/ollama";
     };
 
     pipewire = {
@@ -233,6 +234,10 @@
   fileSystems = {
     "/home" = {
       device = "/dev/sda2";
+      fsType = "ext4";
+    };
+    "/mnt/storage" = {
+      device = "/dev/sda4";
       fsType = "ext4";
     };
     "/boot" = {
