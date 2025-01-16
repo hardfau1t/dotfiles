@@ -61,6 +61,7 @@ in
     nodePackages.vscode-json-languageserver
     nushellPlugins.polars
     openssl
+    obs-studio
     pass
     pinentry-gtk2
     pkg-config
