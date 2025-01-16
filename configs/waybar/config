@@ -4,7 +4,7 @@
     "height": 12,
     "modules-left": ["hyprland/workspaces", "mpd"],
     "modules-center": ["clock"],
-    "modules-right": [ "wireplumber", "bluetooth", "network", "disk", "memory", "cpu", "backlight", "battery", "tray","custom/power"],
+    "modules-right": [ "wireplumber", "bluetooth", "network", "disk", "memory", "cpu", "backlight", "battery","custom/power", "tray"],
 
     "wlr/workspaces": {
       "format": "{icon}",
