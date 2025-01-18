@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, user, config,... }:
 let
     custom_freecad = pkgs.freecad-wayland.overrideAttrs {
       buildInputs = pkgs.freecad-wayland.buildInputs ++ [ pkgs.python311Packages.ifcopenshell ];
@@ -6,13 +6,12 @@ let
 in
 {
   imports = [
-    ./services.nix
-    ./xdg.nix
+    ../../homemanager-modules
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "gireesh";
-  home.homeDirectory = "/home/gireesh";
+  home.username = "${user.name}";
+  home.homeDirectory = "/home/${user.name}";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -98,25 +97,6 @@ in
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-    ".local/share/wallpaper/main-mon.png".source = ./wallpaper/home.png;
-    ".local/share/wallpaper/external-mon.png".source = ./wallpaper/home.png;
-    ".local/share/wallpaper/main-mon-lock.png".source = ./wallpaper/lockscreen.png;
-    ".local/share/wallpaper/external-mon-lock.png".source = ./wallpaper/lockscreen.png;
-    ".local/bin" = {
-      source = ./configs/scripts;
-      recursive = true;
-    };
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-  };
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
@@ -132,7 +112,7 @@ in
   #
   # or
   #
-  #  /etc/profiles/per-user/gireesh/etc/profile.d/hm-session-vars.sh
+  #  /etc/profiles/per-user/${main_user}/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
@@ -140,14 +120,6 @@ in
 
   # Let Home Manager install and manage itself.
   programs = {
-    home-manager.enable = true;
-    nushell = {
-      enable = true;
-      configFile.source = ./configs/nushell/config.nu;
-      envFile.source = ./configs/nushell/env.nu;
-      loginFile.source = ./configs/nushell/login.nu;
-    };
-    carapace.enable = true;
     waybar = {
       enable = true;
       systemd.enable = true;

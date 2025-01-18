@@ -1,7 +1,6 @@
 { ... }:
 {
   xdg = {
-    enable = true;
     configFile = {
       "starship.toml".source = ./configs/starship.toml;
       "bat" = {
@@ -37,10 +36,6 @@
       # ".config/starship.toml".source = ./configs/starship.toml;
       "zellij" = {
         source = ./configs/zellij;
-        recursive = true;
-      };
-      "nushell/libs" = {
-        source = ./configs/nushell/libs;
         recursive = true;
       };
       "alacritty" = {

@@ -1,8 +1,8 @@
-{ ... }:
+{ user, ... }:
 {
   services = {
     mpd = {
-      musicDirectory = "/run/media/gireesh/loud/music";
+      musicDirectory = "/run/media/${user.name}/loud/music";
       enable = true;
       network.port = 6600;
       extraConfig = ''

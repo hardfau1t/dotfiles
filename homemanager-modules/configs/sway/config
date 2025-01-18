@@ -10,7 +10,7 @@ include style.config
 include bar
 include init.config
 
-output * bg "/home/gireesh/Pictures/wallpapers/minimal_planes.jpg" fill
+output * bg "~/Pictures/wallpapers/minimal_planes.jpg" fill
 xwayland enable
 input $keyboard {
     xkb_layout cust,in
