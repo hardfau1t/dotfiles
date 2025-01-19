@@ -18,6 +18,5 @@ lib.mkIf config.services.mpd.enable {
           }
       '';
     };
-    udiskie.enable = true;
   };
 }
