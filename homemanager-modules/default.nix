@@ -3,7 +3,6 @@
   imports = [
     ./gui_apps
     ./xdg.nix
-    ./services.nix
     ./scripts.nix
     ./wallpaper
     ./cli_apps

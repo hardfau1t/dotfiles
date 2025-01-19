@@ -1,6 +1,9 @@
 { lib, config, ... }:
 {
-  imports = [ ./nushell ];
+  imports = [
+    ./nushell
+    ./mpd.nix
+  ];
   options = {
 
   };
@@ -9,6 +12,7 @@
       nushell.enable = lib.mkDefault true;
       carapace.enable = lib.mkDefault true;
     };
+    services.mpd.enable = lib.mkDefault false;
     xdg.enable = true;
   };
 }

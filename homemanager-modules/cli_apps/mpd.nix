@@ -1,12 +1,16 @@
-{ user, ... }:
 {
+  user,
+  config,
+  lib,
+  ...
+}:
+lib.mkIf config.services.mpd.enable {
   services = {
     mpd = {
       musicDirectory = "/run/media/${user.name}/loud/music";
-      enable = true;
       network.port = 6600;
       extraConfig = ''
-        bind_to_address  "/run/user/1000/mpd.socket"
+        bind_to_address  "/run/user/${toString user.uid}/mpd.socket"
         bind_to_address "any"
           audio_output {
             type "pipewire"

@@ -1,8 +1,13 @@
-{ pkgs, user, config,... }:
+{
+  pkgs,
+  user,
+  config,
+  ...
+}:
 let
-    custom_freecad = pkgs.freecad-wayland.overrideAttrs {
-      buildInputs = pkgs.freecad-wayland.buildInputs ++ [ pkgs.python311Packages.ifcopenshell ];
-    };
+  custom_freecad = pkgs.freecad-wayland.overrideAttrs {
+    buildInputs = pkgs.freecad-wayland.buildInputs ++ [ pkgs.python311Packages.ifcopenshell ];
+  };
 in
 {
   imports = [
@@ -118,7 +123,6 @@ in
     # EDITOR = "emacs";
   };
 
-  # Let Home Manager install and manage itself.
   programs = {
     waybar = {
       enable = true;
@@ -126,4 +130,5 @@ in
       systemd.target = "graphical-session.target";
     };
   };
+  services.mpd.enable = true;
 }
