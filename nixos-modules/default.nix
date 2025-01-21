@@ -24,11 +24,9 @@
     # networking.proxy.default = "http://user:password@proxy:port/";
     # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-    # console = {
-    #   font = "Lat2-Terminus16";
-    #   keyMap = "us";
-    #   useXkbConfig = true; # use xkb.options in tty.
-    # };
+    console = {
+      keyMap = "dvorak";
+    };
     networking = {
       hostName = config.host_name; # Define your hostname.
       firewall = {
@@ -89,19 +87,31 @@
         ];
       };
       light.enable = true;
+      uwsm = {
+        enable = true;
+        waylandCompositors = {
+          hyprland = {
+            prettyName = "Hyprland";
+            binPath = "/run/current-system/sw/bin/Hyprland";
+          };
+        };
+      };
     };
-    environment.systemPackages = with pkgs; [
-      eza
-      ffmpeg
-      file
-      gcc
-      git
-      neovim
-      nixfmt-rfc-style
-      nushell
-      unzip
-      wget
-    ];
+    environment = {
+      systemPackages = with pkgs; [
+        eza
+        ffmpeg
+        file
+        gcc
+        git
+        neovim
+        nixfmt-rfc-style
+        nushell
+        unzip
+        wget
+      ];
+    };
+
     nix.settings.experimental-features = [
       "nix-command"
       "flakes"
@@ -109,8 +119,11 @@
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.
     # programs.mtr.enable = true;
-    # programs.hyprland.enable = true;
-    # programs.hyprlock.enable = true;
+    programs.hyprland = {
+      enable = true;
+      withUWSM = true;
+    };
+    programs.hyprlock.enable = true;
     # programs.gnupg.agent = {
     #   enable = true;
     #   enableSSHSupport = true;

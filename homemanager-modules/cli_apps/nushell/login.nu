@@ -22,5 +22,9 @@ $env.LD_LIBRARY_PATH  = (
 )
 
 if (tty) == "/dev/tty1" {
-    exec Hyprland
+    do -i {
+        uwsm check may-start
+        uwsm select
+        exec systemd-cat -t uwsm_start uwsm start default
+    }
 }

@@ -1,9 +1,8 @@
-{ lib, config, ... }:
+{ lib, config, osConfig, ... }:
 {
-  imports = [ ./hyprland];
+  imports = [];
   options = { };
   config = lib.mkIf config.gui_apps.enable {
-    wayland.windowManager.hyprland.enable = lib.mkDefault true;
-    services.hyprpaper.enable = lib.mkDefault config.wayland.windowManager.hyprland.enable;
+    services.hyprpaper.enable = lib.mkDefault osConfig.programs.hyprland.enable;
   };
 }

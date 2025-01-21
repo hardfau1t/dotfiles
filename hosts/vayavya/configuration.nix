@@ -19,7 +19,6 @@ in
     inputs.home-manager.nixosModules.default
   ];
 
-
   # Use the systemd-boot EFI boot loader.
   boot = {
     loader = {
@@ -82,6 +81,7 @@ in
       inherit inputs;
       user = config.users.users.${main_user};
     };
+    useGlobalPkgs = true;
     backupFileExtension = "bkp";
     users = {
       ${main_user} = import ./home.nix;
