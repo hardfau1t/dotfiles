@@ -128,7 +128,8 @@ in
     }
   ];
   fonts.packages = with pkgs; [
-    nerd-fonts.symbols-only
+    # nerd-fonts.symbols-only
+    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
     maple-mono-NF
   ];
   virtualisation.docker.enable = true;
