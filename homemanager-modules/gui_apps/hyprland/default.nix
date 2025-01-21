@@ -13,7 +13,7 @@ lib.mkIf config.wayland.windowManager.hyprland.enable {
         "~/.config/hypr/general.conf"
       ];
     };
-    systemd.enable = true;
-    xwayland.enable = false;
+    # systemd.enable = true;
+    # xwayland.enable = false;
   };
 }

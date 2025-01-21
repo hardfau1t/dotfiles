@@ -131,5 +131,5 @@ in
     };
   };
   services.mpd.enable = true;
-  wayland.windowManager.hyprland.enable = false;
+  # wayland.windowManager.hyprland.enable = false;
 }

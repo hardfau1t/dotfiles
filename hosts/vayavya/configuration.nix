@@ -82,6 +82,7 @@ in
       inherit inputs;
       user = config.users.users.${main_user};
     };
+    backupFileExtension = "bkp";
     users = {
       ${main_user} = import ./home.nix;
     };
