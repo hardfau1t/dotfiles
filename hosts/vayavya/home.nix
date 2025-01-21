@@ -85,8 +85,7 @@ in
     wl-clipboard
     yt-dlp
     zellij
-    # nerd-fonts.symbols-only
-    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+    nerd-fonts.symbols-only
     maple-mono-NF
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
