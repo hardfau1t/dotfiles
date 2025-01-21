@@ -88,10 +88,7 @@
           "kn"
         ];
       };
-      hyprland.enable = true;
-      hyprland.xwayland.enable = false;
       light.enable = true;
-      hyprlock.enable = true;
     };
     environment.systemPackages = with pkgs; [
       eza

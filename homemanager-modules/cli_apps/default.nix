@@ -12,8 +12,10 @@
       nushell.enable = lib.mkDefault true;
       carapace.enable = lib.mkDefault true;
     };
-    services.mpd.enable = lib.mkDefault false;
-    udiskie.enable = lib.mkDefault true;
+    services = {
+      mpd.enable = lib.mkDefault false;
+      udiskie.enable = lib.mkDefault true;
+    };
     xdg.enable = true;
   };
 }
