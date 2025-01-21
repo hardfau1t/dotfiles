@@ -133,4 +133,7 @@ in
     maple-mono-NF
   ];
   virtualisation.docker.enable = true;
+  virtualisation.docker.daemon.settings = {
+    data-root = "/mnt/storage/docker";
+  };
 }

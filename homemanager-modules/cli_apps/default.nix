@@ -17,5 +17,12 @@
       udiskie.enable = lib.mkDefault true;
     };
     xdg.enable = true;
+    # this is required, otherwise udiskie will not start
+    systemd.user.targets.tray = {
+      Unit = {
+        Description = "Home Manager System Tray";
+        Requires = [ "graphical-session-pre.target" ];
+      };
+    };
   };
 }
