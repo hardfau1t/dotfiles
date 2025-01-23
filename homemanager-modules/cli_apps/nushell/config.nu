@@ -730,9 +730,11 @@ source libs/trial.nu
 source "~/.cache/starship/init.nu"
 
 
-# display random help
-let command =  help commands | where command_type not-in ["alias", 'custom' , "external"]| get name | shuffle | first
-print ===================================================
-print $command
-print ===================================================
-help $command | print
+if (is-terminal --stderr) {
+    # display random help
+    let command =  help commands | where command_type not-in ["alias", 'custom' , "external"]| get name | shuffle | first
+    print ===================================================
+    print $command
+    print ===================================================
+    help $command | print -e
+}

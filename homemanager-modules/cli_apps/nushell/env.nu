@@ -19,9 +19,7 @@ $env.XDG_DATA_HOME = ([$env.HOME, .local/share ] | path join)
 $env.XDG_STATE_HOME = ([$env.HOME,.local/state ] | path join)
 $env.XDG_CONFIG_HOME = ([$env.HOME, .config ] | path join )
 $env.XDG_LIB_DIR = ([$env.HOME, .local/share/lib ] | path join )
-$env.XDG_CURRENT_DESKTOP = "Hyprland"
 $env.XDG_CACHE_DIR = ([$env.HOME, .cache ] | path join )
-$env.XDG_SESSION_TYPE = "wayland"
 
 
 # applications
@@ -36,7 +34,6 @@ $env.EDITOR = "nvim"
 $env.SYSTEMD_EDITOR = "nvim"
 
 # application config export
-$env.GRIM_DEFAULT_DIR = ([$env.HOME, Pictures/grim/ ] | path join )
 $env.STARSHIP_CACHE = ([$env.HOME, .starship/cache ] | path join )
 $env.STARSHIP_LOG = "error"
 $env.CHEAT_CONFIG_PATH = ([$env.HOME, .config/cheat/conf.yml ] | path join )
@@ -94,8 +91,6 @@ $env.PROMPT_INDICATOR_VI_INSERT = { || "" }
 $env.PROMPT_INDICATOR_VI_NORMAL = { || "" }
 $env.PROMPT_MULTILINE_INDICATOR = { || "" }
 $env.EDITOR = "nvim"
-$env.MPD_HOST = $"($env.XDG_RUNTIME_DIR)/mpd.socket"
-$env.MSCOUT_USE_TAGS = "true"
 $env.CARGO_HOME = ("~/.local/share/cargo/" | path expand)
 $env.RUSTUP_HOME = ("~/.local/share/rustup" | path expand)
 $env.LEDGER_FILE = ("~/.local/share/hledger/main.ledger" | path expand)
@@ -105,7 +100,6 @@ $env.LEDGER_FILE = ("~/.local/share/hledger/main.ledger" | path expand)
 $env.AWS_SHARED_CREDENTIALS_FILE = $"($env.XDG_CONFIG_HOME)/aws/credentials"
 $env.AWS_CONFIG_FILE = $"($env.XDG_CONFIG_HOME)/aws/config"
 
-$env.MPD_DIR =  $"($env.HOME)/Music"
 
 let STARSHIP_INIT_DIR = ([$env.XDG_CACHE_DIR, starship] | path join)
 let STARSHIP_INIT = ([$STARSHIP_INIT_DIR, init.nu] | path join)

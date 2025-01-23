@@ -1,0 +1,4 @@
+export MPD_HOST="$XDG_RUNTIME_DIR/mpd.socket"
+export MSCOUT_USE_TAGS="true"
+export MPD_DIR=~/Music
+export GRIM_DEFAULT_DIR=~/Pictures/grim/
