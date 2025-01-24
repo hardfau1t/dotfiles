@@ -38,7 +38,6 @@ in
     bottom
     clang-tools
     cliphist
-    dunst
     dust
     eww
     eza

@@ -7,7 +7,6 @@
         source = ./configs/bat;
         recursive = true;
       };
-      "dunst/dunstrc".source = ./configs/dunst/dunstrc;
       "ipython/profile_default/ipython_config.py".text = ''
         c = get_config()  #noqa
         c.TerminalIPythonApp.display_banner = False
