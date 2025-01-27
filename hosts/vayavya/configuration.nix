@@ -136,4 +136,6 @@ in
   virtualisation.docker.daemon.settings = {
     data-root = "/mnt/storage/docker";
   };
+  systemd.services.docker.wantedBy = [];
+  programs.openvpn3.enable = true;
 }

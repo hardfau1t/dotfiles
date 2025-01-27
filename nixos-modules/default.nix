@@ -138,5 +138,6 @@
     hardware.bluetooth.enable = true;
     hardware.bluetooth.powerOnBoot = true;
     powerManagement.cpuFreqGovernor = "ondemand";
+    boot.initrd.systemd.network.wait-online.timeout = 5;
   };
 }
