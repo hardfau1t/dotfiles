@@ -9,6 +9,7 @@
     ./nushell
     ./mpd.nix
     ./podman
+    ./mscout.nix
   ];
   options = {
 

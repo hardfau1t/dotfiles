@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mscout = {
+      url = "github:hardfau1t/mscout";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
