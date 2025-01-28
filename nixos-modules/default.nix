@@ -13,6 +13,9 @@
       type = lib.types.str;
       default = "nixos";
     };
+    main_user = lib.mkOption {
+      type = lib.types.str;
+    };
   };
   config = {
 

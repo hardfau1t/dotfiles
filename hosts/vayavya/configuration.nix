@@ -18,6 +18,7 @@ in
     ../../nixos-modules
     inputs.home-manager.nixosModules.default
   ];
+  inherit main_user;
 
   # Use the systemd-boot EFI boot loader.
   boot = {
@@ -36,7 +37,7 @@ in
     printing.enable = true;
     libinput.enable = true;
 
-    ollama.enable = true;
+    ollama.enable = false;
 
     pipewire.enable = true;
 
@@ -71,7 +72,6 @@ in
       "audio"
       "mpd"
       "podman"
-      "ollama"
     ];
     shell = pkgs.nushell;
   };
