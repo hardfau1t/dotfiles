@@ -13,10 +13,10 @@
     scripts.enable = lib.mkEnableOption "Enable custom scripts, which will get placed in ~/.local/bin";
     wallpapers.enable = lib.mkEnableOption "place wallpapers in specific path so that other applications can find it";
   };
-  config = {
-    gui_apps.enable = lib.mkDefault true;
+  config = rec {
+    gui_apps.enable = lib.mkDefault false;
     cli_apps.enable = lib.mkDefault true;
     scripts.enable = lib.mkDefault true;
-    wallpapers.enable = lib.mkDefault true;
+    wallpapers.enable = lib.mkDefault false;
   };
 }

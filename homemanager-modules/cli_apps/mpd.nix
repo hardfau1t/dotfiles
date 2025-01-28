@@ -2,6 +2,7 @@
   user,
   config,
   lib,
+  pkgs,
   ...
 }:
 lib.mkIf config.services.mpd.enable {
@@ -19,4 +20,5 @@ lib.mkIf config.services.mpd.enable {
       '';
     };
   };
+  home.packages = [ pkgs.mpc-cli ];
 }
