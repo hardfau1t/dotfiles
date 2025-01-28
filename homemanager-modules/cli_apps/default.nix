@@ -64,6 +64,7 @@
     programs = {
       nushell.enable = lib.mkDefault true;
       carapace.enable = lib.mkDefault true;
+
     };
     services = {
       mpd.enable = lib.mkDefault false;
