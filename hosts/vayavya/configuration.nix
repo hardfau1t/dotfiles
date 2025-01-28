@@ -70,7 +70,7 @@ in
       "video"
       "audio"
       "mpd"
-      "docker"
+      "podman"
       "ollama"
     ];
     shell = pkgs.nushell;
@@ -132,10 +132,19 @@ in
     nerd-fonts.symbols-only
     maple-mono-NF
   ];
-  virtualisation.docker.enable = true;
-  virtualisation.docker.daemon.settings = {
-    data-root = "/mnt/storage/docker";
+  virtualisation = {
+    # docker = {
+    #   enable = true;
+    #   daemon.settings = {
+    #     data-root = "/mnt/storage/docker";
+    #   };
+    # };
+    podman = {
+      enable = true;
+      defaultNetwork.settings.dns_enabled = true;
+      dockerCompat = true;
+      dockerSocket.enable = true;
+    };
   };
-  systemd.services.docker.wantedBy = [];
   programs.openvpn3.enable = true;
 }

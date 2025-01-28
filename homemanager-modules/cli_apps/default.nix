@@ -3,6 +3,7 @@
   imports = [
     ./nushell
     ./mpd.nix
+    ./podman
   ];
   options = {
 
