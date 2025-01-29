@@ -2,3 +2,5 @@ export MPD_HOST="$XDG_RUNTIME_DIR/mpd.socket"
 export MSCOUT_USE_TAGS="true"
 export MPD_DIR=~/Music
 export GRIM_DEFAULT_DIR=~/Pictures/grim/
+export PASSWORD_STORE_DIR=~/.config/password-store
+export GNUPGHOME=~/.config/gnupg

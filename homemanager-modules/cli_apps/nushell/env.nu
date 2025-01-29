@@ -40,8 +40,6 @@ $env.CHEAT_CONFIG_PATH = ([$env.HOME, .config/cheat/conf.yml ] | path join )
 $env.MOZ_ENABLE_WAYLAND = 1
 $env.MPC_FORMAT = "%position% \t- %title% \t- %file%"
 $env.MP_RATER_USE_TAGS = 1
-$env.PASSWORD_STORE_DIR = ([$env.HOME, .config/password-store ] | path join )
-$env.GNUPGHOME = ([$env.HOME, .config/gnupg ] | path join )
 #android studio
 $env.ANDROID_HOME = ([$env.XDG_DATA_HOME, android] | path join)
 #gdb
