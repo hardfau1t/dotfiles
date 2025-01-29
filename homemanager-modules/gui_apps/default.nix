@@ -28,6 +28,7 @@
       showmethekey
       slurp
       wl-clipboard
+      hyprpicker
     ];
   };
 }

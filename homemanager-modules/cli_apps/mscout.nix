@@ -10,7 +10,6 @@ in
 lib.mkIf config.services.mpd.enable {
   home.packages = [ mpkg ];
   systemd.user.services.mscout = {
-    enable = true;
     Unit = {
       Description = "My Rust Application Service";
       After = [
