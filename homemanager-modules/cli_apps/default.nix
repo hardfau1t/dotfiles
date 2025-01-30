@@ -41,6 +41,7 @@
       python312Packages.ipython
       python312
       ripgrep
+      ruff
       sqlite
       starship
       stow

@@ -48,7 +48,7 @@ local opts = {
             config = {
                 default_keybinds = true,
                 neorg_leader = "\\",
-                hook = require("cfg.neorg.keymaps").set_keymaps,
+                -- hook = require("cfg.neorg.keymaps").set_keymaps,
             },
         },
     },
