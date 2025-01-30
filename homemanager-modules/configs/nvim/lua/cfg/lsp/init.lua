@@ -1,5 +1,7 @@
 local mod = {}
 require("cfg.lsp.visuals")
+local nav_buddy_available, nav_buddy = pcall(require, "nvim-navbuddy")
+local navic_avail, navic = pcall(require, "nvim-navic")
 
 -- cursor highlighting enable
 local function documentHighlight(client, bufnr)
@@ -42,18 +44,18 @@ local function default_attach(client, bufnr)
     -- setup lsp keymap for given buffer
     require("cfg.lsp.keymaps").setup(bufnr)
     -- enable navbuddy and navic
-    local nav_buddy_available, nav_buddy = pcall(require, "nvim-navbuddy")
-    if nav_buddy_available and client.server_capabilities.documentSymbolProvider then
-        nav_buddy.attach(client, bufnr)
-    else
-        vim.api.nvim_notify("nav_buddy is not installed or server has no documentSymbolProvider capabilities",
-            vim.log.levels.WARN, {})
-    end
-    local navic_avail, navic = pcall(require, "nvim-navic")
-    if navic_avail and client.server_capabilities.documentSymbolProvider then
-        navic.attach(client, bufnr)
-    else
-        vim.api.nvim_notify("navic is not installed or server has no capabilities", vim.log.levels.WARN, {})
+    if client.server_capabilities.documentSymbolProvider then
+        if nav_buddy_available then
+            nav_buddy.attach(client, bufnr)
+        else
+            vim.api.nvim_notify("nav_buddy is not installed or server has no documentSymbolProvider capabilities",
+                vim.log.levels.WARN, {})
+        end
+        if navic_avail then
+            navic.attach(client, bufnr)
+        else
+            vim.api.nvim_notify("navic is not installed or server has no capabilities", vim.log.levels.WARN, {})
+        end
     end
 
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
@@ -93,22 +95,27 @@ mod.setup = function()
     -- progress widget
     local fidget_available, fidget = pcall(require, "fidget")
     if fidget_available then
-        fidget.setup()
+        fidget.setup({})
     end
     local cmp_lsp_available, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
     require("vim.lsp.log").set_level(vim.log.levels.WARN)
     for provider, setup in pairs(config) do
         local provider_attach = setup.on_attach
+
         setup.on_attach = function(client, bufnr)
+            default_attach(client, bufnr)
             if provider_attach then
                 provider_attach(client, bufnr)
             end
-            default_attach(client, bufnr)
         end
-        setup.capabilities = vim.lsp.protocol.make_client_capabilities()
+
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        -- enable cmp capabilities
         if cmp_lsp_available then
-            setup.capabilities = cmp_nvim_lsp.default_capabilities()
+            capabilities = vim.tbl_deep_extend("force", capabilities, cmp_nvim_lsp.default_capabilities())
         end
+
+        setup.capabilities = capabilities
         lspconfig[provider].setup(setup)
     end
 end

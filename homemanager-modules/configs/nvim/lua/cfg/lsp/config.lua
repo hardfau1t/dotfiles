@@ -114,16 +114,43 @@ local cfg = {
             }
         }
     },
-    ["nushell"] = { },
-    -- ["ruff"] = {
-    --     cmd_env = { RUFF_TRACE = "messages" },
-    --     init_options = {
-    --         settings = {
-    --             logLevel = "debug",
-    --         }
-    --     }
-    -- },
+    ["nushell"] = {},
+    ["ruff"] = {
+        on_attach = function(client, _bufnr)
+            client.server_capabilities = vim.tbl_deep_extend('force', client.server_capabilities, {
+                callHierarchyProvider = false,
+                completionProvider = false,
+                declarationProvider = false,
+                definitionProvider = false,
+                documentHighlightProvider = false,
+                documentSymbolProvider = false,
+                -- use hover from pyright, as it provides better results
+                hoverProvider = false,
+                referencesProvider = false,
+                renameProvider = false,
+                signatureHelpProvider = false,
+                typeDefinitionProvider = false,
+                workspaceSymbolProvider = false
+            })
+        end,
+        cmd_env = { RUFF_TRACE = "messages" },
+        init_options = {
+            settings = {
+                logLevel = "debug",
+            }
+        }
+    },
     ["pyright"] = {
+        on_attach = function(client, _bufnr)
+            client.server_capabilities = vim.tbl_deep_extend('force', client.server_capabilities, {
+                codeActionProvider = false,
+                diagnosticProvider = false,
+                documentFormattingProvider = true,
+                documentRangeFormattingProvider = true,
+                executeCommandProvider = false,
+                notebookDocumentSync = false,
+            })
+        end,
         settings = {
             pyright = {
                 -- disableOrganizeImports = true, -- Using Ruff
