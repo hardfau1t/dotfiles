@@ -25,7 +25,7 @@ lib.mkIf config.services.mpd.enable {
     };
 
     Install = {
-      WantedBy = [ "graphical.target" ];
+      WantedBy = [ "graphical-session.target" ];
     };
   };
 }

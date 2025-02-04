@@ -36,4 +36,5 @@ local function math_expr()
     vim.keymap.set("n", "<esc>", write_expr, { buffer = buf })
 end
 
+  
 return mod
