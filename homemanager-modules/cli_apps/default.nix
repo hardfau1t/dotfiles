@@ -43,6 +43,7 @@
       python312
       ripgrep
       ruff
+      rust-analyzer
       sqlite
       starship
       stow
