@@ -20,6 +20,7 @@
       bash-language-server
       bat
       bottom
+      cargo
       clang-tools
       dust
       eza
