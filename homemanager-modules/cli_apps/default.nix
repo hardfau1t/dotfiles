@@ -20,7 +20,6 @@
       bash-language-server
       bat
       bottom
-      cargo
       clang-tools
       dust
       eza
@@ -43,7 +42,7 @@
       python312
       ripgrep
       ruff
-      rust-analyzer
+      rustup
       sqlite
       starship
       stow
