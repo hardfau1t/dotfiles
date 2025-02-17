@@ -34,12 +34,12 @@
       nixfmt-rfc-style
       nodePackages.vscode-json-languageserver
       nushellPlugins.polars
-      openssl
       pass
       pkg-config
       pyright
-      python312Packages.ipython
-      python312
+      (python312.withPackages (ps: [
+        ps.ipython
+      ]))
       ripgrep
       ruff
       rustup
@@ -64,6 +64,9 @@
       #   echo "Hello, ${config.home.username}!"
       # '')
     ];
+    home.sessionVariables = {
+      LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [ pkgs.openssl ];
+    };
     programs = {
       nushell.enable = lib.mkDefault true;
       carapace.enable = lib.mkDefault true;

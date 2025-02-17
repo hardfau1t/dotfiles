@@ -45,10 +45,6 @@
         source = ./configs/uwsm;
         recursive = true;
       };
-      "waybar" = {
-        source = ./configs/waybar;
-        recursive = true;
-      };
     };
   };
 }

@@ -6,11 +6,12 @@
   ...
 }:
 {
-  imports = [ ./dunst ];
+  imports = [ ./dunst ./waybar];
   options = { };
   config = lib.mkIf config.gui_apps.enable {
     services.hyprpaper.enable = lib.mkDefault osConfig.programs.hyprland.enable;
     services.dunst.enable = lib.mkDefault osConfig.programs.hyprland.enable;
+    programs.waybar.enable = lib.mkDefault osConfig.programs.hyprland.enable;
     home.packages = with pkgs; [
       alacritty
       cliphist

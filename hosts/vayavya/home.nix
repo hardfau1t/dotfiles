@@ -25,13 +25,6 @@ in
     # custom_freecad
   ];
 
-  programs = {
-    waybar = {
-      enable = true;
-      systemd.enable = true;
-      systemd.target = "graphical-session.target";
-    };
-  };
   services.mpd.enable = true;
   # wayland.windowManager.hyprland.enable = false;
   containers-storage = "/mnt/storage/podman/${user.name}/";
