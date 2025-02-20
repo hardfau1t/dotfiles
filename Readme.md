@@ -1,9 +1,9 @@
 ## Dotfiles
-My dot files for arch/sway desktop.
+My dot files for ~arch/sway~ nix/hyprland desktop.
 
 ---
 
-###Note: these screenshots are from commit **b4fc8ad** or [link](https://github.com/hardfau18/dotfiles/tree/v1)
+###Note: these screenshots are from commit **b4fc8ad** or [link](https://github.com/hardfau18/dotfiles/tree/v1) and meant for arch/(sway/hyprland)
 
 ![screenshot](screenshot.png)
 
