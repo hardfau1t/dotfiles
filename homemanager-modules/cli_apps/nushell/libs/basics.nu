@@ -183,3 +183,49 @@ export def clock [ ] {
     }
 }
 
+
+# find nearby random mac which is not in your current network
+export def random-mac [
+    ifname: string, # name of the interface to scan
+    --set(-s), # set the mac address to that interface
+    --no-scan, # don't scan network continue with current
+] {
+    let ip_info = ip -j a show dev $ifname
+        | from json 
+        | first 
+    let mac = $ip_info.address
+    let addresses = $ip_info.addr_info
+        | where family == inet and scope == global 
+    let addresses = $addresses | each {|addr|
+        if not $no_scan {
+            nmap -sn $"($addr.local)/($addr.prefixlen)" | ignore # just ping all interfaces
+        }
+        # get all neighbours
+        ip -j n show dev wlan0  
+        | from json 
+        | get lladdr -i 
+        | compact
+        | each {|neigh| {
+            addr: $neigh,
+            distance: ($neigh | str distance $mac)
+            }} 
+        | sort-by  distance 
+        | insert new_addr {|row| $row.addr 
+            | split column ':'  
+            | update column6 {|oct| 
+                ((($oct.column6 | into int -r 16 ) + 1 ) mod 256 | fmt | get lowerhex  | str substring 2..)
+                | into string
+            } 
+            | transpose -i 
+            | get column0 
+            | str join ':'
+        }  
+    } | flatten
+    let existing_addr = $addresses.addr?
+    let new_addr = $addresses.new_addr | where $it not-in existing_addr | first
+    if $set {
+        print -e $'replacing old mac ($mac) with new ($new_addr)'
+        sudo ip link set dev $ifname addr $new_addr
+    }
+    $new_addr
+}
