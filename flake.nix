@@ -20,12 +20,21 @@
       packages = nixpkgs.legacyPackages.${system};
     in
     {
-      nixosConfigurations.vayavya = nixpkgs.lib.nixosSystem {
+      nixosConfigurations = {
+      vayavya = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/vayavya/configuration.nix
           ./nixos-modules
         ];
+      };
+      thinkpad = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/thinkpad/configuration.nix
+          ./nixos-modules
+        ];
+      };
       };
       homeManagerModules.default = ./homemanager-modules;
 
