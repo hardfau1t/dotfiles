@@ -14,7 +14,7 @@
   };
 
   outputs =
-    { self, nixpkgs, ... }@inputs:
+    { self, nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       packages = nixpkgs.legacyPackages.${system};
@@ -35,14 +35,17 @@
             ./nixos-modules
           ];
         };
-        bare_home = nixpkgs.lib.nixosSystem {
+      };
+
+      homeManagerModules.default = ./homemanager-modules;
+
+      homeConfigurations = {
+        bare_home = home-manager.lib.homeManagerConfiguration {
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/bare_home/home.nix
           ];
         };
       };
-      homeManagerModules.default = ./homemanager-modules;
-
     };
 }
