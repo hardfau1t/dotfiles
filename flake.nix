@@ -21,20 +21,26 @@
     in
     {
       nixosConfigurations = {
-      vayavya = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/vayavya/configuration.nix
-          ./nixos-modules
-        ];
-      };
-      thinkpad = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/thinkpad/configuration.nix
-          ./nixos-modules
-        ];
-      };
+        vayavya = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/vayavya/configuration.nix
+            ./nixos-modules
+          ];
+        };
+        thinkpad = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/thinkpad/configuration.nix
+            ./nixos-modules
+          ];
+        };
+        bare_home = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/bare_home/home.nix
+          ];
+        };
       };
       homeManagerModules.default = ./homemanager-modules;
 
