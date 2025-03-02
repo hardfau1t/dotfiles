@@ -22,6 +22,7 @@ in
     yt-dlp
     wesnoth
     angband
+    openvpn
     # custom_freecad
   ];
 

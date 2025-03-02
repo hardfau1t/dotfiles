@@ -43,6 +43,7 @@
       ripgrep
       ruff
       rustup
+      socat
       sqlite
       starship
       stow
