@@ -229,3 +229,9 @@ export def random-mac [
     }
     $new_addr
 }
+
+# download content from seedr with proper filename
+def seedr [ link: string ] {
+    let title = $link | url parse | get path | split row '/' | last | url decode
+    wget -O $title $link
+}
