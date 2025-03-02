@@ -41,7 +41,7 @@
 
       homeConfigurations = {
         bare_home = home-manager.lib.homeManagerConfiguration {
-          specialArgs = { inherit inputs; };
+          pkgs = packages;
           modules = [
             ./hosts/bare_home/home.nix
           ];
