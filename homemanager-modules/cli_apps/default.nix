@@ -34,7 +34,6 @@
       nixfmt-rfc-style
       nodePackages.vscode-json-languageserver
       nushellPlugins.polars
-      pass
       pkg-config
       pyright
       (python312.withPackages (ps: [
@@ -71,6 +70,13 @@
     programs = {
       nushell.enable = lib.mkDefault true;
       carapace.enable = lib.mkDefault true;
+      password-store = {
+        enable = true;
+        package = pkgs.pass.withExtensions (exts: [ exts.pass-otp ]);
+        settings = {
+          PASSWORD_STORE_DIR = "$XDG_CONFIG_HOME/password-store";
+        };
+      };
 
     };
     services = {
