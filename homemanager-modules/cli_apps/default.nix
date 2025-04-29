@@ -27,7 +27,6 @@
       fzf
       gnumake
       lua-language-server
-      maple-mono
       moreutils # for vipe
       neovim
       nil
@@ -51,18 +50,7 @@
       tokei
       zellij
       nerd-fonts.symbols-only
-      maple-mono-NF
-      # # It is sometimes useful to fine-tune packages, for example, by applying
-      # # overrides. You can do that directly here, just don't forget the
-      # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-      # # fonts?
-
-      # # You can also create simple shell scripts directly inside your
-      # # configuration. For example, this adds a command 'my-hello' to your
-      # # environment:
-      # (pkgs.writeShellScriptBin "my-hello" ''
-      #   echo "Hello, ${config.home.username}!"
-      # '')
+      maple-mono.NF
     ];
     home.sessionVariables = {
       LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [ pkgs.openssl ];

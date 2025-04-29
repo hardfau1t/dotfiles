@@ -146,10 +146,10 @@ $env.config = {
         }
     }
 
-    filesize : {
-        unit : "metric"
-        precision: 1
-    }
+    # filesize : {
+    #     unit : "metric"
+    #     precision: 1
+    # }
 
     cursor_shape: {
         emacs: line # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (line is the default)

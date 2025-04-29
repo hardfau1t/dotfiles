@@ -15,6 +15,7 @@ in
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./docker.nix
     ../../nixos-modules
     inputs.home-manager.nixosModules.default
   ];
@@ -37,7 +38,7 @@ in
     printing.enable = true;
     libinput.enable = true;
 
-    ollama.enable = false;
+    ollama.enable = true;
 
     pipewire.enable = true;
 
@@ -72,6 +73,8 @@ in
       "audio"
       "mpd"
       "podman"
+      "docker"
+      "ollama"
     ];
     shell = pkgs.nushell;
   };
@@ -130,21 +133,21 @@ in
   ];
   fonts.packages = with pkgs; [
     nerd-fonts.symbols-only
-    maple-mono-NF
+    maple-mono.NF
   ];
   virtualisation = {
-    # docker = {
-    #   enable = true;
-    #   daemon.settings = {
-    #     data-root = "/mnt/storage/docker";
-    #   };
-    # };
-    podman = {
+    docker = {
       enable = true;
-      defaultNetwork.settings.dns_enabled = true;
-      dockerCompat = true;
-      dockerSocket.enable = true;
+      daemon.settings = {
+        data-root = "/mnt/storage/docker";
+      };
     };
+    # podman = {
+    #   enable = true;
+    #   defaultNetwork.settings.dns_enabled = true;
+    #   dockerCompat = true;
+    #   dockerSocket.enable = true;
+    # };
   };
   programs.openvpn3.enable = true;
 }

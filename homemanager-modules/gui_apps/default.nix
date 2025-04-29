@@ -3,13 +3,17 @@
   config,
   osConfig,
   pkgs,
+  inputs,
   ...
 }:
+let
+  zen = inputs.zen-browser.packages.x86_64-linux.specific;
+in
 {
   imports = [
     ./dunst
     ./waybar
-    ./zen.nix
+    # ./zen.nix
   ];
   options = { };
   config = lib.mkIf config.gui_apps.enable {
@@ -34,6 +38,6 @@
       slurp
       wl-clipboard
       hyprpicker
-    ];
+    ] ++ [zen];
   };
 }

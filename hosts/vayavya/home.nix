@@ -1,13 +1,11 @@
 {
   pkgs,
   user,
-  config,
+  inputs,
   ...
 }:
 let
-  custom_freecad = pkgs.freecad-wayland.overrideAttrs {
-    buildInputs = pkgs.freecad-wayland.buildInputs ++ [ pkgs.python311Packages.ifcopenshell ];
-  };
+  system = "x86_64-linux";
 in
 {
   imports = [
@@ -18,13 +16,17 @@ in
 
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
-  home.packages = with pkgs; [
-    yt-dlp
-    wesnoth
-    angband
-    openvpn
-    # custom_freecad
-  ];
+  home.packages =
+    with pkgs;
+    [
+      yt-dlp
+      wesnoth
+      angband
+      openvpn
+      # (freecad-wayland.override { ifcSupport = true; })
+      # custom_freecad
+    ];
+    # ++ [ (inputs.bleeding.legacyPackages.${system}.freecad-wayland.override { ifcSupport = true; }) ];
 
   services.mpd.enable = true;
   # wayland.windowManager.hyprland.enable = false;
