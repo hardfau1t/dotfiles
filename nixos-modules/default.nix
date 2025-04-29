@@ -70,6 +70,14 @@
         enable = true;
         libraries = with pkgs; [
           libpulseaudio
+          gtk3
+          alsa-lib
+          xorg.libX11
+          xorg.libxcb
+          xorg.libXext
+          xorg.libXrandr
+          xorg.libXcomposite
+          xorg.libXcursor
         ];
       };
       gnupg.agent = {
@@ -102,12 +110,14 @@
     };
     environment = {
       systemPackages = with pkgs; [
+        android-udev-rules
         eza
         ffmpeg
         file
         gcc
         git
         neovim
+        jmtpfs
         nixfmt-rfc-style
         nushell
         unzip
@@ -141,6 +151,6 @@
     hardware.bluetooth.enable = true;
     hardware.bluetooth.powerOnBoot = true;
     powerManagement.cpuFreqGovernor = "ondemand";
-    boot.initrd.systemd.network.wait-online.timeout = 5;
+    boot.initrd.systemd.network.wait-online.enable = false;
   };
 }
