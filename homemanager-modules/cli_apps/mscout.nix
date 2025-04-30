@@ -2,10 +2,11 @@
   lib,
   inputs,
   config,
+  pkgs,
   ...
 }:
 let
-  mpkg = inputs.mscout.packages.x86_64-linux.default;
+  mpkg = inputs.mscout.packages.${pkgs.system}.default;
 in
 lib.mkIf config.services.mpd.enable {
   home.packages = [ mpkg ];
