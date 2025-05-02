@@ -235,3 +235,18 @@ def seedr [ link: string ] {
     let title = $link | url parse | get path | split row '/' | last | url decode
     wget -O $title $link
 }
+
+def "nix search" [ 
+    --full(-f), # show all results
+    key: string 
+] {
+    ^nix search nixpkgs $key --json
+    | from json
+    | transpose name desc
+    | update name { str substring 28.. }
+    | sort-by {
+        get name
+        | str distance $key
+    }
+    | if not $full { first 5 } else {}
+}
