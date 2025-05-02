@@ -27,6 +27,8 @@
       fzf
       gnumake
       lua-language-server
+      lua51Packages.lua # for neovim
+      lua51Packages.luarocks # for neovim
       moreutils # for vipe
       neovim
       nil
