@@ -159,11 +159,11 @@ ins_left({
 ins_left({
     -- Lsp server name .
     function()
-        local msg = "No Active Lsp"
-        local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-        local clients = vim.lsp.get_active_clients()
+        local error_msg = "No Active Lsp"
+        local buf_ft = vim.api.nvim_get_option_value("filetype", { scope = "local" })
+        local clients = vim.lsp.get_clients()
         if next(clients) == nil then
-            return msg
+            return error_msg
         end
         for _, client in ipairs(clients) do
             local filetypes = client.config.filetypes
@@ -175,7 +175,7 @@ ins_left({
                 return client.name
             end
         end
-        return msg
+        return error_msg
     end,
     icon = " LSP:",
     color = { fg = "#ffffff", gui = "bold" },
