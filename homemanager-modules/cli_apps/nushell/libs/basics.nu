@@ -4,7 +4,7 @@ export def wait-for [host: string] {
     let syms = [ '/' '|' '\' '-' ]
     mut i = 0
     loop {
-        let resp = (do -s {ping -c 1 -W 1 -q $host }| complete)
+        let resp = (do -i {ping -c 1 -W 1 -q $host }| complete)
         if $resp.exit_code == 0 {
             (notify-send -t 5000 $"($host)" "up" | complete )| null
             do -i {mpv /usr/share/sounds/freedesktop/stereo/complete.oga} | complete | null
