@@ -7,6 +7,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs_pinned.url = "github:nixos/nixpkgs?ref=dda3dcd3fe03e991015e9a74b22d35950f264a54";
     mscout = {
       url = "github:hardfau1t/mscout";
       inputs.nixpkgs.follows = "nixpkgs";

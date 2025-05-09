@@ -24,9 +24,8 @@ in
       angband
       openvpn
       # (freecad-wayland.override { ifcSupport = true; })
-      # custom_freecad
-    ];
-    # ++ [ (inputs.bleeding.legacyPackages.${system}.freecad-wayland.override { ifcSupport = true; }) ];
+    ]
+     ++ [ (inputs.nixpkgs_pinned.legacyPackages.${system}.freecad-wayland.override { ifcSupport = true; }) ];
 
   services.mpd.enable = true;
   # wayland.windowManager.hyprland.enable = false;
