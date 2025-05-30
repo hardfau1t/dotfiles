@@ -51,6 +51,7 @@
       tealdeer
       tokei
       zellij
+      zip
       nerd-fonts.symbols-only
       maple-mono.NF
     ];
