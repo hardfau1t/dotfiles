@@ -40,6 +40,7 @@ in
     ollama.enable = false;
 
     pipewire.enable = true;
+    home-assistant.enable = true;
 
     minidlna = {
       enable = true;

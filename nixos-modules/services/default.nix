@@ -6,6 +6,7 @@
   imports = [
     ./ollama.nix
     ./pipewire.nix
+    ./homeassistant.nix
   ];
   config = {
     services = {
