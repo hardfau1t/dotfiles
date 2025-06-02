@@ -21,10 +21,10 @@ in
     [
       yt-dlp
       wesnoth
-      angband
       openvpn
       # (freecad-wayland.override { ifcSupport = true; })
     ]
+    ++ [inputs.angband.packages.${system}.angband-gcu]
      ++ [ (inputs.nixpkgs_pinned.legacyPackages.${system}.freecad-wayland.override { ifcSupport = true; }) ];
 
   services.mpd.enable = true;

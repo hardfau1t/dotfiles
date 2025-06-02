@@ -16,6 +16,10 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    angband = {
+      url = "github:hardfau1t/angband";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

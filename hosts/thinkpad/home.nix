@@ -1,10 +1,11 @@
 {
   pkgs,
   user,
-  config,
+  inputs,
   ...
 }:
 let
+  system = "x86_64-linux";
   custom_freecad = pkgs.freecad-wayland.overrideAttrs {
     buildInputs = pkgs.freecad-wayland.buildInputs ++ [ pkgs.python311Packages.ifcopenshell ];
   };
@@ -23,7 +24,9 @@ in
     wesnoth
     angband
     # custom_freecad
-  ];
+  ]
+    ++ [inputs.angband.packages.${system}.angband-gcu]
+  ;
 
   programs = {
     waybar = {

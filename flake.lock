@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "angband": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1748846641,
+        "narHash": "sha256-b3IlYeS++vjoA/l3ekuxjaiqfjUZdP5miHJscmbY0Qk=",
+        "owner": "hardfau1t",
+        "repo": "angband",
+        "rev": "d79c7d96af56f08189b03a3b52163bd468aaf465",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hardfau1t",
+        "repo": "angband",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -94,6 +114,7 @@
     },
     "root": {
       "inputs": {
+        "angband": "angband",
         "home-manager": "home-manager",
         "mscout": "mscout",
         "nixpkgs": "nixpkgs",
