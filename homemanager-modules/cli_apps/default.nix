@@ -16,6 +16,7 @@
   };
   config = lib.mkIf config.cli_apps.enable {
     home.packages = with pkgs; [
+      ani-cli
       aria2
       bash-language-server
       bat
