@@ -24,7 +24,7 @@ $env.XDG_CACHE_DIR = ([$env.HOME, .cache ] | path join )
 
 # applications
 $env.CM_LAUNCHER = "fuzzel"
-$env.BROWSER = "firefox"
+$env.BROWSER = "zen"
 $env.TERMINAL = "alacritty"
 $env.READER = "zathura"
 $env.MANPAGER = "sh -c 'col -bx |bat -l man -p'"
