@@ -12,9 +12,11 @@
     host_name = lib.mkOption {
       type = lib.types.str;
       default = "nixos";
+      description = "host name for the system";
     };
     main_user = lib.mkOption {
       type = lib.types.str;
+      description = "main user of this system";
     };
   };
   config = {
@@ -29,6 +31,11 @@
 
     console = {
       keyMap = "dvorak";
+    };
+    documentation = {
+      dev.enable = true;
+      man.generateCaches = true;
+      nixos.includeAllModules = true;
     };
     networking = {
       hostName = config.host_name; # Define your hostname.
@@ -122,6 +129,8 @@
         nushell
         unzip
         wget
+        man-pages
+        man-pages-posix
       ];
     };
 

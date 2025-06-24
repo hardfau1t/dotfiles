@@ -43,7 +43,7 @@ in
     pipewire.enable = true;
 
     minidlna = {
-      enable = true;
+      enable = false;
       settings = {
         media_dir = [
           "/home/gireesh/Videos/demon-slayer"
