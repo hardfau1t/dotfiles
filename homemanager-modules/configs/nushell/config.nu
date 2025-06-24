@@ -720,6 +720,7 @@ alias hl = hledger --pretty --strict
 alias hle = ^$env.EDITOR $env.LEDGER_FILE
 alias hla = ^hledger --strict add
 alias hms = home-manager switch
+alias angband = angband -ssdl -uhardfau1t -mgcu   -- -B -spacer $'((term size).columns // 80)x((term size).rows // 25)' -left $'((term size).columns // 4.6)x((term size).rows // 2),*' -right $'((term size).columns // 4.6)x((term size).rows // 2),*' -top $'*x((term size).rows // 7)'
 
 source libs/wrappers.nu
 source libs/basics.nu
