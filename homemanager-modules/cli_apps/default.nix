@@ -6,7 +6,6 @@
 }:
 {
   imports = [
-    ./nushell
     ./mpd.nix
     ./podman
     ./mscout.nix
@@ -21,6 +20,7 @@
       bash-language-server
       bat
       bottom
+      carapace
       clang-tools
       dust
       eza
@@ -36,6 +36,8 @@
       nixfmt-rfc-style
       nodePackages.vscode-json-languageserver
       nushellPlugins.polars
+      nushell
+
       pkg-config
       pyright
       (python312.withPackages (ps: [
@@ -61,8 +63,6 @@
       LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [ pkgs.openssl ];
     };
     programs = {
-      nushell.enable = lib.mkDefault true;
-      carapace.enable = lib.mkDefault true;
       password-store = {
         enable = true;
         package = pkgs.pass.withExtensions (exts: [ exts.pass-otp ]);

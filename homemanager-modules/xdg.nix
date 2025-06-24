@@ -1,6 +1,8 @@
 { config, ... }:
 let
-  create_dot_path = file_path: config.lib.file.mkOutOfStoreSymlink "${config.dots_dir}/homemanager-modules/configs/${file_path}";
+  create_dot_path =
+    file_path:
+    config.lib.file.mkOutOfStoreSymlink "${config.dots_dir}/homemanager-modules/configs/${file_path}";
 in
 {
   xdg = {
@@ -45,6 +47,13 @@ in
       };
       uwsm = {
         source = create_dot_path "uwsm";
+        recursive = true;
+      };
+      "nushell/config.nu".source = create_dot_path "nushell/config.nu";
+      "nushell/env.nu".source = create_dot_path "nushell/env.nu";
+      "nushell/login.nu".source = create_dot_path "nushell/login.nu";
+      "nushell/libs" = {
+        source = create_dot_path "nushell/libs";
         recursive = true;
       };
     };
