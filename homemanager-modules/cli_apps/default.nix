@@ -55,6 +55,7 @@
       zip
       nerd-fonts.symbols-only
       maple-mono.NF
+      noto-fonts
     ];
     home.sessionVariables = {
       LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [ pkgs.openssl ];
