@@ -2,56 +2,15 @@
 {
     "ipc" : true,
     "height": 12,
-    "modules-left": ["hyprland/workspaces", "mpd"],
+    "modules-left": ["hyprland/workspaces", "hyprland/window", "mpd"],
     "modules-center": ["clock"],
     "modules-right": [ "wireplumber", "bluetooth", "network", "disk", "memory", "cpu", "backlight", "battery","custom/power", "tray"],
 
-    "wlr/workspaces": {
-      "format": "{icon}",
-      "on-click": "activate",
-      "sort-by-number": true,
-      "format-icons": {
-        "1": "",
-        "2": "",
-        "3": "",
-        "4": "",
-        "5": "❺",
-        "6": "❻",
-        "7": "❼",
-        "8": "",
-        "9": "❾",
-        "0": "",
-        "focused": "",
-        "urgent": "",
-        "default": ""
-      }
+    "hyprland/workspaces": {
+        "special-visible-only": true
     },
-    "sway/workspaces": {
-      "disable-scroll": false,
-      "all-outputs": true,
-      "format": "{icon}",
-      "persistent_workspaces": {},
-      "disable-markup": true,
-      "format-icons": {
-        "1": "",
-        /* "1": "❶", */
-        "2": "",
-        /* "2": "❷", */
-        "3": "",
-        /* "3": "❸", */
-        /* "4": "❹", */
-        "4": "",
-        "5": "❺",
-        "6": "❻",
-        "7": "❼",
-        "8": "",
-        /* "8": "❽", */
-        "9": "❾",
-        "0": "",
-        "focused": "",
-        "urgent": "",
-        "default": ""
-      }
+    "hyprland/window": {
+        "separate-outputs": true
     },
     "tray": {
     },

@@ -37,6 +37,12 @@
   color: @sapphire;
   border-radius: 1rem;
 }
+window#waybar.fullscreen {
+  color: @red;
+  background-color: @base;
+  border-radius: 1rem;
+}
+
 
 #custom-music,
 #tray,

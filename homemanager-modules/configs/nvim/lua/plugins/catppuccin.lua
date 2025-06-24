@@ -4,7 +4,7 @@ return {
     priority = 1000,
     opts = {
         flavour = 'macchiato',
-        transparent_background = false,
+        transparent_background = true,
         term_colors = true,
     }
 }
