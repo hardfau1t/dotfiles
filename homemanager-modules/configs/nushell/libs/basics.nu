@@ -130,13 +130,17 @@ export def get-song [
     }
 }
 
-export def "journal save" [] {
+export def "journal sync" [] {
     cd ~/.personal/
     if not ( git diff | is-empty) {
         git add .
         git commit -m $"(date now | format date  "%d-%m-%Y")"
     }
-    git pull
+    try {
+        git pull
+    } catch {
+        print -e "failed to pull remote changes, manually pull and then push the changes"
+    }
     git push
 }
 
