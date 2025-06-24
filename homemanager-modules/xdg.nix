@@ -1,10 +1,13 @@
-{ ... }:
+{ config, ... }:
+let
+  create_dot_path = file_path: config.lib.file.mkOutOfStoreSymlink "${config.dots_dir}/homemanager-modules/configs/${file_path}";
+in
 {
   xdg = {
     configFile = {
-      "starship.toml".source = ./configs/starship.toml;
+      "starship.toml".source = create_dot_path "starship.toml";
       "bat" = {
-        source = ./configs/bat;
+        source = create_dot_path "bat";
         recursive = true;
       };
       "ipython/profile_default/ipython_config.py".text = ''
@@ -17,32 +20,31 @@
         c.TerminalInteractiveShell.quiet = True
       '';
       "nvim" = {
-        source = ./configs/nvim;
+        source = create_dot_path "nvim";
         recursive = true;
       };
       "xkb" = {
-        source = ./configs/xkb;
+        source = create_dot_path "xkb";
         recursive = true;
       };
       "eww" = {
-        source = ./configs/eww;
+        source = create_dot_path "eww";
         recursive = true;
       };
       "hypr" = {
-        source = ./configs/hypr;
+        source = create_dot_path "hypr";
         recursive = true;
       };
-      # ".config/starship.toml".source = ./configs/starship.toml;
       "zellij" = {
-        source = ./configs/zellij;
+        source = create_dot_path "zellij";
         recursive = true;
       };
       "alacritty" = {
-        source = ./configs/alacritty;
+        source = create_dot_path "alacritty";
         recursive = true;
       };
       uwsm = {
-        source = ./configs/uwsm;
+        source = create_dot_path "uwsm";
         recursive = true;
       };
     };

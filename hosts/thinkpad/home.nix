@@ -15,6 +15,7 @@ in
     ../../homemanager-modules
   ];
   home.username = "${user.name}";
+  dots_dir = "/home/${user.name}/.dots/";
   home.homeDirectory = "/home/${user.name}";
 
   home.stateVersion = "24.05"; # Please read the comment before changing.
