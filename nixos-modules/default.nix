@@ -34,7 +34,7 @@
     };
     documentation = {
       dev.enable = true;
-      man.generateCaches = true;
+      man.generateCaches = false;
       nixos.includeAllModules = true;
     };
     networking = {

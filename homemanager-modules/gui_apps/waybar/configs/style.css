@@ -43,6 +43,10 @@ window#waybar.fullscreen {
   border-radius: 1rem;
 }
 
+#window {
+    padding-right: 1em;
+}
+
 
 #custom-music,
 #tray,
