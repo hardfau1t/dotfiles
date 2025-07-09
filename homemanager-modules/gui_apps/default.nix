@@ -36,6 +36,7 @@ in
       pinentry-gtk2
       showmethekey
       slurp
+      helvum
       wl-clipboard
       hyprpicker
     ] ++ [zen];

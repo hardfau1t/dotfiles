@@ -10,7 +10,8 @@
         "special-visible-only": true
     },
     "hyprland/window": {
-        "separate-outputs": true
+        "separate-outputs": true,
+        "format": "[{class}]"
     },
     "tray": {
     },
@@ -136,6 +137,7 @@
     "wireplumber": {
         "format": "{icon} {volume}%",
         "format-muted": " {volume}%",
-        "format-icons": ["", "", ""]
+        "format-icons": ["", "", ""],
+        "on-click": "hyprctl dispatch exec '[float]' helvum"
     }
 }
