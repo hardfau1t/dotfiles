@@ -53,6 +53,7 @@
       taplo
       tealdeer
       tokei
+      vhdl-ls
       zellij
       zip
       nerd-fonts.symbols-only
