@@ -118,6 +118,8 @@ mod.setup = function()
         setup.capabilities = capabilities
         lspconfig[provider].setup(setup)
     end
+    -- new format of lsp setup 
+    vim.lsp.enable("vhdl_ls")
 end
 
 return mod
