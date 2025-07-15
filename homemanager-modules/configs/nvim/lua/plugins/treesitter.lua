@@ -33,6 +33,7 @@ local config = {
 
 return {
     "nvim-treesitter/nvim-treesitter",
+    branch = "master",
     config = function()
         require("nvim-treesitter.configs").setup(config)
     end,
