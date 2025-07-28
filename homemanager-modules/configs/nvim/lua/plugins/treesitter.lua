@@ -1,4 +1,4 @@
-local config = {
+local configs = {
     ensure_installed = {
         "bash",
         "c",
@@ -10,7 +10,7 @@ local config = {
         "markdown",
         "norg",
         "norg_meta",
-        "nu",
+        -- "nu",
         "python",
         "rust",
         "regex",
@@ -34,11 +34,12 @@ local config = {
 return {
     "nvim-treesitter/nvim-treesitter",
     branch = "master",
-    config = function()
-        require("nvim-treesitter.configs").setup(config)
+    config = function(_, opts)
+        require("nvim-treesitter.configs").setup(opts)
     end,
-    dependencies = {
-        {"nushell/tree-sitter-nu"}
-    },
+    opts = configs,
+    -- dependencies = {
+    --     { "nushell/tree-sitter-nu" }
+    -- },
     build = ":TSUpdate"
 }

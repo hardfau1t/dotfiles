@@ -29,7 +29,7 @@ def endpoint-path [context: string] {
         }
         | get submodules endpoints
         | columns
-        | filter {|op| $op | str starts-with $half_completed_flag } # give only words which starts with half completed flags
+        | where $it  starts-with $half_completed_flag  # give only words which starts with half completed flags
         | each {|f| $f + " "}       # add extra space at the end
 }
 

@@ -74,7 +74,6 @@ in
       "mpd"
       "podman"
       "docker"
-      "ollama"
     ];
     shell = pkgs.nushell;
   };

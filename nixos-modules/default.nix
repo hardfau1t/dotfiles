@@ -44,6 +44,7 @@
         allowedTCPPorts = [
           22
           8080
+          5000
         ];
       };
       wireless = {
