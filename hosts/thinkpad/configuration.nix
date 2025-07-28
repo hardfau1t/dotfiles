@@ -118,7 +118,7 @@ in
     fsType = "ext4";
   };
     "/boot" = {
-      device = "/dev/sdb1";
+      device = "/dev/disk/by-uuid/94FB-1FE1";
       fsType = "vfat";
       options = [ "rw" ];
     };

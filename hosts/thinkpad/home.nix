@@ -23,7 +23,6 @@ in
   home.packages = with pkgs; [
     yt-dlp
     wesnoth
-    angband
     # custom_freecad
   ]
     ++ [inputs.angband.packages.${system}.angband-gcu]
