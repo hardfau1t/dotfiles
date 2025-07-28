@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1748846641,
-        "narHash": "sha256-b3IlYeS++vjoA/l3ekuxjaiqfjUZdP5miHJscmbY0Qk=",
+        "lastModified": 1753255877,
+        "narHash": "sha256-HSdJVO+u4iw+WdX+qtjGN0ddShMKDYF+8umUCislur8=",
         "owner": "hardfau1t",
         "repo": "angband",
-        "rev": "d79c7d96af56f08189b03a3b52163bd468aaf465",
+        "rev": "63a69d39615b8fa05ce6a0bddb46cb82b640ab36",
         "type": "github"
       },
       "original": {
