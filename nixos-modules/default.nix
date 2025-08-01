@@ -129,6 +129,8 @@
         nixfmt-rfc-style
         nushell
         unzip
+        tcpdump
+        nethogs
         wget
         man-pages
         man-pages-posix
