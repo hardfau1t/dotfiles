@@ -149,4 +149,18 @@ in
     # };
   };
   programs.openvpn3.enable = true;
+  systemd.network.networks."90_usb_eth" = {
+    enable = false;
+    matchConfig = {
+      Name = "enp3s0f3u1c2";
+    };
+    networkConfig = {
+      Address =  "10.10.2.1/24" ;
+      DHCPServer = "yes";
+    };
+    dhcpServerConfig = {
+      PoolOffset = 5;
+      PoolSize = 3;
+    };
+  };
 }

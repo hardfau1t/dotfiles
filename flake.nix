@@ -35,10 +35,10 @@
     in
     {
       nixosConfigurations = {
-        vayavya = nixpkgs.lib.nixosSystem {
+        work = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
-            ./hosts/vayavya/configuration.nix
+            ./hosts/work/configuration.nix
             ./nixos-modules
           ];
         };
