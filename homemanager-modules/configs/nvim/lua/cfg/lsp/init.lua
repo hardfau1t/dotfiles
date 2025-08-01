@@ -28,33 +28,26 @@ local function documentHighlight(client, bufnr)
 end
 
 
--- local function external_format(formatter, bufnr)
---     local cmd = formatter.exe ..
---         ' ' .. (table.concat(formatter.args, ' ')) .. " " .. vim.api.nvim_buf_get_name(bufnr) .. " 2> /dev/null"
---     if vim.bo.modified then
---         vim.cmd.write("%")
---         log.warn("file saved for formatting")
---     end
---     os.execute(cmd)
--- end
-
-local function default_attach(client, bufnr)
+local function default_attach(args)
+    local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+    local bufnr = args.buf
     -- enable document highlighting
     documentHighlight(client, bufnr)
     -- setup lsp keymap for given buffer
+    print("keymaps are configured")
     require("cfg.lsp.keymaps").setup(bufnr)
     -- enable navbuddy and navic
     if client.server_capabilities.documentSymbolProvider then
         if nav_buddy_available then
             nav_buddy.attach(client, bufnr)
         else
-            vim.api.nvim_notify("nav_buddy is not installed or server has no documentSymbolProvider capabilities",
-                vim.log.levels.WARN, {})
+            vim.notify("nav_buddy is not installed or server has no documentSymbolProvider capabilities",
+                vim.log.levels.WARN)
         end
         if navic_avail then
             navic.attach(client, bufnr)
         else
-            vim.api.nvim_notify("navic is not installed or server has no capabilities", vim.log.levels.WARN, {})
+            vim.notify("navic is not installed or server has no capabilities", vim.log.levels.WARN, {})
         end
     end
 
@@ -82,32 +75,18 @@ mod.setup = function()
         underline        = { severity = { severity.WARN, severity.ERROR } },
         severity_sort    = true,
     })
-    local config = require("cfg.lsp.config")
-    if config == nil then
-        print("lsp cfg table not found")
-        return
-    end
-    local lspconfig_available, lspconfig = pcall(require, "lspconfig")
-    if not lspconfig_available then
-        print("lspconfig module not found")
-        return
-    end
+    local lsp_configs = require("cfg.lsp.config")
+
     -- progress widget
     local fidget_available, fidget = pcall(require, "fidget")
     if fidget_available then
         fidget.setup({})
     end
+
     local cmp_lsp_available, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
     require("vim.lsp.log").set_level(vim.log.levels.WARN)
-    for provider, setup in pairs(config) do
-        local provider_attach = setup.on_attach
 
-        setup.on_attach = function(client, bufnr)
-            default_attach(client, bufnr)
-            if provider_attach then
-                provider_attach(client, bufnr)
-            end
-        end
+    for provider, config in pairs(lsp_configs) do
 
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         -- enable cmp capabilities
@@ -115,11 +94,13 @@ mod.setup = function()
             capabilities = vim.tbl_deep_extend("force", capabilities, cmp_nvim_lsp.default_capabilities())
         end
 
-        setup.capabilities = capabilities
-        lspconfig[provider].setup(setup)
+        config.capabilities = capabilities
+        vim.lsp.config(provider, config)
     end
-    -- new format of lsp setup 
-    vim.lsp.enable("vhdl_ls")
+    vim.api.nvim_create_autocmd("LspAttach", {
+      group = vim.api.nvim_create_augroup('lsp.attach', {}),
+      callback = default_attach
+    })
 end
 
 return mod
