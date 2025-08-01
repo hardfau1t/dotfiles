@@ -695,7 +695,6 @@ $env.config = {
 alias zj = zellij
 alias pdsi = pactl set-default-sink
 alias pdso = pactl set-default-source
-alias bctl = bluetoothctl
 alias wlan = iwctl station wlan0
 alias se = sudoedit
 alias dig = resolvectl query
@@ -729,8 +728,8 @@ source libs/audio.nu
 source libs/local.nu
 # all wrappers/script for trying out without home manager switch
 source libs/trial.nu
+source libs/bluetooth.nu
 source "~/.cache/starship/init.nu"
-
 
 if (is-terminal --stderr) {
     # display random help
