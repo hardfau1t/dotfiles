@@ -39,11 +39,6 @@ local opts = {
                 default_workspace = "my_workspace",
             },
         },
-        ["core.completion"] = {
-            config = {
-                engine = "nvim-cmp",
-            },
-        },
         ["core.keybinds"] = {
             config = {
                 default_keybinds = true,

@@ -31,6 +31,7 @@ in
       "nvim/init.lua".source = create_dot_path "nvim/init.lua";
       "nvim/lazy-lock.json".source = create_dot_path "nvim/lazy-lock.json";
       "nvim/rocks.toml".source = create_dot_path "nvim/rocks.toml";
+      "nvim/snippets".source = create_dot_path "nvim/snippets";
       "xkb" = {
         source = create_dot_path "xkb";
         recursive = true;

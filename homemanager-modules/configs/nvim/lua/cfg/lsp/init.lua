@@ -83,18 +83,10 @@ mod.setup = function()
         fidget.setup({})
     end
 
-    local cmp_lsp_available, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
     require("vim.lsp.log").set_level(vim.log.levels.WARN)
 
     for provider, config in pairs(lsp_configs) do
 
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
-        -- enable cmp capabilities
-        if cmp_lsp_available then
-            capabilities = vim.tbl_deep_extend("force", capabilities, cmp_nvim_lsp.default_capabilities())
-        end
-
-        config.capabilities = capabilities
         vim.lsp.config(provider, config)
     end
     vim.api.nvim_create_autocmd("LspAttach", {

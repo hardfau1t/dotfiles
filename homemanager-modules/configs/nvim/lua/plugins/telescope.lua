@@ -32,10 +32,6 @@ local function set_keymap()
         { silent = true, desc = "fuzzy find files" })
 end
 
-local function load_extensions()
-    require("telescope").load_extension('luasnip')
-end
-
 local function setup()
     local present, telescope = pcall(require, "telescope")
     if not present then
@@ -86,7 +82,6 @@ local function setup()
             buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
         },
     })
-    load_extensions()
     set_keymap()
 end
 

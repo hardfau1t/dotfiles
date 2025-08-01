@@ -1,0 +1,15 @@
+{
+  "ddaas": {
+    "prefix": "ddaas",
+    "body": ["${1:description}",
+"",
+"Ticket/issue: ${2:ticket_link}",
+"",
+"Notes: ${3:notes}",
+"",
+"Dependencies: ${3:dependencies}",
+"",
+"<final>",
+        ""]
+  }
+}

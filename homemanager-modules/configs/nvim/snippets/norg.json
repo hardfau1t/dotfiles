@@ -1,0 +1,6 @@
+{
+  "ddaas": {
+    "prefix": "qtn",
+    "body": ["- ( ) *${1:question}*"]
+  }
+}

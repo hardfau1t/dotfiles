@@ -1,0 +1,10 @@
+{
+  "name": "personal-snippets",
+  "contributes": {
+    "snippets": [
+      { "language": "norg", "path": "./norg.json" },
+      { "language": ["NeogitCommitMessage", "gitcommit"], "path": "./commit.json" },
+      { "language": "all", "path": "./all.json" }
+    ]
+  }
+}
