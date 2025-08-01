@@ -33,6 +33,7 @@ xkb_symbols "ctrl_alt_win" {
 partial modifier_keys
 xkb_symbols "swapcaps_esc" {
     replace key <CAPS> { [ Escape,  Escape ] };
+    replace key <ESC> { [ Caps_Lock,  Caps_Lock ] };
 };
 
 // modified custom keys

@@ -3,6 +3,10 @@ let
   create_dot_path =
     file_path:
     config.lib.file.mkOutOfStoreSymlink "${config.dots_dir}/homemanager-modules/configs/${file_path}";
+  create_dot_path_recursive = file_path: {
+    source = create_dot_path file_path;
+    recursive = true;
+  };
 in
 {
   xdg = {
@@ -21,10 +25,12 @@ in
         c.TerminalInteractiveShell.extra_open_editor_shortcuts = True
         c.TerminalInteractiveShell.quiet = True
       '';
-      "nvim" = {
-        source = create_dot_path "nvim";
-        recursive = true;
-      };
+      "nvim/after" = create_dot_path_recursive "nvim/after";
+      "nvim/ftplugin" = create_dot_path_recursive "nvim/ftplugin";
+      "nvim/lua" = create_dot_path_recursive "nvim/lua";
+      "nvim/init.lua".source = create_dot_path "nvim/init.lua";
+      "nvim/lazy-lock.json".source = create_dot_path "nvim/lazy-lock.json";
+      "nvim/rocks.toml".source = create_dot_path "nvim/rocks.toml";
       "xkb" = {
         source = create_dot_path "xkb";
         recursive = true;
@@ -45,10 +51,7 @@ in
         source = create_dot_path "alacritty";
         recursive = true;
       };
-      uwsm = {
-        source = create_dot_path "uwsm";
-        recursive = true;
-      };
+      "uwsm/env".source = create_dot_path "uwsm/env";
       "nushell/config.nu".source = create_dot_path "nushell/config.nu";
       "nushell/env.nu".source = create_dot_path "nushell/env.nu";
       "nushell/login.nu".source = create_dot_path "nushell/login.nu";
