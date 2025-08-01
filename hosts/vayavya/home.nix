@@ -20,8 +20,7 @@ in
   home.packages =
     with pkgs;
     [
-      yt-dlp
-      wesnoth
+      thunderbird
       openvpn
       # (freecad-wayland.override { ifcSupport = true; })
     ]

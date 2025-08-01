@@ -26,6 +26,7 @@
       eza
       fd
       fzf
+      gdb
       gnumake
       lua-language-server
       lua51Packages.lua # for neovim
