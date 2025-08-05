@@ -32,6 +32,7 @@
       lua51Packages.lua # for neovim
       lua51Packages.luarocks # for neovim
       moreutils # for vipe
+      nethogs
       neovim
       nil
       nixfmt-rfc-style
