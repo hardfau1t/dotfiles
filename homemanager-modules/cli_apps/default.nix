@@ -27,6 +27,7 @@
       fd
       fzf
       gdb
+      git
       gnumake
       lua-language-server
       lua51Packages.lua # for neovim
@@ -62,9 +63,6 @@
       maple-mono.NF
       noto-fonts
     ];
-    home.sessionVariables = {
-      LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [ pkgs.openssl ];
-    };
     programs = {
       password-store = {
         enable = true;

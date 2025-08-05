@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     ./gui_apps
@@ -17,7 +17,7 @@
       description = "where does the config directory is located";
     };
   };
-  config = rec {
+  config = {
     gui_apps.enable = lib.mkDefault false;
     cli_apps.enable = lib.mkDefault true;
     scripts.enable = lib.mkDefault true;
