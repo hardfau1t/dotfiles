@@ -34,7 +34,6 @@ local function default_attach(args)
     -- enable document highlighting
     documentHighlight(client, bufnr)
     -- setup lsp keymap for given buffer
-    print("keymaps are configured")
     require("cfg.lsp.keymaps").setup(bufnr)
     -- enable navbuddy and navic
     if client.server_capabilities.documentSymbolProvider then
