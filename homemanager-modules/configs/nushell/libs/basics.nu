@@ -132,7 +132,7 @@ export def get-song [
 
 export def "journal sync" [] {
     cd ~/.personal/
-    if not ( git diff | is-empty) {
+    if ( git status --porcelain -uall | is-not-empty) {
         git add .
         git commit -m $"(date now | format date  "%d-%m-%Y")"
     }
