@@ -1,10 +1,11 @@
-# vim: set filetype=nu:
 
 export def wait-for [host: string] {
     let syms = [ '/' '|' '\' '-' ]
     mut i = 0
     loop {
+        let start = date now
         let resp = (do -i {ping -c 1 -W 1 -q $host }| complete)
+        let end = date now
         if $resp.exit_code == 0 {
             (notify-send -t 5000 $"($host)" "up" | complete )| null
             do -i {mpv /usr/share/sounds/freedesktop/stereo/complete.oga} | complete | null
@@ -14,11 +15,12 @@ export def wait-for [host: string] {
             print "SIGINT: exiting"
             return
         }
-        print -n $"\r[($syms | get ($i mod 4))] Waiting for ($host)"
+        print -n $"\r[($syms | get $i)] Waiting for ($host)"
         if $resp.exit_code == 2 {
-            print -n $"($resp.stderr | str replace '\n' '')"
+            print -n $": ($resp.stderr | str replace "\n" '')"
         }
-        $i = $i + 1
+        $i = ($i + 1) mod 4
+        sleep (1sec - ($end - $start))
     }
 }
 
