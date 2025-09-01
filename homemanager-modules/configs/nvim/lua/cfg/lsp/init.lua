@@ -1,6 +1,5 @@
 local mod = {}
 require("cfg.lsp.visuals")
-local nav_buddy_available, nav_buddy = pcall(require, "nvim-navbuddy")
 local navic_avail, navic = pcall(require, "nvim-navic")
 
 -- cursor highlighting enable
@@ -37,12 +36,6 @@ local function default_attach(args)
     require("cfg.lsp.keymaps").setup(bufnr)
     -- enable navbuddy and navic
     if client.server_capabilities.documentSymbolProvider then
-        if nav_buddy_available then
-            nav_buddy.attach(client, bufnr)
-        else
-            vim.notify("nav_buddy is not installed or server has no documentSymbolProvider capabilities",
-                vim.log.levels.WARN)
-        end
         if navic_avail then
             navic.attach(client, bufnr)
         else

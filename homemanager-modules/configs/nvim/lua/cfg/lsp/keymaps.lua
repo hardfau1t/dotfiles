@@ -40,10 +40,6 @@ mod.setup = function(client, bufnr)
     vim.keymap.set('n', "<leader>dq", vim.diagnostic.toqflist, { buffer = bufnr , desc = "move diagnostics to quickfixlist"})
     vim.keymap.set('n', "<leader>dr", vim.diagnostic.reset, { buffer = bufnr , desc = "move diagnostics to quickfixlist"})
 
-    local nav_buddy_available, navbuddy = pcall(require, "nvim-navbuddy")
-    if nav_buddy_available then
-        vim.keymap.set('n', "<leader>n", navbuddy.open, {buffer = bufnr, desc = "open nav_buddy"})
-    end
 end
 return mod
 
