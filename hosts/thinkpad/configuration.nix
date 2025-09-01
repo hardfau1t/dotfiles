@@ -131,7 +131,7 @@ in
   ];
   fonts.packages = with pkgs; [
     nerd-fonts.symbols-only
-    maple-mono-NF
+    maple-mono.NF
   ];
   virtualisation = {
     # docker = {

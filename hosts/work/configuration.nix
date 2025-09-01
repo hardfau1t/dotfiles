@@ -32,6 +32,10 @@ in
 
   # Pick only one of the below networking options.
   services = {
+    nix-serve = {
+      enable = true;
+      secretKeyFile = "/var/cache-prive-key.pem";
+    };
     tlp.enable = true;
     sshd.enable = true;
     devmon.enable = true;
