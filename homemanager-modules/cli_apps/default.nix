@@ -57,6 +57,7 @@
       tealdeer
       tokei
       vhdl-ls
+      yt-dlp
       zellij
       zip
       nerd-fonts.symbols-only
