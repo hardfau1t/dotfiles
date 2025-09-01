@@ -15,9 +15,9 @@ export def wait-for [host: string] {
             print "SIGINT: exiting"
             return
         }
-        print -n $"\r[($syms | get $i)] Waiting for ($host)"
+        print -n $"\r[($syms | get $i)] Waiting for ($host)\e[0J"
         if $resp.exit_code == 2 {
-            print -n $": ($resp.stderr | str replace "\n" '')"
+            print -n $": ($resp.stderr | str replace "\n" '')\e[0J"
         }
         $i = ($i + 1) mod 4
         sleep (1sec - ($end - $start))

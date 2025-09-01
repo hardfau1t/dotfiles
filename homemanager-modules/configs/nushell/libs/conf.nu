@@ -15,6 +15,11 @@ export def "config hypr" [] {
     nvim hyprland.conf
 }
 
+export def "config waybar" [] {
+    cd ~/.config/waybar
+    nvim config
+}
+
 # Edit sway config
 export def "config sway" [] {
     cd ~/.config/sway/
