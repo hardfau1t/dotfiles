@@ -124,16 +124,17 @@
         file
         gcc
         git
-        neovim
         jmtpfs
-        nixfmt-rfc-style
-        nushell
-        unzip
-        tcpdump
-        nethogs
-        wget
         man-pages
         man-pages-posix
+        neovim
+        nethogs
+        nixfmt-rfc-style
+        nushell
+        tcpdump
+        unzip
+        usbutils
+        wget
       ];
     };
 
