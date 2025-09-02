@@ -69,6 +69,7 @@
     systemd = {
       network = {
         enable = true;
+	wait-online.enable = false;
       };
     };
 
@@ -164,6 +165,9 @@
     hardware.bluetooth.enable = true;
     hardware.bluetooth.powerOnBoot = true;
     powerManagement.cpuFreqGovernor = "ondemand";
-    boot.initrd.systemd.network.wait-online.enable = false;
+    boot.initrd.systemd.network.wait-online = {
+    	enable = false;
+    	timeout = 0;
+    };
   };
 }
