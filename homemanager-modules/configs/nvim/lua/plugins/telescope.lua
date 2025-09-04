@@ -20,9 +20,10 @@ local function set_keymap()
     vim.keymap.set("n", "<leader>tl", ":Telescope live_grep<CR>", { silent = true, desc = "live grep all files" })
     vim.keymap.set("n", "<leader>tm", ":Telescope bookmarks<CR>", { silent = true, desc = "search bookmarks" })
     vim.keymap.set("n", "<leader>tn", ":Telescope marks<CR>", { silent = true, desc = "show all marks" })
-    vim.keymap.set("n", "<leader>tq", ":Telescope quickfix<CR>", { silent = true, desc = "fuzzy find quickfixlist" })
-    vim.keymap.set("n", "<leader>tr", ":Telescope lsp_references<CR>",
+    vim.keymap.set("n", "<leader>to", ":Telescope lsp_references<CR>",
         { silent = true, desc = "show lsp lsp references" })
+    vim.keymap.set("n", "<leader>tq", ":Telescope quickfix<CR>", { silent = true, desc = "fuzzy find quickfixlist" })
+    vim.keymap.set("n", "<leader>tr", ":Telescope resume<CR>", { silent = true, desc = "resume last telescope search" })
     vim.keymap.set("n", "<leader>ts", ":Telescope git_status<CR>", { silent = true, desc = "show modified files in git" })
     vim.keymap.set("n", "<leader>tt", ":Telescope git_files<CR>", { silent = true, desc = "find git monitored files" })
     vim.keymap.set("n", "<leader>t;", ":Telescope filetypes<CR>", { silent = true, desc = "change current filetype" })
