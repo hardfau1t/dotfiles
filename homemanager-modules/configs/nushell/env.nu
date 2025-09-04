@@ -83,7 +83,7 @@ $env.XCURSOR_THEME = "bibata"
 $env.XCURSOR_SIZE = 32
 
 # uses all cores for compilation
-$env.MAKEFLAGS = $"($env | get -i MAKEFLAGS) -j((nproc | into int) - 1)"
+$env.MAKEFLAGS = $"($env | get MAKEFLAGS) -j((nproc | into int) - 1)"
 
 $env.PROMPT_INDICATOR_VI_INSERT = { || "" }
 $env.PROMPT_INDICATOR_VI_NORMAL = { || "" }
