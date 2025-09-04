@@ -12,7 +12,7 @@ lib.mkIf config.services.mpd.enable {
   home.packages = [ mpkg ];
   systemd.user.services.mscout = {
     Unit = {
-      Description = "My Rust Application Service";
+      Description = "statistics scout for mpd";
       After = [
         "network.target"
         "mpd.service"
@@ -21,6 +21,7 @@ lib.mkIf config.services.mpd.enable {
 
     Service = {
       ExecStart = "${mpkg}/bin/mscout -p \${XDG_RUNTIME_DIR}/mpd.socket --use-tags -vv listen -a \${HOME}/.local/bin/handle_mscout ";
+      ExecSearchPath = "/run/current-system/sw/bin/";
       Restart = "on-failure";
       RestartSec = 5;
     };
