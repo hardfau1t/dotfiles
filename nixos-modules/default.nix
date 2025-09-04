@@ -124,7 +124,6 @@
         ffmpeg
         file
         gcc
-        git
         jmtpfs
         man-pages
         man-pages-posix

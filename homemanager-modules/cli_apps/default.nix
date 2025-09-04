@@ -9,6 +9,7 @@
     ./mpd.nix
     ./podman
     ./mscout.nix
+    ./git.nix
   ];
   options = {
 
@@ -27,7 +28,6 @@
       fd
       fzf
       gdb
-      git
       gnumake
       lua-language-server
       lua51Packages.lua # for neovim
