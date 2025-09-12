@@ -44,14 +44,12 @@ in
         source = create_dot_path "hypr";
         recursive = true;
       };
-      "zellij" = {
-        source = create_dot_path "zellij";
-        recursive = true;
-      };
-      "alacritty" = {
-        source = create_dot_path "alacritty";
-        recursive = true;
-      };
+      "zellij/config.kdl".source = create_dot_path "zellij/config.kdl";
+      "zellij/layouts" = create_dot_path_recursive "zellij/layouts";
+      "zellij/themes" = create_dot_path_recursive "zellij/themes";
+
+      "alacritty" = create_dot_path_recursive "alacritty";
+
       "uwsm/env".source = create_dot_path "uwsm/env";
       "nushell/config.nu".source = create_dot_path "nushell/config.nu";
       "nushell/env.nu".source = create_dot_path "nushell/env.nu";
