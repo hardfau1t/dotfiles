@@ -21,11 +21,12 @@ in
     with pkgs;
     [
       thunderbird
+      projectlibre
       openvpn
       # (freecad-wayland.override { ifcSupport = true; })
     ]
     ++ [inputs.angband.packages.${system}.angband-gcu]
-     ++ [ (inputs.nixpkgs_pinned.legacyPackages.${system}.freecad-wayland.override { ifcSupport = true; }) ];
+     ++ [ (inputs.nixpkgs_pinned_freecad.legacyPackages.${system}.freecad-wayland.override { ifcSupport = true; }) ];
 
   services.mpd.enable = true;
   # wayland.windowManager.hyprland.enable = false;

@@ -6,6 +6,7 @@
   pkgs,
   inputs,
   config,
+  unstable,
   ...
 }:
 let
@@ -79,12 +80,12 @@ in
       "podman"
       "docker"
     ];
-    shell = pkgs.nushell;
+    shell = unstable.nushell;
   };
 
   home-manager = {
     extraSpecialArgs = {
-      inherit inputs;
+      inherit unstable inputs;
       user = config.users.users.${main_user};
     };
     useGlobalPkgs = true;

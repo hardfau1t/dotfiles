@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  unstable,
   ...
 }:
 {
@@ -38,8 +39,6 @@
       nil
       nixfmt-rfc-style
       nodePackages.vscode-json-languageserver
-      nushellPlugins.polars
-      nushell
 
       pkg-config
       pyright
@@ -63,7 +62,7 @@
       nerd-fonts.symbols-only
       maple-mono.NF
       noto-fonts
-    ];
+    ] ++ [unstable.nushellPlugins.polars];
     programs = {
       password-store = {
         enable = true;

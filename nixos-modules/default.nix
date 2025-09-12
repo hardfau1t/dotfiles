@@ -130,7 +130,6 @@
         neovim
         nethogs
         nixfmt-rfc-style
-        nushell
         tcpdump
         unzip
         usbutils
@@ -165,8 +164,8 @@
     hardware.bluetooth.powerOnBoot = true;
     powerManagement.cpuFreqGovernor = "ondemand";
     boot.initrd.systemd.network.wait-online = {
-    	enable = false;
-    	timeout = 0;
+      enable = false;
+      timeout = 0;
     };
   };
 }
