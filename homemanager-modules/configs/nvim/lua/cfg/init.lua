@@ -17,6 +17,7 @@ vim.wo.foldminlines = 4
 vim.wo.foldmethod = "expr"
 vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.wo.foldtext = ""
+vim.wo.foldenable = false
 
 vim.o.tabstop = 8
 vim.o.softtabstop = 4
