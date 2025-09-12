@@ -50,7 +50,7 @@ export def "config zellij" [] {
 export def "config push" [] {
     cd $"($env.HOME)/.dots"
     # disable autoreloading in hyprland
-    if not ($env | get HYPRLAND_INSTANCE_SIGNATURE -i| is-empty) {
+    if not ($env.HYPRLAND_INSTANCE_SIGNATURE? | is-empty) {
         hyprctl keyword misc:disable_autoreload "true" | ignore
     }
     let current_branch = (git branch | rg -e '\*' | split row ' ').1
@@ -63,7 +63,7 @@ export def "config push" [] {
     git rebase main
     git stash pop
     # enable autoreloading in hyprland
-    if not ($env | get HYPRLAND_INSTANCE_SIGNATURE -i| is-empty) {
+    if not ($env.HYPRLAND_INSTANCE_SIGNATURE? | is-empty) {
         hyprctl keyword misc:disable_autoreload "false" | ignore
     }
 }
@@ -71,7 +71,7 @@ export def "config push" [] {
 export def "config pull" [] {
     cd $"($env.HOME)/.dots"
     # disable autoreloading in hyprland
-    if not ($env | get HYPRLAND_INSTANCE_SIGNATURE -i| is-empty) {
+    if not ($env.HYPRLAND_INSTANCE_SIGNATURE?| is-empty) {
         hyprctl keyword misc:disable_autoreload "true" | ignore
     }
     git stash
@@ -81,7 +81,7 @@ export def "config pull" [] {
     git rebase main
     git stash pop
     # enable autoreloading in hyprland
-    if not ($env | get HYPRLAND_INSTANCE_SIGNATURE -i| is-empty) {
+    if not ($env.HYPRLAND_INSTANCE_SIGNATURE? | is-empty) {
         hyprctl keyword misc:disable_autoreload "false" | ignore
     }
 }

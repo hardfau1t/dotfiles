@@ -34,10 +34,11 @@
       lua51Packages.lua # for neovim
       lua51Packages.luarocks # for neovim
       moreutils # for vipe
-      nethogs
       neovim
+      nethogs
       nil
       nixfmt-rfc-style
+      nmap
       nodePackages.vscode-json-languageserver
 
       pkg-config

@@ -196,7 +196,7 @@ export def random-mac [
     --set(-s), # set the mac address to that interface
     --no-scan, # don't scan network continue with current
 ] {
-    let ip_info = ip -j a show dev $ifname
+    let ip_info = ^ip -j a show dev $ifname
         | from json 
         | first 
     let mac = $ip_info.address
@@ -204,12 +204,13 @@ export def random-mac [
         | where family == inet and scope == global 
     let addresses = $addresses | each {|addr|
         if not $no_scan {
+        echo $"($addr.local)/($addr.prefixlen)"
             nmap -sn $"($addr.local)/($addr.prefixlen)" | ignore # just ping all interfaces
         }
         # get all neighbours
-        ip -j n show dev wlan0  
+        ip -j n show dev $ifname
         | from json 
-        | get lladdr -i 
+        | get lladdr
         | compact
         | each {|neigh| {
             addr: $neigh,
@@ -219,7 +220,7 @@ export def random-mac [
         | insert new_addr {|row| $row.addr 
             | split column ':'  
             | update column6 {|oct| 
-                ((($oct.column6 | into int -r 16 ) + 1 ) mod 256 | fmt | get lowerhex  | str substring 2..)
+                ((($oct.column6 | into int -r 16 ) + 1 ) mod 256 | format number | get lowerhex  | str substring 2..)
                 | into string
             } 
             | transpose -i 
@@ -227,7 +228,7 @@ export def random-mac [
             | str join ':'
         }  
     } | flatten
-    let existing_addr = $addresses.addr?
+    let existing_addr = $addresses | get addr | default []
     let new_addr = $addresses.new_addr | where $it not-in existing_addr | first
     if $set {
         print -e $'replacing old mac ($mac) with new ($new_addr)'
