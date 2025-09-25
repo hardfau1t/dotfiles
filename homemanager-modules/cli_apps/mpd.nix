@@ -5,9 +5,10 @@
   pkgs,
   ...
 }:
-lib.mkIf config.services.mpd.enable {
+lib.mkIf config.audio.enable {
   services = {
     mpd = {
+      enable = true;
       musicDirectory = "/run/media/${user.name}/loud/music";
       network.port = 6600;
       extraConfig = ''
@@ -18,6 +19,11 @@ lib.mkIf config.services.mpd.enable {
             name "My PipeWire Output"
           }
       '';
+    };
+    mpdris2 = {
+      enable = true;
+      multimediaKeys = true;
+      notifications = true;
     };
   };
   home.packages = [ pkgs.mpc-cli ];

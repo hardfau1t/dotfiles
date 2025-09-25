@@ -59,5 +59,6 @@ in
         recursive = true;
       };
     };
+    dataFile."qmk/keyboards/crkbd/keymaps/hardfau1t" = create_dot_path_recursive "qmk/keyboards/crkbd/keymaps/hardfau1t/";
   };
 }

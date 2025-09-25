@@ -8,6 +8,7 @@
 {
   imports = [
     ./mpd.nix
+    ./playerctl.nix
     ./podman
     ./mscout.nix
     ./git.nix
@@ -75,7 +76,6 @@
 
     };
     services = {
-      mpd.enable = lib.mkDefault false;
       udiskie.enable = lib.mkDefault true;
     };
     xdg.enable = true;

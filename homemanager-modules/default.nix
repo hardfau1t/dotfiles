@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 {
   imports = [
     ./gui_apps
@@ -9,6 +9,7 @@
   ];
   options = {
     gui_apps.enable = lib.mkEnableOption "Enable gui applicaions, not required if you just use ssh";
+    audio.enable = lib.mkEnableOption "enable audio and music players";
     cli_apps.enable = lib.mkEnableOption "Enable cli applicaions";
     scripts.enable = lib.mkEnableOption "Enable custom scripts, which will get placed in ~/.local/bin";
     wallpapers.enable = lib.mkEnableOption "place wallpapers in specific path so that other applications can find it";
@@ -22,5 +23,6 @@
     cli_apps.enable = lib.mkDefault true;
     scripts.enable = lib.mkDefault true;
     wallpapers.enable = lib.mkDefault false;
+    audio.enable = lib.mkDefault false;
   };
 }

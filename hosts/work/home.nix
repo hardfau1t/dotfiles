@@ -33,4 +33,5 @@ in
   containers-storage = "/mnt/storage/podman/${user.name}/";
   gui_apps.enable = true;
   wallpapers.enable = true;
+  audio.enable = true;
 }

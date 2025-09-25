@@ -40,5 +40,6 @@ in
   # wayland.windowManager.hyprland.enable = false;
   containers-storage = "/mnt/storage/podman/${user.name}/";
   gui_apps.enable = true;
+  audio.enable = true;
   wallpapers.enable = true;
 }
