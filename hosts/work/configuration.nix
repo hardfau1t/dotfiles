@@ -43,7 +43,7 @@ in
     printing.enable = true;
     libinput.enable = true;
 
-    ollama.enable = true;
+    ollama.enable = false;
 
     pipewire.enable = true;
 
