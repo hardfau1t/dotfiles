@@ -27,6 +27,7 @@ in
       fuzzel
       grim
       hledger
+      gnucash
       imagemagick
       imv
       libiconv
