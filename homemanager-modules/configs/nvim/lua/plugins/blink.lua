@@ -5,11 +5,12 @@ return {
     opts = {
         keymap = {
             preset = 'default',
-            ['Tab'] = false,
-            ['S-Tab'] = false,
-            ['C-e'] = { 'snippet_backward', 'fallback' },
-            ['C-i'] = { 'snippet_forward', 'fallback' },
-            ['C-c'] = { 'hide', 'fallback' },
+            ['<Tab>'] = false,
+            ['<S-Tab>'] = false,
+            ['<C-o>'] = { 'snippet_backward', 'fallback' },
+            ['<C-e>'] = { 'snippet_forward', 'fallback' },
+            ['<C-c>'] = { 'hide', 'fallback' },
+            ['<C-a>'] = { 'select_and_accept', 'fallback' },
         },
         -- (Default) Only show the documentation popup when manually triggered
         completion = {
