@@ -4,7 +4,7 @@
     ### Display ###
 
     # Which monitor should the notifications be displayed on.
-    monitor = 1
+    # monitor = 0
 
     # Display notification on focused monitor.  Possible modes are:
     #   mouse: follow mouse pointer
@@ -17,7 +17,7 @@
     #
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
-    follow = none
+    follow = kebyoard
 
     ### Geometry ###
 
@@ -473,3 +473,7 @@
 # For more configuraion options see https://github.com/dunst-project/dunst/blob/master/dunstrc
 #
 
+# play notification sound
+[play_sound]
+    summary = "*"
+    script = play-notification-sound
