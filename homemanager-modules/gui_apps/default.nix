@@ -20,6 +20,7 @@ in
     services.hyprpaper.enable = lib.mkDefault osConfig.programs.hyprland.enable;
     services.dunst.enable = lib.mkDefault osConfig.programs.hyprland.enable;
     programs.waybar.enable = lib.mkDefault osConfig.programs.hyprland.enable;
+    xdg.configFile."fuzzel/fuzzel.ini".source =config.lib.file.mkOutOfStoreSymlink "${config.dots_dir}/homemanager-modules/configs/fuzzel/fuzzel.ini";
     home.packages = with pkgs; [
       alacritty
       cliphist
