@@ -8,6 +8,7 @@ local configs = {
         "json",
         "lua",
         "markdown",
+        "make",
         "norg",
         -- "norg_meta",
         "nu",
