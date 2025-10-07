@@ -10,14 +10,14 @@ $env.PATH = (
 
 $env.LD_LIBRARY_PATH  = (
     [
-        ($env | get -i LD_LIBRARY_PATH),
+        ($env | get -o LD_LIBRARY_PATH),
         (if (which rustup | length) >= 1 and (do -i {rustup default}| complete).exit_code == 0 {
             $"($env.RUSTUP_HOME)/toolchains/(rustup default | grep -o -e '^\S\+')"
         }),
         "/usr/local/lib",
 
     ]
-    | filter {|it| $it != null } 
+    | where {|it| $it != null } 
     | str join ':' 
 )
 
