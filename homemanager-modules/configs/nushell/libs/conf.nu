@@ -3,6 +3,11 @@ export def "config nvim" [] {
     cd ~/.config/nvim/
     nvim init.lua
 }
+
+export def "config ssh" [] {
+    cd ~/.ssh
+    nvim config
+}
 # Edit alacritty.yml
 export def "config alacritty" [] {
     cd ~/.config/alacritty
