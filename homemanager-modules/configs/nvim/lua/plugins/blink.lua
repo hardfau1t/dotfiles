@@ -10,7 +10,7 @@ return {
             ['<C-o>'] = { 'snippet_backward', 'fallback' },
             ['<C-e>'] = { 'snippet_forward', 'fallback' },
             ['<C-c>'] = { 'hide', 'fallback' },
-            ['<C-a>'] = { 'select_and_accept', 'fallback' },
+            ['<C-s>'] = { 'select_and_accept', 'fallback' },
         },
         -- (Default) Only show the documentation popup when manually triggered
         completion = {
