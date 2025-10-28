@@ -17,54 +17,58 @@
 
   };
   config = lib.mkIf config.cli_apps.enable {
-    home.packages = with pkgs; [
-      ani-cli
-      aria2
-      bash-language-server
-      bat
-      bottom
-      carapace
-      clang-tools
-      dust
-      eza
-      fd
-      fzf
-      gdb
-      gnumake
-      lua-language-server
-      lua51Packages.lua # for neovim
-      lua51Packages.luarocks # for neovim
-      moreutils # for vipe
-      neovim
-      nethogs
-      nil
-      nixfmt-rfc-style
-      nmap
-      nodePackages.vscode-json-languageserver
+    home.packages =
+      with pkgs;
+      [
+        autotools-language-server
+        ani-cli
+        aria2
+        bash-language-server
+        bat
+        bottom
+        carapace
+        clang-tools
+        dust
+        eza
+        fd
+        fzf
+        gdb
+        gnumake
+        lua-language-server
+        lua51Packages.lua # for neovim
+        lua51Packages.luarocks # for neovim
+        moreutils # for vipe
+        neovim
+        nethogs
+        nil
+        nixfmt-rfc-style
+        nmap
+        nodePackages.vscode-json-languageserver
 
-      pkg-config
-      pyright
-      (python312.withPackages (ps: [
-        ps.ipython
-      ]))
-      ripgrep
-      ruff
-      rustup
-      socat
-      sqlite
-      starship
-      stow
-      taplo
-      tealdeer
-      tokei
-      vhdl-ls
-      yt-dlp
-      zellij
-      zip
-      nerd-fonts.symbols-only
-      maple-mono.NF
-      noto-fonts
-    ] ++ [unstable.nushellPlugins.polars];
+        pkg-config
+        pyright
+        (python312.withPackages (ps: [
+          ps.ipython
+        ]))
+        ripgrep
+        ruff
+        rustup
+        socat
+        sqlite
+        starship
+        stow
+        taplo
+        tealdeer
+        tokei
+        vhdl-ls
+        yt-dlp
+        zellij
+        zip
+        nerd-fonts.symbols-only
+        maple-mono.NF
+        noto-fonts
+      ]
+      ++ [ unstable.nushellPlugins.polars ];
     programs = {
       password-store = {
         enable = true;
