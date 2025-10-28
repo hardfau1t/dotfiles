@@ -36,8 +36,8 @@ do
 
     vim.keymap.set("v", "P", '"_dP', { silent = true })
     vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "copy to system clipboard" })
-    vim.keymap.set("n", "gy", ':let @+ = expand("%")<cr>', { desc = "copy relative path to system clipboard" })
-    vim.keymap.set("n", "gY", ':let @+ = expand("%:p")<cr>', { desc = "copy absolute path to system clipboard" })
+    vim.keymap.set("n", "gy", ':let @+ = expand("%")<cr>', { desc = "copy relative path to system clipboard", silent=true})
+    vim.keymap.set("n", "gY", ':let @+ = expand("%:p")<cr>', { desc = "copy absolute path to system clipboard", silent=true})
 
 
     vim.keymap.set("n", "<leader>st", ":source %<CR>", { silent = true })
