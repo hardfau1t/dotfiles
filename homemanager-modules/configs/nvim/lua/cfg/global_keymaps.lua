@@ -35,16 +35,17 @@ do
     vim.keymap.set("v", "<", "<gv", { silent = true })
 
     vim.keymap.set("v", "P", '"_dP', { silent = true })
-    vim.keymap.set({"n", "v"}, "<leader>y", '"+y', {desc = "copy to system clipboard"})
-    vim.keymap.set("n", "gy", ':let @+ = expand("%")<cr>', {desc = "copy relative path to system clipboard"})
-    vim.keymap.set("n", "gY", ':let @+ = expand("%:p")<cr>', {desc = "copy absolute path to system clipboard"})
+    vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "copy to system clipboard" })
+    vim.keymap.set("n", "gy", ':let @+ = expand("%")<cr>', { desc = "copy relative path to system clipboard" })
+    vim.keymap.set("n", "gY", ':let @+ = expand("%:p")<cr>', { desc = "copy absolute path to system clipboard" })
 
 
     vim.keymap.set("n", "<leader>st", ":source %<CR>", { silent = true })
 
     -- quickfix list movement
-    vim.keymap.set("n", "<leader>qn", "<CMD>cnext<CR>", {desc = "next quickfix item"})
-    vim.keymap.set("n", "<leader>qp", "<CMD>cprev<CR>", {desc = "prev quickfix item"})
-    vim.keymap.set("n", "<leader>qg", "<CMD>cfirst<CR>", {desc = "first quickfix item"})
-    vim.keymap.set("n", "<leader>qG", "<CMD>clast<CR>", {desc = "last quickfix item"})
+    vim.keymap.set("n", "<leader>qn", "<CMD>cnext<CR>", { desc = "next quickfix item" })
+    vim.keymap.set("n", "<leader>qp", "<CMD>cprev<CR>", { desc = "prev quickfix item" })
+    vim.keymap.set("n", "<leader>qg", "<CMD>cfirst<CR>", { desc = "first quickfix item" })
+    vim.keymap.set("n", "<leader>qG", "<CMD>clast<CR>", { desc = "last quickfix item" })
+    vim.keymap.set("n", "<C-S-;>", ":lua ", { desc = "run lua command" })
 end
