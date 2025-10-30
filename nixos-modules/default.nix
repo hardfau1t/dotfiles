@@ -126,6 +126,7 @@
         file
         gcc
         jmtpfs
+        lsof
         man-pages
         man-pages-posix
         neovim
