@@ -6,6 +6,7 @@ vim.g.netrw_winsize = 10
 vim.o.list = true
 vim.o.listchars = "tab:> ,trail:●,extends:…,precedes:…"
 vim.o.sidescrolloff = 20
+vim.o.mouse = ""
 
 vim.bo.autoindent = true -- use treesitter indentation
 vim.bo.smartindent = true
