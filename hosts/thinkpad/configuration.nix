@@ -90,14 +90,24 @@ in
   system.stateVersion = "24.05"; # Did you read the comment?
 
   fileSystems = {
-  "/home" = {
-    device = "/dev/VG_0/home";
-    fsType = "ext4";
-  };
- "/drives/storage" = {
-    device = "/dev/VG_0/storage";
-    fsType = "ext4";
-  };
+    "/home" = {
+      device = "/dev/disk/by-label/data-store";
+      options = [
+        "compress=zstd"
+        "subvolid=256"
+        "rw"
+      ];
+      fsType = "btrfs";
+    };
+    "/drives/storage" = {
+      device = "/dev/disk/by-label/data-store";
+      options = [
+        "compress=zstd"
+        "subvolid=257"
+        "rw"
+      ];
+      fsType = "btrfs";
+    };
     "/boot" = {
       device = "/dev/disk/by-uuid/94FB-1FE1";
       fsType = "vfat";
