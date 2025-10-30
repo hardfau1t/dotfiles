@@ -1,4 +1,15 @@
 do
+    local copy_abs_path_to_system = function()
+        local path = vim.fn.expand("%:p")
+        vim.fn.setreg("+", path)
+        vim.notify("Copied absolute path to system clipboard: " .. path)
+    end
+
+    local copy_rel_path_to_system = function()
+        local path = vim.fn.expand("%")
+        vim.fn.setreg("+", path)
+        vim.notify("Copied relative path to system clipboard: " .. path)
+    end
     -- setting for leader key
     vim.keymap.set("n", "<Space>", "<NOP>")
 
@@ -36,8 +47,8 @@ do
 
     vim.keymap.set("v", "P", '"_dP', { silent = true })
     vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "copy to system clipboard" })
-    vim.keymap.set("n", "gy", ':let @+ = expand("%")<cr>', { desc = "copy relative path to system clipboard", silent=true})
-    vim.keymap.set("n", "gY", ':let @+ = expand("%:p")<cr>', { desc = "copy absolute path to system clipboard", silent=true})
+    vim.keymap.set("n", "gy", copy_rel_path_to_system, { desc = "copy relative path to system clipboard", silent = true })
+    vim.keymap.set("n", "gY", copy_abs_path_to_system, { desc = "copy absolute path to system clipboard", silent = true })
 
 
     vim.keymap.set("n", "<leader>st", ":source %<CR>", { silent = true })
