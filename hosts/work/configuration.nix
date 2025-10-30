@@ -19,6 +19,7 @@ in
     ./hardware-configuration.nix
     # ./docker.nix
     ../../nixos-modules
+    ./jlink.nix
     inputs.home-manager.nixosModules.default
   ];
   inherit main_user;
@@ -38,30 +39,8 @@ in
       enable = true;
       secretKeyFile = "/var/cache-prive-key.pem";
     };
-    tlp.enable = true;
-    sshd.enable = true;
-    devmon.enable = true;
-    printing.enable = true;
-    libinput.enable = true;
-
-    ollama.enable = false;
 
     pipewire.enable = true;
-
-    minidlna = {
-      enable = false;
-      settings = {
-        media_dir = [
-          "/home/gireesh/Videos/demon-slayer"
-          "/home/gireesh/Videos/haikyu"
-          "/home/gireesh/Videos/attock-on-titan"
-          "/media/"
-          "/media/attack-on-titan"
-        ];
-      };
-      openFirewall = true;
-    };
-
   };
   users.groups = {
     ${main_user} = {

@@ -33,30 +33,9 @@ in
 
   # Pick only one of the below networking options.
   services = {
-    tlp.enable = true;
-    sshd.enable = true;
-    devmon.enable = true;
-    printing.enable = true;
-    libinput.enable = true;
-
-    ollama.enable = false;
 
     pipewire.enable = true;
     home-assistant.enable = true;
-
-    minidlna = {
-      enable = true;
-      settings = {
-        media_dir = [
-          "/home/gireesh/Videos/demon-slayer"
-          "/home/gireesh/Videos/haikyu"
-          "/home/gireesh/Videos/attock-on-titan"
-          "/media/"
-          "/media/attack-on-titan"
-        ];
-      };
-      openFirewall = true;
-    };
 
   };
   users.groups = {
