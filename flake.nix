@@ -7,7 +7,6 @@
       url = "github:nix-community/home-manager?ref=release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs_pinned_freecad.url = "github:nixos/nixpkgs?ref=dda3dcd3fe03e991015e9a74b22d35950f264a54";
     nixpkgs_unstable.url = "github:nixos/nixpkgs";
     mscout = {
       url = "github:hardfau1t/mscout";
@@ -28,18 +27,18 @@
       self,
       nixpkgs,
       home-manager,
-      nixpkgs_unstable,
       ...
     }@inputs:
     let
       system = "x86_64-linux";
-      unstable_packages = import nixpkgs_unstable { system = system; };
+      unstable_packages = import inputs.nixpkgs_unstable { inherit system; };
+      angband = inputs.angband.packages.${system}.angband-gcu;
     in
     {
       nixosConfigurations = {
         work = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs;
+            inherit inputs angband;
             unstable = unstable_packages;
           };
           modules = [
@@ -49,7 +48,7 @@
         };
         thinkpad = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs;
+            inherit inputs angband;
             unstable = unstable_packages;
           };
           modules = [

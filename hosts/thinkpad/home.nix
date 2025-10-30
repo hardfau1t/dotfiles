@@ -1,15 +1,9 @@
 {
   pkgs,
   user,
-  inputs,
+  angband,
   ...
 }:
-let
-  system = "x86_64-linux";
-  custom_freecad = pkgs.freecad-wayland.overrideAttrs {
-    buildInputs = pkgs.freecad-wayland.buildInputs ++ [ pkgs.python311Packages.ifcopenshell ];
-  };
-in
 {
   imports = [
     ../../homemanager-modules
@@ -22,11 +16,10 @@ in
 
   home.packages = with pkgs; [
     gmetronome
-    yt-dlp
     wesnoth
     # custom_freecad
   ]
-    ++ [inputs.angband.packages.${system}.angband-gcu]
+    ++ [angband]
   ;
 
   services.mpd.enable = true;

@@ -7,6 +7,7 @@
   inputs,
   config,
   unstable,
+  angband,
   ...
 }:
 let
@@ -85,7 +86,7 @@ in
 
   home-manager = {
     extraSpecialArgs = {
-      inherit unstable inputs;
+      inherit unstable inputs angband;
       user = config.users.users.${main_user};
     };
     useGlobalPkgs = true;

@@ -97,22 +97,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_pinned_freecad": {
-      "locked": {
-        "lastModified": 1760878510,
-        "narHash": "sha256-K5Osef2qexezUfs0alLvZ7nQFTGS9DL2oTVsIXsqLgs=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "5e2a59a5b1a82f89f2c7e598302a9cacebb72a67",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "5e2a59a5b1a82f89f2c7e598302a9cacebb72a67",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs_unstable": {
       "locked": {
         "lastModified": 1761806688,
@@ -134,7 +118,6 @@
         "home-manager": "home-manager",
         "mscout": "mscout",
         "nixpkgs": "nixpkgs",
-        "nixpkgs_pinned_freecad": "nixpkgs_pinned_freecad",
         "nixpkgs_unstable": "nixpkgs_unstable",
         "zen-browser": "zen-browser"
       }

@@ -1,12 +1,10 @@
 {
   pkgs,
   user,
-  inputs,
+  unstable,
+  angband,
   ...
 }:
-let
-  system = "x86_64-linux";
-in
 {
   imports = [
     ../../homemanager-modules
@@ -23,10 +21,10 @@ in
       thunderbird
       projectlibre
       openvpn
-      # (freecad-wayland.override { ifcSupport = true; })
+      kicad
     ]
-    ++ [inputs.angband.packages.${system}.angband-gcu]
-     ++ [ (inputs.nixpkgs_pinned_freecad.legacyPackages.${system}.freecad-wayland.override { ifcSupport = true; }) ];
+    ++ [ angband ]
+    ++ [ unstable.freecad ];
 
   services.mpd.enable = true;
   # wayland.windowManager.hyprland.enable = false;
