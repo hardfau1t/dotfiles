@@ -18,10 +18,12 @@
   home.packages =
     with pkgs;
     [
-      thunderbird
-      projectlibre
-      openvpn
+      glab
       kicad
+      openvpn
+      projectlibre
+      remmina
+      thunderbird
     ]
     ++ [ angband ]
     ++ [ unstable.freecad ];
