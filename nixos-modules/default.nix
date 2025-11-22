@@ -7,6 +7,7 @@
 {
   imports = [
     ./services
+    ./applications
   ];
   options = {
     host_name = lib.mkOption {
@@ -25,9 +26,6 @@
 
     # Select internationalisation properties.
     i18n.defaultLocale = "en_IN";
-    # Configure network proxy if necessary
-    # networking.proxy.default = "http://user:password@proxy:port/";
-    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
     console = {
       keyMap = "dvorak";
@@ -38,14 +36,9 @@
       nixos.includeAllModules = true;
     };
     networking = {
-      hostName = config.host_name; # Define your hostname.
+      hostName = config.host_name;
       firewall = {
-        enable = true;
-        allowedTCPPorts = [
-          22
-          8080
-          5000
-        ];
+        enable = false;
       };
       wireless = {
         iwd.enable = true;
@@ -63,13 +56,13 @@
       };
       useNetworkd = true;
       nftables = {
-        enable = true;
+        enable = false;
       };
     };
     systemd = {
       network = {
         enable = true;
-	wait-online.enable = false;
+        wait-online.enable = false;
       };
     };
 
@@ -125,6 +118,7 @@
         ffmpeg
         file
         gcc
+        iw
         jmtpfs
         lsof
         man-pages
@@ -138,6 +132,10 @@
         wget
       ];
     };
+    fonts.packages = with pkgs; [
+      nerd-fonts.symbols-only
+      maple-mono.NF
+    ];
 
     nix.settings.experimental-features = [
       "nix-command"
