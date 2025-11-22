@@ -57,18 +57,12 @@ export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
 #python
 export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
 # node
-export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
-# sqlite
-export SQLITE_HISTORY="$XDG_CACHE_HOME"/sqlite_history
+export NODE_REPL_HISTORY="$XDG_STATE_HOME"/node_repl_history
 
 
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
-export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 export QT_QPA_PLATFORM=wayland
-export IGNOREOF=100
-export LANG=en_IN.UTF-8
-export LC_CTYPE=en_IN.UTF-8
 export HISTFILE="${XDG_STATE_HOME}"/shell_history
 #export TERM="tmux-256color"
 export HISTSIZE=10000
