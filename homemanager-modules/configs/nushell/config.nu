@@ -715,11 +715,12 @@ alias hx = helix
 alias hostname = hostnamectl hostname
 alias adb = with-env {HOME: $"($env.XDG_DATA_HOME)/android"} { adb }
 alias yt-tor = yt-dlp --proxy socks5://127.0.0.1:9050
-alias hl = hledger --pretty --strict
+alias hl = hledger
 alias hle = ^$env.EDITOR $env.LEDGER_FILE
 alias hla = ^hledger --strict add
 alias hms = home-manager switch
 alias angband = angband -ssdl -uhardfau1t -mgcu   -- -B -spacer $'((term size).columns // 80)x((term size).rows // 25)' -left $'((term size).columns // 4.6)x((term size).rows // 2),*' -right $'((term size).columns // 4.6)x((term size).rows // 2),*' -top $'*x((term size).rows // 7)'
+alias dc = docker compose
 
 source libs/wrappers.nu
 source libs/basics.nu
