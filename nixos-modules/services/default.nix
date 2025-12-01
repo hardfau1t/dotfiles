@@ -1,5 +1,6 @@
 {
   lib,
+  config,
   ...
 }:
 {
@@ -16,7 +17,7 @@
     description = "set systemd-networkd log level";
   };
   config = {
-    virtualisation.podman.enable = lib.mkDefault true;
+    virtualisation.podman.enable = lib.mkDefault (!config.virtualisation.docker.enable);
     services = {
       tlp.enable = lib.mkDefault true;
       sshd.enable = lib.mkDefault true;
