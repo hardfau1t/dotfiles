@@ -22,26 +22,31 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[0] = LAYOUT_split_3x6_3(
             KC_GRV,             KC_QUOT,    KC_COMM,    KC_DOT,     KC_P,       KC_Y,       /*------*/      KC_F,       KC_G,       KC_C,       KC_R,       KC_L,       KC_BSPC,
+            /* `                    '           ,           .           p           y                           f           g           c           r           l           <BS> */
             KC_TAB,             KC_A,       KC_O,       KC_E,       KC_U,       KC_I,       /*------*/      KC_D,       KC_H,       KC_T,       KC_N,       KC_S,       KC_MINS,
+            /* <TAB>                a           o           e           u           i                           d           h           t           n           s           -   */
             KC_LSFT,            KC_SCLN,    KC_Q,       KC_J,       KC_K,       KC_X,       /*------*/      KC_B,       KC_M,       KC_W,       KC_V,       KC_Z,       KC_RSFT,
+            /* <S>                  ;           q           j           k           x                           b           m           w           v           z           <S> */
                                     KC_LCTL,    KC_SPC,     LT(2, KC_ESC),                  /*------*/              LT(1,KC_SLSH),  LGUI_T(KC_ENT),  LALT_T(KC_BSLS)),
-        /*
-         * `                    '           ,           .           p           y                           f           g           c           r           l           <BS>
-         * <TAB>                a           o           e           u           i                           d           h           t           n           s           -
-         * <S>                  ;           q           j           k           x                           b           m           w           v           z           <S>
-         *                          <C>         <Space>     <esc>                                                   /               <Ent>           \
-         */
+            /*                          <C>         <Space>     <esc>                                                   /               <Ent>           \ */
+
     /*******************************************************************************************************************************************************/
 	[1] = LAYOUT_split_3x6_3(
-            KC_TILD,            KC_1,       KC_2,       KC_3,       KC_4,       KC_5,       /*------*/   KC_F7,      KC_F8,      KC_F9,      KC_F10,     KC_F11,     KC_F12,
-            KC_TAB,             KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,     KC_PERC,    /*------*/   KC_VOLD,    KC_MUTE,    KC_VOLU,    KC_BRID,    KC_BRIU,    KC_F13,
-            LSFT_T(KC_BSLS),    KC_PIPE,    KC_LCBR,    KC_RCBR,    KC_PLUS,    KC_EQL,     /*------*/   KC_MPRV,    KC_MPLY,    KC_MNXT,    KC_PSTE,    KC_UNDO,    KC_FIND,
+            KC_TILD,            KC_1,       KC_2,       KC_3,       KC_4,       KC_5,       /*------*/      KC_F7,      KC_F8,      KC_F9,      KC_F10,     KC_F11,     KC_F12,
+            /* ~                1           2           3           4           5                           F7          F8          F9          F10         F11         F12 */
+            KC_TAB,             KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,     KC_PERC,    /*------*/      KC_VOLD,    KC_MUTE,    KC_VOLU,    KC_BRID,    KC_BRIU,    KC_F13,
+            /* <Tab>            !           @           #           $           %                           v-          mute        v+          b-          b+          F13 */
+            KC_LSFT,            KC_PIPE,    KC_LCBR,    KC_RCBR,    KC_PLUS,    KC_EQL,     /*------*/      KC_MPRV,    KC_MPLY,    KC_MNXT,    KC_PSTE,    KC_UNDO,    KC_FIND,
+            /* <S>              |           {           }           +           =                           M_prev      M_play      M_next      <paste>     <undo>      <find>  */
                                     KC_LCTL,    KC_SPC,    MO(3),                           /*------*/           MO(1), KC_TRNS, KC_RALT),
             /*******************************************************************************************************************************************************/
 	[2] = LAYOUT_split_3x6_3(
             KC_F1,          KC_F2,          KC_F3,      KC_F4,      KC_F5,      KC_F6,      /*------*/      KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       KC_DELETE,
-            KC_NO,        KC_HOME,          KC_LEFT,    KC_UP,      KC_RIGHT,   KC_END,     /*------*/      KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_LPRN,    KC_RPRN,    KC_UNDS,
-            KC_WAKE,        KC_CUT,         KC_COPY,    KC_DOWN,    KC_WBAK,    KC_WFWD,    /*------*/      KC_TRNS,    KC_TRNS,    KC_QUES,    KC_LBRC,    KC_RBRC,    RSFT_T(KC_SLSH),
+            /* F1           F2              F3          F4          F5          F6                          6           7           8           9           0           <delete> */
+            KC_TRNS,          KC_HOME,        KC_LEFT,    KC_UP,      KC_RIGHT,   KC_END,     /*------*/      KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_LPRN,    KC_RPRN,    KC_UNDS,
+            /* <none>       <home>          <left>      <up>        <right>     <end>                       ^           &           *           (           )           _       */
+            KC_WAKE,        KC_CUT,         KC_COPY,    KC_DOWN,    KC_WBAK,    KC_WFWD,    /*------*/      KC_TRNS,    KC_TRNS,    KC_QUES,    KC_LBRC,    KC_RBRC,    KC_RSFT,
+            /* <wake?>      <cut>           <copy>      <down>      <browser-b> <browser-f>                 transparent transparent ?           [           ]           <S> */
                                     KC_LCTL,    KC_SPC,    MO(2),                           /*------*/              MO(3),          MOD_RGUI,         KC_RALT),
 
             /*******************************************************************************************************************************************************/
