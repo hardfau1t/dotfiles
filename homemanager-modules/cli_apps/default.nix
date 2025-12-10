@@ -61,6 +61,7 @@
         tealdeer
         tokei
         vhdl-ls
+        yaml-language-server
         yt-dlp
         zellij
         zip
