@@ -85,7 +85,7 @@ def get-youtube-song [unparsed_link: string output_dir: path = "./"] {
     }
     std log info $"Downloading from youtube: `($link)`"
     try {
-        let metadata = (yt-dlp --default-search 'ytsearch' --dump-json --skip-download $'"($link)"' | from json)
+        let metadata = (yt-dlp --default-search 'ytsearch' --dump-json --skip-download $'($link)' | from json)
 # replace all contents within () and [] and any special characters
 	let title = $metadata.title | str replace -ra $TITLE_REGEX ''
 	let title =  if (input -n 1 $"Title:'($title)'\nDo you want to modify it?[y/N]" | str downcase) == 'y' {
@@ -95,7 +95,7 @@ def get-youtube-song [unparsed_link: string output_dir: path = "./"] {
         }
 	if (confirm-download $title $output_dir) {
                 print $"downloading ($link)"
-                yt-dlp --embed-thumbnail --embed-metadata -x --audio-format mp3 --no-embed-info-json --default-search 'ytsearch' -o $"($output_dir)/($title).mp3" $"`($link)`"
+                yt-dlp --embed-thumbnail --embed-metadata -x --audio-format mp3 --no-embed-info-json --default-search 'ytsearch' -o $"($output_dir)/($title).mp3" $"($link)"
 		return $"($title).mp3"
 	}
     } catch { |error|
