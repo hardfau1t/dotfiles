@@ -1,5 +1,10 @@
 ## Dotfiles
-My dot files for ~arch/sway~ nix/hyprland desktop.
+My dot files for ~arch/sway~ nix/hyprland desktop. This repo contains necessary nix modules to configure my systems.
+Soon(I hope) I will update the docs for modules configured in repo. 
+
+- Also this repo provides a bare_home (home manager) output that can be used anywhere.
+- [ ] Add bare_os module for minimal hyprland experience
+- All the dotfiles can be found under ./homemanager-modules/configs folder if they are not moved to nix (which i doubt I will ever do)
 
 ---
 
@@ -30,6 +35,5 @@ My dot files for ~arch/sway~ nix/hyprland desktop.
 -----
 
 ### Installation
-`stow` is required to install automatically, or manually install it by placing configurations in specific directories.
+For non nix / nixOs `stow` can be used to install configs automatically. If not dotfiles can be manually copied or linked.
 
-To install everything run `./install.sh`. If you want to install specific config run `stow <directory>`
