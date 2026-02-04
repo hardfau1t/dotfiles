@@ -45,6 +45,8 @@ local opts = {
                 neorg_leader = "\\",
             },
         },
+        ["core.summary"] = {},
+        ["external.neorg-gtd"] = {},
     },
 }
 
@@ -52,7 +54,6 @@ return {
     "nvim-neorg/neorg",
     opts = opts,
     dependencies = { "nvim-neorg/neorg-telescope" },
-    cmd = "Neorg",
     ft = "norg",
-
+    lazy = false,
 }

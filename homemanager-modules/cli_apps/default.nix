@@ -28,12 +28,14 @@
         bottom
         carapace
         clang-tools
+        dos2unix
         dust
         eza
         fd
         fzf
         gdb
         gnumake
+        lemminx
         lua-language-server
         lua51Packages.lua # for neovim
         lua51Packages.luarocks # for neovim
@@ -60,10 +62,12 @@
         taplo
         tealdeer
         tokei
+        uv
         vhdl-ls
         yaml-language-server
         yt-dlp
         zellij
+        zenity
         zip
         nerd-fonts.symbols-only
         maple-mono.NF

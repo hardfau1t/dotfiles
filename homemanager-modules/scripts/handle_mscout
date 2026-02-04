@@ -11,8 +11,8 @@ def main [
 ] {
     $env.NU_LOG_FORMAT = "%DATE%|%LEVEL% %MSG%"
     std log info $"event file: '($filepath)', played: ($play_cnt), skipped: ($skip_cnt)"
-    let max_skips = $env | get -i MPD_LIMIT_SKIP | default 5
-    let retention_limit = $env | get -i MPD_LIMIT_RETENTION | default 15
+    let max_skips = $env.MPD_LIMIT_SKIP? | default 5
+    let retention_limit = $env.MPD_LIMIT_RETENTION? | default 15
     let full_path = $env.MPD_DIR | path join $filepath
     let archive_path = $env.MPD_DIR | path join 'archive.tar'
     if $skip_cnt > $max_skips {

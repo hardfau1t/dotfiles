@@ -197,17 +197,17 @@ ins_right({
     color = { fg = colors.violet, gui = "bold" },
 })
 
-ins_right({
-    "diff",
-    -- Is it me or the symbol for modified us really weird
-    symbols = { added = " ", modified = "柳 ", removed = " " },
-    diff_color = {
-        added = { fg = colors.green },
-        modified = { fg = colors.orange },
-        removed = { fg = colors.red },
-    },
-    cond = conditions.hide_in_width,
-})
+-- ins_right({
+--     "diff",
+--     -- Is it me or the symbol for modified us really weird
+--     symbols = { added = " ", modified = "柳 ", removed = " " },
+--     diff_color = {
+--         added = { fg = colors.green },
+--         modified = { fg = colors.orange },
+--         removed = { fg = colors.red },
+--     },
+--     cond = conditions.hide_in_width,
+-- })
 -- Add components to right sections
 ins_right({
     "o:encoding",       -- option component same as &encoding in viml

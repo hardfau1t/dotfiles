@@ -54,6 +54,7 @@ window#waybar.fullscreen {
 #clock,
 #battery,
 #wireplumber,
+#custom-notification,
 #bluetooth,
 #network,
 #disk,
@@ -71,12 +72,15 @@ window#waybar.fullscreen {
   margin-right: 1rem;
 }
 
-#wireplumber {
-  color: @flamingo;
+#custom-notification {
+  color: @rosewater;
   border-radius: 1rem 0px 0px 1rem;
   margin-left: 1rem;
 }
 
+#wireplumber {
+  color: @flamingo;
+}
 
 #bluetooth {
   color: @pink;

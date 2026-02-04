@@ -207,6 +207,8 @@ export def random-mac [
         echo $"($addr.local)/($addr.prefixlen)"
             nmap -sn $"($addr.local)/($addr.prefixlen)" | ignore # just ping all interfaces
         }
+        # TODO: Set the second bit to 1 indicatin that this is local unique address
+        # TODO: instead of generating table of all new addresses for each available addresses, just convert them to integer then find non existing address
         # get all neighbours
         ip -j n show dev $ifname
         | from json 

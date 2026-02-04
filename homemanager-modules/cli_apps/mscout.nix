@@ -21,7 +21,7 @@ lib.mkIf config.services.mpd.enable {
 
     Service = {
       ExecStart = "${mpkg}/bin/mscout -p \${XDG_RUNTIME_DIR}/mpd.socket --use-tags -vv listen -a \${HOME}/.local/bin/handle_mscout ";
-      ExecSearchPath = "/run/current-system/sw/bin/";
+      ExecSearchPath = "/run/current-system/sw/bin/:${pkgs.libnotify}/bin:${pkgs.mpc}/bin";
       Restart = "on-failure";
       RestartSec = 5;
     };

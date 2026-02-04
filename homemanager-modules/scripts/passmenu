@@ -1,20 +1,77 @@
 #!/usr/bin/env nu
 
 # vim: set ft=nu:
+use std
 
+const BW_CACHE_DIR = "/tmp/bw/"
+const SESSION_FILE = [$BW_CACHE_DIR  "session-key" ] | path join
+const BW_ITEMS_CACHE = [$BW_CACHE_DIR, "items.nu"] | path join
+
+# loads the items from bw and stores in a cache file and returns the items
+def load_cache_items [] {
+    let entries = bw --nointeraction list items | from json
+    let folders = bw --nointeraction list folders | from json | compact -e id
+    $entries 
+    | update folderId {|r| try { $folders | where id == $r.folderId | get -o 0.name } catch { null }}
+    | select folderId name login.username notes id
+    | rename --column {"login.username": "username"}
+    | tee { to nuon | save -f $BW_ITEMS_CACHE }
+}
 
 def main [
-    --pass-dir(-d): path, # default $env.PASSWORD_STORE_DIR | default ~/.password-store
 ] {
-    let prefix = $pass_dir | default ($env | get -i PASSWORD_STORE_DIR) | default $"($env.HOME)/.password-store"
-    let pass_name = fd '\.gpg$' $prefix 
-        | lines 
-        | each { 
-            str replace -r '\.gpg$' ''
-            | str replace -r $'^($prefix)/?' ''
+    mkdir  $BW_CACHE_DIR
+    chmod 0700 $BW_CACHE_DIR
+    try {
+        $env.BW_SESSION = open $SESSION_FILE
+        if (bw status | from json | get status) != "unlocked" {
+            error make {msg: "session has expired", }
         }
-        | to text
-        | fuzzel -d --log-level error
-    pass -c $pass_name
-    notify-send -t 10000 "pass" $"($pass_name) is copied to system clipboard"
+    } catch {|e|
+        std log warning $"creating new session: ($e.msg)"
+        # try  3 times to get a right password
+        for _ in 0..3 {
+            try {
+                touch $SESSION_FILE
+                chmod 0600 $SESSION_FILE
+                $env.BW_SESSION = ^bw unlock --raw (zenity --password)
+            } catch {|e|
+                # WARN: there is a bug in nushell where if the tee succeeds and even if command fails resulting command status is success
+                std log error $"Couldn't unlock the session: ($e.msg)"
+                continue
+            }
+            $env.BW_SESSION | save -a $SESSION_FILE
+            break
+        }
+    }
+    let last_sync = bw --nointeraction status | from json | get lastSync | into datetime
+    let items = try {
+        let items_load_date = ls $BW_ITEMS_CACHE | get 0.modified
+        if $items_load_date < $last_sync {
+            error make {msg: "cache is older than last sync time", }
+        }
+        open $BW_ITEMS_CACHE | from nuon
+    } catch {|e| 
+        std log warning $"Loading items cache since: ($e.msg)"
+        load_cache_items
+    }
+    let index = try {
+        $items
+        | each { get folderId name username notes | compact | str join '/' } 
+        | to text 
+        | fuzzel --dmenu --index 
+        | into int
+    } catch {|e|
+        notify-send "bitwarden" "copy action cancelled"
+        return 1
+    }
+
+    let entry = $items | get -o $index
+    if ($entry | is-empty ) {
+        notify-send "bitwarden" "Couldn't find given item"
+    } else {
+        bw get password $entry.id | wl-copy
+        notify-send "bitwarden" $"Copied password of `($entry.name)/($entry.username)` to system clipboard"
+    }
+
 }

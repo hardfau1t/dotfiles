@@ -4,7 +4,7 @@
     "height": 12,
     "modules-left": ["hyprland/workspaces", "hyprland/window", "mpd"],
     "modules-center": ["clock"],
-    "modules-right": [ "wireplumber", "bluetooth", "network", "disk", "memory", "cpu", "backlight", "battery","custom/power", "tray"],
+    "modules-right": ["custom/notification", "wireplumber", "bluetooth", "network", "disk", "memory", "cpu", "backlight", "battery","custom/power", "tray"],
 
     "hyprland/workspaces": {
         "special-visible-only": true
@@ -108,6 +108,14 @@
         "format-alt": "{percentage_free}% 󰋊",
         "format-alt-click": "click-right",
         "path": "/",
+    },
+    "custom/notification": {
+      	"format": "{}",
+        "interval": 10,
+        "return-type": "json",
+        "exec": "waybar-notification.nu",
+      	"on-click": "dunstctl set-paused toggle",
+    	  "tooltip": false 
     },
     "custom/power": {
       	"format": "",
