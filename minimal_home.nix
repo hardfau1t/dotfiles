@@ -6,7 +6,7 @@ let
 in
 {
   imports = [
-    ../../homemanager-modules
+    ./homemanager-modules
   ];
   home.username = "${user}";
   home.homeDirectory = "/home/${user}";
