@@ -31,6 +31,13 @@
         lidSwitchExternalPower = "ignore";
         lidSwitchDocked = "ignore";
       };
+      # TODO: make this specific to laptops, may be create another laptops specific module which gets
+      # enabled for specific devices
+      upower = {
+        enable = true;
+        allowRiskyCriticalPowerAction = true;
+        criticalPowerAction = "Suspend";
+      };
     };
   };
 }
