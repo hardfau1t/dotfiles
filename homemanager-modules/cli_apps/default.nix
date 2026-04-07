@@ -21,7 +21,6 @@
       with pkgs;
       [
         autotools-language-server
-        ani-cli
         aria2
         bash-language-server
         bat
@@ -36,11 +35,7 @@
         gdb
         gnumake
         lemminx
-        lua-language-server
-        lua51Packages.lua # for neovim
-        lua51Packages.luarocks # for neovim
         moreutils # for vipe
-        neovim
         nethogs
         nil
         nixfmt-rfc-style
@@ -48,32 +43,34 @@
         nodePackages.vscode-json-languageserver
 
         pkg-config
-        pyright
-        (python312.withPackages (ps: [
-          ps.ipython
-        ]))
         ripgrep
         ruff
         rustup
         socat
         sqlite
         starship
-        stow
         taplo
         tealdeer
         tokei
         uv
         vhdl-ls
         yaml-language-server
-        yt-dlp
-        zellij
         zenity
         zip
         nerd-fonts.symbols-only
         maple-mono.NF
         noto-fonts
       ]
-      ++ [ unstable.nushellPlugins.polars ];
+      ++ (with unstable; [
+        nushellPlugins.polars
+        lua-language-server
+        lua51Packages.lua # for neovim
+        lua51Packages.luarocks # for neovim
+        neovim
+        zellij
+        yt-dlp
+        ani-cli
+      ]);
     programs = {
       password-store = {
         enable = true;
