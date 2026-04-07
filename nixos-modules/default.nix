@@ -113,7 +113,6 @@
     environment = {
       etc.hosts.enable = false;
       systemPackages = with pkgs; [
-        android-udev-rules
         eza
         ffmpeg
         file

@@ -26,5 +26,5 @@ lib.mkIf config.audio.enable {
       notifications = true;
     };
   };
-  home.packages = [ pkgs.mpc-cli ];
+  home.packages = [ pkgs.mpc ];
 }
