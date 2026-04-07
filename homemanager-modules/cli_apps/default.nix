@@ -12,6 +12,7 @@
     ./podman
     ./mscout.nix
     ./git.nix
+    ./opencode
   ];
   options = {
 
