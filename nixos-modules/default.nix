@@ -8,6 +8,7 @@
   imports = [
     ./services
     ./applications
+    ./gui
   ];
   options = {
     host_name = lib.mkOption {
@@ -26,6 +27,7 @@
 
     # Select internationalisation properties.
     i18n.defaultLocale = "en_IN";
+    custom.gui.enable = true;
 
     console = {
       keyMap = "dvorak";
@@ -35,6 +37,7 @@
       man.generateCaches = false;
       nixos.includeAllModules = true;
     };
+    
     networking = {
       hostName = config.host_name;
       firewall = {
@@ -100,15 +103,6 @@
         ];
       };
       light.enable = true;
-      uwsm = {
-        enable = true;
-        waylandCompositors = {
-          hyprland = {
-            prettyName = "Hyprland";
-            binPath = "/run/current-system/sw/bin/Hyprland";
-          };
-        };
-      };
     };
     environment = {
       etc.hosts.enable = false;
@@ -143,11 +137,6 @@
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.
     # programs.mtr.enable = true;
-    programs.hyprland = {
-      enable = true;
-      withUWSM = true;
-    };
-    programs.hyprlock.enable = true;
     # programs.gnupg.agent = {
     #   enable = true;
     #   enableSSHSupport = true;
