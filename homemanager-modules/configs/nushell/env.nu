@@ -1,6 +1,6 @@
 
 # Directories to search for scripts when calling source or use
-let config_path = ($nu.home-path | path join ".config/nushell")
+let config_path = ($nu.home-dir | path join ".config/nushell")
 # By default, <nushell-config-dir>/scripts is added
 $env.NU_LIB_DIRS = [
     ($config_path |  path join 'libs')
