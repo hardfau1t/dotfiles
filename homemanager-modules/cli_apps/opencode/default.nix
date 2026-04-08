@@ -8,7 +8,8 @@
 {
   options.programs.opencode.apiKeys = {
     go = lib.mkOption {
-      type = lib.types.str;
+      type = lib.types.nullOr lib.types.str;
+      default = null;
       description = "API key for OpenCode Go";
       example = "sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
     };
