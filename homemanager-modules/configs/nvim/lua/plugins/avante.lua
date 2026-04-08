@@ -35,6 +35,7 @@ return {
     event = "VeryLazy",
     version = false, -- set this to "*" if you want to always pull the latest change, false to update on release
     build = 'make',
+    enabled = false,
     opts = opts,
     dependencies = {
         "nvim-lua/plenary.nvim",

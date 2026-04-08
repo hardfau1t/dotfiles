@@ -43,5 +43,5 @@ return {
     {
         "neorg-gtd",
         dev = true,
-    }
+    },
 }
