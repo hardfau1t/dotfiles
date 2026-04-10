@@ -54,6 +54,5 @@ return {
     "nvim-neorg/neorg",
     opts = opts,
     dependencies = { "nvim-neorg/neorg-telescope" },
-    ft = "norg",
     lazy = false,
 }
