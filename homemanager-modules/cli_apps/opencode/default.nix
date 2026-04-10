@@ -24,6 +24,9 @@
       rules = "";
       settings = {
         model = "opencode-go/glm-5";
+        autoupdate = false;
+        permission.bash = "ask";
+        watcher.ignore = [ ".git/**" ];
       };
     };
     xdg.configFile."opencode/tui.json".source = ./tui.json;
