@@ -89,7 +89,10 @@
         CARGO_HOME = "${config.xdg.dataHome}/cargo";
         RUSTUP_HOME = "${config.xdg.dataHome}/rustup";
       };
-      sessionPath = [ "$CARGO_HOME/bin" "$RUSTUP_HOME/bin"];
+      sessionPath = [
+        "$CARGO_HOME/bin"
+        "$RUSTUP_HOME/bin"
+      ];
     };
     services = {
       udiskie.enable = lib.mkDefault true;
