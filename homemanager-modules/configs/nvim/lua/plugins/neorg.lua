@@ -53,6 +53,6 @@ local opts = {
 return {
     "nvim-neorg/neorg",
     opts = opts,
-    dependencies = { "nvim-neorg/neorg-telescope" },
+    dependencies = { "nvim-neorg/neorg-telescope", "nvim-neorg/tree-sitter-norg", "nvim-neorg/tree-sitter-norg-meta" },
     lazy = false,
 }
