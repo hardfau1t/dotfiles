@@ -74,6 +74,7 @@
       nix-ld = {
         enable = true;
         libraries = with pkgs; [
+          stdenv.cc.cc
           libpulseaudio
           gtk3
           alsa-lib
