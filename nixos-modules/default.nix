@@ -107,6 +107,7 @@
     };
     environment = {
       etc.hosts.enable = false;
+      localBinInPath = true;
       systemPackages = with pkgs; [
         eza
         ffmpeg

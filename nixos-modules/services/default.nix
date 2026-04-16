@@ -8,7 +8,6 @@
   imports = [
     ./ollama.nix
     ./pipewire.nix
-    ./homeassistant.nix
     ./networkd.nix
   ];
   options.services.systemd-networkd.log_level = lib.mkOption {
