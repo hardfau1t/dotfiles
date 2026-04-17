@@ -69,6 +69,7 @@
         (neovim.override {
           extraMakeWrapperArgs = ''--suffix LD_LIBRARY_PATH : "${pkgs.stdenv.cc.cc.lib}/lib"'';
         })
+        ty
         zellij
         yt-dlp
         ani-cli
