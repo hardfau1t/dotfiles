@@ -1,5 +1,6 @@
 {
-  pkgs, ...
+  pkgs,
+  ...
 }:
 let
   user = "";
@@ -16,7 +17,7 @@ in
 
   gui_apps.enable = false;
   wallpapers.enable = false;
-    home.packages = with pkgs; [
-      home-manager
-    ];
+  home.packages = with pkgs; [
+    home-manager
+  ];
 }

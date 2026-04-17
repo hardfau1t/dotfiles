@@ -37,7 +37,7 @@
       man.generateCaches = false;
       nixos.includeAllModules = true;
     };
-    
+
     networking = {
       hostName = config.host_name;
       firewall = {

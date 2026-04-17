@@ -78,7 +78,12 @@
       nushell = {
         enable = true;
         package = unstable.nushell;
-        plugins = with pkgs.nushellPlugins; [format polars semver units];
+        plugins = with pkgs.nushellPlugins; [
+          format
+          polars
+          semver
+          units
+        ];
       };
       password-store = {
         enable = true;

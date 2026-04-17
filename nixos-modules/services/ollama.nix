@@ -10,7 +10,7 @@
       user = "ollama";
       home = "/mnt/storage/ollama";
     };
-    users.users.${config.main_user}.extraGroups = ["ollama"];
+    users.users.${config.main_user}.extraGroups = [ "ollama" ];
   };
 
 }
