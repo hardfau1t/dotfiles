@@ -63,7 +63,6 @@
         noto-fonts
       ]
       ++ (with unstable; [
-        nushellPlugins.polars
         lua-language-server
         lua51Packages.lua # for neovim
         lua51Packages.luarocks # for neovim
@@ -75,6 +74,11 @@
         ani-cli
       ]);
     programs = {
+      nushell = {
+        enable = true;
+        package = unstable.nushell;
+        plugins = with pkgs.nushellPlugins; [format polars semver units];
+      };
       password-store = {
         enable = true;
         package = pkgs.pass.withExtensions (exts: [ exts.pass-otp ]);
