@@ -1,44 +1,32 @@
-local configs = {
-    ensure_installed = {
-        "bash",
-        "c",
-        "cpp",
-        "css",
-        "html",
-        "json",
-        "lua",
-        "markdown",
-        "make",
-        "norg",
-        -- "norg_meta",
-        "nu",
-        "python",
-        "rust",
-        "regex",
-        "sql",
-        "toml",
-        "yaml",
-        "vim",
-        "vimdoc",
-    },
-    highlight = {
-        enable = true,
-    },
-    indent = {
-        enable = false,
-    },
-    incremental_selection = {
-        enable = true,
-    },
+local langs = {
+    "bash",
+    "c",
+    "cpp",
+    "css",
+    "html",
+    "json",
+    "lua",
+    "markdown",
+    "make",
+    "norg",
+    -- "norg_meta",
+    "nu",
+    "python",
+    "rust",
+    "regex",
+    "sql",
+    "toml",
+    "yaml",
+    "vim",
+    "vimdoc",
 }
+
 
 return {
     "nvim-treesitter/nvim-treesitter",
-    branch = "master",
     config = function(_, opts)
-        require("nvim-treesitter.configs").setup(opts)
+        require("nvim-treesitter").install(langs)
     end,
-    opts = configs,
     -- dependencies = {
     --     { "nushell/tree-sitter-nu" }
     -- },

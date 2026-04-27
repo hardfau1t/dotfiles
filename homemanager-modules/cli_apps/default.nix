@@ -70,6 +70,8 @@
           extraMakeWrapperArgs = ''--suffix LD_LIBRARY_PATH : "${pkgs.stdenv.cc.cc.lib}/lib"'';
         })
         ty
+        tree-sitter # for neovim
+        protols
         zellij
         yt-dlp
         ani-cli
