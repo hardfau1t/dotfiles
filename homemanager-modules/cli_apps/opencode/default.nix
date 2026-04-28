@@ -8,7 +8,7 @@
 {
   options.programs.opencode.apiKeys = {
     go = lib.mkOption {
-      type = lib.types.nullOr lib.types.str;
+      type = lib.types.str;
       default = null;
       description = "API key for OpenCode Go";
       example = "sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
@@ -33,6 +33,8 @@
 
     home.sessionVariables = {
       OPENCODE_CONFIG = "${config.xdg.configHome}/opencode/config.json";
+    }
+    // lib.optionalAttrs (config.programs.opencode.apiKeys.go != null) {
       OPC_GO_API_KEY = config.programs.opencode.apiKeys.go;
     };
   };
