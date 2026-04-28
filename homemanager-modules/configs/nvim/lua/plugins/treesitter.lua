@@ -24,6 +24,7 @@ local langs = {
 
 return {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     config = function(_, opts)
         require("nvim-treesitter").install(langs)
     end,
