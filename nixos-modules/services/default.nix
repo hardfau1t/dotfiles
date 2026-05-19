@@ -26,7 +26,7 @@
       libinput.enable = lib.mkDefault true;
 
       ollama.enable = lib.mkDefault false;
-      logind = {
+      logind.settings.Login = {
         lidSwitchExternalPower = "ignore";
         lidSwitchDocked = "ignore";
       };
