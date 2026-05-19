@@ -44,7 +44,7 @@
         enable = false;
       };
       wireless = {
-        iwd.enable = true;
+        iwd.enable = lib.mkDefault true;
         userControlled = {
           enable = true;
         };
