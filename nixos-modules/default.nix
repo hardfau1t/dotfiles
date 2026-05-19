@@ -30,7 +30,7 @@
     custom.gui.enable = true;
 
     console = {
-      keyMap = "dvorak";
+      keyMap = lib.mkDefault "dvorak";
     };
     documentation = {
       dev.enable = true;
