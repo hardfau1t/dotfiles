@@ -75,6 +75,11 @@
         zellij
         yt-dlp
         ani-cli
+
+        tinymist
+        typstyle
+        typst
+        typship
       ]);
     programs = {
       nushell = {
