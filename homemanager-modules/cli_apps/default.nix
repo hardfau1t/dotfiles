@@ -13,6 +13,7 @@
     ./mscout.nix
     ./git.nix
     ./opencode
+    ./typst.nix
   ];
   options = {
 
@@ -75,11 +76,6 @@
         zellij
         yt-dlp
         ani-cli
-
-        tinymist
-        typstyle
-        typst
-        typship
       ]);
     programs = {
       nushell = {
