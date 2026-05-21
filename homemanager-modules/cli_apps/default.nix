@@ -7,12 +7,13 @@
 }:
 {
   imports = [
+    ./git.nix
     ./mpd.nix
+    ./mscout.nix
+    ./opencode
+    ./openssl.nix
     ./playerctl.nix
     ./podman
-    ./mscout.nix
-    ./git.nix
-    ./opencode
     ./typst.nix
   ];
   options = {
