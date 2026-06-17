@@ -34,7 +34,13 @@
     };
     documentation = {
       dev.enable = true;
-      man.generateCaches = false;
+      man = {
+        cache = {
+          enable = false;
+          generateAtRuntime = true;
+        };
+        man-db.enable = true;
+      };
       nixos.includeAllModules = true;
     };
 
