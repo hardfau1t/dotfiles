@@ -1,0 +1,5 @@
+hl.on("hyprland.start", function()
+    hl.exec_cmd("uwsm app -- alacritty --working-directory ~/.local/share/notes -e bash -c 'while true; do nvim -c \"Neorg workspace my_workspace\"; done'", { workspace = "special", float = true, size = {"97%", "92%"}, center = 1, dim_around = true, no_screen_share = true })
+    hl.exec_cmd("gpgconf --launch gpg-agent")
+    hl.exec_cmd("wl-paste --watch cliphist store")
+end)

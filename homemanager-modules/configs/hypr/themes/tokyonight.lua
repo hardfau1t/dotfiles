@@ -1,0 +1,6 @@
+local M = {
+    active_border   = 0xffc0caf5,
+    inactive_border = 0xff24283b,
+}
+
+return M

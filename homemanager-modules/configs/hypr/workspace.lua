@@ -1,0 +1,30 @@
+local private = require("private")
+
+hl.window_rule({ match = { title = "Firefox — Sharing Indicator" }, max_size = { 60, 35 } })
+hl.window_rule({ match = { title = "Firefox — Sharing Indicator" }, float = true })
+hl.window_rule({ match = { title = "Firefox — Sharing Indicator" }, no_focus = true })
+hl.window_rule({ match = { title = "Firefox — Sharing Indicator" }, move = { "50%", "95%" } })
+
+hl.window_rule({ match = { class = "org.gnome.Calculator" }, float = true })
+hl.window_rule({ match = { title = "App" }, float = true })
+hl.window_rule({ match = { class = "gnucash", title = "GnuCash Tip Of The Day" }, float = true })
+hl.window_rule({ match = { class = "gnucash", title = "GnuCash Tip Of The Day" }, max_size = { "60%", "40%" } })
+hl.window_rule({ match = { class = "org.gnome.Calculator" }, size = { 670, 670 } })
+hl.window_rule({ match = { class = "Element" }, monitor = private.main_monitor })
+
+hl.window_rule({ match = { title = "log-plot" }, float = true })
+
+hl.workspace_rule({ workspace = "special:element", monitor = private.main_monitor })
+hl.workspace_rule({ workspace = "special", monitor = private.main_monitor })
+hl.workspace_rule({ workspace = "1", monitor = private.main_monitor })
+hl.workspace_rule({ workspace = "2", monitor = private.main_monitor, default = true })
+hl.workspace_rule({ workspace = "3", monitor = private.main_monitor })
+hl.workspace_rule({ workspace = "4", monitor = private.main_monitor })
+hl.workspace_rule({ workspace = "5", monitor = private.main_monitor })
+hl.workspace_rule({ workspace = "6", monitor = private.external_monitor })
+hl.workspace_rule({ workspace = "7", monitor = private.external_monitor })
+hl.workspace_rule({ workspace = "8", monitor = private.external_monitor, default = true })
+hl.workspace_rule({ workspace = "9", monitor = private.external_monitor })
+hl.workspace_rule({ workspace = "10", monitor = private.external_monitor })
+
+hl.window_rule({ match = { class = "ueberzug" }, no_anim = true })
