@@ -7,7 +7,7 @@ lib.mkIf config.programs.waybar.enable {
   programs = {
     waybar = {
       systemd.enable = true;
-      systemd.target = "graphical-session.target";
+      systemd.targets = ["graphical-session.target"];
     };
   };
 }
