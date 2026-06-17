@@ -94,21 +94,14 @@
           default-cache-ttl = 900;
         };
       };
-      adb.enable = true;
       bandwhich.enable = true;
-      firefox = {
-        enable = true;
-        languagePacks = [
-          "en-US"
-          "kn"
-        ];
-      };
-      light.enable = true;
     };
     environment = {
       etc.hosts.enable = false;
       localBinInPath = true;
       systemPackages = with pkgs; [
+        android-tools
+        brightnessctl
         eza
         ffmpeg
         file
