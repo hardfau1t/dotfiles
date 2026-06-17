@@ -40,8 +40,4 @@ return {
         event = "LspAttach",
         opts = {}, -- required, even if empty
     },
-    {
-        "neorg-gtd",
-        dev = true,
-    },
 }
