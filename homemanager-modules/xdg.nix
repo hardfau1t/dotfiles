@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   create_dot_path =
     file_path:
@@ -40,10 +40,19 @@ in
         source = create_dot_path "eww";
         recursive = true;
       };
-      "hypr" = {
-        source = create_dot_path "hypr";
-        recursive = true;
-      };
+
+      "hypr/lua" = create_dot_path_recursive "hypr/lua";
+      "hypr/hyprlock.conf".source = create_dot_path "hypr/hyprlock.conf";
+      "hypr/hyprpaper.conf".source = create_dot_path "hypr/hyprpaper.conf";
+      "hypr/hyprland.lua".source = create_dot_path "hypr/hyprland.lua";
+      "hypr/.luarc.json".text = ''
+        {
+          "workspace": {
+            "library": [
+              "${pkgs.hyprland}/share/hypr/stubs"
+            ]
+          }
+        }'';
       "zellij/config.kdl".source = create_dot_path "zellij/config.kdl";
       "zellij/layouts" = create_dot_path_recursive "zellij/layouts";
       "zellij/themes" = create_dot_path_recursive "zellij/themes";

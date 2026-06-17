@@ -17,7 +17,7 @@ export def "config alacritty" [] {
 # Edit hyprland config
 export def "config hypr" [] {
     cd ~/.config/hypr/
-    nvim hyprland.conf
+    nvim hyprland.lua
 }
 
 export def "config waybar" [] {

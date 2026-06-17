@@ -1,10 +1,10 @@
-local theme = require("themes/catppuccin-machiato")
-require("shortcuts")
-require("init")
-require("private")
-require("style")
-require("workspace")
-require("devices")
+local theme = require("lua.themes.catppuccin-machiato")
+require("lua.shortcuts")
+require("lua.init")
+require("lua.private")
+require("lua.style")
+require("lua.workspace")
+require("lua.devices")
 
 hl.config({
     general = {

@@ -1,4 +1,4 @@
-local private = require("private")
+local private = require("lua.private")
 
 hl.bind("SUPER + O", hl.dsp.exec_cmd("uwsm app -- bash -c 'grim -g \"$(slurp -d)\" -    | wl-copy ; notify-send -t 5000 \"Grim\" \"screenshot copied to clipboard\"'"), { release = true })
 hl.bind("SUPER + A", hl.dsp.exec_cmd("uwsm app -- bash -c 'grim -c -                  | wl-copy ; notify-send -t 5000 \"Grim\" \"screenshot copied to clipboard\"'"), { release = true })

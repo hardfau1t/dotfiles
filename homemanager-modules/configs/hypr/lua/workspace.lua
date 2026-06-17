@@ -1,4 +1,4 @@
-local private = require("private")
+local private = require("lua.private")
 
 hl.window_rule({ match = { title = "Firefox — Sharing Indicator" }, max_size = { 60, 35 } })
 hl.window_rule({ match = { title = "Firefox — Sharing Indicator" }, float = true })
