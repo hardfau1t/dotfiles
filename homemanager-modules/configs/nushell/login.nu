@@ -1,12 +1,7 @@
-$env.PATH = (
-    ([
-        "~/.local/bin",
-        $"($env.CARGO_HOME)/bin"
-    ]
-    | path expand ) 
-    | append $env.PATH
-    | str join ":"
-)
+use std
+if $env.CARGO_HOME? != null {
+  std path add $env.CARGO_HOME
+}
 
 $env.LD_LIBRARY_PATH  = (
     [
