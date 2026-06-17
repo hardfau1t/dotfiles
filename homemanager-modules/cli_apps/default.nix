@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  unstable,
   ...
 }:
 {
@@ -20,64 +19,60 @@
 
   };
   config = lib.mkIf config.cli_apps.enable {
-    home.packages =
-      with pkgs;
-      [
-        autotools-language-server
-        aria2
-        bash-language-server
-        bat
-        bottom
-        carapace
-        clang-tools
-        dos2unix
-        dust
-        eza
-        fd
-        fzf
-        gdb
-        gnumake
-        lemminx
-        moreutils # for vipe
-        nethogs
-        nil
-        nixfmt-rfc-style
-        nmap
-        nodePackages.vscode-json-languageserver
+    home.packages = with pkgs; [
+      ani-cli
+      aria2
+      autotools-language-server
+      bash-language-server
+      bat
+      bottom
+      carapace
+      clang-tools
+      dos2unix
+      dust
+      eza
+      fd
+      fzf
+      gdb
+      gnumake
+      lemminx
+      lua-language-server
+      lua51Packages.lua # for neovim
+      lua51Packages.luarocks # for neovim
+      maple-mono.NF
+      moreutils # for vipe
+      nerd-fonts.symbols-only
+      nethogs
+      nil
+      nixfmt-rfc-style
+      nmap
+      noto-fonts
+      pkg-config
+      protols
+      ripgrep
+      ruff
+      rustup
+      socat
+      sqlite
+      starship
+      taplo
+      tealdeer
+      tokei
+      tree-sitter # for neovim
+      ty
+      uv
+      vhdl-ls
+      vscode-json-languageserver
+      yaml-language-server
+      yt-dlp
+      zellij
+      zenity
+      zip
 
-        pkg-config
-        ripgrep
-        ruff
-        rustup
-        socat
-        sqlite
-        starship
-        taplo
-        tealdeer
-        tokei
-        uv
-        vhdl-ls
-        yaml-language-server
-        zenity
-        zip
-        nerd-fonts.symbols-only
-        maple-mono.NF
-        noto-fonts
-      ]
-      ++ (with unstable; [
-        lua-language-server
-        lua51Packages.lua # for neovim
-        lua51Packages.luarocks # for neovim
-        (neovim.override {
-          extraMakeWrapperArgs = ''--suffix LD_LIBRARY_PATH : "${pkgs.stdenv.cc.cc.lib}/lib"'';
-        })
-        ty
-        tree-sitter # for neovim
-        protols
-        zellij
-        yt-dlp
-        ani-cli
-      ]);
+      (neovim.override {
+        extraMakeWrapperArgs = ''--suffix LD_LIBRARY_PATH : "${pkgs.stdenv.cc.cc.lib}/lib"'';
+      })
+    ];
     programs = {
       nushell = {
         enable = true;

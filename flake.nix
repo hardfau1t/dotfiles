@@ -2,12 +2,11 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs";
     home-manager = {
-      url = "github:nix-community/home-manager?ref=release-25.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs_unstable.url = "github:nixos/nixpkgs";
   };
 
   outputs =
@@ -19,7 +18,6 @@
     }@inputs:
     let
       system = "x86_64-linux";
-      unstable_packages = import inputs.nixpkgs_unstable { inherit system; };
       pkgs = import inputs.nixpkgs { inherit system; };
     in
     {
@@ -31,7 +29,6 @@
       homeConfigurations = {
         bare_home = home-manager.lib.homeManagerConfiguration {
           extraSpecialArgs = {
-            unstable = unstable_packages;
           };
           pkgs = pkgs;
           modules = [
