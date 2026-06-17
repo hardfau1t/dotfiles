@@ -19,7 +19,6 @@
       enableMcpIntegration = true;
       agents = { };
       commands = { };
-      rules = "";
       settings = {
         model = "opencode-go/glm-5";
         autoupdate = false;
