@@ -84,12 +84,12 @@
           libpulseaudio
           gtk3
           alsa-lib
-          xorg.libX11
-          xorg.libxcb
-          xorg.libXext
-          xorg.libXrandr
-          xorg.libXcomposite
-          xorg.libXcursor
+          libX11
+          libxcb
+          libXext
+          libXrandr
+          libXcomposite
+          libXcursor
         ];
       };
       gnupg.agent = {
