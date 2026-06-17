@@ -44,7 +44,6 @@
       nerd-fonts.symbols-only
       nethogs
       nil
-      nixfmt-rfc-style
       nmap
       noto-fonts
       pkg-config

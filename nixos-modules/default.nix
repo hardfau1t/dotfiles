@@ -113,7 +113,6 @@
         man-pages-posix
         neovim
         nethogs
-        nixfmt-rfc-style
         tcpdump
         unzip
         usbutils
