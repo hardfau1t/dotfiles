@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  unstable,
   ...
 }:
 {
@@ -19,59 +20,60 @@
 
   };
   config = lib.mkIf config.cli_apps.enable {
-    home.packages = with pkgs; [
-      ani-cli
-      aria2
-      autotools-language-server
-      bash-language-server
-      bat
-      bottom
-      carapace
-      clang-tools
-      dos2unix
-      dust
-      eza
-      fd
-      fzf
-      gdb
-      gnumake
-      lemminx
-      lua-language-server
-      lua51Packages.lua # for neovim
-      lua51Packages.luarocks # for neovim
-      maple-mono.NF
-      moreutils # for vipe
-      nerd-fonts.symbols-only
-      nethogs
-      nil
-      nmap
-      noto-fonts
-      pkg-config
-      protols
-      ripgrep
-      ruff
-      rustup
-      socat
-      sqlite
-      starship
-      taplo
-      tealdeer
-      tokei
-      tree-sitter # for neovim
-      ty
-      uv
-      vhdl-ls
-      vscode-json-languageserver
-      yaml-language-server
-      yt-dlp
-      zellij
-      zenity
-      zip
-
-      (neovim.override {
-        extraMakeWrapperArgs = ''--suffix LD_LIBRARY_PATH : "${pkgs.stdenv.cc.cc.lib}/lib"'';
-      })
-    ];
+    home.packages =
+      with pkgs;
+      [
+        aria2
+        autotools-language-server
+        bash-language-server
+        bat
+        bottom
+        carapace
+        clang-tools
+        dos2unix
+        dust
+        eza
+        fd
+        fzf
+        gdb
+        gnumake
+        lemminx
+        maple-mono.NF
+        moreutils # for vipe
+        nerd-fonts.symbols-only
+        nethogs
+        nmap
+        noto-fonts
+        pkg-config
+        protols
+        ripgrep
+        ruff
+        socat
+        sqlite
+        starship
+        taplo
+        tealdeer
+        tokei
+        uv
+        vhdl-ls
+        vscode-json-languageserver
+        yaml-language-server
+        zenity
+        zip
+      ]
+      ++ (with unstable; [
+        ani-cli
+        lua-language-server
+        lua51Packages.lua # for neovim
+        lua51Packages.luarocks # for neovim
+        neovim
+        nil
+        protols
+        tree-sitter # for neovim
+        ty
+        yt-dlp
+        zellij
+      ]);
     programs = {
       nushell = {
         enable = true;

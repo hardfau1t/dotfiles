@@ -1,15 +1,15 @@
 {
   config,
   lib,
-  pkgs,
+  unstable,
   ...
 }:
 
 let
-  typst = pkgs.rustPlatform.buildRustPackage (finalAttrs: {
+  typst = unstable.rustPlatform.buildRustPackage (finalAttrs: {
     pname = "typst";
     version = "0.14.2";
-    src = pkgs.fetchFromGitHub {
+    src = unstable.fetchFromGitHub {
       owner = "typst";
       repo = "typst";
       rev = "64720d459129f4e5561c3bd0519bdfaef034b208";
@@ -25,12 +25,12 @@ let
     cargoHash = "sha256-m0Uiax21Ggbe472SSRq24vnx/m9iLh9FbwU0CTXueBo=";
 
     nativeBuildInputs = [
-      pkgs.installShellFiles
-      pkgs.pkg-config
+      unstable.installShellFiles
+      unstable.pkg-config
     ];
 
     buildInputs = [
-      pkgs.openssl
+      unstable.openssl
     ];
 
     env = {
@@ -59,13 +59,13 @@ let
     cargoTestFlags = [ "--workspace" ];
 
     doInstallCheck = true;
-    nativeInstallCheckInputs = [ pkgs.versionCheckHook ];
+    nativeInstallCheckInputs = [ unstable.versionCheckHook ];
     versionCheckProgramArg = "--version";
 
     passthru = {
-      updateScript = pkgs.nix-update-script { };
-      packages = pkgs.callPackage ./typst-packages.nix { };
-      withPackages = pkgs.callPackage ./with-packages.nix { };
+      updateScript = unstable.nix-update-script { };
+      packages = unstable.callPackage ./typst-packages.nix { };
+      withPackages = unstable.callPackage ./with-packages.nix { };
     };
 
     meta = {
@@ -87,7 +87,7 @@ in
 
   config = lib.mkIf config.custom.typst.enable {
     home.packages =
-      with pkgs;
+      with unstable;
       [
         tinymist
         typship

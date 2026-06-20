@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  unstable,
   ...
 }:
 
@@ -16,6 +17,7 @@
 
   config = lib.mkIf config.programs.opencode.enable {
     programs.opencode = {
+      package = unstable.opencode;
       enableMcpIntegration = true;
       agents = { };
       commands = { };
