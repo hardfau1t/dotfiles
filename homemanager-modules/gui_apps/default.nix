@@ -27,11 +27,13 @@ in
       [
         alacritty
         cliphist
+        crosspipe
         eww
         fuzzel
+        gnucash
         grim
         hledger
-        gnucash
+        hyprpicker
         imagemagick
         imv
         libiconv
@@ -41,9 +43,7 @@ in
         pinentry-gtk2
         showmethekey
         slurp
-        helvum
         wl-clipboard
-        hyprpicker
       ]
       ++ [ zen ];
 

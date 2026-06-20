@@ -45,7 +45,6 @@
         nmap
         noto-fonts
         pkg-config
-        protols
         ripgrep
         ruff
         socat

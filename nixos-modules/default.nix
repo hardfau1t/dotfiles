@@ -29,9 +29,6 @@
     i18n.defaultLocale = "en_IN";
     custom.gui.enable = true;
 
-    console = {
-      keyMap = lib.mkDefault "dvorak";
-    };
     documentation = {
       dev.enable = true;
       man = {

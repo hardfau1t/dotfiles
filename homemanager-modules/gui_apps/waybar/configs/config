@@ -146,6 +146,6 @@
         "format": "{icon} {volume}%",
         "format-muted": " {volume}%",
         "format-icons": ["", "", ""],
-        "on-click": "hyprctl dispatch exec '[float]' helvum"
+        "on-click": "hyprctl dispatch exec '[float]' crosspipe"
     }
 }
