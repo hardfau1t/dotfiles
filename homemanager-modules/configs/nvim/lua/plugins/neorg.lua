@@ -46,7 +46,7 @@ local opts = {
             },
         },
         ["core.summary"] = {},
-        ["external.neorg-gtd"] = {},
+        -- ["external.neorg-gtd"] = {},
     },
 }
 
