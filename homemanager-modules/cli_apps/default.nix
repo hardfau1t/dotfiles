@@ -14,7 +14,6 @@
     ./openssl.nix
     ./playerctl.nix
     ./podman
-    ./typst.nix
   ];
   options = {
 
