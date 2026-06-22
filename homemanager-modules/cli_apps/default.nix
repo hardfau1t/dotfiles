@@ -64,7 +64,9 @@
         lua-language-server
         lua51Packages.lua # for neovim
         lua51Packages.luarocks # for neovim
-        neovim
+        (neovim.override {
+          extraMakeWrapperArgs = ''--suffix LD_LIBRARY_PATH : "${pkgs.stdenv.cc.cc.lib}/lib"'';
+        })
         nil
         protols
         tree-sitter # for neovim
