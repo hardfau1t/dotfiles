@@ -44,8 +44,8 @@ hl.bind("SUPER + code:69", hl.dsp.exec_cmd("mpc -h " .. os.getenv("MPD_HOST") ..
 hl.bind("code:208", hl.dsp.exec_cmd("mpc -h " .. os.getenv("MPD_HOST") .. " play"), { locked = true })
 hl.bind("code:209", hl.dsp.exec_cmd("mpc -h " .. os.getenv("MPD_HOST") .. " pause"), { locked = true })
 
-hl.bind("code:232", hl.dsp.exec_cmd("light -U 2"), { locked = true, repeating = true })
-hl.bind("code:233", hl.dsp.exec_cmd("light -A 2"), { locked = true, repeating = true })
+hl.bind("code:232", hl.dsp.exec_cmd("brightnessctl set 2%-"), { locked = true, repeating = true })
+hl.bind("code:233", hl.dsp.exec_cmd("brightnessctl set +2%"), { locked = true, repeating = true })
 
 hl.bind("SUPER + W", hl.dsp.window.fullscreen({ mode = "maximized" }))
 hl.bind("SUPER + SHIFT + W", hl.dsp.window.fullscreen())
