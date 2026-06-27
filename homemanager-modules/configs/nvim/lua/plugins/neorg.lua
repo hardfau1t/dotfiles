@@ -49,10 +49,10 @@ local opts = {
         -- ["external.neorg-gtd"] = {},
     },
 }
-
 return {
     "nvim-neorg/neorg",
     opts = opts,
     dependencies = { "nvim-neorg/neorg-telescope", "nvim-neorg/tree-sitter-norg", "nvim-neorg/tree-sitter-norg-meta" },
     lazy = false,
+    enabled = vim.env.APP_NEORG_ENABLE == "1"
 }
