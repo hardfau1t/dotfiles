@@ -42,6 +42,7 @@
         nerd-fonts.symbols-only
         nethogs
         nmap
+        nixfmt
         noto-fonts
         pkg-config
         ripgrep
