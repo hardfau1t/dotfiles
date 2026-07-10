@@ -169,7 +169,16 @@ $env.config = {
     use_kitty_protocol: false # enables keyboard enhancement protocol implemented by kitty console, only if your terminal support this
 
     hooks: {
-        pre_prompt: [{ null }] # run before the prompt is shown
+        pre_prompt: [{||
+          # set NU_OVERLAYS with overlay list, useful for starship prompt
+          let overlays = overlay list | where active and name != 'zero' | get name
+          if not ($overlays | is-empty) {
+            $env.NU_OVERLAYS = $overlays | str join ", "
+          } else {
+            $env.NU_OVERLAYS = null
+          }
+
+        }] # run before the prompt is shown
         pre_execution: [{ null }] # run before the repl input is run
         env_change: {
             PWD: [{|before, after| null }] # run if the PWD environment is different since the last repl input

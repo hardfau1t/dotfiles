@@ -3,7 +3,7 @@ command_timeout=100
 add_newline=false
 palette = "catppuccin_macchiato"
 
-format = '''$status$battery$hostname$directory$git_branch$git_status$git_state$python${custom.qwicket}$nix_shell$aws $jobs$line_break$character'''
+format = '''$status$battery$hostname$directory$git_branch$git_status$git_state$python${custom.qwicket}$nix_shell$aws$env_var $jobs$line_break$character'''
 
 
 [custom.qwicket]
@@ -20,6 +20,11 @@ discharging_symbol = "💀 "
 [[battery.display]]
 threshold = 20
 style = "bold yellow"
+
+[env_var.NU_OVERLAYS]
+symbol = '📌 '
+format = 'with [$symbol($env_value )]($style)'
+style = 'red'
 
 [python]
 format = '[${symbol}${pyenv_prefix}($virtualenv) ]($style)'
