@@ -24,7 +24,17 @@
       settings = {
         model = "opencode-go/glm-5";
         autoupdate = false;
-        permission.bash = "ask";
+        permission.bash = {
+          "*" = "ask";
+          "git log *" = "allow";
+          "git status *" = "allow";
+          "git show *" = "allow";
+          "grep *" = "allow";
+          "head *" = "allow";
+          "tail *" = "allow";
+          "wc *" = "allow";
+          "echo *" = "allow";
+        };
         watcher.ignore = [ ".git/**" ];
       };
     };
