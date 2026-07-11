@@ -48,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             /* F1           F2              F3          F4          F5          F6                          6           7           8           9           0           <delete> */
             KC_TRNS,        KC_HOME,        KC_LEFT,    KC_UP,      KC_RIGHT,   KC_END,     /*------*/      KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_LPRN,    KC_RPRN,    KC_UNDS,
             /* <none>       <home>          <left>      <up>        <right>     <end>                       ^           &           *           (           )           _       */
-            KC_WAKE,        KC_CUT,         KC_COPY,    KC_DOWN,    KC_WBAK,    KC_WFWD,    /*------*/      KC_TRNS,    KC_TRNS,    KC_QUES,    KC_LBRC,    KC_RBRC,    KC_RSFT,
+            KC_WAKE,        KC_CUT,         KC_COPY,    KC_DOWN,    KC_WBAK,    KC_WFWD,    /*------*/      RM_TOGG,    RM_NEXT,    KC_QUES,    KC_LBRC,    KC_RBRC,    KC_RSFT,
             /* <wake?>      <cut>           <copy>      <down>      <browser-b> <browser-f>                 transparent transparent ?           [           ]           <S> */
                                     KC_LCTL,    KC_SPC,    MO(2),                           /*------*/              MO(3),          MOD_RGUI,         KC_RALT),
 
@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[3] = LAYOUT_split_3x6_3(
             KC_TILD,            KC_1,       KC_2,       KC_3,       KC_4,       KC_5,       /*------*/      KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       KC_DELETE,
             KC_F1,              KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,      /*------*/      KC_F7,      KC_F8,      KC_F9,      KC_F10,     KC_F11,     KC_F12,
-            LSFT_T(KC_ESC),     KC_TRNS,    KC_TRNS,    OSL(6),     OSL(5),     TG(4),      /*------*/      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_RSFT,
+            LSFT_T(KC_ESC),     KC_TRNS,    KC_TRNS,    OSL(5),     OSL(6),     TG(4),      /*------*/      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_RSFT,
                                     KC_LCTL,    KC_SPC,      MO(2),                         /*------*/              MO(1),        MOD_RGUI,        TG(3)),
 
             /****************************************************************************** numpad ****************************************************************************/
@@ -65,8 +65,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[4] = LAYOUT_split_3x6_3(
             KC_ASTR,            KC_SLSH,    KC_7,       KC_8,       KC_9,       KC_0,       /*------*/      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_BSPC,
             KC_PLUS,            KC_MINS,    KC_4,       KC_5,       KC_6,       KC_DOT,     /*------*/      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
-            LSFT_T(KC_ESC),     KC_TRNS,    KC_1,       KC_2,       KC_3,       KC_ENT,     /*------*/      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
-                                    KC_LCTL,    KC_SPC,      KC_ESC,                        /*------*/              TG(4),        MOD_RGUI,     KC_RALT),
+            LSFT_T(KC_ESC),     KC_COMM,    KC_1,       KC_2,       KC_3,       KC_ENT,     /*------*/      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
+                                    KC_LCTL,    KC_SPC,      KC_ESC,                        /*------*/              TG(4),        LGUI_T(KC_ENT),     KC_RALT),
 
             /****************************************************************************** ctrl + numpad *********************************************************************/
 
