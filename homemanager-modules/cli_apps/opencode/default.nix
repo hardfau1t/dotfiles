@@ -22,7 +22,6 @@
       agents = { };
       commands = { };
       settings = {
-        model = "opencode-go/glm-5";
         autoupdate = false;
         permission.bash = {
           "*" = "ask";
