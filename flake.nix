@@ -8,6 +8,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs_unstable.url = "github:nixos/nixpkgs";
+    pi-agent = {
+      url = "github:rbright/nix-pi-agent";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -21,6 +25,7 @@
       system = "x86_64-linux";
       unstable_packages = import inputs.nixpkgs_unstable { inherit system; };
       pkgs = import inputs.nixpkgs { inherit system; };
+      pi-agent = inputs.pi-agent.packages.${system}.pi-agent;
     in
     {
       homeModules = ./homemanager-modules;
@@ -31,6 +36,7 @@
       homeConfigurations = {
         bare_home = home-manager.lib.homeManagerConfiguration {
           extraSpecialArgs = {
+            inherit pi-agent;
             unstable = unstable_packages;
           };
           pkgs = pkgs;

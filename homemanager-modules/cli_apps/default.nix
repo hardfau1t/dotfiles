@@ -10,7 +10,7 @@
     ./git.nix
     ./mpd.nix
     ./mscout.nix
-    ./opencode
+    ./assistants
     ./openssl.nix
     ./playerctl.nix
     ./podman
