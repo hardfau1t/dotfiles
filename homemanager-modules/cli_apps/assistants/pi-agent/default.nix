@@ -27,8 +27,9 @@
     custom.assistants.pi-agent.enable = lib.mkEnableOption "Enable coding assistants";
   };
   config = lib.mkIf config.custom.assistants.pi-agent.enable {
-    home.packages = [
-      unstable.pi-coding-agent
+    home.packages = with unstable; [
+      pi-coding-agent
+      nodejs
     ];
   };
 }

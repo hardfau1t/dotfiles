@@ -77,7 +77,11 @@ def confirm-download [ title: string dir: path ] {
     }
 }
 
-def get-youtube-song [unparsed_link: string output_dir: path = "./"] {
+def get-youtube-song [
+    --no-edit(-n)
+    unparsed_link: string 
+    output_dir: path = "./"
+] {
     let link = ($unparsed_link | url parse | update params {where key == v } | reject query| url join)
     if $link == null {
         print -e $"Failed to parse link '($unparsed_link)'"
@@ -88,10 +92,10 @@ def get-youtube-song [unparsed_link: string output_dir: path = "./"] {
         let metadata = (yt-dlp --default-search 'ytsearch' --dump-json --skip-download $'($link)' | from json)
 # replace all contents within () and [] and any special characters
 	let title = $metadata.title | str replace -ra $TITLE_REGEX ''
-	let title =  if (input -n 1 $"Title:'($title)'\nDo you want to modify it?[y/N]" | str downcase) == 'y' {
-            ($title | vipe)
-        } else {
+	let title =  if $no_edit or (input -n 1 $"Title:'($title)'\nDo you want to modify it?[y/N]" | str downcase) != 'y' {
             $title
+        } else {
+            ($title | vipe)
         }
 	if (confirm-download $title $output_dir) {
                 print $"downloading ($link)"
@@ -106,6 +110,7 @@ def get-youtube-song [unparsed_link: string output_dir: path = "./"] {
 
 export def get-song [
     --add(-a)          # add the song to current queue
+    --no-edit(-n)     # no edit to title, take default
     link: string
 ] {
     if "MPD_DIR" not-in $env {
@@ -117,7 +122,7 @@ export def get-song [
     # let ret = if $host =~ '^(https://)?(music|www)\.youtube\.com/watch\?v=[\w-]+' {
     let ret = if $host =~ 'youtube.com' {
         std log debug "Downloading from youtube"
-        let title = (get-youtube-song $link $MusicDownloadDir)
+        let title = (get-youtube-song --no-edit=$no_edit $link $MusicDownloadDir)
         if $title != "" and $add {
             std log info $"adding ($title) to current queue"
             mpc update -w
