@@ -1,1 +1,1 @@
-vim.lsp.enable("json_ls")
+vim.lsp.enable("jsonls")
