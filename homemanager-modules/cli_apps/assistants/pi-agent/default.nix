@@ -18,9 +18,9 @@ in
       eslint
     ];
     xdg.configFile."pi/settings.json".source =
-      lib.file.mkOutOfStoreSymlink "${config.dots_dir}/homemanager-modules/cli_apps/assistants/pi-agent/settings.json";
+      config.lib.file.mkOutOfStoreSymlink "${config.dots_dir}/homemanager-modules/cli_apps/assistants/pi-agent/settings.json";
     xdg.configFile."pi/models.json".source =
-      lib.file.mkOutOfStoreSymlink "${config.dots_dir}/homemanager-modules/cli_apps/assistants/pi-agent/models.json";
+      config.lib.file.mkOutOfStoreSymlink "${config.dots_dir}/homemanager-modules/cli_apps/assistants/pi-agent/models.json";
     home.sessionVariables = {
       PI_CODING_AGENT_DIR = "${config.xdg.configHome}/pi";
       PI_CODING_AGENT_SESSION_DIR = "${config.xdg.stateHome}/pi";
