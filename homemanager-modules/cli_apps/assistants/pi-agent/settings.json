@@ -18,5 +18,6 @@
   "defaultModel": "qwen3.6:35b",
   "quietStartup": true,
   "collapseChangelog": true,
-  "enableInstallTelemetry": false
+  "enableInstallTelemetry": false,
+  "defaultThinkingLevel": "medium"
 }

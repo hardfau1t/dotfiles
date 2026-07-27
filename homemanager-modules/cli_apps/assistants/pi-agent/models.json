@@ -3,7 +3,6 @@
         "ollama": {
             "baseUrl": "https://open-webui.vayavyalabs.com:3000/api",
             "api": "openai-completions",
-            "apiKey": "sk-0b87af6f6ebb42a18ddc181a6fa5822f",
             "models": [
                 {
                     "id": "gemma4:31b",
