@@ -48,6 +48,3 @@ opacity = 0.75
 
 [terminal]
 osc52="CopyPaste"
-
-# shell.program = "nu"
-
