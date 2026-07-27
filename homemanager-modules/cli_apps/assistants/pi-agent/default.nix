@@ -4,24 +4,9 @@
   unstable,
   ...
 }:
-# let
-#   pi = pkgs.pi-coding-agent.overrideAttrs (
-#     final: prev: rec {
-#       version = "0.82.0";
-#       src = pkgs.fetchFromGitHub {
-#         owner = "earendil-works";
-#         repo = "pi";
-#         tag = "v${version}";
-#         hash = "sha256-oKm0nyGmRY6rlQGMODB8DteMTVUUMroy/YXPphoxrvY=";
-#       };
-#       npmDeps = pkgs.fetchNpmDeps {
-#         inherit src;
-#         # Use a fake hash here first, let the build fail to get the real one
-#         hash = "sha256-3oqrN/uguYfkUHlfmKGxnLIvUo484IMGlydz6p9o/Dw="; 
-#       };
-#     }
-#   );
-# in
+let
+  pi = unstable.pi-coding-agent;
+in
 {
   options = {
     custom.assistants.pi-agent.enable = lib.mkEnableOption "Enable coding assistants";
@@ -30,6 +15,16 @@
     home.packages = with unstable; [
       pi-coding-agent
       nodejs
+      eslint
     ];
+    xdg.configFile."pi/settings.json".source =
+      lib.file.mkOutOfStoreSymlink "${config.dots_dir}/homemanager-modules/cli_apps/assistants/pi-agent/settings.json";
+    xdg.configFile."pi/models.json".source =
+      lib.file.mkOutOfStoreSymlink "${config.dots_dir}/homemanager-modules/cli_apps/assistants/pi-agent/models.json";
+    home.sessionVariables = {
+      PI_CODING_AGENT_DIR = "${config.xdg.configHome}/pi";
+      PI_CODING_AGENT_SESSION_DIR = "${config.xdg.stateHome}/pi";
+      PI_PACKAGE_DIR = "${pi}/lib/node_modules/pi-monorepo/";
+    };
   };
 }

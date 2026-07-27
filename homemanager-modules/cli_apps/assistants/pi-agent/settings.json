@@ -1,0 +1,22 @@
+{
+  "packages": [
+    "npm:pi-mcp-adapter",
+    "npm:pi-caveman",
+    "npm:pi-lens",
+    "npm:@gotgenes/pi-permission-model-judge",
+    "npm:@gotgenes/pi-nocd",
+    "npm:@gotgenes/pi-subagents-worktrees",
+    "npm:@gotgenes/pi-autoformat",
+    "npm:@gotgenes/pi-subagents",
+    "npm:@gotgenes/pi-permission-system",
+    "npm:@senad-d/commitme",
+    "git:github.com/hardfau1t/pi-taiga.git"
+  ],
+  "lastChangelogVersion": "0.81.1",
+  "theme": "dark",
+  "defaultProvider": "ollama",
+  "defaultModel": "qwen3.6:35b",
+  "quietStartup": true,
+  "collapseChangelog": true,
+  "enableInstallTelemetry": false
+}
