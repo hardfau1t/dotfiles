@@ -21,6 +21,8 @@ in
       config.lib.file.mkOutOfStoreSymlink "${config.dots_dir}/homemanager-modules/cli_apps/assistants/pi-agent/settings.json";
     xdg.configFile."pi/models.json".source =
       config.lib.file.mkOutOfStoreSymlink "${config.dots_dir}/homemanager-modules/cli_apps/assistants/pi-agent/models.json";
+    xdg.configFile."pi/extensions/pi-permission-system/config.json".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.dots_dir}/homemanager-modules/cli_apps/assistants/pi-agent/permissions.json";
     home.sessionVariables = {
       PI_CODING_AGENT_DIR = "${config.xdg.configHome}/pi";
       PI_CODING_AGENT_SESSION_DIR = "${config.xdg.stateHome}/pi";

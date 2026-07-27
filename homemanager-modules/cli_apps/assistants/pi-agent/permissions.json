@@ -1,0 +1,30 @@
+{
+  "permission": {
+    "*": "allow",
+    "taiga_create_task": "ask",
+    "taiga_update_task": "ask",
+    "taiga_delete_task": "ask",
+    "taiga_create_issue": "ask",
+    "taiga_update_issue": "ask",
+    "taiga_delete_issue": "ask",
+    "taiga_add_comment": "ask",
+    "taiga_toggle_task_watch": "ask",
+    "taiga_assign_to_self": "ask",
+    "taiga_update_status": "ask",
+    "write": "ask",
+    "edit": "ask",
+    "path": {
+      "*": "allow",
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "*.env.example": "allow",
+      "~/.config/pi/*": "allow"
+    },
+    "bash": {
+      "*": "ask",
+      "rm -rf *": "deny",
+      "sudo *": "ask"
+    },
+    "external_directory": "ask"
+  }
+}
