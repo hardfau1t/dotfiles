@@ -7,10 +7,12 @@
 }:
 {
   imports = [
+    ./assistants
+    ./bash.nix
     ./git.nix
     ./mpd.nix
     ./mscout.nix
-    ./assistants
+    ./nushell
     ./openssl.nix
     ./playerctl.nix
     ./podman
@@ -76,14 +78,6 @@
         zellij
       ]);
     programs = {
-      nushell = {
-        enable = true;
-        plugins = with pkgs.nushellPlugins; [
-          formats
-          polars
-          semver
-        ];
-      };
       password-store = {
         enable = true;
         package = pkgs.pass.withExtensions (exts: [ exts.pass-otp ]);
