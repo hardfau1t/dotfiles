@@ -43,6 +43,7 @@
         moreutils # for vipe
         nerd-fonts.symbols-only
         nethogs
+        osc
         nmap
         nixfmt
         noto-fonts
