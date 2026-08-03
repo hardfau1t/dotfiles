@@ -1,7 +1,7 @@
 local theme = require("lua.themes.catppuccin-machiato")
 require("lua.shortcuts")
 require("lua.init")
-require("lua.private")
+require("private")
 require("lua.style")
 require("lua.workspace")
 require("lua.devices")
